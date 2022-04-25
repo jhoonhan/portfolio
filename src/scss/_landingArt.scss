@@ -1,0 +1,58 @@
+.landing-art__container {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  // transition: 0.3s ease-in-out;
+}
+.cursor {
+  width: 100vh;
+  height: 100vh;
+
+  position: fixed;
+  top: -50vh;
+  left: -50vh;
+  // z-index: 10;
+  contain: layout style size;
+
+  // background-color: rgb(0, 100, 0);
+  border-radius: 100%;
+
+  pointer-events: none;
+  mix-blend-mode: difference;
+}
+.lname {
+  position: absolute;
+  // max-width: 200vw;
+  // max-height: 100vh;
+  z-index: -1;
+  // overflow: hidden;
+}
+
+.lname-container {
+  width: 100%;
+  min-height: 100vh;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+}
+.lname--center {
+  width: 30vh;
+  height: 30vh;
+  border: 5px solid white;
+  // background-color: rgba(0, 0, 0, 0.3);
+  // mix-blend-mode: overlay;
+}
+.lname--first {
+  width: 80vw;
+  mix-blend-mode: difference;
+  left: 0;
+}
+
+.lname--last {
+  width: 70vw;
+  mix-blend-mode: difference;
+  // opacity: 0.7;
+  right: 0;
+}

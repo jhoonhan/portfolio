@@ -1,0 +1,84 @@
+body {
+  color: white;
+  background-image: url(../assests/image/bg1.jpg);
+  background-size: 100%;
+  background-position: center center;
+  background-blend-mode: difference;
+}
+h3 {
+  font-weight: 500;
+}
+a {
+  color: white;
+  text-decoration: none;
+}
+.wrapper__main {
+  width: 100%;
+  max-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  box-sizing: border-box;
+  // scroll-snap-type: y mandatory;
+  overflow-y: hidden;
+  & section {
+    // z-index: 0;
+  }
+}
+.aang {
+  scroll-snap-align: start;
+}
+
+.wrapper__header {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+
+  box-sizing: border-box;
+}
+.middle-line {
+  display: grid;
+  // grid-template-columns: auto 1fr;
+  justify-content: center;
+  & .round {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    & span {
+      min-width: 1.5rem;
+      min-height: 1.5rem;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      // background-color: white;
+      border: $default--border;
+      // border-radius: 100%;
+    }
+  }
+  & .middle-border {
+    display: grid;
+  }
+}
+
+.overlay {
+  position: fixed;
+  left: 0;
+  top: 0;
+
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(66, 55, 55, 0.95);
+  background-blend-mode: normal;
+
+  opacity: 1;
+
+  z-index: 0;
+
+  transition: $default--transition;
+}

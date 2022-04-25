@@ -1,0 +1,39 @@
+.landing__container {
+  width: 100%;
+  // max-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // z-index: 5;
+}
+
+.landing__footer {
+  color: white;
+  font-size: $font-size--d;
+
+  position: absolute;
+  bottom: 7vh;
+  right: 5vw;
+
+  display: grid;
+  grid-template-columns: 1fr auto;
+  column-gap: 2rem;
+
+  // mix-blend-mode: overlay;
+}
+
+.landing__center-info {
+  color: white;
+  position: relative;
+
+  width: 30vh;
+  height: 30vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3 ease-in-out;
+
+  &:hover {
+    mix-blend-mode: overlay;
+  }
+}
