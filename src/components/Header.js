@@ -140,16 +140,16 @@ const Header = ({ refs, curPage, setCurPage }) => {
         </div>
         <div className="icons__container">
           {/* <MiddleLine orientation={"vertical"} style={{ height: "20rem" }} /> */}
-          <svg viewBox="0 0 100 100" className="social-icons">
+          <svg viewBox="0 0 100 100" className="social-icons a--opacity">
             <use href={`${icons}#github`}></use>
           </svg>
-          <svg viewBox="0 0 100 100" className="social-icons">
+          <svg viewBox="0 0 100 100" className="social-icons a--opacity">
             <use href={`${icons}#linkedin`}></use>
           </svg>
-          <svg viewBox="0 0 100 100" className="social-icons">
+          <svg viewBox="0 0 100 100" className="social-icons a--opacity">
             <use href={`${icons}#instagram`}></use>
           </svg>
-          <svg viewBox="0 0 100 100" className="social-icons">
+          <svg viewBox="0 0 100 100" className="social-icons a--opacity">
             <use href={`${icons}#cv`}></use>
           </svg>
         </div>

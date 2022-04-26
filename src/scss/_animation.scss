@@ -1,5 +1,7 @@
-.opacity {
+.a--opacity {
   opacity: 0.5;
+  transition: $default--transition;
+  cursor: pointer;
   &:hover {
     opacity: 1;
   }
