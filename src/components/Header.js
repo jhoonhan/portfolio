@@ -78,7 +78,7 @@ const Header = ({ refs, curPage, setCurPage }) => {
     // const activeBackground = { backgroundColor: "white" };
     const activeHeight = { height: `calc(${barHeight}% - 0px)` };
     const activePosition = {
-      transform: `translateY(${barHeight}%)`,
+      transform: `translateY(calc(${barHeight}% - 0px))`,
     };
 
     return (

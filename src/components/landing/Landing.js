@@ -3,11 +3,14 @@ import LandingArt from "./LandingArt";
 import name2 from "../../assests/image/name2.svg";
 import MiddleLine from "../../helpers/MiddleLine";
 
-const Landing = ({ refHome }) => {
+const Landing = ({ curPage, refHome }) => {
   const renderFooter = () => {
     return (
-      <div className="landing__footer">
-        <MiddleLine orientation="horizontal" style={{ width: "15vw" }} />
+      <div
+        className="landing__footer"
+        style={curPage !== "home" ? { transform: "translateX(100vw)" } : {}}
+      >
+        <MiddleLine orientation="horizontal" />
 
         <h3>visual artist & web developer</h3>
       </div>

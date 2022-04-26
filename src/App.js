@@ -34,7 +34,7 @@ const App = () => {
           ></div>
           <LandingArt />
 
-          <Landing refHome={refHome} />
+          <Landing curPage={curPage} refHome={refHome} />
           <section ref={refWork} className="container">
             work
           </section>
