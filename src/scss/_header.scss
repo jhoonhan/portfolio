@@ -38,7 +38,7 @@
 
   transition: $default--transition;
   & a {
-    color: $color--disabled;
+    // color: $color--disabled;
     text-transform: uppercase;
   }
 }

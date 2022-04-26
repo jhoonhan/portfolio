@@ -74,7 +74,7 @@ const Header = ({ refs, curPage, setCurPage }) => {
 
   const render = () => {
     const barHeight = (curScroll / (window.innerHeight * 3)) * 100;
-    const activeFont = { color: "white" };
+    const activeFont = { opacity: 1 };
     // const activeBackground = { backgroundColor: "white" };
     const activeHeight = { height: `calc(${barHeight}% - 0px)` };
     const activePosition = {
@@ -97,9 +97,9 @@ const Header = ({ refs, curPage, setCurPage }) => {
                 onClick={() =>
                   refs.refHome.current.scrollIntoView({ behavior: "smooth" })
                 }
+                className="a--transition a--opacity"
                 style={curPage === "home" ? activeFont : {}}
                 href="#home"
-                className="a--transition"
               >
                 home
               </a>
@@ -111,7 +111,7 @@ const Header = ({ refs, curPage, setCurPage }) => {
                 }
                 href="#work"
                 style={curPage === "work" ? activeFont : {}}
-                className="a--transition"
+                className="a--transition a--opacity"
               >
                 work
               </a>
@@ -123,7 +123,7 @@ const Header = ({ refs, curPage, setCurPage }) => {
                 }
                 href="#about"
                 style={curPage === "about" ? activeFont : {}}
-                className="a--transition"
+                className="a--transition a--opacity"
               >
                 about
               </a>
@@ -135,7 +135,7 @@ const Header = ({ refs, curPage, setCurPage }) => {
                 }
                 href="#contact"
                 style={curPage === "contact" ? activeFont : {}}
-                className="a--transition"
+                className="a--transition a--opacity"
               >
                 contact
               </a>
