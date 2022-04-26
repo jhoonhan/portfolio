@@ -97,8 +97,9 @@ const Header = ({ refs, curPage, setCurPage }) => {
                 onClick={() =>
                   refs.refHome.current.scrollIntoView({ behavior: "smooth" })
                 }
-                href="#home"
                 style={curPage === "home" ? activeFont : {}}
+                href="#home"
+                className="a--transition"
               >
                 home
               </a>
@@ -110,6 +111,7 @@ const Header = ({ refs, curPage, setCurPage }) => {
                 }
                 href="#work"
                 style={curPage === "work" ? activeFont : {}}
+                className="a--transition"
               >
                 work
               </a>
@@ -121,6 +123,7 @@ const Header = ({ refs, curPage, setCurPage }) => {
                 }
                 href="#about"
                 style={curPage === "about" ? activeFont : {}}
+                className="a--transition"
               >
                 about
               </a>
@@ -132,6 +135,7 @@ const Header = ({ refs, curPage, setCurPage }) => {
                 }
                 href="#contact"
                 style={curPage === "contact" ? activeFont : {}}
+                className="a--transition"
               >
                 contact
               </a>

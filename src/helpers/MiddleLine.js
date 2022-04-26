@@ -13,22 +13,14 @@ const MiddleLine = ({ style, orientation }) => {
       <div className="round">
         <span></span>
       </div>
-      <div
-        className="middle-border"
-        style={
-          orientation === "horizontal"
-            ? { gridTemplateRows: "1fr 1fr" }
-            : { gridTemplateColumns: "1fr 1fr" }
-        }
-      >
+      <div className="middle-border">
         <span
           style={
             orientation === "horizontal"
-              ? { borderBottom: "1px solid white" }
-              : { borderRight: "1px solid white" }
+              ? { width: "100%", height: "1px" }
+              : { gridTemplateColumns: "1fr 1fr" }
           }
         ></span>
-        <span></span>
       </div>
     </div>
   );
