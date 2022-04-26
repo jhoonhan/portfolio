@@ -20,6 +20,13 @@
   column-gap: 2rem;
 
   // mix-blend-mode: overlay;
+  transition: $default--transition;
+
+  &:hover {
+    animation-duration: 3s;
+    animation-name: gradient;
+    animation-iteration-count: infinite;
+  }
 }
 
 .landing__center-info {
