@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Header from "./components/Header";
 import Landing from "./components/landing/Landing";
 import LandingArt from "./components/landing/LandingArt";
+import Works from "./components/works/Works";
 
 import "./scss/App.scss";
 
@@ -35,9 +36,7 @@ const App = () => {
           <LandingArt />
 
           <Landing curPage={curPage} refHome={refHome} />
-          <section ref={refWork} className="container">
-            work
-          </section>
+          <Works refWork={refWork} />
           <section ref={refAbout} className="container">
             about
           </section>

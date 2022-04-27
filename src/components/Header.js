@@ -113,7 +113,7 @@ const Header = ({ refs, curPage, setCurPage }) => {
                 style={curPage === "work" ? activeFont : {}}
                 className="a--transition a--opacity"
               >
-                work
+                works
               </a>
             </div>
             <div>
