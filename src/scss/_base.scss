@@ -110,6 +110,10 @@ a {
   grid-template-rows: 1fr 1fr;
 }
 
+.grid--span2 {
+  grid-column: 1 / span 2;
+}
+
 .detail-item {
   text-transform: uppercase;
   & h3 {
