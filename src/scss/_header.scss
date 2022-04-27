@@ -3,27 +3,32 @@
   left: 0;
   top: 0;
 
-  width: auto;
+  width: calc(5vw + 10rem);
   height: 100vh;
 
   display: flex;
   flex-direction: column;
+  // justify-content: center;
+  align-items: center;
 
   z-index: 10;
+  // background-color: red;
 }
 
 //
 .nav__container {
-  position: absolute;
+  // position: absolute;
 
-  width: auto;
+  width: 10rem;
   height: 300px;
 
   display: flex;
   gap: 2rem;
 
-  left: 5vw;
-  top: 7vw;
+  // left: 5vw;
+  margin-top: 7vw;
+
+  // background-color: red;
 }
 
 .nav {
@@ -50,8 +55,10 @@
 
 .icons__container {
   position: absolute;
-  bottom: 3vw;
-  left: calc(5vw + 0rem);
+  bottom: 5vw;
+  width: 10rem;
+
+  // left: calc(5vw + 0rem);
 
   display: flex;
   flex-direction: column;
