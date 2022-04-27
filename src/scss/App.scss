@@ -4,9 +4,9 @@ $default--font: "Raleway", sans-serif;
 $default--border: 1px solid white;
 $default--transition: 0.3s ease-in-out;
 
-$font-size--s: 1.2rem;
-$font-size--m: 1.4rem;
-$font-size--d: 1.6rem;
+$font-size--s: 1rem;
+$font-size--m: 1.2rem;
+$font-size--d: 1.4rem;
 $font-size--l: 2rem;
 
 $color--font: white;
@@ -17,6 +17,12 @@ $color--primary: #4064ff;
 $color--primary--hover: #ff4040;
 
 $color--background: rgba(233, 233, 244, 0.9);
+
+$gradient--white--270: linear-gradient(
+  270deg,
+  rgba(255, 255, 255, 0.1) 0%,
+  rgba(255, 255, 255, 1) 100%
+);
 
 @import "base";
 @import "header";

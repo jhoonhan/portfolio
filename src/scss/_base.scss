@@ -1,5 +1,6 @@
 body {
   color: white;
+  font-size: $font-size--d;
   background-image: url(../assests/image/bg1.jpg);
   background-size: 100% 100%;
   background-position: center center;
@@ -93,4 +94,44 @@ a {
   z-index: 0;
 
   transition: $default--transition;
+}
+
+.row--flex {
+  display: flex;
+  flex-direction: row;
+}
+
+.column--grid--2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.row--grid--2 {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+
+.detail-item {
+  text-transform: uppercase;
+  & h3 {
+    font-weight: 500;
+  }
+  & p {
+    font-weight: bold;
+  }
+}
+.detail-item__title {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  column-gap: 1rem;
+
+  padding: 1rem 0;
+  margin-bottom: 1rem;
+
+  box-sizing: border-box;
+
+  & div:last-child {
+    height: 1px;
+    background: $gradient--white--270;
+  }
 }
