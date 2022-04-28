@@ -9,6 +9,10 @@ const Header = ({ refs, curPage, setCurPage }) => {
   const [direction, setDirection] = useState(false);
 
   const refNav = useRef(null);
+  const refNavHome = useRef(null);
+  const refNavWorks = useRef(null);
+  const refNavAbout = useRef(null);
+  const refNavContact = useRef(null);
 
   // useEffect(() => {
   //   console.log(refMain.current.offsetHeight);
@@ -91,6 +95,10 @@ const Header = ({ refs, curPage, setCurPage }) => {
       }
       return { height: height };
     };
+    const getActiveHeight = (ref) => {
+      console.log(ref.current.getBoundingClientRect().top);
+    };
+
     const activePosition = () => {
       let position;
       if (curPage === "works") {
@@ -125,11 +133,12 @@ const Header = ({ refs, curPage, setCurPage }) => {
             //     : { gridTemplateRows: "10rem 10rem 10rem 1.4rem" }
             // }
           >
-            <div className="nav__link home">
+            <div className="nav__link home" ref={refNavHome}>
               <a
                 onClick={() => {
                   refs.refHome.current.scrollIntoView({ behavior: "smooth" });
                   setCurPage("home");
+                  getActiveHeight(refNavHome);
                 }}
                 className="a--transition a--opacity"
                 style={curPage === "home" ? activeFont : {}}
@@ -138,11 +147,12 @@ const Header = ({ refs, curPage, setCurPage }) => {
                 home
               </a>
             </div>
-            <div className="nav__link works">
+            <div className="nav__link works" ref={refNavWorks}>
               <a
                 onClick={() => {
                   refs.refWorks.current.scrollIntoView({ behavior: "smooth" });
                   setCurPage("works");
+                  getActiveHeight(refNavWorks);
                 }}
                 href="#work"
                 style={curPage === "works" ? activeFont : {}}
@@ -163,11 +173,12 @@ const Header = ({ refs, curPage, setCurPage }) => {
                 <li>Salvation Army</li>
               </ul> */}
             </div>
-            <div className="nav__link about">
+            <div className="nav__link about" ref={refNavAbout}>
               <a
                 onClick={() => {
                   refs.refAbout.current.scrollIntoView({ behavior: "smooth" });
                   setCurPage("about");
+                  getActiveHeight(refNavAbout);
                 }}
                 href="#about"
                 style={curPage === "about" ? activeFont : {}}
@@ -176,13 +187,14 @@ const Header = ({ refs, curPage, setCurPage }) => {
                 about
               </a>
             </div>
-            <div className="nav__link contact">
+            <div className="nav__link contact" ref={refNavContact}>
               <a
                 onClick={() => {
                   refs.refContact.current.scrollIntoView({
                     behavior: "smooth",
                   });
                   setCurPage("contact");
+                  getActiveHeight(refNavContact);
                 }}
                 href="#contact"
                 style={curPage === "contact" ? activeFont : {}}
