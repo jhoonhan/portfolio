@@ -66,18 +66,19 @@
   position: relative;
 }
 .nav__sublinks {
-  position: absolute;
+  // position: relative;
   display: flex;
   flex-direction: column;
-  max-height: 0rem;
-  gap: 1rem;
-  // margin: 2rem 1rem;
+  max-height: auto;
+  gap: 2rem;
+  margin: 2rem 1rem;
   opacity: 1;
   box-sizing: border-box;
-  transition-property: display;
+  transition-property: max-height;
   transition-duration: 0.3s;
   transition-timing-function: ease-in-out;
-  transition-delay: 1s;
+  // transition-delay: 1s;
+  // transition: $default--transition;
   overflow: hidden;
   & li {
     list-style: none;
@@ -134,26 +135,27 @@
 
 .scroll-status--active {
   @extend .scroll-status;
-  height: 33%;
+  height: 100%;
   // border-color: white;
   background: linear-gradient(
     184deg,
     rgba(255, 255, 255, 0) 0%,
     rgba(255, 255, 255, 1) 100%
   );
+  overflow: hidden;
+  transition: $default--transition;
 }
 .scroll-status--boxes {
   position: absolute;
   top: 0;
   // transform: translateY(33%);
   left: -4.5px;
-  height: calc(100% - 1rem);
+  // height: calc(100% - 1rem);
   display: grid;
   // grid-template-rows: 1fr 1fr 1fr auto;
   transition-property: transform;
   transition-duration: 0.3s;
   transition-timing-function: ease-in-out;
-  transition-delay: 1s;
   & span {
     width: 1rem;
     height: 1rem;
