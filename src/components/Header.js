@@ -4,6 +4,7 @@ import icons from "../assests/image/icons.svg";
 import throttle from "../helpers/throttle";
 
 const Header = ({ refs, curPage, setCurPage }) => {
+  const [onScroll, setOnScroll] = useState(true);
   const [curScroll, setCurScroll] = useState(window.pageYOffset);
   const [direction, setDirection] = useState(false);
 
@@ -21,7 +22,7 @@ const Header = ({ refs, curPage, setCurPage }) => {
     if (innerHeight * 2 <= curScroll + innerHeight / 2) setCurPage("about");
     if (innerHeight * 3 - 10 <= curScroll + innerHeight / 2)
       setCurPage("contact");
-  }, [curScroll]);
+  }, []);
 
   useEffect(() => {
     const handler = (e) => {
@@ -39,6 +40,10 @@ const Header = ({ refs, curPage, setCurPage }) => {
       document.removeEventListener("mousewheel", throttled);
     };
   }, []);
+
+  useEffect(() => {
+    console.log(`aaang`);
+  }, [curScroll]);
 
   useEffect(() => {
     const fn = () => {
@@ -122,9 +127,10 @@ const Header = ({ refs, curPage, setCurPage }) => {
           >
             <div className="nav__link home">
               <a
-                onClick={() =>
-                  refs.refHome.current.scrollIntoView({ behavior: "smooth" })
-                }
+                onClick={() => {
+                  refs.refHome.current.scrollIntoView({ behavior: "smooth" });
+                  setCurPage("home");
+                }}
                 className="a--transition a--opacity"
                 style={curPage === "home" ? activeFont : {}}
                 href="#home"
@@ -132,28 +138,22 @@ const Header = ({ refs, curPage, setCurPage }) => {
                 home
               </a>
             </div>
-            <div
-              className="nav__link works"
-              style={
-                curPage === "works" ? { height: "20rem" } : { height: "10rem" }
-              }
-            >
+            <div className="nav__link works">
               <a
-                onClick={() =>
-                  refs.refWorks.current.scrollIntoView({ behavior: "smooth" })
-                }
+                onClick={() => {
+                  refs.refWorks.current.scrollIntoView({ behavior: "smooth" });
+                  setCurPage("works");
+                }}
                 href="#work"
                 style={curPage === "works" ? activeFont : {}}
                 className="a--transition a--opacity"
               >
                 works
               </a>
-              <ul
+              {/* <ul
                 className="nav__sublinks"
                 style={
-                  curPage !== "works"
-                    ? { maxHeight: "0rem", opacity: 0 }
-                    : { maxHeight: "20rem", opacity: 1 }
+                  curPage !== "works" ? { display: "none", opacity: 0 } : {}
                 }
               >
                 <li>Sushi Republic</li>
@@ -161,13 +161,14 @@ const Header = ({ refs, curPage, setCurPage }) => {
                 <li>Haans Cleaners</li>
                 <li>This Is Bullshit</li>
                 <li>Salvation Army</li>
-              </ul>
+              </ul> */}
             </div>
             <div className="nav__link about">
               <a
-                onClick={() =>
-                  refs.refAbout.current.scrollIntoView({ behavior: "smooth" })
-                }
+                onClick={() => {
+                  refs.refAbout.current.scrollIntoView({ behavior: "smooth" });
+                  setCurPage("about");
+                }}
                 href="#about"
                 style={curPage === "about" ? activeFont : {}}
                 className="a--transition a--opacity"
@@ -177,9 +178,12 @@ const Header = ({ refs, curPage, setCurPage }) => {
             </div>
             <div className="nav__link contact">
               <a
-                onClick={() =>
-                  refs.refContact.current.scrollIntoView({ behavior: "smooth" })
-                }
+                onClick={() => {
+                  refs.refContact.current.scrollIntoView({
+                    behavior: "smooth",
+                  });
+                  setCurPage("contact");
+                }}
                 href="#contact"
                 style={curPage === "contact" ? activeFont : {}}
                 className="a--transition a--opacity"
