@@ -77,6 +77,14 @@ const Works = ({ refWork }) => {
 
             <p>HTML5, CSS3, Sass, jQuery</p>
           </div>
+
+          <div
+            className="column--grid--2 detail-item"
+            style={{ marginTop: "1rem", gap: "2rem" }}
+          >
+            <div className="button">Live Demo</div>
+            <div className="button">Github</div>
+          </div>
         </div>
       </div>
     );
@@ -88,13 +96,21 @@ const Works = ({ refWork }) => {
         {renderPictureContainer()}
         {renderInfo()}
         <div className="works__content-nav grid--span2">
-          <div className="bar disabled"></div>
-          <div className="bar active"></div>
-          <div className="box"></div>
+          <div className="bar disabled" />
+          <div className="bar active" style={{ width: "5vw" }} />
           <div className="labels">
-            <span className="info">Info</span>
-            <span className="detail">Detail</span>
-            <span className="more">More Info</span>
+            <div className="info a--opacity">
+              <div className="box" />
+              <span>Info</span>
+            </div>
+            <div className="detail a--opacity">
+              <div className="box" />
+              <span>Detail</span>
+            </div>
+            <div className="more a--opacity">
+              <div className="box" />
+              <span>More Works</span>
+            </div>
           </div>
         </div>
       </div>

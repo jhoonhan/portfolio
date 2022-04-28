@@ -71,7 +71,7 @@
   // grid-auto-rows: minmax(min-content, max-content);
 
   justify-items: flex-end;
-  row-gap: 5vh;
+  row-gap: 2rem;
 
   justify-content: flex-end;
   // overflow: visible;
@@ -133,7 +133,7 @@
   grid-template-columns: 1fr;
   // grid-template-rows: auto auto;
   grid-auto-rows: minmax(min-content, max-content);
-  row-gap: 2rem;
+  row-gap: 0rem;
 
   margin-bottom: 2rem;
   box-sizing: border-box;
@@ -151,9 +151,8 @@
   }
   & .active {
     top: -1px;
-    width: 10rem;
     height: 1px;
-    min-width: 10rem;
+    min-width: 5vw;
     background: $gradient--white--90;
   }
   & .disabled {
@@ -163,27 +162,30 @@
   }
 
   & .box {
-    margin-top: -0.7rem;
-    left: 0;
-    position: absolute;
+    // position: relative;
+    margin-top: -2.2rem;
     width: 1.2rem;
     height: 1.2rem;
     background-color: white;
   }
   & .labels {
+    font-size: $font-size--m;
+    text-transform: uppercase;
     display: flex;
     margin-top: 1.5rem;
-    & span {
+    & div {
       position: absolute;
+      display: flex;
+      flex-direction: column;
     }
     & .info {
-      left: 0;
+      left: 5vw;
     }
     & .detail {
       left: 25vw;
     }
     & .more {
-      right: 10vh;
+      right: 15vh;
     }
   }
 }

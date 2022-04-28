@@ -26,8 +26,18 @@ a {
     // z-index: 0;
   }
 }
-.aang {
-  scroll-snap-align: start;
+.button {
+  width: 100%;
+  border: $default--border;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  cursor: pointer;
+  &:hover {
+    // background-color: red;
+  }
 }
 
 .wrapper__header {
