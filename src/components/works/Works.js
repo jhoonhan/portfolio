@@ -3,7 +3,7 @@ import sushi1 from "../../assests/image/3.jpg";
 import sushi2 from "../../assests/image/4.jpg";
 import sushi3 from "../../assests/image/5.jpg";
 
-const Works = ({ refWork }) => {
+const Works = ({ refWorks }) => {
   const renderPictureContainer = () => {
     return (
       <div className="works__picture-container">
@@ -91,7 +91,7 @@ const Works = ({ refWork }) => {
   };
 
   return (
-    <section ref={refWork} className="works__container container">
+    <section ref={refWorks} className="works__container container">
       <div className="content">
         {renderPictureContainer()}
         {renderInfo()}

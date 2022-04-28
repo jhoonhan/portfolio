@@ -12,14 +12,14 @@ const App = () => {
 
   const refMain = useRef(null);
   const refHome = useRef(null);
-  const refWork = useRef(null);
+  const refWorks = useRef(null);
   const refAbout = useRef(null);
   const refContact = useRef(null);
 
   const refs = {
     refMain,
     refHome,
-    refWork,
+    refWorks,
     refAbout,
     refContact,
   };
@@ -36,7 +36,7 @@ const App = () => {
           <LandingArt />
 
           <Landing curPage={curPage} refHome={refHome} />
-          <Works refWork={refWork} />
+          <Works refWorks={refWorks} />
           <section ref={refAbout} className="container">
             about
           </section>

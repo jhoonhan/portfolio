@@ -17,7 +17,7 @@ const Header = ({ refs, curPage, setCurPage }) => {
     const innerHeight = window.innerHeight;
     // const totalHeight = document.body.scrollHeight;
     if (innerHeight > curScroll + innerHeight / 2) setCurPage("home");
-    if (innerHeight <= curScroll + innerHeight / 2) setCurPage("work");
+    if (innerHeight <= curScroll + innerHeight / 2) setCurPage("works");
     if (innerHeight * 2 <= curScroll + innerHeight / 2) setCurPage("about");
     if (innerHeight * 3 - 10 <= curScroll + innerHeight / 2)
       setCurPage("contact");
@@ -76,23 +76,51 @@ const Header = ({ refs, curPage, setCurPage }) => {
     const barHeight = (curScroll / (window.innerHeight * 3)) * 100;
     const activeFont = { opacity: 1 };
     // const activeBackground = { backgroundColor: "white" };
-    const activeHeight = { height: `calc(${barHeight}% - 0px)` };
-    const activePosition = {
-      transform: `translateY(calc(${barHeight}% - 0px))`,
+    // const activeHeight = { height: `calc(${barHeight}% - 0px)` };
+    const activeHeight = () => {
+      let height;
+      if (curPage === "works") {
+        height = `calc(${barHeight}% - 34px)`;
+      } else {
+        height = `calc(${barHeight}% - 0px)`;
+      }
+      return { height: height };
+    };
+    const activePosition = () => {
+      let position;
+      if (curPage === "works") {
+        position = `translateY(calc(${barHeight}% - 34px))`;
+      } else {
+        position = `translateY(calc(${barHeight}% - 0px))`;
+      }
+      return { transform: position };
     };
 
     return (
       <header className="header__container">
-        <div className="nav__container">
+        <div
+          className="nav__container"
+          style={
+            curPage === "works" ? { height: `41.2rem` } : { height: `31.2rem` }
+          }
+        >
           <div className="scroll-status__container">
             <div className="scroll-status--disabled"></div>
-            <div className="scroll-status--active" style={activeHeight}></div>
-            <div style={activePosition} className="scroll-status--boxes">
+            <div className="scroll-status--active" style={activeHeight()}></div>
+            <div style={activePosition()} className="scroll-status--boxes">
               <span></span>
             </div>
           </div>
-          <nav className="nav" ref={refNav}>
-            <div>
+          <nav
+            className="nav"
+            ref={refNav}
+            // style={
+            //   curPage === "works"
+            //     ? { gridTemplateRows: "10rem 20rem 10rem 1.4rem" }
+            //     : { gridTemplateRows: "10rem 10rem 10rem 1.4rem" }
+            // }
+          >
+            <div className="nav__link home">
               <a
                 onClick={() =>
                   refs.refHome.current.scrollIntoView({ behavior: "smooth" })
@@ -104,19 +132,38 @@ const Header = ({ refs, curPage, setCurPage }) => {
                 home
               </a>
             </div>
-            <div>
+            <div
+              className="nav__link works"
+              style={
+                curPage === "works" ? { height: "20rem" } : { height: "10rem" }
+              }
+            >
               <a
                 onClick={() =>
-                  refs.refWork.current.scrollIntoView({ behavior: "smooth" })
+                  refs.refWorks.current.scrollIntoView({ behavior: "smooth" })
                 }
                 href="#work"
-                style={curPage === "work" ? activeFont : {}}
+                style={curPage === "works" ? activeFont : {}}
                 className="a--transition a--opacity"
               >
                 works
               </a>
+              <ul
+                className="nav__sublinks"
+                style={
+                  curPage !== "works"
+                    ? { maxHeight: "0rem", opacity: 0 }
+                    : { maxHeight: "20rem", opacity: 1 }
+                }
+              >
+                <li>Sushi Republic</li>
+                <li>Danji</li>
+                <li>Haans Cleaners</li>
+                <li>This Is Bullshit</li>
+                <li>Salvation Army</li>
+              </ul>
             </div>
-            <div>
+            <div className="nav__link about">
               <a
                 onClick={() =>
                   refs.refAbout.current.scrollIntoView({ behavior: "smooth" })
@@ -128,7 +175,7 @@ const Header = ({ refs, curPage, setCurPage }) => {
                 about
               </a>
             </div>
-            <div>
+            <div className="nav__link contact">
               <a
                 onClick={() =>
                   refs.refContact.current.scrollIntoView({ behavior: "smooth" })
