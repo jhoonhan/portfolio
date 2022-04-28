@@ -7,6 +7,7 @@ const Header = ({ refs, curPage, setCurPage }) => {
   const [onScroll, setOnScroll] = useState(true);
   const [curScroll, setCurScroll] = useState(window.pageYOffset);
   const [direction, setDirection] = useState(false);
+  const [activePosition, setActivePosition] = useState(0);
 
   const refNav = useRef(null);
   const refNavHome = useRef(null);
@@ -44,10 +45,6 @@ const Header = ({ refs, curPage, setCurPage }) => {
       document.removeEventListener("mousewheel", throttled);
     };
   }, []);
-
-  useEffect(() => {
-    console.log(`aaang`);
-  }, [curScroll]);
 
   useEffect(() => {
     const fn = () => {
@@ -96,7 +93,12 @@ const Header = ({ refs, curPage, setCurPage }) => {
       return { height: height };
     };
     const getActiveHeight = (ref) => {
-      console.log(ref.current.getBoundingClientRect().top);
+      const aang = Math.abs(
+        refNavHome.current.getBoundingClientRect().top -
+          ref.current.getBoundingClientRect().top
+      );
+
+      return { height: `${aang}px` };
     };
 
     const activePosition = () => {
@@ -107,6 +109,20 @@ const Header = ({ refs, curPage, setCurPage }) => {
         position = `translateY(calc(${barHeight}% - 0px))`;
       }
       return { transform: position };
+    };
+
+    const getActivePosition = () => {
+      let ref = "home";
+      if (curPage === "home") ref = refNavHome;
+      if (curPage === "works") ref = refNavWorks;
+      if (curPage === "about") ref = refNavAbout;
+      if (curPage === "contact") ref = refNavContact;
+      const aang = Math.abs(
+        refNavHome.current.getBoundingClientRect().top -
+          ref.current.getBoundingClientRect().top
+      );
+
+      return { position: `translateY(${aang}px)` };
     };
 
     return (
