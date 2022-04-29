@@ -3,10 +3,29 @@ import sushi1 from "../../assests/image/3.jpg";
 import sushi2 from "../../assests/image/4.jpg";
 import sushi3 from "../../assests/image/5.jpg";
 
-const WorkContent = ({ refaa, ref2, pageControl }) => {
-  const handleClick = () => {
-    ref2.current.scrollIntoView({ behavior: "smooth" });
-  };
+const WorkContent = ({ refWorks, refEl, pageControl }) => {
+  const [infoSubPage, setInfoSubPage] = useState("info");
+  const [active, setActive] = useState({});
+
+  const refInfo = useRef(null);
+  const refDetail = useRef(null);
+
+  useEffect(() => {
+    if (pageControl.curPage !== "works") return;
+    if (infoSubPage === "info") {
+      refWorks.current.scrollTo(0, 0);
+    }
+
+    if (infoSubPage === "detail") {
+      // refWorks.current.scrollTo(3920, 0);
+      refDetail.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [infoSubPage]);
+
+  useEffect(() => {
+    console.log(active);
+  }, [active]);
+
   const renderInfo = () => {
     return (
       <div className="works__info-container">
@@ -92,53 +111,44 @@ const WorkContent = ({ refaa, ref2, pageControl }) => {
       </div>
     );
   };
+  const renderContentNav = () => {
+    return (
+      <div className="works__content-nav">
+        <div className="bar disabled" />
+        <div className="bar active" style={{ width: "5vw" }} />
+        <div className="labels">
+          <div className="info a--opacity">
+            <div className="box" />
+            <span onClick={() => setInfoSubPage("info")}>Info</span>
+          </div>
+          <div className="detail a--opacity">
+            <div className="box" />
+            <span onClick={() => setInfoSubPage("detail")}>Detail</span>
+          </div>
+          <div className="more a--opacity">
+            <div className="box" />
+            <span>More Works</span>
+          </div>
+        </div>
+      </div>
+    );
+  };
   const render = () => {
     return (
-      <div ref={refaa} className="work__container">
-        <div className="content">
+      <div ref={refEl} className="work__container" style={active}>
+        <div ref={refInfo} className="content">
           {renderPictureContainer()}
           {renderInfo()}
-          <div className="works__content-nav grid--span2">
-            <div className="bar disabled" />
-            <div className="bar active" style={{ width: "5vw" }} />
-            <div className="labels">
-              <div className="info a--opacity">
-                <div className="box" />
-                <span>Info</span>
-              </div>
-              <div className="detail a--opacity">
-                <div className="box" />
-                <span onClick={handleClick}>Detail</span>
-              </div>
-              <div className="more a--opacity">
-                <div className="box" />
-                <span>More Works</span>
-              </div>
-            </div>
-          </div>
         </div>
-        <div ref={ref2} className="content">
+        <div
+          ref={refDetail}
+          className="content"
+          style={{ backgroundColor: "blue" }}
+        >
           {renderPictureContainer()}
           {renderInfo()}
-          <div className="works__content-nav grid--span2">
-            <div className="bar disabled" />
-            <div className="bar active" style={{ width: "5vw" }} />
-            <div className="labels">
-              <div className="info a--opacity">
-                <div className="box" />
-                <span>Info2</span>
-              </div>
-              <div className="detail a--opacity">
-                <div className="box" />
-                <span onClick={handleClick}>Detail</span>
-              </div>
-              <div className="more a--opacity">
-                <div className="box" />
-                <span>More Works</span>
-              </div>
-            </div>
-          </div>
         </div>
+        {renderContentNav()}
       </div>
     );
   };

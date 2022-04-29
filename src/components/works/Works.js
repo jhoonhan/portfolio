@@ -6,16 +6,15 @@ import sushi3 from "../../assests/image/5.jpg";
 import WorkContent from "./WorkContent";
 
 const Works = ({ refWorks, pageControl }) => {
-  const ref2 = useRef(null);
-  const refA = useRef(null);
-  const refB = useRef(null);
+  const refEl1 = useRef(null);
+  const refEl2 = useRef(null);
 
   useEffect(() => {
     if (pageControl.subWorkPage === "el1") {
-      refA.current.scrollIntoView({ behavior: "smooth" });
+      refEl1.current.scrollIntoView({ behavior: "smooth" });
     }
     if (pageControl.subWorkPage === "el2") {
-      refB.current.scrollIntoView({ behavior: "smooth" });
+      refEl2.current.scrollIntoView({ behavior: "smooth" });
     }
     if (pageControl.subWorkPage === "el3") {
       console.log(`el 3`);
@@ -30,8 +29,18 @@ const Works = ({ refWorks, pageControl }) => {
 
   return (
     <section ref={refWorks} className="works__container container">
-      <WorkContent refaa={refA} ref2={ref2} pageControl={pageControl} />
-      <WorkContent refaa={refB} ref2={ref2} pageControl={pageControl} />
+      <WorkContent
+        el={"el1"}
+        refWorks={refWorks}
+        refEl={refEl1}
+        pageControl={pageControl}
+      />
+      <WorkContent
+        el={"el2"}
+        refWorks={refWorks}
+        refEl={refEl2}
+        pageControl={pageControl}
+      />
     </section>
   );
 };

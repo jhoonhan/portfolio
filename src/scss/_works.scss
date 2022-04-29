@@ -3,7 +3,6 @@
   // width: 100%;
   // left: calc(5vw + 10rem);
   // left: 0;
-  padding-left: calc(5vw + 10rem);
 
   // width: calc((100% - 5vw - 10rem) * 1);
   width: 200vw;
@@ -17,12 +16,15 @@
   box-sizing: border-box;
 }
 .work__container {
-  z-index: 5;
   width: 100%;
+
+  padding-left: calc(5vw + 10rem);
 
   display: grid;
   grid-template-columns: 1fr 1fr;
 
+  z-index: 5;
+  transition: $default--transition;
   & .content {
     position: relative;
 
@@ -153,9 +155,9 @@
 }
 
 .works__content-nav {
-  // position: relative;
-  // bottom: 9vh;
-  width: 100%;
+  position: absolute;
+  bottom: 9vh;
+  width: calc(90vw - 10rem);
   height: 1px;
   z-index: 10;
   & .bar {
