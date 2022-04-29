@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import sushi1 from "../../assests/image/3.jpg";
 import sushi2 from "../../assests/image/4.jpg";
 import sushi3 from "../../assests/image/5.jpg";
@@ -6,8 +6,30 @@ import sushi3 from "../../assests/image/5.jpg";
 import WorkContent from "./WorkContent";
 
 const Works = ({ refWorks, pageControl }) => {
+  const [infoSubPage, setInfoSubPage] = useState("info");
+  const [activeSubPage, setActiveSubPage] = useState({
+    transform: "translateX(-0vw)",
+  });
+
   const refEl1 = useRef(null);
   const refEl2 = useRef(null);
+  const refEl3 = useRef(null);
+  const refEl4 = useRef(null);
+  const refEl5 = useRef(null);
+
+  useEffect(() => {
+    if (pageControl.curPage !== "works") return;
+    if (infoSubPage === "info") {
+      // refWorks.current.style.transform = "translateX(-0vw)";
+      setActiveSubPage({ transform: "translateX(-0vw)" });
+    }
+
+    if (infoSubPage === "detail") {
+      console.log(`detail`);
+      // refWorks.current.style.transform = "translateX(-100vw)";
+      setActiveSubPage({ transform: "translateX(-100vw)" });
+    }
+  }, [infoSubPage]);
 
   useEffect(() => {
     if (pageControl.subWorkPage === "el1") {
@@ -17,31 +39,55 @@ const Works = ({ refWorks, pageControl }) => {
       refEl2.current.scrollIntoView({ behavior: "smooth" });
     }
     if (pageControl.subWorkPage === "el3") {
-      console.log(`el 3`);
+      refEl3.current.scrollIntoView({ behavior: "smooth" });
     }
     if (pageControl.subWorkPage === "el4") {
-      console.log(`el 4`);
+      refEl4.current.scrollIntoView({ behavior: "smooth" });
     }
     if (pageControl.subWorkPage === "el5") {
-      console.log(`el 5`);
+      refEl5.current.scrollIntoView({ behavior: "smooth" });
     }
+    setActiveSubPage({ transform: "translateX(0vw)" });
   }, [pageControl.subWorkPage]);
 
+  const renderContentNav = () => {
+    return (
+      <div className="works__content-nav">
+        <div className="bar disabled" />
+        <div className="bar active" style={{ width: "5vw" }} />
+        <div className="labels">
+          <div className="info a--opacity">
+            <div className="box" />
+            <span onClick={() => setInfoSubPage("info")}>Info</span>
+          </div>
+          <div className="detail a--opacity">
+            <div className="box" />
+            <span onClick={() => setInfoSubPage("detail")}>Detail</span>
+          </div>
+          <div className="more a--opacity">
+            <div className="box" />
+            <span>More Works</span>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   return (
-    <section ref={refWorks} className="works__container container">
-      <WorkContent
-        el={"el1"}
-        refWorks={refWorks}
-        refEl={refEl1}
-        pageControl={pageControl}
-      />
-      <WorkContent
-        el={"el2"}
-        refWorks={refWorks}
-        refEl={refEl2}
-        pageControl={pageControl}
-      />
-    </section>
+    <>
+      <section
+        ref={refWorks}
+        className="works__container container"
+        style={activeSubPage}
+      >
+        <WorkContent refEl={refEl1} />
+        <WorkContent refEl={refEl2} />
+        <WorkContent refEl={refEl3} />
+        <WorkContent refEl={refEl4} />
+        <WorkContent refEl={refEl5} />
+      </section>
+      {renderContentNav()}
+    </>
   );
 };
 

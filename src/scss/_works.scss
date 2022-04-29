@@ -9,11 +9,14 @@
   height: 100vh;
 
   display: grid;
-  grid-template-rows: 1fr 1fr;
+  // grid-template-rows: 1fr 1fr;
+  grid-auto-rows: 1fr;
   // flex-direction: column;
   // background-color: red;
   overflow: hidden;
   box-sizing: border-box;
+
+  transition: $default--transition;
 }
 .work__container {
   width: 100%;
@@ -155,8 +158,9 @@
 }
 
 .works__content-nav {
-  position: absolute;
+  position: fixed;
   bottom: 9vh;
+  right: 5vw;
   width: calc(90vw - 10rem);
   height: 1px;
   z-index: 10;
