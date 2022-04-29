@@ -47,7 +47,7 @@ const Works = ({ refWorks, pageControl }) => {
     if (pageControl.subWorkPage === "el5") {
       refEl5.current.scrollIntoView({ behavior: "smooth" });
     }
-    setActiveSubPage({ transform: "translateX(0vw)" });
+    setInfoSubPage("info");
   }, [pageControl.subWorkPage]);
 
   const renderContentNav = () => {
