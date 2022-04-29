@@ -69,6 +69,15 @@ const Works = ({ refs, pageControl }) => {
       return style;
     };
 
+    const barWidth = () => {
+      let width;
+      if (infoSubPage === "info") width = "5vw";
+      if (infoSubPage === "detail") width = "25vw";
+      if (infoSubPage === "more") width = "75vw";
+
+      return { width };
+    };
+
     return (
       <div
         className={`${activeClass()} works__content-nav`}
@@ -79,7 +88,7 @@ const Works = ({ refs, pageControl }) => {
         }
       >
         <div className="bar disabled" />
-        <div className="bar active" style={{ width: "5vw" }} />
+        <div className="bar active" style={barWidth()} />
         <div className="labels">
           <div
             className={`label info a--opacity ${activeClass()}`}

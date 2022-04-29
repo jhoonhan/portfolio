@@ -165,9 +165,10 @@
   height: 1px;
   z-index: 10;
   transition: $default--transition;
-  transition-delay: 0s;
+
   & .bar {
     position: relative;
+    transition: $default--transition;
   }
   & .active {
     top: -1px;
@@ -200,19 +201,18 @@
     }
     & .label {
       transform: translateX(100vw);
-      transition: $default--transition;
     }
     & .info {
       left: 5vw;
-      transition-delay: 0.6s;
+      transition: transform 0.3s ease-in-out 0.6s, opacity 0.3s 0s;
     }
     & .detail {
       left: 25vw;
-      transition-delay: 0.8s;
+      transition: transform 0.3s ease-in-out 0.8s, opacity 0.3s 0s;
     }
     & .more {
       right: 15vh;
-      transition-delay: 1s;
+      transition: transform 0.3s ease-in-out 1s, opacity 0.3s 0s;
     }
   }
 }
