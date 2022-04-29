@@ -3,11 +3,13 @@ import MiddleLine from "../helpers/MiddleLine";
 import icons from "../assests/image/icons.svg";
 import throttle from "../helpers/throttle";
 
-const Header = ({ refs, curPage, setCurPage }) => {
+const Header = ({ refs, pageControl }) => {
   const [curScroll, setCurScroll] = useState(window.pageYOffset);
-  const [subPage, setSubPage] = useState("overview");
   const [direction, setDirection] = useState(false);
   const [activeHeight, setActiveHeight] = useState("0rem");
+  const [activeSubPagePosition, setActiveSubPagePosition] = useState({
+    transform: "translateY(0vh)",
+  });
 
   const refNav = useRef(null);
   const refNavHome = useRef(null);
@@ -22,11 +24,14 @@ const Header = ({ refs, curPage, setCurPage }) => {
   useEffect(() => {
     const innerHeight = window.innerHeight;
     // const totalHeight = document.body.scrollHeight;
-    if (innerHeight > curScroll + innerHeight / 2) setCurPage("home");
-    if (innerHeight <= curScroll + innerHeight / 2) setCurPage("works");
-    if (innerHeight * 2 <= curScroll + innerHeight / 2) setCurPage("about");
+    if (innerHeight > curScroll + innerHeight / 2)
+      pageControl.setCurPage("home");
+    if (innerHeight <= curScroll + innerHeight / 2)
+      pageControl.setCurPage("works");
+    if (innerHeight * 2 <= curScroll + innerHeight / 2)
+      pageControl.setCurPage("about");
     if (innerHeight * 3 - 10 <= curScroll + innerHeight / 2)
-      setCurPage("contact");
+      pageControl.setCurPage("contact");
   }, []);
 
   useEffect(() => {
@@ -58,24 +63,26 @@ const Header = ({ refs, curPage, setCurPage }) => {
   }, []);
 
   useEffect(() => {
-    if (curPage === "home") {
+    if (pageControl.curPage === "home") {
       setActiveHeight("0rem");
     }
-    if (curPage === "works") {
+    if (pageControl.curPage === "works") {
       setActiveHeight("10rem");
     }
-    if (curPage === "about") {
+    if (pageControl.curPage === "about") {
       setActiveHeight("20rem");
     }
-    if (curPage === "contact") {
+    if (pageControl.curPage === "contact") {
       setActiveHeight("30rem");
     }
-  }, [curPage]);
+  }, [pageControl.curPage]);
 
   useEffect(() => {
-    if (curPage !== "works") return;
-    if (subPage === "el1") console.log(`shiat`);
-  }, [subPage]);
+    if (pageControl.curPage !== "works") return;
+    if (pageControl.subWorkPage === "el2") {
+      setActiveSubPagePosition("translateY(-100vh)");
+    }
+  }, [pageControl.subWorkPage]);
 
   const render = () => {
     const activeOpacity = { opacity: 1 };
@@ -86,7 +93,9 @@ const Header = ({ refs, curPage, setCurPage }) => {
         <div
           className="nav__container"
           style={
-            curPage === "works" ? { height: `43.2rem` } : { height: `31.2rem` }
+            pageControl.curPage === "works"
+              ? { height: `43.2rem` }
+              : { height: `31.2rem` }
           }
         >
           <div className="scroll-status__container">
@@ -107,10 +116,10 @@ const Header = ({ refs, curPage, setCurPage }) => {
               <a
                 onClick={() => {
                   refs.refHome.current.scrollIntoView({ behavior: "smooth" });
-                  setCurPage("home");
+                  pageControl.setCurPage("home");
                 }}
                 className="a--transition a--opacity"
-                style={curPage === "home" ? activeOpacity : {}}
+                style={pageControl.curPage === "home" ? activeOpacity : {}}
                 href="#home"
               >
                 home
@@ -120,12 +129,12 @@ const Header = ({ refs, curPage, setCurPage }) => {
               <a
                 onClick={() => {
                   refs.refWorks.current.scrollIntoView({ behavior: "smooth" });
-                  setCurPage("works");
+                  pageControl.setCurPage("works");
                   setActiveHeight("10rem");
-                  setSubPage("overview");
+                  pageControl.setSubWorkPage("overview");
                 }}
                 href="#work"
-                style={curPage === "works" ? activeOpacity : {}}
+                style={pageControl.curPage === "works" ? activeOpacity : {}}
                 className="a--transition a--opacity"
               >
                 works
@@ -133,18 +142,22 @@ const Header = ({ refs, curPage, setCurPage }) => {
               <ul
                 className="nav__sublinks"
                 style={
-                  curPage !== "works" ? { maxHeight: "0", opacity: 0 } : {}
+                  pageControl.curPage !== "works"
+                    ? { maxHeight: "0", opacity: 0 }
+                    : {}
                 }
               >
                 <li
                   onClick={() => {
                     setActiveHeight("13.2rem");
-                    setSubPage("el1");
+                    pageControl.setSubWorkPage("el1");
                   }}
                 >
                   <a
                     href="#work/sushi-republic"
-                    style={subPage === "el1" ? activeSubPage : {}}
+                    style={
+                      pageControl.subWorkPage === "el1" ? activeSubPage : {}
+                    }
                   >
                     Sushi Republic
                   </a>
@@ -152,12 +165,14 @@ const Header = ({ refs, curPage, setCurPage }) => {
                 <li
                   onClick={() => {
                     setActiveHeight("16.4rem");
-                    setSubPage("el2");
+                    pageControl.setSubWorkPage("el2");
                   }}
                 >
                   <a
                     href="#work/danji"
-                    style={subPage === "el2" ? activeSubPage : {}}
+                    style={
+                      pageControl.subWorkPage === "el2" ? activeSubPage : {}
+                    }
                   >
                     Danji
                   </a>
@@ -165,12 +180,14 @@ const Header = ({ refs, curPage, setCurPage }) => {
                 <li
                   onClick={() => {
                     setActiveHeight("19.6rem");
-                    setSubPage("el3");
+                    pageControl.setSubWorkPage("el3");
                   }}
                 >
                   <a
                     href="#work/haans-cleaners"
-                    style={subPage === "el3" ? activeSubPage : {}}
+                    style={
+                      pageControl.subWorkPage === "el3" ? activeSubPage : {}
+                    }
                   >
                     Haans Cleaners
                   </a>
@@ -178,12 +195,14 @@ const Header = ({ refs, curPage, setCurPage }) => {
                 <li
                   onClick={() => {
                     setActiveHeight("22.8rem");
-                    setSubPage("el4");
+                    pageControl.setSubWorkPage("el4");
                   }}
                 >
                   <a
                     href="#work/this-is-bullshit"
-                    style={subPage === "el4" ? activeSubPage : {}}
+                    style={
+                      pageControl.subWorkPage === "el4" ? activeSubPage : {}
+                    }
                   >
                     This Is Bullshit
                   </a>
@@ -191,12 +210,14 @@ const Header = ({ refs, curPage, setCurPage }) => {
                 <li
                   onClick={() => {
                     setActiveHeight("26rem");
-                    setSubPage("el5");
+                    pageControl.setSubWorkPage("el5");
                   }}
                 >
                   <a
                     href="#work/salvation-army"
-                    style={subPage === "el5" ? activeSubPage : {}}
+                    style={
+                      pageControl.subWorkPage === "el5" ? activeSubPage : {}
+                    }
                   >
                     Salvation Army
                   </a>
@@ -207,10 +228,10 @@ const Header = ({ refs, curPage, setCurPage }) => {
               <a
                 onClick={() => {
                   refs.refAbout.current.scrollIntoView({ behavior: "smooth" });
-                  setCurPage("about");
+                  pageControl.setCurPage("about");
                 }}
                 href="#about"
-                style={curPage === "about" ? activeOpacity : {}}
+                style={pageControl.curPage === "about" ? activeOpacity : {}}
                 className="a--transition a--opacity"
               >
                 about
@@ -222,10 +243,10 @@ const Header = ({ refs, curPage, setCurPage }) => {
                   refs.refContact.current.scrollIntoView({
                     behavior: "smooth",
                   });
-                  setCurPage("contact");
+                  pageControl.setCurPage("contact");
                 }}
                 href="#contact"
-                style={curPage === "contact" ? activeOpacity : {}}
+                style={pageControl.curPage === "contact" ? activeOpacity : {}}
                 className="a--transition a--opacity"
               >
                 contact

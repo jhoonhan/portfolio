@@ -9,6 +9,7 @@ import "./scss/App.scss";
 
 const App = () => {
   const [curPage, setCurPage] = useState(null);
+  const [subWorkPage, setSubWorkPage] = useState("overview");
 
   const refMain = useRef(null);
   const refHome = useRef(null);
@@ -24,10 +25,17 @@ const App = () => {
     refContact,
   };
 
+  const pageControl = {
+    curPage,
+    setCurPage,
+    subWorkPage,
+    setSubWorkPage,
+  };
+
   const render = () => {
     return (
       <div className="App">
-        <Header refs={refs} curPage={curPage} setCurPage={setCurPage} />
+        <Header refs={refs} pageControl={pageControl} />
         <main ref={refMain} className="wrapper__main">
           <div
             style={curPage === "home" ? { opacity: 0 } : {}}
