@@ -1,11 +1,10 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import sushi1 from "../../assests/image/3.jpg";
 import sushi2 from "../../assests/image/4.jpg";
 import sushi3 from "../../assests/image/5.jpg";
 
-const WorkContent = ({ refA, ref2 }) => {
+const WorkContent = ({ refaa, ref2, pageControl }) => {
   const handleClick = () => {
-    console.log(`aaang`);
     ref2.current.scrollIntoView({ behavior: "smooth" });
   };
   const renderInfo = () => {
@@ -95,7 +94,7 @@ const WorkContent = ({ refA, ref2 }) => {
   };
   const render = () => {
     return (
-      <div ref={refA} className="work__container">
+      <div ref={refaa} className="work__container">
         <div className="content">
           {renderPictureContainer()}
           {renderInfo()}

@@ -10,6 +10,9 @@ import "./scss/App.scss";
 const App = () => {
   const [curPage, setCurPage] = useState(null);
   const [subWorkPage, setSubWorkPage] = useState("overview");
+  const [activeSubPagePosition, setActiveSubPagePosition] = useState({
+    transform: "translateY(0vh)",
+  });
 
   const refMain = useRef(null);
   const refHome = useRef(null);
@@ -30,6 +33,8 @@ const App = () => {
     setCurPage,
     subWorkPage,
     setSubWorkPage,
+    activeSubPagePosition,
+    setActiveSubPagePosition,
   };
 
   const render = () => {
@@ -44,7 +49,7 @@ const App = () => {
           <LandingArt />
 
           <Landing curPage={curPage} refHome={refHome} />
-          <Works refWorks={refWorks} />
+          <Works refWorks={refWorks} pageControl={pageControl} />
           <section ref={refAbout} className="container">
             about
           </section>

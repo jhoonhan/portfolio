@@ -7,9 +7,6 @@ const Header = ({ refs, pageControl }) => {
   const [curScroll, setCurScroll] = useState(window.pageYOffset);
   const [direction, setDirection] = useState(false);
   const [activeHeight, setActiveHeight] = useState("0rem");
-  const [activeSubPagePosition, setActiveSubPagePosition] = useState({
-    transform: "translateY(0vh)",
-  });
 
   const refNav = useRef(null);
   const refNavHome = useRef(null);
@@ -76,13 +73,6 @@ const Header = ({ refs, pageControl }) => {
       setActiveHeight("30rem");
     }
   }, [pageControl.curPage]);
-
-  useEffect(() => {
-    if (pageControl.curPage !== "works") return;
-    if (pageControl.subWorkPage === "el2") {
-      setActiveSubPagePosition("translateY(-100vh)");
-    }
-  }, [pageControl.subWorkPage]);
 
   const render = () => {
     const activeOpacity = { opacity: 1 };
