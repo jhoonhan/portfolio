@@ -164,6 +164,8 @@
   width: calc(90vw - 10rem);
   height: 1px;
   z-index: 10;
+  transition: $default--transition;
+  transition-delay: 0s;
   & .bar {
     position: relative;
   }
@@ -206,4 +208,7 @@
       right: 15vh;
     }
   }
+}
+.works__content-nav.active {
+  transition-delay: 0.5s;
 }

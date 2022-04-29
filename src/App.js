@@ -49,7 +49,7 @@ const App = () => {
           <LandingArt />
 
           <Landing curPage={curPage} refHome={refHome} />
-          <Works refWorks={refWorks} pageControl={pageControl} />
+          <Works refs={refs} pageControl={pageControl} />
           <section ref={refAbout} className="container">
             about
           </section>

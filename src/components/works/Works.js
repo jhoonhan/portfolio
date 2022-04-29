@@ -5,11 +5,13 @@ import sushi3 from "../../assests/image/5.jpg";
 
 import WorkContent from "./WorkContent";
 
-const Works = ({ refWorks, pageControl }) => {
+const Works = ({ refs, pageControl }) => {
   const [infoSubPage, setInfoSubPage] = useState("info");
   const [activeSubPage, setActiveSubPage] = useState({
     transform: "translateX(-0vw)",
   });
+
+  const active = { opacity: 1 };
 
   const refEl1 = useRef(null);
   const refEl2 = useRef(null);
@@ -20,13 +22,13 @@ const Works = ({ refWorks, pageControl }) => {
   useEffect(() => {
     if (pageControl.curPage !== "works") return;
     if (infoSubPage === "info") {
-      // refWorks.current.style.transform = "translateX(-0vw)";
+      // refs.refWorks.current.style.transform = "translateX(-0vw)";
       setActiveSubPage({ transform: "translateX(-0vw)" });
     }
 
     if (infoSubPage === "detail") {
       console.log(`detail`);
-      // refWorks.current.style.transform = "translateX(-100vw)";
+      // refs.refWorks.current.style.transform = "translateX(-100vw)";
       setActiveSubPage({ transform: "translateX(-100vw)" });
     }
   }, [infoSubPage]);
@@ -52,19 +54,37 @@ const Works = ({ refWorks, pageControl }) => {
 
   const renderContentNav = () => {
     return (
-      <div className="works__content-nav">
+      <div
+        className={`${
+          pageControl.curPage === "works" ? "active" : ""
+        } works__content-nav`}
+        style={
+          pageControl.curPage !== "works"
+            ? { transform: "translateX(100vw)" }
+            : {}
+        }
+      >
         <div className="bar disabled" />
         <div className="bar active" style={{ width: "5vw" }} />
         <div className="labels">
-          <div className="info a--opacity">
+          <div
+            className="info a--opacity"
+            style={infoSubPage === "info" ? active : {}}
+          >
             <div className="box" />
             <span onClick={() => setInfoSubPage("info")}>Info</span>
           </div>
-          <div className="detail a--opacity">
+          <div
+            className="detail a--opacity"
+            style={infoSubPage === "detail" ? active : {}}
+          >
             <div className="box" />
             <span onClick={() => setInfoSubPage("detail")}>Detail</span>
           </div>
-          <div className="more a--opacity">
+          <div
+            className="more a--opacity"
+            style={infoSubPage === "more" ? active : {}}
+          >
             <div className="box" />
             <span>More Works</span>
           </div>
@@ -76,7 +96,7 @@ const Works = ({ refWorks, pageControl }) => {
   return (
     <>
       <section
-        ref={refWorks}
+        ref={refs.refWorks}
         className="works__container container"
         style={activeSubPage}
       >
