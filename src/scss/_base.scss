@@ -22,6 +22,7 @@ a {
   box-sizing: border-box;
   // scroll-snap-type: y mandatory;
   overflow-y: hidden;
+  overflow-x: hidden;
   & section {
     // z-index: 0;
   }

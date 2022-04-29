@@ -5,8 +5,9 @@ import throttle from "../helpers/throttle";
 
 const Header = ({ refs, curPage, setCurPage }) => {
   const [curScroll, setCurScroll] = useState(window.pageYOffset);
+  const [subPage, setSubPage] = useState("overview");
   const [direction, setDirection] = useState(false);
-  const [activeHeight, setActiveHeight] = useState(0);
+  const [activeHeight, setActiveHeight] = useState("0rem");
 
   const refNav = useRef(null);
   const refNavHome = useRef(null);
@@ -58,38 +59,44 @@ const Header = ({ refs, curPage, setCurPage }) => {
 
   useEffect(() => {
     if (curPage === "home") {
-      setActiveHeight(0);
+      setActiveHeight("0rem");
     }
     if (curPage === "works") {
-      setActiveHeight(100);
+      setActiveHeight("10rem");
     }
     if (curPage === "about") {
-      setActiveHeight(200);
+      setActiveHeight("20rem");
     }
     if (curPage === "contact") {
-      setActiveHeight(300);
+      setActiveHeight("30rem");
     }
   }, [curPage]);
 
+  useEffect(() => {
+    if (curPage !== "works") return;
+    if (subPage === "el1") console.log(`shiat`);
+  }, [subPage]);
+
   const render = () => {
-    const activeFont = { opacity: 1 };
+    const activeOpacity = { opacity: 1 };
+    const activeSubPage = { opacity: 1 };
 
     return (
       <header className="header__container">
         <div
           className="nav__container"
-          // style={
-          //   curPage === "works" ? { height: `41.2rem` } : { height: `31.2rem` }
-          // }
+          style={
+            curPage === "works" ? { height: `43.2rem` } : { height: `31.2rem` }
+          }
         >
           <div className="scroll-status__container">
             <div className="scroll-status--disabled"></div>
             <div
               className="scroll-status--active"
-              style={{ maxHeight: `${activeHeight}px` }}
+              style={{ maxHeight: `${activeHeight}` }}
             ></div>
             <div
-              style={{ transform: `translateY(${activeHeight}px)` }}
+              style={{ transform: `translateY(${activeHeight})` }}
               className="scroll-status--boxes"
             >
               <span></span>
@@ -103,7 +110,7 @@ const Header = ({ refs, curPage, setCurPage }) => {
                   setCurPage("home");
                 }}
                 className="a--transition a--opacity"
-                style={curPage === "home" ? activeFont : {}}
+                style={curPage === "home" ? activeOpacity : {}}
                 href="#home"
               >
                 home
@@ -114,26 +121,86 @@ const Header = ({ refs, curPage, setCurPage }) => {
                 onClick={() => {
                   refs.refWorks.current.scrollIntoView({ behavior: "smooth" });
                   setCurPage("works");
+                  setActiveHeight("10rem");
+                  setSubPage("overview");
                 }}
                 href="#work"
-                style={curPage === "works" ? activeFont : {}}
+                style={curPage === "works" ? activeOpacity : {}}
                 className="a--transition a--opacity"
               >
                 works
               </a>
               <ul
                 className="nav__sublinks"
-                style={curPage !== "works" ? { maxHeight: 0, opacity: 0 } : {}}
+                style={
+                  curPage !== "works" ? { maxHeight: "0", opacity: 0 } : {}
+                }
               >
-                <li>Sushi Republic</li>
-                <li>Danji</li>
-                <li>Haans Cleaners</li>
-                <li>This Is Bullshit</li>
-                <li>Salvation Army</li>
-                <li>Salvation Army</li>
-                <li>Salvation Army</li>
-                <li>Salvation Army</li>
-                <li>Salvation Army</li>
+                <li
+                  onClick={() => {
+                    setActiveHeight("13.2rem");
+                    setSubPage("el1");
+                  }}
+                >
+                  <a
+                    href="#work/sushi-republic"
+                    style={subPage === "el1" ? activeSubPage : {}}
+                  >
+                    Sushi Republic
+                  </a>
+                </li>
+                <li
+                  onClick={() => {
+                    setActiveHeight("16.4rem");
+                    setSubPage("el2");
+                  }}
+                >
+                  <a
+                    href="#work/danji"
+                    style={subPage === "el2" ? activeSubPage : {}}
+                  >
+                    Danji
+                  </a>
+                </li>
+                <li
+                  onClick={() => {
+                    setActiveHeight("19.6rem");
+                    setSubPage("el3");
+                  }}
+                >
+                  <a
+                    href="#work/haans-cleaners"
+                    style={subPage === "el3" ? activeSubPage : {}}
+                  >
+                    Haans Cleaners
+                  </a>
+                </li>
+                <li
+                  onClick={() => {
+                    setActiveHeight("22.8rem");
+                    setSubPage("el4");
+                  }}
+                >
+                  <a
+                    href="#work/this-is-bullshit"
+                    style={subPage === "el4" ? activeSubPage : {}}
+                  >
+                    This Is Bullshit
+                  </a>
+                </li>
+                <li
+                  onClick={() => {
+                    setActiveHeight("26rem");
+                    setSubPage("el5");
+                  }}
+                >
+                  <a
+                    href="#work/salvation-army"
+                    style={subPage === "el5" ? activeSubPage : {}}
+                  >
+                    Salvation Army
+                  </a>
+                </li>
               </ul>
             </div>
             <div className="nav__link about" ref={refNavAbout}>
@@ -143,7 +210,7 @@ const Header = ({ refs, curPage, setCurPage }) => {
                   setCurPage("about");
                 }}
                 href="#about"
-                style={curPage === "about" ? activeFont : {}}
+                style={curPage === "about" ? activeOpacity : {}}
                 className="a--transition a--opacity"
               >
                 about
@@ -158,7 +225,7 @@ const Header = ({ refs, curPage, setCurPage }) => {
                   setCurPage("contact");
                 }}
                 href="#contact"
-                style={curPage === "contact" ? activeFont : {}}
+                style={curPage === "contact" ? activeOpacity : {}}
                 className="a--transition a--opacity"
               >
                 contact
