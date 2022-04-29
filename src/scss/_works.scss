@@ -199,20 +199,20 @@
       flex-direction: column;
     }
     & .label {
-      // transform: translateX(100vw);
+      transform: translateX(100vw);
       transition: $default--transition;
     }
     & .info {
       left: 5vw;
-      transition-delay: 2s;
+      transition-delay: 0.6s;
     }
     & .detail {
       left: 25vw;
-      transition-delay: 2s;
+      transition-delay: 0.8s;
     }
     & .more {
       right: 15vh;
-      transition-delay: 2s;
+      transition-delay: 1s;
     }
   }
 }

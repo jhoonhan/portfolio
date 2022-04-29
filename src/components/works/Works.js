@@ -63,8 +63,7 @@ const Works = ({ refs, pageControl }) => {
 
     const active2 = (page) => {
       let style = {};
-      if (pageControl.curPage === "works") style.marginLeft = "0vw";
-      if (pageControl.curPage !== "works") style.marginLeft = "100vw";
+      if (pageControl.curPage === "works") style.transform = "translateX(0vw)";
 
       if (infoSubPage === page) style.opacity = "1";
       return style;
