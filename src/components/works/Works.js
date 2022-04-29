@@ -11,7 +11,7 @@ const Works = ({ refs, pageControl }) => {
     transform: "translateX(-0vw)",
   });
 
-  const active = { opacity: 1 };
+  const showBox = { transform: "translateX(0)" };
 
   const refEl1 = useRef(null);
   const refEl2 = useRef(null);
@@ -53,11 +53,26 @@ const Works = ({ refs, pageControl }) => {
   }, [pageControl.subWorkPage]);
 
   const renderContentNav = () => {
+    const activeClass = () => {
+      if (pageControl.curPage === "works") {
+        return "active-box";
+      } else {
+        return "";
+      }
+    };
+
+    const active2 = (page) => {
+      let style = {};
+      if (pageControl.curPage === "works") style.marginLeft = "0vw";
+      if (pageControl.curPage !== "works") style.marginLeft = "100vw";
+
+      if (infoSubPage === page) style.opacity = "1";
+      return style;
+    };
+
     return (
       <div
-        className={`${
-          pageControl.curPage === "works" ? "active" : ""
-        } works__content-nav`}
+        className={`${activeClass()} works__content-nav`}
         style={
           pageControl.curPage !== "works"
             ? { transform: "translateX(100vw)" }
@@ -68,22 +83,22 @@ const Works = ({ refs, pageControl }) => {
         <div className="bar active" style={{ width: "5vw" }} />
         <div className="labels">
           <div
-            className="info a--opacity"
-            style={infoSubPage === "info" ? active : {}}
+            className={`label info a--opacity ${activeClass()}`}
+            style={active2("info")}
           >
             <div className="box" />
             <span onClick={() => setInfoSubPage("info")}>Info</span>
           </div>
           <div
-            className="detail a--opacity"
-            style={infoSubPage === "detail" ? active : {}}
+            className={`label detail a--opacity ${activeClass()}`}
+            style={active2("detail")}
           >
             <div className="box" />
             <span onClick={() => setInfoSubPage("detail")}>Detail</span>
           </div>
           <div
-            className="more a--opacity"
-            style={infoSubPage === "more" ? active : {}}
+            className={`label more a--opacity ${activeClass()}`}
+            style={active2("more")}
           >
             <div className="box" />
             <span>More Works</span>

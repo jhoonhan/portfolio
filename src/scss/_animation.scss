@@ -39,3 +39,9 @@
 .a--transition {
   transition: $default--transition;
 }
+.b--translateX0 {
+  transform: translateX(0);
+}
+.b--translateX100vw {
+  transform: translateX(100vw);
+}

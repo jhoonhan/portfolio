@@ -198,17 +198,24 @@
       display: flex;
       flex-direction: column;
     }
+    & .label {
+      // transform: translateX(100vw);
+      transition: $default--transition;
+    }
     & .info {
       left: 5vw;
+      transition-delay: 2s;
     }
     & .detail {
       left: 25vw;
+      transition-delay: 2s;
     }
     & .more {
       right: 15vh;
+      transition-delay: 2s;
     }
   }
 }
-.works__content-nav.active {
+.works__content-nav.active-box {
   transition-delay: 0.5s;
 }
