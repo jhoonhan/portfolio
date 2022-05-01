@@ -222,4 +222,32 @@
 
 .works__content__arrow {
   position: fixed;
+  top: calc(50vh - 1.5rem);
+  right: 3rem;
+  width: 3rem;
+  height: 3rem;
+
+  display: flex;
+  align-items: center;
+  justify-self: center;
+
+  cursor: pointer;
+
+  .arrow {
+    // background-color: red;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-width: 1px 1px 0px 0px;
+    border-color: white;
+    border-style: solid;
+    transform: rotate(45deg);
+  }
+  .text {
+    font-size: $font-size--m;
+    text-transform: uppercase;
+    margin-left: -1rem;
+
+    position: absolute;
+  }
 }

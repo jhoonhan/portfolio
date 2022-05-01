@@ -116,10 +116,15 @@ const Works = ({ refs, pageControl }) => {
     );
   };
 
+  const onNextClick = () => {
+    console.log(`aaang`);
+  };
+
   const renderContentArrow = () => {
     return (
-      <div className="works__content__arrow">
-        <span>arrow</span>
+      <div className="works__content__arrow" onClick={onNextClick}>
+        <span className="arrow"></span>
+        {/* <span className="text">next</span> */}
       </div>
     );
   };
