@@ -242,6 +242,12 @@
     border-color: white;
     border-style: solid;
     transform: rotate(45deg);
+
+    transition: $default--transition;
+
+    &:hover {
+      transform: rotate(405deg);
+    }
   }
   .text {
     font-size: $font-size--m;

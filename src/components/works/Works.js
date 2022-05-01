@@ -27,7 +27,6 @@ const Works = ({ refs, pageControl }) => {
     }
 
     if (infoSubPage === "detail") {
-      console.log(`detail`);
       // refs.refWorks.current.style.transform = "translateX(-100vw)";
       setActiveSubPage({ transform: "translateX(-100vw)" });
     }
@@ -117,7 +116,9 @@ const Works = ({ refs, pageControl }) => {
   };
 
   const onNextClick = () => {
-    console.log(`aaang`);
+    // console.log(infoSubPage);
+    if (infoSubPage === "info") setInfoSubPage("detail");
+    if (infoSubPage === "detail") setInfoSubPage("info");
   };
 
   const renderContentArrow = () => {
