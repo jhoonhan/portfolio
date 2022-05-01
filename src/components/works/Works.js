@@ -116,22 +116,35 @@ const Works = ({ refs, pageControl }) => {
     );
   };
 
-  return (
-    <>
-      <section
-        ref={refs.refWorks}
-        className="works__container container"
-        style={activeSubPage}
-      >
-        <WorkContent refEl={refEl1} />
-        <WorkContent refEl={refEl2} />
-        <WorkContent refEl={refEl3} />
-        <WorkContent refEl={refEl4} />
-        <WorkContent refEl={refEl5} />
-      </section>
-      {renderContentNav()}
-    </>
-  );
+  const renderContentArrow = () => {
+    return (
+      <div className="works__content__arrow">
+        <span>arrow</span>
+      </div>
+    );
+  };
+
+  const render = () => {
+    return (
+      <>
+        <section
+          ref={refs.refWorks}
+          className="works__container container"
+          style={activeSubPage}
+        >
+          <WorkContent refEl={refEl1} />
+          <WorkContent refEl={refEl2} />
+          <WorkContent refEl={refEl3} />
+          <WorkContent refEl={refEl4} />
+          <WorkContent refEl={refEl5} />
+        </section>
+        {renderContentNav()}
+        {renderContentArrow()}
+      </>
+    );
+  };
+
+  return render();
 };
 
 export default Works;
