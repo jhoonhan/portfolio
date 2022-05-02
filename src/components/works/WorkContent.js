@@ -7,6 +7,7 @@ import throttle from "../../helpers/throttle";
 const WorkContent = ({ refEl }) => {
   const [actImg, setActImg] = useState("img1");
 
+  const [position, setPosition] = useState({ x: 0, y: 0 });
   const [actImgPosition, setActImgPosition] = useState({
     img1: { x: 0, y: 0 },
     img2: { x: 0, y: 0 },
@@ -175,7 +176,7 @@ const WorkContent = ({ refEl }) => {
 
     const amountX = -1 * ((width / 2 - cursorX) / (width / 20));
     const amountY = -1 * ((height / 2 - cursorY) / (height / 20));
-
+    setPosition({ x: amountX, y: amountY });
     if (actImg === "img1")
       setActImgPosition({
         ...actImgPosition,
@@ -193,24 +194,37 @@ const WorkContent = ({ refEl }) => {
       });
   };
 
-  // useEffect(() => {
-  //   setActImgPosition({
-  //     img1: { x: 0, y: 0 },
-  //     img2: { x: 0, y: 0 },
-  //     img3: { x: 0, y: 0 },
-  //   });
-  // }, [actImg]);
+  const onMouseMoveImg2 = useRef(throttle((e) => calculateAmount(e), 60));
 
-  const [test, setTest] = useState(0);
+  const calculateAmount = (e) => {
+    console.log(`caculation fired`);
+    const cursorX = e.clientX - e.target.parentNode.getBoundingClientRect().x;
+    const cursorY = e.clientY - e.target.parentNode.getBoundingClientRect().y;
+    const width = e.target.parentNode.getBoundingClientRect().width;
+    const height = e.target.parentNode.getBoundingClientRect().height;
 
-  const fn = (val) => {
-    console.log(val);
+    const amountX = -1 * ((width / 2 - cursorX) / (width / 20));
+    const amountY = -1 * ((height / 2 - cursorY) / (height / 20));
+    setPosition({ x: amountX, y: amountY });
   };
-  const throttled = useRef(throttle((val) => fn(val), 1));
 
   useEffect(() => {
-    throttled.current(1);
-  }, [test]);
+    if (actImg === "img1")
+      setActImgPosition({
+        ...actImgPosition,
+        img1: { x: position.x, y: position.y },
+      });
+    if (actImg === "img2")
+      setActImgPosition({
+        ...actImgPosition,
+        img2: { x: position.x, y: position.y },
+      });
+    if (actImg === "img3")
+      setActImgPosition({
+        ...actImgPosition,
+        img3: { x: position.x, y: position.y },
+      });
+  }, [position]);
 
   const renderPictureContainer = () => {
     return (
@@ -222,7 +236,7 @@ const WorkContent = ({ refEl }) => {
           ref={refImage3}
           onMouseOver={() => onMouseImage("img3")}
           // onMouseMove={onMouseMoveImg}
-          onMouseMove={() => setTest(test + 1)}
+          onMouseMove={(e) => onMouseMoveImg2.current(e)}
           className={`works_picture ${actImg === "img3" ? "active" : ""}`}
           style={conditionalStyle.img3}
         >
@@ -254,7 +268,8 @@ const WorkContent = ({ refEl }) => {
         <div
           ref={refImage1}
           onMouseOver={() => onMouseImage("img1")}
-          onMouseMove={onMouseMoveImg}
+          // onMouseMove={onMouseMoveImg}
+          onMouseMove={(e) => onMouseMoveImg2.current(e)}
           className={`works_picture ${actImg === "img1" ? "active" : ""}`}
           style={conditionalStyle.img1}
         >
