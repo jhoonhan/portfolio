@@ -4,6 +4,10 @@ import sushi2 from "../../assests/image/4.jpg";
 import sushi3 from "../../assests/image/5.jpg";
 
 const WorkContent = ({ refEl }) => {
+  const refImage1 = useRef(null);
+  const refImage2 = useRef(null);
+  const refImage3 = useRef(null);
+
   const renderInfo = () => {
     return (
       <div className="works__info-container">
