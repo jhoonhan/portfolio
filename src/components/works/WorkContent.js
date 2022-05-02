@@ -6,7 +6,9 @@ import throttle from "../../helpers/throttle";
 
 const WorkContent = ({ refEl }) => {
   const [actImg, setActImg] = useState("img1");
-  const [actImgPosition, setActImgPosition] = useState({ x: 0, y: 0 });
+  const [actImgPosition1, setActImgPosition1] = useState({ x: 0, y: 0 });
+  const [actImgPosition2, setActImgPosition2] = useState({ x: 0, y: 0 });
+  const [actImgPosition3, setActImgPosition3] = useState({ x: 0, y: 0 });
 
   const refImage1 = useRef(null);
   const refImage2 = useRef(null);
@@ -78,9 +80,10 @@ const WorkContent = ({ refEl }) => {
 
     const amountX = -1 * ((width / 2 - cursorX) / (width / 20));
     const amountY = -1 * ((height / 2 - cursorY) / (height / 20));
-    // console.log(width / 2 - cursorX);
-    console.log(amountY);
-    setActImgPosition({ x: amountX, y: amountY });
+
+    if (actImg === "img1") setActImgPosition1({ x: amountX, y: amountY });
+    if (actImg === "img2") setActImgPosition2({ x: amountX, y: amountY });
+    if (actImg === "img3") setActImgPosition3({ x: amountX, y: amountY });
   };
 
   const renderPictureContainer = () => {
@@ -107,6 +110,7 @@ const WorkContent = ({ refEl }) => {
         <div
           ref={refImage2}
           onMouseOver={() => onMouseImage("img2")}
+          onMouseMove={onMouseMoveImg}
           className="works_picture"
           style={{
             backgroundImage: `url(${sushi1})`,
@@ -115,7 +119,15 @@ const WorkContent = ({ refEl }) => {
             opacity: `${actImg === "img2" ? 1 : 0.5}`,
             zIndex: `${actImg === "img2" ? 4 : 2}`,
           }}
-        />
+        >
+          <img
+            src={sushi1}
+            alt="img2"
+            style={{
+              transform: `translateX(${actImgPosition2.x}%) translateY(${actImgPosition2.y}%)`,
+            }}
+          />
+        </div>
 
         <div
           ref={refImage1}
@@ -132,7 +144,7 @@ const WorkContent = ({ refEl }) => {
             src={sushi3}
             alt="img1"
             style={{
-              transform: `translateX(${actImgPosition.x}%) translateY(${actImgPosition.y}%)`,
+              transform: `translateX(${actImgPosition1.x}%) translateY(${actImgPosition1.y}%)`,
             }}
           />
         </div>
