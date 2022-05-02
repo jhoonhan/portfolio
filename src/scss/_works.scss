@@ -40,7 +40,6 @@
     // margin-top: 5vh;
 
     display: grid;
-    grid-template-columns: 3fr 2fr;
     grid-template-rows: 1fr 1px;
 
     // border-left: $default--border;
@@ -109,6 +108,7 @@
 
   justify-content: flex-end;
   // overflow: visible;
+  z-index: 3;
 }
 
 .works__title {
