@@ -10,6 +10,12 @@ const WorkContent = ({ refEl }) => {
   const [actImgPosition2, setActImgPosition2] = useState({ x: 0, y: 0 });
   const [actImgPosition3, setActImgPosition3] = useState({ x: 0, y: 0 });
 
+  const [actImgPosition, setActImgPosition] = useState({
+    img1: { x: 0, y: 0 },
+    img2: { x: 0, y: 0 },
+    img3: { x: 0, y: 0 },
+  });
+
   const [conditionalStyle, setConditionalStyle] = useState({
     img3: {
       left: "14vw",
@@ -25,7 +31,7 @@ const WorkContent = ({ refEl }) => {
     },
     img1: {
       left: "0vw",
-      height: "auto",
+      height: "85vh",
       opacity: 1,
       zIndex: 3,
     },
@@ -47,8 +53,8 @@ const WorkContent = ({ refEl }) => {
           zIndex: 2,
         },
         img1: {
-          left: "0vw",
-          height: "auto",
+          // left: "0vw",
+          height: "85vh",
           opacity: 1,
           zIndex: 3,
         },
@@ -65,7 +71,7 @@ const WorkContent = ({ refEl }) => {
         },
         img2: {
           left: "7vw",
-          height: "auto",
+          height: "85vh",
           opacity: 1,
           zIndex: 3,
         },
@@ -82,7 +88,7 @@ const WorkContent = ({ refEl }) => {
       setConditionalStyle({
         img3: {
           left: "14vw",
-          height: "auto",
+          height: "85vh",
           opacity: 1,
           zIndex: 3,
         },
@@ -188,14 +194,15 @@ const WorkContent = ({ refEl }) => {
           ref={refImage3}
           onMouseOver={() => onMouseImage("img3")}
           onMouseMove={onMouseMoveImg}
-          className="works_picture"
-          style={{
-            // backgroundImage: `url(${sushi2})`,
-            left: "14vw",
-            height: `${actImg === "img3" ? "" : "75vh"}`,
-            opacity: `${actImg === "img3" ? 1 : 0.25}`,
-            zIndex: `${actImg === "img3" ? 4 : 1}`,
-          }}
+          className={`works_picture ${actImg === "img3" ? "active" : ""}`}
+          style={conditionalStyle.img3}
+          // style={{
+          //   // backgroundImage: `url(${sushi2})`,
+          //   left: "14vw",
+          //   height: `${actImg === "img3" ? "" : "75vh"}`,
+          //   opacity: `${actImg === "img3" ? 1 : 0.25}`,
+          //   zIndex: `${actImg === "img3" ? 4 : 1}`,
+          // }}
         >
           <img
             src={sushi2}
@@ -210,13 +217,14 @@ const WorkContent = ({ refEl }) => {
           ref={refImage2}
           onMouseOver={() => onMouseImage("img2")}
           onMouseMove={onMouseMoveImg}
-          className="works_picture"
-          style={{
-            left: "7vw",
-            height: `${actImg === "img2" ? "" : "80vh"}`,
-            opacity: `${actImg === "img2" ? 1 : 0.5}`,
-            zIndex: `${actImg === "img2" ? 4 : 2}`,
-          }}
+          className={`works_picture ${actImg === "img2" ? "active" : ""}`}
+          style={conditionalStyle.img2}
+          // style={{
+          //   left: "7vw",
+          //   height: `${actImg === "img2" ? "" : "80vh"}`,
+          //   opacity: `${actImg === "img2" ? 1 : 0.5}`,
+          //   zIndex: `${actImg === "img2" ? 4 : 2}`,
+          // }}
         >
           <img
             src={sushi1}
@@ -231,11 +239,12 @@ const WorkContent = ({ refEl }) => {
           ref={refImage1}
           onMouseOver={() => onMouseImage("img1")}
           onMouseMove={onMouseMoveImg}
-          className="works_picture"
-          style={{
-            opacity: `${actImg === "img1" ? 1 : 1}`,
-            zIndex: `${actImg === "img1" ? 4 : 3}`,
-          }}
+          className={`works_picture ${actImg === "img1" ? "active" : ""}`}
+          style={conditionalStyle.img1}
+          // style={{
+          //   opacity: `${actImg === "img1" ? 1 : 1}`,
+          //   zIndex: `${actImg === "img1" ? 4 : 3}`,
+          // }}
         >
           <img
             src={sushi3}
