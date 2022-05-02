@@ -3,7 +3,6 @@ import sushi1 from "../../assests/image/3.jpg";
 import sushi2 from "../../assests/image/4.jpg";
 import sushi3 from "../../assests/image/5.jpg";
 import throttle from "../../helpers/throttle";
-import debounce from "../../helpers/debounce";
 
 const WorkContent = ({ refEl }) => {
   const [actImg, setActImg] = useState("img1");
@@ -81,9 +80,11 @@ const WorkContent = ({ refEl }) => {
     const cursor = e.clientX - e.target.getBoundingClientRect().x;
     const width = e.target.getBoundingClientRect().width;
     const amount = -1 * (width / 2 - cursor);
-    console.log(amount);
-    // console.log(Math.abs(e.target.getBoundingClientRect().x - e.clientX));
-    setActImgPosition(amount / 30);
+    setActImgPosition(amount / 50);
+    const fn = () => {
+      console.log(`aang`);
+    };
+    throttle(fn, 60);
   };
 
   const renderPictureContainer = () => {
