@@ -79,7 +79,9 @@ const WorkContent = ({ refEl }) => {
     const amountY = -1 * (height / 2 - cursorY);
     // console.log(refImage1.current.getBoundingClientRect());
     // console.log(cursorX);
-    // console.log(cursorX / width);
+    const curPer = cursorX / width;
+    console.log(curPer);
+    // console.log(width / 2 - cursorX);
     setActImgPosition(amountX / 50);
   };
 
