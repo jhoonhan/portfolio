@@ -6,7 +6,7 @@ import throttle from "../../helpers/throttle";
 
 const WorkContent = ({ refEl }) => {
   const [actImg, setActImg] = useState("img1");
-  const [actImgPosition, setActImgPosition] = useState(0);
+  const [actImgPosition, setActImgPosition] = useState({ x: 0, y: 0 });
 
   const refImage1 = useRef(null);
   const refImage2 = useRef(null);
@@ -79,7 +79,8 @@ const WorkContent = ({ refEl }) => {
     const amountX = -1 * ((width / 2 - cursorX) / (width / 20));
     const amountY = -1 * ((height / 2 - cursorY) / (height / 20));
     // console.log(width / 2 - cursorX);
-    setActImgPosition(amountX);
+    console.log(amountY);
+    setActImgPosition({ x: amountX, y: amountY });
   };
 
   const renderPictureContainer = () => {
@@ -100,11 +101,7 @@ const WorkContent = ({ refEl }) => {
             zIndex: `${actImg === "img3" ? 4 : 1}`,
           }}
         >
-          <img
-            src={sushi2}
-            alt="img3"
-            style={{ transform: `translateX(${actImgPosition}%)` }}
-          />
+          <img src={sushi2} alt="img3" />
         </div>
 
         <div
@@ -134,7 +131,9 @@ const WorkContent = ({ refEl }) => {
           <img
             src={sushi3}
             alt="img1"
-            style={{ transform: `translateX(${actImgPosition}%)` }}
+            style={{
+              transform: `translateX(${actImgPosition.x}%) translateY(${actImgPosition.y}%)`,
+            }}
           />
         </div>
       </div>
