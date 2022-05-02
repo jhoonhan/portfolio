@@ -13,6 +13,12 @@ const WorkContent = ({ refEl }) => {
   const refImage2 = useRef(null);
   const refImage3 = useRef(null);
 
+  useEffect(() => {
+    const imgLocation1 = refImage1.current.getBoundingClientRect();
+    const imgLocation2 = refImage2.current.getBoundingClientRect();
+    const imgLocation3 = refImage3.current.getBoundingClientRect();
+  }, []);
+
   const renderInfo = () => {
     return (
       <div className="works__info-container">
@@ -72,18 +78,11 @@ const WorkContent = ({ refEl }) => {
     setActImg(img);
   };
   const onMouseMoveImg = (e) => {
-    console.log(e);
-    // setActImgPosition(e.movementX);
+    console.log(Math.abs(e.target.getBoundingClientRect().x - e.clientX));
+    setActImgPosition(Math.abs(e.target.getBoundingClientRect().x - e.clientX));
   };
 
   const renderPictureContainer = () => {
-    const activeImgClass3 = () => {
-      if (actImg === "img3")
-        return {
-          zIndex: 3,
-          opacity: 1,
-        };
-    };
     return (
       <div
         onMouseLeave={() => setActImg("img1")}
@@ -92,7 +91,6 @@ const WorkContent = ({ refEl }) => {
         <div
           ref={refImage3}
           onMouseOver={() => onMouseImage("img3")}
-          onMouseMove={onMouseMoveImg}
           className="works_picture"
           style={{
             // backgroundImage: `url(${sushi2})`,
@@ -125,13 +123,20 @@ const WorkContent = ({ refEl }) => {
         <div
           ref={refImage1}
           onMouseOver={() => onMouseImage("img1")}
+          onMouseMove={onMouseMoveImg}
           className="works_picture"
           style={{
-            backgroundImage: `url(${sushi3})`,
+            // backgroundImage: `url(${sushi3})`,
             opacity: `${actImg === "img1" ? 1 : 1}`,
             zIndex: `${actImg === "img1" ? 4 : 3}`,
           }}
-        />
+        >
+          <img
+            src={sushi3}
+            alt="img1"
+            style={{ transform: `translateX(${actImgPosition}%)` }}
+          />
+        </div>
       </div>
     );
   };
