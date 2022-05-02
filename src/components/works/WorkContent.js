@@ -10,6 +10,98 @@ const WorkContent = ({ refEl }) => {
   const [actImgPosition2, setActImgPosition2] = useState({ x: 0, y: 0 });
   const [actImgPosition3, setActImgPosition3] = useState({ x: 0, y: 0 });
 
+  const [conditionalStyle, setConditionalStyle] = useState({
+    img3: {
+      left: "14vw",
+      height: "75vh",
+      opacity: 0.25,
+      zIndex: 1,
+    },
+    img2: {
+      left: "7vw",
+      height: "80vh",
+      opacity: 0.5,
+      zIndex: 2,
+    },
+    img1: {
+      left: "0vw",
+      height: "auto",
+      opacity: 1,
+      zIndex: 3,
+    },
+  });
+
+  useEffect(() => {
+    if (actImg === "img1") {
+      setConditionalStyle({
+        img3: {
+          left: "14vw",
+          height: "75vh",
+          opacity: 0.25,
+          zIndex: 1,
+        },
+        img2: {
+          left: "7vw",
+          height: "80vh",
+          opacity: 0.5,
+          zIndex: 2,
+        },
+        img1: {
+          left: "0vw",
+          height: "auto",
+          opacity: 1,
+          zIndex: 3,
+        },
+      });
+    }
+
+    if (actImg === "img2") {
+      setConditionalStyle({
+        img3: {
+          left: "14vw",
+          height: "80vh",
+          opacity: 0.25,
+          zIndex: 1,
+        },
+        img2: {
+          left: "7vw",
+          height: "auto",
+          opacity: 1,
+          zIndex: 3,
+        },
+        img1: {
+          left: "0vw",
+          height: "75vh",
+          opacity: 0.5,
+          zIndex: 2,
+        },
+      });
+    }
+
+    if (actImg === "img3") {
+      setConditionalStyle({
+        img3: {
+          left: "14vw",
+          height: "auto",
+          opacity: 1,
+          zIndex: 3,
+        },
+        img2: {
+          left: "7vw",
+          height: "80vh",
+          opacity: 0.75,
+          zIndex: 2,
+        },
+        img1: {
+          left: "0vw",
+          height: "75vh",
+          opacity: 0.5,
+          zIndex: 1,
+        },
+      });
+    }
+  }, [actImg]);
+
   const refImage1 = useRef(null);
   const refImage2 = useRef(null);
   const refImage3 = useRef(null);
@@ -95,16 +187,23 @@ const WorkContent = ({ refEl }) => {
         <div
           ref={refImage3}
           onMouseOver={() => onMouseImage("img3")}
+          onMouseMove={onMouseMoveImg}
           className="works_picture"
           style={{
             // backgroundImage: `url(${sushi2})`,
             left: "14vw",
-            height: "75vh",
+            height: `${actImg === "img3" ? "" : "75vh"}`,
             opacity: `${actImg === "img3" ? 1 : 0.25}`,
             zIndex: `${actImg === "img3" ? 4 : 1}`,
           }}
         >
-          <img src={sushi2} alt="img3" />
+          <img
+            src={sushi2}
+            alt="img3"
+            style={{
+              transform: `translateX(${actImgPosition3.x}%) translateY(${actImgPosition3.y}%)`,
+            }}
+          />
         </div>
 
         <div
@@ -113,9 +212,8 @@ const WorkContent = ({ refEl }) => {
           onMouseMove={onMouseMoveImg}
           className="works_picture"
           style={{
-            backgroundImage: `url(${sushi1})`,
             left: "7vw",
-            height: "80vh",
+            height: `${actImg === "img2" ? "" : "80vh"}`,
             opacity: `${actImg === "img2" ? 1 : 0.5}`,
             zIndex: `${actImg === "img2" ? 4 : 2}`,
           }}
@@ -135,7 +233,6 @@ const WorkContent = ({ refEl }) => {
           onMouseMove={onMouseMoveImg}
           className="works_picture"
           style={{
-            // backgroundImage: `url(${sushi3})`,
             opacity: `${actImg === "img1" ? 1 : 1}`,
             zIndex: `${actImg === "img1" ? 4 : 3}`,
           }}
