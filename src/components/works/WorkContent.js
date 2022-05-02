@@ -2,6 +2,8 @@ import React, { useRef, useEffect, useState } from "react";
 import sushi1 from "../../assests/image/3.jpg";
 import sushi2 from "../../assests/image/4.jpg";
 import sushi3 from "../../assests/image/5.jpg";
+import throttle from "../../helpers/throttle";
+import debounce from "../../helpers/debounce";
 
 const WorkContent = ({ refEl }) => {
   const refImage1 = useRef(null);
@@ -62,10 +64,17 @@ const WorkContent = ({ refEl }) => {
       </div>
     );
   };
+
+  const onMouseImage = (img) => {
+    console.log(`aaang`);
+  };
+
   const renderPictureContainer = () => {
     return (
       <div className="works__picture-container">
         <div
+          ref={refImage3}
+          onMouseMove={() => throttle(onMouseImage, 1)}
           className="works_picture"
           style={{
             backgroundImage: `url(${sushi2})`,
@@ -77,6 +86,8 @@ const WorkContent = ({ refEl }) => {
         />
 
         <div
+          ref={refImage2}
+          onMouseMove={() => onMouseImage("img2")}
           className="works_picture"
           style={{
             backgroundImage: `url(${sushi1})`,
@@ -87,6 +98,8 @@ const WorkContent = ({ refEl }) => {
         />
 
         <div
+          ref={refImage1}
+          onMouseMove={() => onMouseImage("img1")}
           className="works_picture"
           style={{ backgroundImage: `url(${sushi3})` }}
         />
