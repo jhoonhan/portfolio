@@ -71,9 +71,15 @@ const WorkContent = ({ refEl }) => {
     setActImg(img);
   };
   const onMouseMoveImg = (e) => {
-    const cursorX = e.clientX - e.target.getBoundingClientRect().x;
-    const width = e.target.getBoundingClientRect().width;
+    const cursorX = e.clientX - e.target.parentNode.getBoundingClientRect().x;
+    const cursorY = e.clientY - e.target.parentNode.getBoundingClientRect().y;
+    const width = e.target.parentNode.getBoundingClientRect().width;
+    const height = e.target.parentNode.getBoundingClientRect().height;
     const amountX = -1 * (width / 2 - cursorX);
+    const amountY = -1 * (height / 2 - cursorY);
+    // console.log(refImage1.current.getBoundingClientRect());
+    // console.log(cursorX);
+    // console.log(cursorX / width);
     setActImgPosition(amountX / 50);
   };
 
@@ -144,7 +150,7 @@ const WorkContent = ({ refEl }) => {
           {renderInfo()}
         </div>
         <div className="content">
-          {renderPictureContainer()}
+          {/* {renderPictureContainer()} */}
           {renderInfo()}
         </div>
       </div>
