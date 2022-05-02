@@ -6,6 +6,8 @@ import throttle from "../../helpers/throttle";
 import debounce from "../../helpers/debounce";
 
 const WorkContent = ({ refEl }) => {
+  const [actImg, setActImg] = useState("img1");
+
   const refImage1 = useRef(null);
   const refImage2 = useRef(null);
   const refImage3 = useRef(null);
@@ -66,42 +68,54 @@ const WorkContent = ({ refEl }) => {
   };
 
   const onMouseImage = (img) => {
-    console.log(`aaang`);
+    setActImg(img);
   };
 
   const renderPictureContainer = () => {
+    const activeImgClass = {
+      zIndex: 3,
+      opacity: 1,
+    };
     return (
-      <div className="works__picture-container">
+      <div
+        onMouseLeave={() => setActImg("img1")}
+        className="works__picture-container"
+      >
         <div
           ref={refImage3}
-          onMouseMove={() => throttle(onMouseImage, 1)}
+          onMouseOver={() => onMouseImage("img3")}
           className="works_picture"
           style={{
             backgroundImage: `url(${sushi2})`,
             left: "14vw",
             height: "75vh",
-
-            opacity: "0.2",
+            // opacity: `${actImg === "img3" ? 1 : 0.25}`,
+            // zIndex: 1,
           }}
         />
 
         <div
           ref={refImage2}
-          onMouseMove={() => onMouseImage("img2")}
+          onMouseOver={() => onMouseImage("img2")}
           className="works_picture"
           style={{
             backgroundImage: `url(${sushi1})`,
             left: "7vw",
             height: "80vh",
-            opacity: "0.5",
+            opacity: `${actImg === "img2" ? 1 : 0.5}`,
+            zIndex: 2,
           }}
         />
 
         <div
           ref={refImage1}
-          onMouseMove={() => onMouseImage("img1")}
+          onMouseOver={() => onMouseImage("img1")}
           className="works_picture"
-          style={{ backgroundImage: `url(${sushi3})` }}
+          style={{
+            backgroundImage: `url(${sushi3})`,
+            opacity: `${actImg === "img1" ? 1 : 1}`,
+            zIndex: 3,
+          }}
         />
       </div>
     );
