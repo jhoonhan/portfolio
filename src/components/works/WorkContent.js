@@ -12,12 +12,6 @@ const WorkContent = ({ refEl }) => {
   const refImage2 = useRef(null);
   const refImage3 = useRef(null);
 
-  useEffect(() => {
-    const imgLocation1 = refImage1.current.getBoundingClientRect();
-    const imgLocation2 = refImage2.current.getBoundingClientRect();
-    const imgLocation3 = refImage3.current.getBoundingClientRect();
-  }, []);
-
   const renderInfo = () => {
     return (
       <div className="works__info-container">
@@ -81,10 +75,6 @@ const WorkContent = ({ refEl }) => {
     const width = e.target.getBoundingClientRect().width;
     const amount = -1 * (width / 2 - cursor);
     setActImgPosition(amount / 50);
-    const fn = () => {
-      console.log(`aang`);
-    };
-    throttle(fn, 60);
   };
 
   const renderPictureContainer = () => {
