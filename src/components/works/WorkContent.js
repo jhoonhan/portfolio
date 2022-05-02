@@ -6,9 +6,6 @@ import throttle from "../../helpers/throttle";
 
 const WorkContent = ({ refEl }) => {
   const [actImg, setActImg] = useState("img1");
-  const [actImgPosition1, setActImgPosition1] = useState({ x: 0, y: 0 });
-  const [actImgPosition2, setActImgPosition2] = useState({ x: 0, y: 0 });
-  const [actImgPosition3, setActImgPosition3] = useState({ x: 0, y: 0 });
 
   const [actImgPosition, setActImgPosition] = useState({
     img1: { x: 0, y: 0 },
@@ -179,10 +176,41 @@ const WorkContent = ({ refEl }) => {
     const amountX = -1 * ((width / 2 - cursorX) / (width / 20));
     const amountY = -1 * ((height / 2 - cursorY) / (height / 20));
 
-    if (actImg === "img1") setActImgPosition1({ x: amountX, y: amountY });
-    if (actImg === "img2") setActImgPosition2({ x: amountX, y: amountY });
-    if (actImg === "img3") setActImgPosition3({ x: amountX, y: amountY });
+    if (actImg === "img1")
+      setActImgPosition({
+        ...actImgPosition,
+        img1: { x: amountX, y: amountY },
+      });
+    if (actImg === "img2")
+      setActImgPosition({
+        ...actImgPosition,
+        img2: { x: amountX, y: amountY },
+      });
+    if (actImg === "img3")
+      setActImgPosition({
+        ...actImgPosition,
+        img3: { x: amountX, y: amountY },
+      });
   };
+
+  // useEffect(() => {
+  //   setActImgPosition({
+  //     img1: { x: 0, y: 0 },
+  //     img2: { x: 0, y: 0 },
+  //     img3: { x: 0, y: 0 },
+  //   });
+  // }, [actImg]);
+
+  const [test, setTest] = useState(0);
+
+  const fn = (val) => {
+    console.log(val);
+  };
+  const throttled = useRef(throttle((val) => fn(val), 1));
+
+  useEffect(() => {
+    throttled.current(1);
+  }, [test]);
 
   const renderPictureContainer = () => {
     return (
@@ -193,22 +221,16 @@ const WorkContent = ({ refEl }) => {
         <div
           ref={refImage3}
           onMouseOver={() => onMouseImage("img3")}
-          onMouseMove={onMouseMoveImg}
+          // onMouseMove={onMouseMoveImg}
+          onMouseMove={() => setTest(test + 1)}
           className={`works_picture ${actImg === "img3" ? "active" : ""}`}
           style={conditionalStyle.img3}
-          // style={{
-          //   // backgroundImage: `url(${sushi2})`,
-          //   left: "14vw",
-          //   height: `${actImg === "img3" ? "" : "75vh"}`,
-          //   opacity: `${actImg === "img3" ? 1 : 0.25}`,
-          //   zIndex: `${actImg === "img3" ? 4 : 1}`,
-          // }}
         >
           <img
             src={sushi2}
             alt="img3"
             style={{
-              transform: `translateX(${actImgPosition3.x}%) translateY(${actImgPosition3.y}%)`,
+              transform: `translateX(${actImgPosition.img3.x}%) translateY(${actImgPosition.img3.y}%)`,
             }}
           />
         </div>
@@ -219,18 +241,12 @@ const WorkContent = ({ refEl }) => {
           onMouseMove={onMouseMoveImg}
           className={`works_picture ${actImg === "img2" ? "active" : ""}`}
           style={conditionalStyle.img2}
-          // style={{
-          //   left: "7vw",
-          //   height: `${actImg === "img2" ? "" : "80vh"}`,
-          //   opacity: `${actImg === "img2" ? 1 : 0.5}`,
-          //   zIndex: `${actImg === "img2" ? 4 : 2}`,
-          // }}
         >
           <img
             src={sushi1}
             alt="img2"
             style={{
-              transform: `translateX(${actImgPosition2.x}%) translateY(${actImgPosition2.y}%)`,
+              transform: `translateX(${actImgPosition.img2.x}%) translateY(${actImgPosition.img2.y}%)`,
             }}
           />
         </div>
@@ -241,16 +257,12 @@ const WorkContent = ({ refEl }) => {
           onMouseMove={onMouseMoveImg}
           className={`works_picture ${actImg === "img1" ? "active" : ""}`}
           style={conditionalStyle.img1}
-          // style={{
-          //   opacity: `${actImg === "img1" ? 1 : 1}`,
-          //   zIndex: `${actImg === "img1" ? 4 : 3}`,
-          // }}
         >
           <img
             src={sushi3}
             alt="img1"
             style={{
-              transform: `translateX(${actImgPosition1.x}%) translateY(${actImgPosition1.y}%)`,
+              transform: `translateX(${actImgPosition.img1.x}%) translateY(${actImgPosition.img1.y}%)`,
             }}
           />
         </div>
