@@ -7,6 +7,7 @@ import debounce from "../../helpers/debounce";
 
 const WorkContent = ({ refEl }) => {
   const [actImg, setActImg] = useState("img1");
+  const [actImgPosition, setActImgPosition] = useState(0);
 
   const refImage1 = useRef(null);
   const refImage2 = useRef(null);
@@ -70,11 +71,18 @@ const WorkContent = ({ refEl }) => {
   const onMouseImage = (img) => {
     setActImg(img);
   };
+  const onMouseMoveImg = (e) => {
+    console.log(e);
+    // setActImgPosition(e.movementX);
+  };
 
   const renderPictureContainer = () => {
-    const activeImgClass = {
-      zIndex: 3,
-      opacity: 1,
+    const activeImgClass3 = () => {
+      if (actImg === "img3")
+        return {
+          zIndex: 3,
+          opacity: 1,
+        };
     };
     return (
       <div
@@ -84,15 +92,22 @@ const WorkContent = ({ refEl }) => {
         <div
           ref={refImage3}
           onMouseOver={() => onMouseImage("img3")}
+          onMouseMove={onMouseMoveImg}
           className="works_picture"
           style={{
-            backgroundImage: `url(${sushi2})`,
+            // backgroundImage: `url(${sushi2})`,
             left: "14vw",
             height: "75vh",
-            // opacity: `${actImg === "img3" ? 1 : 0.25}`,
-            // zIndex: 1,
+            opacity: `${actImg === "img3" ? 1 : 0.25}`,
+            zIndex: `${actImg === "img3" ? 4 : 1}`,
           }}
-        />
+        >
+          <img
+            src={sushi2}
+            alt="img3"
+            style={{ transform: `translateX(${actImgPosition}%)` }}
+          />
+        </div>
 
         <div
           ref={refImage2}
@@ -103,7 +118,7 @@ const WorkContent = ({ refEl }) => {
             left: "7vw",
             height: "80vh",
             opacity: `${actImg === "img2" ? 1 : 0.5}`,
-            zIndex: 2,
+            zIndex: `${actImg === "img2" ? 4 : 2}`,
           }}
         />
 
@@ -114,7 +129,7 @@ const WorkContent = ({ refEl }) => {
           style={{
             backgroundImage: `url(${sushi3})`,
             opacity: `${actImg === "img1" ? 1 : 1}`,
-            zIndex: 3,
+            zIndex: `${actImg === "img1" ? 4 : 3}`,
           }}
         />
       </div>
