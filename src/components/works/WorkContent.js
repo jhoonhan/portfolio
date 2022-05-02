@@ -78,8 +78,12 @@ const WorkContent = ({ refEl }) => {
     setActImg(img);
   };
   const onMouseMoveImg = (e) => {
-    console.log(Math.abs(e.target.getBoundingClientRect().x - e.clientX));
-    setActImgPosition(Math.abs(e.target.getBoundingClientRect().x - e.clientX));
+    const cursor = e.clientX - e.target.getBoundingClientRect().x;
+    const width = e.target.getBoundingClientRect().width;
+    const amount = -1 * (width / 2 - cursor);
+    console.log(amount);
+    // console.log(Math.abs(e.target.getBoundingClientRect().x - e.clientX));
+    setActImgPosition(amount / 30);
   };
 
   const renderPictureContainer = () => {
