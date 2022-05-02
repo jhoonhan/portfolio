@@ -75,14 +75,11 @@ const WorkContent = ({ refEl }) => {
     const cursorY = e.clientY - e.target.parentNode.getBoundingClientRect().y;
     const width = e.target.parentNode.getBoundingClientRect().width;
     const height = e.target.parentNode.getBoundingClientRect().height;
-    const amountX = -1 * (width / 2 - cursorX);
-    const amountY = -1 * (height / 2 - cursorY);
-    // console.log(refImage1.current.getBoundingClientRect());
-    // console.log(cursorX);
-    const curPer = cursorX / width;
-    console.log(curPer);
+
+    const amountX = -1 * ((width / 2 - cursorX) / (width / 20));
+    const amountY = -1 * ((height / 2 - cursorY) / (height / 20));
     // console.log(width / 2 - cursorX);
-    setActImgPosition(amountX / 50);
+    setActImgPosition(amountX);
   };
 
   const renderPictureContainer = () => {
