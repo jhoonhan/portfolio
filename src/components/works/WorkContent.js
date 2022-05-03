@@ -9,7 +9,6 @@ const WorkContent = ({ refEl }) => {
   const [actImg, setActImg] = useState("img1");
   const [actSlide, setActSlide] = useState(0);
 
-  const [counter, setCounter] = useState(0);
   const [slidePage, setSlidePage] = useState(0);
 
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -39,32 +38,7 @@ const WorkContent = ({ refEl }) => {
       zIndex: 3,
     },
   });
-  const [slideImgStyle, setSlideImgStyle] = useState([
-    {
-      transform: `translateX(${-100}vw)`,
-      opacity: 1,
-      height: "100%",
-      zIndex: 4,
-    },
-    {
-      transform: `translateX(${-85}vw)`,
-      opacity: 0.75,
-      height: "90%",
-      zIndex: 3,
-    },
-    {
-      transform: `translateX(${-70}vw)`,
-      opacity: 0.5,
-      height: "80%",
-      zIndex: 2,
-    },
-    {
-      transform: `translateX(${-55}vw)`,
-      opacity: 0.25,
-      height: "70%",
-      zIndex: 1,
-    },
-  ]);
+  const [slideImgStyle, setSlideImgStyle] = useState({});
 
   const refImage1 = useRef(null);
   const refImage2 = useRef(null);
@@ -324,20 +298,54 @@ const WorkContent = ({ refEl }) => {
         },
       });
     }
-    setSlideImgStyle([
-      {
-        transform: actSlide === 0 ? `translateX(${-100 - slidePage}vw)` : "",
-      },
-      {
-        transform: actSlide === 1 ? `translateX(${-100 - slidePage}vw)` : "",
-      },
-      {
-        transform: actSlide === 2 ? `translateX(${-100 - slidePage}vw)` : "",
-      },
-      {
-        transform: actSlide === 3 ? `translateX(${-100 - slidePage}vw)` : "",
-      },
-    ]);
+    if (actSlide === 1) {
+      setSlideImgStyle({
+        slide0: {
+          transform: "translateX(-200vw)",
+        },
+        slide1: {
+          transform: `translateX(${-100 - slidePage}vw)`,
+        },
+        slide2: {
+          transform: "translateX(0vw)",
+        },
+        slide3: {
+          transform: "translateX(0vw)",
+        },
+      });
+    }
+    if (actSlide === 2) {
+      setSlideImgStyle({
+        slide0: {
+          transform: "translateX(-200vw)",
+        },
+        slide1: {
+          transform: "translateX(-200vw)",
+        },
+        slide2: {
+          transform: `translateX(${-100 - slidePage}vw)`,
+        },
+        slide3: {
+          transform: "translateX(0vw)",
+        },
+      });
+    }
+    if (actSlide === 3) {
+      setSlideImgStyle({
+        slide0: {
+          transform: "translateX(-200vw)",
+        },
+        slide1: {
+          transform: "translateX(-200vw)",
+        },
+        slide2: {
+          transform: "translateX(-200vw)",
+        },
+        slide3: {
+          transform: `translateX(${-100 - slidePage}vw)`,
+        },
+      });
+    }
   }, [slidePage]);
 
   useEffect(() => {
@@ -353,28 +361,31 @@ const WorkContent = ({ refEl }) => {
     }
   }, [slidePage]);
 
-  useEffect(() => {
-    // setSlidePage(actSlide * 5);
-    console.log(actSlide, slidePage);
-  }, [actSlide]);
-
-  // useEffect(() => {
-  //   console.log(slidePage);
-  // }, [slidePage]);
-
   const renderDetail = () => {
     return (
       <div className="work__detail-container">
-        <div className="work__detail__slide slide-0" style={slideImgStyle[0]}>
+        <div
+          className="work__detail__slide slide-0"
+          style={slideImgStyle.slide0}
+        >
           <p>detail 1</p>
         </div>
-        <div className="work__detail__slide slide-1" style={slideImgStyle[1]}>
+        <div
+          className="work__detail__slide slide-1"
+          style={slideImgStyle.slide1}
+        >
           <p>detail 2</p>
         </div>
-        <div className="work__detail__slide slide-2" style={slideImgStyle[2]}>
+        <div
+          className="work__detail__slide slide-2"
+          style={slideImgStyle.slide2}
+        >
           <p>detail 3</p>
         </div>
-        <div className="work__detail__slide slide-3" style={slideImgStyle[3]}>
+        <div
+          className="work__detail__slide slide-3"
+          style={slideImgStyle.slide3}
+        >
           <p>detail 4</p>
         </div>
       </div>

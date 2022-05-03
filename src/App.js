@@ -10,7 +10,7 @@ import "./scss/App.scss";
 const App = () => {
   const [curPage, setCurPage] = useState(null);
   const [subWorkPage, setSubWorkPage] = useState("overview");
-  const [activeSubPagePosition, setActiveSubPagePosition] = useState({
+  const [activeSubPageStylePosition, setActiveSubPageStylePosition] = useState({
     transform: "translateY(0vh)",
   });
 
@@ -33,8 +33,8 @@ const App = () => {
     setCurPage,
     subWorkPage,
     setSubWorkPage,
-    activeSubPagePosition,
-    setActiveSubPagePosition,
+    activeSubPageStylePosition,
+    setActiveSubPageStylePosition,
   };
 
   const render = () => {

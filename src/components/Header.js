@@ -76,7 +76,7 @@ const Header = ({ refs, pageControl }) => {
 
   const render = () => {
     const activeOpacity = { opacity: 1 };
-    const activeSubPage = { opacity: 1 };
+    const activeSubPageStyle = { opacity: 1 };
 
     return (
       <header className="header__container">
@@ -146,7 +146,9 @@ const Header = ({ refs, pageControl }) => {
                   <a
                     href="#work/sushi-republic"
                     style={
-                      pageControl.subWorkPage === "el1" ? activeSubPage : {}
+                      pageControl.subWorkPage === "el1"
+                        ? activeSubPageStyle
+                        : {}
                     }
                   >
                     Sushi Republic
@@ -161,7 +163,9 @@ const Header = ({ refs, pageControl }) => {
                   <a
                     href="#work/danji"
                     style={
-                      pageControl.subWorkPage === "el2" ? activeSubPage : {}
+                      pageControl.subWorkPage === "el2"
+                        ? activeSubPageStyle
+                        : {}
                     }
                   >
                     Danji
@@ -176,7 +180,9 @@ const Header = ({ refs, pageControl }) => {
                   <a
                     href="#work/haans-cleaners"
                     style={
-                      pageControl.subWorkPage === "el3" ? activeSubPage : {}
+                      pageControl.subWorkPage === "el3"
+                        ? activeSubPageStyle
+                        : {}
                     }
                   >
                     Haans Cleaners
@@ -191,7 +197,9 @@ const Header = ({ refs, pageControl }) => {
                   <a
                     href="#work/this-is-bullshit"
                     style={
-                      pageControl.subWorkPage === "el4" ? activeSubPage : {}
+                      pageControl.subWorkPage === "el4"
+                        ? activeSubPageStyle
+                        : {}
                     }
                   >
                     This Is Bullshit
@@ -206,7 +214,9 @@ const Header = ({ refs, pageControl }) => {
                   <a
                     href="#work/salvation-army"
                     style={
-                      pageControl.subWorkPage === "el5" ? activeSubPage : {}
+                      pageControl.subWorkPage === "el5"
+                        ? activeSubPageStyle
+                        : {}
                     }
                   >
                     Salvation Army

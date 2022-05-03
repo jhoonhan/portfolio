@@ -4,7 +4,7 @@ import WorkContent from "./WorkContent";
 
 const Works = ({ refs, pageControl }) => {
   const [infoSubPage, setInfoSubPage] = useState("info");
-  const [activeSubPage, setActiveSubPage] = useState({
+  const [activeSubPageStyle, setActiveSubPageStyle] = useState({
     transform: "translateX(-0vw)",
   });
 
@@ -18,12 +18,11 @@ const Works = ({ refs, pageControl }) => {
     if (pageControl.curPage !== "works") return;
     if (infoSubPage === "info") {
       // refs.refWorks.current.style.transform = "translateX(-0vw)";
-      setActiveSubPage({ transform: "translateX(-0vw)" });
+      setActiveSubPageStyle({ transform: "translateX(-0vw)" });
     }
-
     if (infoSubPage === "detail") {
       // refs.refWorks.current.style.transform = "translateX(-100vw)";
-      setActiveSubPage({ transform: "translateX(-100vw)" });
+      setActiveSubPageStyle({ transform: "translateX(-100vw)" });
     }
   }, [infoSubPage]);
 
@@ -131,13 +130,13 @@ const Works = ({ refs, pageControl }) => {
         <section
           ref={refs.refWorks}
           className="works__container container"
-          style={activeSubPage}
+          style={activeSubPageStyle}
         >
           <WorkContent refEl={refEl1} />
-          {/* <WorkContent refEl={refEl2} />
+          <WorkContent refEl={refEl2} />
           <WorkContent refEl={refEl3} />
           <WorkContent refEl={refEl4} />
-          <WorkContent refEl={refEl5} /> */}
+          <WorkContent refEl={refEl5} />
         </section>
         {renderContentNav()}
         {renderContentArrow()}
