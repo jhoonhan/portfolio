@@ -1,13 +1,16 @@
 import React, { useRef, useEffect, useState } from "react";
-import sushi1 from "../../assests/image/3.jpg";
-import sushi2 from "../../assests/image/4.jpg";
-import sushi3 from "../../assests/image/5.jpg";
+import sushi1 from "../../assests/image/1.jpg";
+import sushi2 from "../../assests/image/2.jpg";
+import sushi3 from "../../assests/image/3.jpg";
+import sushi4 from "../../assests/image/4.jpg";
+import sushi5 from "../../assests/image/5.jpg";
 import throttle from "../../helpers/throttle";
 
 const WorkContent = ({ refEl }) => {
   const [actImg, setActImg] = useState("img1");
 
   const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [direction, setDirection] = useState("down");
   const [actImgPosition, setActImgPosition] = useState({
     img1: { x: 0, y: 0 },
     img2: { x: 0, y: 0 },
@@ -253,6 +256,36 @@ const WorkContent = ({ refEl }) => {
     );
   };
 
+  useEffect(() => {
+    const handler = (e) => {
+      if (e.deltaY >= 0) {
+        setDirection("down");
+      } else {
+        setDirection("up");
+      }
+    };
+    const throttled = throttle(handler, 1);
+
+    document.addEventListener("mousewheel", throttle(throttled, 1), false);
+
+    return () => {
+      document.removeEventListener("mousewheel", throttled);
+    };
+  }, []);
+
+  useEffect(() => {
+    console.log(direction);
+  }, [direction]);
+
+  const onMouseGalleryImg = (e) => {
+    console.log(`aaang`);
+    // e.target.style.opacity = 0;
+  };
+
+  const testhandle = () => {
+    console.log(`test`);
+  };
+
   const render = () => {
     return (
       <div ref={refEl} className="work__container">
@@ -266,28 +299,43 @@ const WorkContent = ({ refEl }) => {
           {renderInfo()}
         </div>
         <div className="work__content" style={{}}>
-          {/* {renderPictureContainer()} */}
-          {/* {renderInfo()} */}
           <div className="work__gallery-container">
+            <div className="testbutton" onClick={testhandle}>
+              aaang
+            </div>
             <ul className="work__gallery-slideshow">
-              <li className="gallery__image">
-                <img src={sushi2} alt="img3" />
-              </li>
-              <li className="gallery__image">
+              <li
+                className="gallery__image"
+                onMouseOver={(e) => onMouseGalleryImg(e)}
+                style={{
+                  transform: "translateX(-100vw)",
+                }}
+              >
                 <img src={sushi1} alt="img3" />
               </li>
-              <li className="gallery__image">
-                <img src={sushi3} alt="img3" />
-              </li>
-
-              <li className="gallery__image">
+              <li
+                className="gallery__image"
+                style={{
+                  transform: "translateX(-90vw)",
+                }}
+              >
                 <img src={sushi2} alt="img3" />
               </li>
-              <li className="gallery__image">
-                <img src={sushi1} alt="img3" />
-              </li>
-              <li className="gallery__image">
+              <li
+                className="gallery__image"
+                style={{
+                  transform: "translateX(-80vw)",
+                }}
+              >
                 <img src={sushi3} alt="img3" />
+              </li>
+              <li
+                className="gallery__image"
+                style={{
+                  transform: "translateX(-70vw)",
+                }}
+              >
+                <img src={sushi4} alt="img3" />
               </li>
             </ul>
           </div>

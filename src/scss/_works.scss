@@ -65,26 +65,29 @@
 
   display: flex;
 
-  // perspective: 200rem;
-
   & li {
     list-style-type: none;
   }
 
   & .gallery__image {
-    height: 90%;
-    aspect-ratio: 2/3;
+    position: absolute;
+    left: 100vw;
+
+    max-height: 100%;
+    aspect-ratio: 3/2;
     display: flex;
     align-items: center;
     justify-content: center;
 
-    margin-top: 1%;
-    margin-left: -50px;
+    // margin-top: 6vh;
+    // margin-left: -50px;
 
     box-sizing: border-box;
-    box-shadow: -10px 5px 15px rgba(0, 0, 0, 0.5);
-    // transform: rotateY(45deg);
-    transform: perspective(100rem) rotateY(5deg);
+    box-shadow: -10px 0px 10px rgba(0, 0, 0, 0.5);
+
+    perspective: 100rem;
+
+    // transform: perspective(100rem) rotateY(5deg);
 
     overflow: hidden;
 
@@ -93,11 +96,17 @@
     }
 
     & img {
-      height: 100%;
+      transform: rotateY(5deg);
+
+      height: 110%;
     }
   }
 }
-
+.testbutton {
+  position: absolute;
+  top: -2rem;
+  left: 0;
+}
 .works__picture-container {
   // position: relative;
   // left: 5vh;
