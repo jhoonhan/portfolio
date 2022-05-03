@@ -134,10 +134,10 @@ const Works = ({ refs, pageControl }) => {
           style={activeSubPage}
         >
           <WorkContent refEl={refEl1} />
-          <WorkContent refEl={refEl2} />
+          {/* <WorkContent refEl={refEl2} />
           <WorkContent refEl={refEl3} />
           <WorkContent refEl={refEl4} />
-          <WorkContent refEl={refEl5} />
+          <WorkContent refEl={refEl5} /> */}
         </section>
         {renderContentNav()}
         {renderContentArrow()}

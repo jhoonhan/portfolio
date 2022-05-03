@@ -289,8 +289,10 @@ const WorkContent = ({ refEl }) => {
     const fn = (e) => {
       clearTimeout(timeoutId);
       if (e.deltaY >= 0) {
+        if (slidePage >= 5) return;
         setSlidePage(slidePage + 1);
       } else {
+        if (slidePage <= -5) return;
         setSlidePage(slidePage - 1);
       }
       timeoutId = setTimeout(() => {
@@ -306,66 +308,75 @@ const WorkContent = ({ refEl }) => {
   }, [slidePage]);
 
   useEffect(() => {
+    if (actSlide === 0) {
+      setSlideImgStyle({
+        slide0: {
+          transform: `translateX(${-100 - slidePage}vw)`,
+        },
+        slide1: {
+          transform: "translateX(0vw)",
+        },
+        slide2: {
+          transform: "translateX(0vw)",
+        },
+        slide3: {
+          transform: "translateX(0vw)",
+        },
+      });
+    }
     setSlideImgStyle([
       {
-        transform:
-          actSlide === 0
-            ? `translateX(${-100 - slidePage}vw)`
-            : "translateX(-200vw)",
-        opacity: 1,
-        height: "100%",
-        zIndex: 4,
+        transform: actSlide === 0 ? `translateX(${-100 - slidePage}vw)` : "",
       },
       {
-        transform:
-          actSlide === 1
-            ? `translateX(${-100 - slidePage}vw)`
-            : "translateX(-85vw)",
-        opacity: 0.75,
-        height: "90%",
-        zIndex: 3,
+        transform: actSlide === 1 ? `translateX(${-100 - slidePage}vw)` : "",
       },
       {
-        transform: `translateX(${-70}vw)`,
-        opacity: 0.5,
-        height: "80%",
-        zIndex: 2,
+        transform: actSlide === 2 ? `translateX(${-100 - slidePage}vw)` : "",
       },
       {
-        transform: `translateX(${-55}vw)`,
-        opacity: 0.25,
-        height: "70%",
-        zIndex: 1,
+        transform: actSlide === 3 ? `translateX(${-100 - slidePage}vw)` : "",
       },
     ]);
   }, [slidePage]);
 
   useEffect(() => {
-    if (actSlide === 0 && slidePage < 5) setActSlide(0);
-    if (actSlide === 0 && slidePage <= 10 && slidePage > 5) setActSlide(1);
-    if (actSlide === 1 && slidePage <= 15 && slidePage > 10) setActSlide(2);
-    if (actSlide === 2 && slidePage <= 20 && slidePage > 15) setActSlide(3);
-  }, [slidePage, actSlide]);
+    if (slidePage === -5) {
+      if (actSlide === 1) setActSlide(0);
+      if (actSlide === 2) setActSlide(1);
+      if (actSlide === 3) setActSlide(2);
+    }
+    if (slidePage === 5) {
+      if (actSlide === 0) setActSlide(1);
+      if (actSlide === 1) setActSlide(2);
+      if (actSlide === 2) setActSlide(3);
+    }
+  }, [slidePage]);
 
   useEffect(() => {
-    console.log(actSlide);
+    // setSlidePage(actSlide * 5);
+    console.log(actSlide, slidePage);
   }, [actSlide]);
 
-  const images = [sushi1, sushi2, sushi3, sushi4];
+  // useEffect(() => {
+  //   console.log(slidePage);
+  // }, [slidePage]);
 
-  const renderSlideShow = () => {
-    const imgs = images.map((img, i, imgs) => {
-      return (
-        // <li className="gallery__image" style={slideImgStyle[i]} key={i}>
-        <li className="gallery__image" style={slideImgStyle[i]} key={i}>
-          <img src={img} alt={`img${i}`} />
-        </li>
-      );
-    });
-
+  const renderDetail = () => {
     return (
-      <div className="work__gallery-container">
-        <ul className="work__gallery-slideshow">{imgs}</ul>
+      <div className="work__detail-container">
+        <div className="work__detail__slide slide-0" style={slideImgStyle[0]}>
+          <p>detail 1</p>
+        </div>
+        <div className="work__detail__slide slide-1" style={slideImgStyle[1]}>
+          <p>detail 2</p>
+        </div>
+        <div className="work__detail__slide slide-2" style={slideImgStyle[2]}>
+          <p>detail 3</p>
+        </div>
+        <div className="work__detail__slide slide-3" style={slideImgStyle[3]}>
+          <p>detail 4</p>
+        </div>
       </div>
     );
   };
@@ -383,7 +394,7 @@ const WorkContent = ({ refEl }) => {
           {renderInfo()}
         </div>
         <div className="work__content" style={{}}>
-          {renderSlideShow()}
+          {renderDetail()}
         </div>
       </div>
     );
