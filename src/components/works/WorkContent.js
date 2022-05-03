@@ -273,9 +273,15 @@ const WorkContent = ({ refEl }) => {
     };
   }, []);
 
+  const [counter, setCounter] = useState(0);
+
   useEffect(() => {
-    console.log(direction);
+    setCounter(counter + 1);
   }, [direction]);
+
+  useEffect(() => {
+    console.log(counter);
+  }, [counter]);
 
   const onMouseGalleryImg = (e) => {
     console.log(`aaang`);
@@ -284,6 +290,36 @@ const WorkContent = ({ refEl }) => {
 
   const testhandle = () => {
     console.log(`test`);
+  };
+
+  const images = [sushi1, sushi2, sushi3, sushi4];
+
+  const renderSlideShow = () => {
+    const imgs = images.map((img, i) => {
+      return (
+        <li
+          className="gallery__image"
+          onMouseOver={(e) => onMouseGalleryImg(e)}
+          style={{
+            // transform: `translateX(-${100 - i * 10}vw)`,
+            transform:
+              counter === i + 1 ? `translateX(-${100 - i * 10}vw)` : "",
+          }}
+          key={i}
+        >
+          <img src={img} alt={`img${i}`} />
+        </li>
+      );
+    });
+
+    return (
+      <div className="work__gallery-container">
+        <div className="testbutton" onClick={testhandle}>
+          aaang
+        </div>
+        <ul className="work__gallery-slideshow">{imgs}</ul>
+      </div>
+    );
   };
 
   const render = () => {
@@ -299,7 +335,8 @@ const WorkContent = ({ refEl }) => {
           {renderInfo()}
         </div>
         <div className="work__content" style={{}}>
-          <div className="work__gallery-container">
+          {renderSlideShow()}
+          {/* <div className="work__gallery-container">
             <div className="testbutton" onClick={testhandle}>
               aaang
             </div>
@@ -338,7 +375,7 @@ const WorkContent = ({ refEl }) => {
                 <img src={sushi4} alt="img3" />
               </li>
             </ul>
-          </div>
+          </div> */}
         </div>
       </div>
     );
