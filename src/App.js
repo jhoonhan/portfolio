@@ -46,7 +46,7 @@ const App = () => {
             style={curPage === "home" ? { opacity: 0 } : {}}
             className="overlay"
           ></div>
-          <LandingArt />
+          <LandingArt curPage={curPage} />
 
           <Landing curPage={curPage} refHome={refHome} />
           <Works refs={refs} pageControl={pageControl} />

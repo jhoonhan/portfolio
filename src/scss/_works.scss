@@ -9,7 +9,7 @@
   height: 100vh;
 
   display: grid;
-  // grid-template-rows: 1fr 1fr;
+  // grid-template-rows: 1fr 1fr;f
   grid-auto-rows: 1fr;
   // flex-direction: column;
   // background-color: red;
@@ -64,6 +64,7 @@
   height: 100%;
 
   display: flex;
+  align-items: flex-end;
 
   & li {
     list-style-type: none;

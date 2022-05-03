@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import name2 from "../../assests/image/name2.svg";
 
-const LandingArt = () => {
+const LandingArt = ({ curPage }) => {
   const refSection = useRef(null);
   const refCursor = useRef(null);
   const refFirstName = useRef(null);
@@ -44,12 +44,17 @@ const LandingArt = () => {
       changeColor(e);
       moveName(e);
     };
-    window.addEventListener("mousemove", fn);
+    if (curPage !== "home") {
+      window.removeEventListener("mousemove", fn);
+    }
+    if (curPage === "home") {
+      window.addEventListener("mousemove", fn);
+    }
 
     return () => {
       window.removeEventListener("mousemove", fn);
     };
-  }, []);
+  }, [curPage]);
 
   const changeColor = (e) => {
     const tps = 60;

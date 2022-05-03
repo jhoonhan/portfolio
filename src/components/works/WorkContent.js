@@ -11,7 +11,6 @@ const WorkContent = ({ refEl }) => {
   const [counter, setCounter] = useState(1);
 
   const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [direction, setDirection] = useState(null);
   const [actImgPosition, setActImgPosition] = useState({
     img1: { x: 0, y: 0 },
     img2: { x: 0, y: 0 },
@@ -38,12 +37,32 @@ const WorkContent = ({ refEl }) => {
       zIndex: 3,
     },
   });
-  const [slideImgStyle, setSlideImgStyle] = useState({
-    img1: {},
-    img2: {},
-    img3: {},
-    img4: {},
-  });
+  const [slideImgStyle, setSlideImgStyle] = useState([
+    {
+      transform: `translateX(${-100}vw)`,
+      opacity: 1,
+      height: "100%",
+      zIndex: 4,
+    },
+    {
+      transform: `translateX(${-85}vw)`,
+      opacity: 0.75,
+      height: "90%",
+      zIndex: 3,
+    },
+    {
+      transform: `translateX(${-70}vw)`,
+      opacity: 0.5,
+      height: "80%",
+      zIndex: 2,
+    },
+    {
+      transform: `translateX(${-55}vw)`,
+      opacity: 0.25,
+      height: "70%",
+      zIndex: 1,
+    },
+  ]);
 
   const refImage1 = useRef(null);
   const refImage2 = useRef(null);
@@ -282,20 +301,49 @@ const WorkContent = ({ refEl }) => {
   }, [counter]);
 
   useEffect(() => {
-    console.log(counter);
+    if (counter === 1) {
+      setSlideImgStyle([
+        {
+          transform: `translateX(${-100}vw)`,
+          opacity: 1,
+          height: "100%",
+          zIndex: 4,
+        },
+        {
+          transform: `translateX(${-85}vw)`,
+          opacity: 0.75,
+          height: "90%",
+          zIndex: 3,
+        },
+        {
+          transform: `translateX(${-70}vw)`,
+          opacity: 0.5,
+          height: "80%",
+          zIndex: 2,
+        },
+        {
+          transform: `translateX(${-55}vw)`,
+          opacity: 0.25,
+          height: "70%",
+          zIndex: 1,
+        },
+      ]);
+    }
   }, [counter]);
 
   const images = [sushi1, sushi2, sushi3, sushi4];
 
   const renderSlideShow = () => {
-    const imgs = images.map((img, i) => {
+    const imgs = images.map((img, i, imgs) => {
       return (
+        // <li className="gallery__image" style={slideImgStyle[i]} key={i}>
         <li
           className="gallery__image"
           style={{
-            // transform: `translateX(-${100 - i * 10}vw)`,
-            transform:
-              counter === i + 1 ? `translateX(-${100 - i * 10}vw)` : "",
+            transform: `translateX(-${100 - i * 15}vw)`,
+            opacity: 1 - i * 0.25,
+            height: `${100 - i * 10}%`,
+            zIndex: imgs.length - i,
           }}
           key={i}
         >
@@ -306,7 +354,6 @@ const WorkContent = ({ refEl }) => {
 
     return (
       <div className="work__gallery-container">
-        <div className="testbutton">aaang</div>
         <ul className="work__gallery-slideshow">{imgs}</ul>
       </div>
     );
@@ -326,46 +373,6 @@ const WorkContent = ({ refEl }) => {
         </div>
         <div className="work__content" style={{}}>
           {renderSlideShow()}
-          {/* <div className="work__gallery-container">
-            <div className="testbutton" onClick={testhandle}>
-              aaang
-            </div>
-            <ul className="work__gallery-slideshow">
-              <li
-                className="gallery__image"
-                onMouseOver={(e) => onMouseGalleryImg(e)}
-                style={{
-                  transform: "translateX(-100vw)",
-                }}
-              >
-                <img src={sushi1} alt="img3" />
-              </li>
-              <li
-                className="gallery__image"
-                style={{
-                  transform: "translateX(-90vw)",
-                }}
-              >
-                <img src={sushi2} alt="img3" />
-              </li>
-              <li
-                className="gallery__image"
-                style={{
-                  transform: "translateX(-80vw)",
-                }}
-              >
-                <img src={sushi3} alt="img3" />
-              </li>
-              <li
-                className="gallery__image"
-                style={{
-                  transform: "translateX(-70vw)",
-                }}
-              >
-                <img src={sushi4} alt="img3" />
-              </li>
-            </ul>
-          </div> */}
         </div>
       </div>
     );
