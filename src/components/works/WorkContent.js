@@ -9,8 +9,10 @@ import throttle from "../../helpers/throttle";
 const WorkContent = ({ refEl }) => {
   const [actImg, setActImg] = useState("img1");
 
+  const [counter, setCounter] = useState(1);
+
   const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [direction, setDirection] = useState("down");
+  const [direction, setDirection] = useState(null);
   const [actImgPosition, setActImgPosition] = useState({
     img1: { x: 0, y: 0 },
     img2: { x: 0, y: 0 },
@@ -36,6 +38,12 @@ const WorkContent = ({ refEl }) => {
       opacity: 1,
       zIndex: 3,
     },
+  });
+  const [slideImgStyle, setSlideImgStyle] = useState({
+    img1: {},
+    img2: {},
+    img3: {},
+    img4: {},
   });
 
   const refImage1 = useRef(null);
@@ -273,24 +281,18 @@ const WorkContent = ({ refEl }) => {
     };
   }, []);
 
-  const [counter, setCounter] = useState(0);
-
   useEffect(() => {
-    setCounter(counter + 1);
+    console.log(direction);
+    if (direction === "down") {
+      setCounter(counter - 1);
+    } else {
+      setCounter(counter + 1);
+    }
   }, [direction]);
 
   useEffect(() => {
     console.log(counter);
   }, [counter]);
-
-  const onMouseGalleryImg = (e) => {
-    console.log(`aaang`);
-    // e.target.style.opacity = 0;
-  };
-
-  const testhandle = () => {
-    console.log(`test`);
-  };
 
   const images = [sushi1, sushi2, sushi3, sushi4];
 
@@ -299,7 +301,6 @@ const WorkContent = ({ refEl }) => {
       return (
         <li
           className="gallery__image"
-          onMouseOver={(e) => onMouseGalleryImg(e)}
           style={{
             // transform: `translateX(-${100 - i * 10}vw)`,
             transform:
@@ -314,9 +315,7 @@ const WorkContent = ({ refEl }) => {
 
     return (
       <div className="work__gallery-container">
-        <div className="testbutton" onClick={testhandle}>
-          aaang
-        </div>
+        <div className="testbutton">aaang</div>
         <ul className="work__gallery-slideshow">{imgs}</ul>
       </div>
     );
