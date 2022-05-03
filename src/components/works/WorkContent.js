@@ -270,9 +270,25 @@ const WorkContent = ({ refEl }) => {
           {/* {renderInfo()} */}
           <div className="work__gallery-container">
             <ul className="work__gallery-slideshow">
-              <li>aaang</li>
-              <li>aaang</li>
-              <li>aaang</li>
+              <li className="gallery__image">
+                <img src={sushi2} alt="img3" />
+              </li>
+              <li className="gallery__image">
+                <img src={sushi1} alt="img3" />
+              </li>
+              <li className="gallery__image">
+                <img src={sushi3} alt="img3" />
+              </li>
+
+              <li className="gallery__image">
+                <img src={sushi2} alt="img3" />
+              </li>
+              <li className="gallery__image">
+                <img src={sushi1} alt="img3" />
+              </li>
+              <li className="gallery__image">
+                <img src={sushi3} alt="img3" />
+              </li>
             </ul>
           </div>
         </div>
