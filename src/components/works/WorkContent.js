@@ -285,12 +285,17 @@ const WorkContent = ({ refEl }) => {
   };
 
   useEffect(() => {
+    let timeoutId = null;
     const fn = (e) => {
+      clearTimeout(timeoutId);
       if (e.deltaY >= 0) {
-        setSlidePage(slidePage - 1);
-      } else {
         setSlidePage(slidePage + 1);
+      } else {
+        setSlidePage(slidePage - 1);
       }
+      timeoutId = setTimeout(() => {
+        setSlidePage(0);
+      }, 500);
     };
     const throttled = throttle(fn, 1);
     document.addEventListener("mousewheel", throttled, false);
@@ -301,11 +306,50 @@ const WorkContent = ({ refEl }) => {
   }, [slidePage]);
 
   useEffect(() => {
-    if (counter < 20) setActSlide(0);
-    if (counter <= 40 && counter > 20) setActSlide(1);
-    if (counter <= 60 && counter > 40) setActSlide(2);
-    if (counter <= 80 && counter > 60) setActSlide(3);
-  }, [counter]);
+    setSlideImgStyle([
+      {
+        transform:
+          actSlide === 0
+            ? `translateX(${-100 - slidePage}vw)`
+            : "translateX(-200vw)",
+        opacity: 1,
+        height: "100%",
+        zIndex: 4,
+      },
+      {
+        transform:
+          actSlide === 1
+            ? `translateX(${-100 - slidePage}vw)`
+            : "translateX(-85vw)",
+        opacity: 0.75,
+        height: "90%",
+        zIndex: 3,
+      },
+      {
+        transform: `translateX(${-70}vw)`,
+        opacity: 0.5,
+        height: "80%",
+        zIndex: 2,
+      },
+      {
+        transform: `translateX(${-55}vw)`,
+        opacity: 0.25,
+        height: "70%",
+        zIndex: 1,
+      },
+    ]);
+  }, [slidePage]);
+
+  useEffect(() => {
+    if (actSlide === 0 && slidePage < 5) setActSlide(0);
+    if (actSlide === 0 && slidePage <= 10 && slidePage > 5) setActSlide(1);
+    if (actSlide === 1 && slidePage <= 15 && slidePage > 10) setActSlide(2);
+    if (actSlide === 2 && slidePage <= 20 && slidePage > 15) setActSlide(3);
+  }, [slidePage, actSlide]);
+
+  useEffect(() => {
+    console.log(actSlide);
+  }, [actSlide]);
 
   const images = [sushi1, sushi2, sushi3, sushi4];
 

@@ -42,7 +42,7 @@
 
   margin-top: 6vh;
   margin-bottom: 9vh;
-  padding-left: calc(5vw + 10rem);
+  // padding-left: calc(5vw + 10rem);
   // left: calc(5vw + 10rem);
   // padding: 6vh 10vh 9vh 0vh;
   // margin-top: 5vh;
@@ -61,6 +61,7 @@
   position: relative;
   width: auto;
   display: block;
+  left: calc(5vw + 10rem);
 }
 .work__gallery-slideshow {
   width: 100%;
@@ -95,6 +96,8 @@
 
     overflow: hidden;
 
+    transition: $default--transition;
+
     &:first-child {
       margin-left: 0px;
     }
@@ -113,12 +116,13 @@
 }
 .works__picture-container {
   position: relative;
-  // left: 5vh;
   // width: 50vw;
 
   display: flex;
   align-items: flex-end;
   justify-content: flex-start;
+
+  margin-left: calc(5vw + 10rem);
 
   // background-color: red;
   overflow: hidden;
