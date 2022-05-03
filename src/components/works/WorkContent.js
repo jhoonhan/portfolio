@@ -7,6 +7,7 @@ import throttle from "../../helpers/throttle";
 
 const WorkContent = ({ refEl }) => {
   const [actImg, setActImg] = useState("img1");
+  const [actSlide, setActSlide] = useState(0);
 
   const [counter, setCounter] = useState(1);
 
@@ -285,14 +286,13 @@ const WorkContent = ({ refEl }) => {
   useEffect(() => {
     const fn = (e) => {
       if (e.deltaY >= 0) {
-        if (counter === 1) return;
         setCounter(counter - 1);
       } else {
-        if (counter === 4) return;
         setCounter(counter + 1);
       }
     };
-    const throttled = throttle(fn, 1);
+    const throttled = throttle(fn, 60);
+    console.log(counter);
     document.addEventListener("mousewheel", throttled, false);
 
     return () => {
@@ -301,35 +301,44 @@ const WorkContent = ({ refEl }) => {
   }, [counter]);
 
   useEffect(() => {
-    if (counter === 1) {
-      setSlideImgStyle([
-        {
-          transform: `translateX(${-100}vw)`,
-          opacity: 1,
-          height: "100%",
-          zIndex: 4,
-        },
-        {
-          transform: `translateX(${-85}vw)`,
-          opacity: 0.75,
-          height: "90%",
-          zIndex: 3,
-        },
-        {
-          transform: `translateX(${-70}vw)`,
-          opacity: 0.5,
-          height: "80%",
-          zIndex: 2,
-        },
-        {
-          transform: `translateX(${-55}vw)`,
-          opacity: 0.25,
-          height: "70%",
-          zIndex: 1,
-        },
-      ]);
-    }
+    setSlideImgStyle([
+      {
+        transform: `translateX(${-100 - counter}vw)`,
+        opacity: 1,
+        height: "100%",
+        zIndex: 4,
+      },
+      {
+        transform: `translateX(${-85 - counter}vw)`,
+        opacity: 0.75,
+        height: "90%",
+        zIndex: 3,
+      },
+      {
+        transform: `translateX(${-70}vw)`,
+        opacity: 0.5,
+        height: "80%",
+        zIndex: 2,
+      },
+      {
+        transform: `translateX(${-55}vw)`,
+        opacity: 0.25,
+        height: "70%",
+        zIndex: 1,
+      },
+    ]);
   }, [counter]);
+
+  const handleSlide = () => {
+    if (counter < 20) setActSlide(0);
+    if (counter <= 40 && counter > 20) setActSlide(1);
+    if (counter <= 60 && counter > 40) setActSlide(2);
+    if (counter <= 80 && counter > 60) setActSlide(3);
+  };
+
+  useEffect(() => {
+    console.log(actSlide);
+  }, [actSlide]);
 
   const images = [sushi1, sushi2, sushi3, sushi4];
 
@@ -337,16 +346,7 @@ const WorkContent = ({ refEl }) => {
     const imgs = images.map((img, i, imgs) => {
       return (
         // <li className="gallery__image" style={slideImgStyle[i]} key={i}>
-        <li
-          className="gallery__image"
-          style={{
-            transform: `translateX(-${100 - i * 15}vw)`,
-            opacity: 1 - i * 0.25,
-            height: `${100 - i * 10}%`,
-            zIndex: imgs.length - i,
-          }}
-          key={i}
-        >
+        <li className="gallery__image" style={slideImgStyle[i]} key={i}>
           <img src={img} alt={`img${i}`} />
         </li>
       );
