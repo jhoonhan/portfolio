@@ -264,30 +264,22 @@ const WorkContent = ({ refEl }) => {
   };
 
   useEffect(() => {
-    const handler = (e) => {
+    const fn = (e) => {
       if (e.deltaY >= 0) {
-        setDirection("down");
+        if (counter === 1) return;
+        setCounter(counter - 1);
       } else {
-        setDirection("up");
+        if (counter === 4) return;
+        setCounter(counter + 1);
       }
     };
-    const throttled = throttle(handler, 1);
-
-    document.addEventListener("mousewheel", throttle(throttled, 1), false);
+    const throttled = throttle(fn, 1);
+    document.addEventListener("mousewheel", throttled, false);
 
     return () => {
       document.removeEventListener("mousewheel", throttled);
     };
-  }, []);
-
-  useEffect(() => {
-    console.log(direction);
-    if (direction === "down") {
-      setCounter(counter - 1);
-    } else {
-      setCounter(counter + 1);
-    }
-  }, [direction]);
+  }, [counter]);
 
   useEffect(() => {
     console.log(counter);
