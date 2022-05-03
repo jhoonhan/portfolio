@@ -126,6 +126,8 @@ const Works = ({ refs, pageControl }) => {
   };
 
   const render = () => {
+    console.log(`Work`);
+
     return (
       <>
         <section
@@ -133,11 +135,7 @@ const Works = ({ refs, pageControl }) => {
           className="works__container container"
           style={activeSubPage}
         >
-          <WorkContent refEl={refEl1} />
-          <WorkContent refEl={refEl2} />
-          <WorkContent refEl={refEl3} />
-          <WorkContent refEl={refEl4} />
-          <WorkContent refEl={refEl5} />
+          <WorkContent />
         </section>
         {renderContentNav()}
         {renderContentArrow()}

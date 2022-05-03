@@ -6,7 +6,7 @@ import sushi4 from "../../assests/image/4.jpg";
 import sushi5 from "../../assests/image/5.jpg";
 import throttle from "../../helpers/throttle";
 
-const WorkContent = ({ refEl }) => {
+const WorkContent = () => {
   const [actImg, setActImg] = useState("img1");
 
   const [counter, setCounter] = useState(1);
@@ -281,18 +281,18 @@ const WorkContent = ({ refEl }) => {
     };
   }, []);
 
-  useEffect(() => {
-    console.log(direction);
-    if (direction === "down") {
-      setCounter(counter - 1);
-    } else {
-      setCounter(counter + 1);
-    }
-  }, [direction]);
+  // useEffect(() => {
+  //   console.log(direction);
+  //   if (direction === "down") {
+  //     setCounter(counter - 1);
+  //   } else {
+  //     setCounter(counter + 1);
+  //   }
+  // }, [direction]);
 
-  useEffect(() => {
-    console.log(counter);
-  }, [counter]);
+  // useEffect(() => {
+  //   console.log(counter);
+  // }, [counter]);
 
   const images = [sushi1, sushi2, sushi3, sushi4];
 
@@ -323,7 +323,7 @@ const WorkContent = ({ refEl }) => {
 
   const render = () => {
     return (
-      <div ref={refEl} className="work__container">
+      <div className="work__container">
         <div
           className="work__content"
           style={{
