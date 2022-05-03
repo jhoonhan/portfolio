@@ -28,23 +28,41 @@
 
   z-index: 5;
   transition: $default--transition;
-  & .content {
-    position: relative;
+}
 
-    // width: calc(100% - 5vw - 10rem);
-    width: calc(95vw - 10rem);
-    height: 100vh;
+.work__content {
+  position: relative;
 
-    // left: calc(5vw + 10rem);
-    padding: 6vh 10vh 9vh 0vh;
-    // margin-top: 5vh;
+  width: calc(90vw - 10rem);
+  max-width: calc(90vw - 10rem);
+  // width: calc(100% - 5vw - 10rem);
+  // width: calc(95vw - 10rem);
+  height: 85vh;
 
-    display: grid;
-    grid-template-rows: 1fr 1px;
+  margin-top: 6vh;
+  margin-bottom: 9vh;
+  // left: calc(5vw + 10rem);
+  // padding: 6vh 10vh 9vh 0vh;
+  // margin-top: 5vh;
 
-    // border-left: $default--border;
-    box-sizing: border-box;
-  }
+  display: grid;
+  grid-template-rows: 1fr 1px;
+
+  // border-left: $default--border;
+  box-sizing: border-box;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+.work__gallery-container {
+  position: relative;
+  background-color: red;
+  width: 200vw;
+  display: block;
+}
+.work__gallery-slideshow {
+  width: 100%;
+  background-color: black;
 }
 
 .works__picture-container {

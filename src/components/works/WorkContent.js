@@ -256,14 +256,25 @@ const WorkContent = ({ refEl }) => {
   const render = () => {
     return (
       <div ref={refEl} className="work__container">
-        <div className="content" style={{ gridTemplateColumns: "3fr 2fr" }}>
+        <div
+          className="work__content"
+          style={{
+            gridTemplateColumns: "3fr 2fr",
+          }}
+        >
           {renderPictureContainer()}
           {renderInfo()}
         </div>
-        <div className="content">
+        <div className="work__content" style={{}}>
           {/* {renderPictureContainer()} */}
           {/* {renderInfo()} */}
-          <h1>aaang</h1>
+          <div className="work__gallery-container">
+            <ul className="work__gallery-slideshow">
+              <li>aaang</li>
+              <li>aaang</li>
+              <li>aaang</li>
+            </ul>
+          </div>
         </div>
       </div>
     );
