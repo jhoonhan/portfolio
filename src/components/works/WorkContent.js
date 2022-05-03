@@ -1,9 +1,8 @@
 import React, { useRef, useEffect, useState } from "react";
-import sushi1 from "../../assests/image/1.jpg";
-import sushi2 from "../../assests/image/2.jpg";
-import sushi3 from "../../assests/image/3.jpg";
-import sushi4 from "../../assests/image/4.jpg";
-import sushi5 from "../../assests/image/5.jpg";
+import sushi1 from "../../assests/image/3.jpg";
+import sushi2 from "../../assests/image/4.jpg";
+import sushi3 from "../../assests/image/5.jpg";
+import sushi4 from "../../assests/image/3.jpg";
 import throttle from "../../helpers/throttle";
 
 const WorkContent = ({ refEl }) => {
