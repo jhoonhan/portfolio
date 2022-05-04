@@ -6,7 +6,7 @@ import WorkDetail from "./WorkDetail";
 const WorkContent = ({ refEl, pageControl }) => {
   const renderInfo = () => {
     return (
-      <div ref={refEl} className="works__info-container">
+      <div className="works__info-container">
         <div className="works__title">
           <span>Sushi</span>
           <span>Republic</span>
@@ -61,7 +61,7 @@ const WorkContent = ({ refEl, pageControl }) => {
 
   const render = () => {
     return (
-      <div className="work__container">
+      <div ref={refEl} className="work__container">
         <div
           className="work__content"
           style={{
