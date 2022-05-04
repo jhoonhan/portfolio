@@ -1,11 +1,13 @@
 import React, { useRef, useEffect, useState } from "react";
 import landing from "../../assests/image/projects/sushiRepublic/landing.jpg";
+import img1 from "../../assests/image/projects/sushiRepublic/img1.jpg";
+import img2 from "../../assests/image/projects/sushiRepublic/img2.jpg";
 import desktop1 from "../../assests/image/projects/sushiRepublic/desktop1.jpg";
 import desktop2 from "../../assests/image/projects/sushiRepublic/desktop2.jpg";
 import mobiles from "../../assests/image/projects/sushiRepublic/mobiles.jpg";
 import throttle from "../../helpers/throttle";
 
-const WorkDetail = () => {
+const WorkDetail = ({ slideImgStyle }) => {
   const [slide2, setSlide2] = useState(0);
   const refCont = useRef(null);
 
@@ -32,24 +34,18 @@ const WorkDetail = () => {
 
   const render = () => {
     return (
-      <div className="work__detail-container">
-        <div
-          ref={refCont}
-          className="detail__img-container"
-          style={{ transform: `translateX(-${slide2}vw)` }}
-          // style={{ transform: "translateX(-10vw)" }}
-        >
-          <div className="gallery-landing">
-            <div
-              className="gallery-landing__img"
-              style={{ backgroundImage: `url(${landing})` }}
-            ></div>
-            <div className="gallery-landing__overlay"></div>
-            <h1>Sushi Republic</h1>
+      <div ref={refCont} className="work__content padded" style={slideImgStyle}>
+        <div className="work__detail-container">
+          <div
+            className="detail__img-container"
+            style={{ transform: `translateX(-${slide2}vw)` }}
+          >
+            <img src={img1} alt="img0" />
+            <img src={img2} alt="img0" />
+            <img src={desktop1} alt="img1" />
+            <img src={desktop2} alt="img2" />
+            <img src={mobiles} alt="img3" />
           </div>
-          <img src={desktop1} alt="img1" />
-          <img src={desktop2} alt="img2" />
-          <img src={mobiles} alt="img3" />
         </div>
       </div>
     );
