@@ -4,12 +4,15 @@ import sushi2 from "../../assests/image/4.jpg";
 import sushi3 from "../../assests/image/5.jpg";
 import sushi4 from "../../assests/image/3.jpg";
 import throttle from "../../helpers/throttle";
+import useSlideStyle from "./useSlideStyle";
 
 const WorkContent = ({ refEl }) => {
   const [actImg, setActImg] = useState("img1");
-  const [actSlide, setActSlide] = useState(0);
+  const { actSlide, slidePage, slideImgStyle } = useSlideStyle();
 
-  const [slidePage, setSlidePage] = useState(0);
+  // const [actSlide, setActSlide] = useState(0);
+
+  // const [slidePage, setSlidePage] = useState(0);
 
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [actImgPosition, setActImgPosition] = useState({
@@ -38,7 +41,7 @@ const WorkContent = ({ refEl }) => {
       zIndex: 3,
     },
   });
-  const [slideImgStyle, setSlideImgStyle] = useState({});
+  // const [slideImgStyle, setSlideImgStyle] = useState({});
 
   const refImage1 = useRef(null);
   const refImage2 = useRef(null);
@@ -257,109 +260,6 @@ const WorkContent = ({ refEl }) => {
       </div>
     );
   };
-
-  useEffect(() => {
-    let timeoutId = null;
-    const fn = (e) => {
-      clearTimeout(timeoutId);
-      if (e.deltaY >= 0) {
-        if (slidePage >= 5) return;
-        setSlidePage(slidePage + 1);
-      } else {
-        if (slidePage <= -5) return;
-        setSlidePage(slidePage - 1);
-      }
-      timeoutId = setTimeout(() => {
-        setSlidePage(0);
-      }, 500);
-    };
-    const throttled = throttle(fn, 1);
-    document.addEventListener("mousewheel", throttled, false);
-
-    return () => {
-      document.removeEventListener("mousewheel", throttled);
-    };
-  }, [slidePage]);
-
-  useEffect(() => {
-    if (actSlide === 0) {
-      setSlideImgStyle({
-        slide0: {
-          transform: `translateX(${-100 - slidePage}vw)`,
-        },
-        slide1: {
-          transform: "translateX(0vw)",
-        },
-        slide2: {
-          transform: "translateX(0vw)",
-        },
-        slide3: {
-          transform: "translateX(0vw)",
-        },
-      });
-    }
-    if (actSlide === 1) {
-      setSlideImgStyle({
-        slide0: {
-          transform: "translateX(-200vw)",
-        },
-        slide1: {
-          transform: `translateX(${-100 - slidePage}vw)`,
-        },
-        slide2: {
-          transform: "translateX(0vw)",
-        },
-        slide3: {
-          transform: "translateX(0vw)",
-        },
-      });
-    }
-    if (actSlide === 2) {
-      setSlideImgStyle({
-        slide0: {
-          transform: "translateX(-200vw)",
-        },
-        slide1: {
-          transform: "translateX(-200vw)",
-        },
-        slide2: {
-          transform: `translateX(${-100 - slidePage}vw)`,
-        },
-        slide3: {
-          transform: "translateX(0vw)",
-        },
-      });
-    }
-    if (actSlide === 3) {
-      setSlideImgStyle({
-        slide0: {
-          transform: "translateX(-200vw)",
-        },
-        slide1: {
-          transform: "translateX(-200vw)",
-        },
-        slide2: {
-          transform: "translateX(-200vw)",
-        },
-        slide3: {
-          transform: `translateX(${-100 - slidePage}vw)`,
-        },
-      });
-    }
-  }, [slidePage]);
-
-  useEffect(() => {
-    if (slidePage === -5) {
-      if (actSlide === 1) setActSlide(0);
-      if (actSlide === 2) setActSlide(1);
-      if (actSlide === 3) setActSlide(2);
-    }
-    if (slidePage === 5) {
-      if (actSlide === 0) setActSlide(1);
-      if (actSlide === 1) setActSlide(2);
-      if (actSlide === 2) setActSlide(3);
-    }
-  }, [slidePage]);
 
   const renderDetail = () => {
     return (
