@@ -15,6 +15,10 @@ const useSubPageStyle = (pageControl) => {
       // refs.refWorks.current.style.transform = "translateX(-100vw)";
       setActiveSubPageStyle({ transform: "translateX(-100vw)" });
     }
+    if (pageControl.workSubPage === "more") {
+      // refs.refWorks.current.style.transform = "translateX(-100vw)";
+      setActiveSubPageStyle({ transform: "translateX(-200vw)" });
+    }
   }, [pageControl.workSubPage]);
 
   return { activeSubPageStyle };

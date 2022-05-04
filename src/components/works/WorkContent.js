@@ -69,13 +69,17 @@ const WorkContent = ({ refEl, pageControl }) => {
           className="work__content"
           style={{
             gridTemplateColumns: "3fr 2fr",
+            ...slideImgStyle,
           }}
         >
           <WorkPictureContainer />
           {renderInfo()}
         </div>
-        <div className="work__content" style={{}}>
-          <WorkDetail pageControl={pageControl} />
+        <div className="work__content" style={slideImgStyle}>
+          <WorkDetail />
+        </div>
+        <div className="work__content" style={slideImgStyle}>
+          <p>aang</p>
         </div>
       </div>
     );

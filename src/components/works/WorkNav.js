@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 const WorkNav = ({ pageControl, workRefs }) => {
-  const { curPage, workPage, workSubPage, setWorkSubPage, setWorkSliderPage } =
-    pageControl;
+  const { curPage, workPage, workSubPage, setWorkSubPage } = pageControl;
   useEffect(() => {
     if (workPage === "el1") {
       workRefs.refEl1.current.scrollIntoView({ behavior: "smooth" });

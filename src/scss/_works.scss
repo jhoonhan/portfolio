@@ -9,7 +9,6 @@
   height: 100vh;
 
   display: grid;
-  // grid-template-rows: 1fr 1fr;f
   grid-auto-rows: 1fr;
   // flex-direction: column;
   // background-color: red;
@@ -55,49 +54,23 @@
   // overflow-x: scroll;
   // overflow-y: hidden;
   overflow: hidden;
+
+  transition: transform 0.3s ease-in-out 0s;
 }
 
 .work__detail-container {
   position: relative;
-  width: 100%;
+  width: calc(90vw - 10rem);
   display: flex;
-  align-items: flex-end;
+  align-items: center;
+  justify-content: center;
+
+  // background-color: red;
+  border: $default--border;
 
   left: calc(5vw + 10rem);
 
-  & .work__detail__slide {
-    position: absolute;
-    left: 100vw;
-    width: 100%;
-    max-width: calc(90vw - 10rem);
-    height: 100%;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    // margin-top: 6vh;
-    // margin-left: -50px;
-
-    box-sizing: border-box;
-    // box-shadow: -10px 0px 10px rgba(0, 0, 0, 0.5);
-    // border: $default--border;
-    box-sizing: border-box;
-
-    overflow: hidden;
-
-    transition: $default--transition;
-
-    &:first-child {
-      margin-left: 0px;
-    }
-
-    & img {
-      // transform: rotateY(5deg);
-
-      height: 110%;
-    }
-  }
+  box-sizing: border-box;
 }
 .testbutton {
   position: absolute;

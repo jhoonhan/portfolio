@@ -15,8 +15,6 @@ const Works = ({ refs, pageControl }) => {
   const workRefs = { refEl1, refEl2, refEl3, refEl4, refEl5 };
 
   const render = () => {
-    console.log(`Work`);
-
     return (
       <>
         <section

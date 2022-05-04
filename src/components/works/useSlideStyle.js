@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import throttle from "../../helpers/throttle";
 
 const useSlideStyle = (pageControl, refEl) => {
-  const { workSubPage, setWorkSubPage, setWorkSliderPage } = pageControl;
-  const [helperSliderPage, setHelperSliderPage] = useState(0);
+  const { workSubPage, setWorkSubPage } = pageControl;
   const [slide, setSlide] = useState(0);
   const [slideImgStyle, setSlideImgStyle] = useState({});
 
@@ -22,100 +21,34 @@ const useSlideStyle = (pageControl, refEl) => {
         setSlide(0);
       }, 500);
     };
-    const workSubPage2 = refEl.current;
+    const refWorkContainer = refEl.current;
     const throttled = throttle(fn, 1);
-    workSubPage2.addEventListener("mousewheel", throttled, false);
+    refWorkContainer.addEventListener("mousewheel", throttled, false);
 
     return () => {
-      workSubPage2.removeEventListener("mousewheel", throttled);
+      refWorkContainer.removeEventListener("mousewheel", throttled);
     };
   }, [slide]);
 
   useEffect(() => {
-    setWorkSliderPage(helperSliderPage);
-  }, [helperSliderPage]);
-
-  useEffect(() => {
-    if (helperSliderPage === 0) {
-      setSlideImgStyle({
-        slide0: {
-          transform: `translateX(${-100 - slide}vw)`,
-        },
-        slide1: {
-          transform: "translateX(0vw)",
-        },
-        slide2: {
-          transform: "translateX(0vw)",
-        },
-        slide3: {
-          transform: "translateX(0vw)",
-        },
-      });
-    }
-    if (helperSliderPage === 1) {
-      setSlideImgStyle({
-        slide0: {
-          transform: "translateX(-200vw)",
-        },
-        slide1: {
-          transform: `translateX(${-100 - slide}vw)`,
-        },
-        slide2: {
-          transform: "translateX(0vw)",
-        },
-        slide3: {
-          transform: "translateX(0vw)",
-        },
-      });
-    }
-    if (helperSliderPage === 2) {
-      setSlideImgStyle({
-        slide0: {
-          transform: "translateX(-200vw)",
-        },
-        slide1: {
-          transform: "translateX(-200vw)",
-        },
-        slide2: {
-          transform: `translateX(${-100 - slide}vw)`,
-        },
-        slide3: {
-          transform: "translateX(0vw)",
-        },
-      });
-    }
-    if (helperSliderPage === 3) {
-      setSlideImgStyle({
-        slide0: {
-          transform: "translateX(-200vw)",
-        },
-        slide1: {
-          transform: "translateX(-200vw)",
-        },
-        slide2: {
-          transform: "translateX(-200vw)",
-        },
-        slide3: {
-          transform: `translateX(${-100 - slide}vw)`,
-        },
-      });
-    }
+    setSlideImgStyle({
+      transform: `translateX(${0 - slide}vw)`,
+    });
   }, [slide]);
 
   useEffect(() => {
+    console.log(slide);
     if (slide === -5) {
-      if (helperSliderPage === 1) setHelperSliderPage(0);
-      if (helperSliderPage === 2) setHelperSliderPage(1);
-      if (helperSliderPage === 3) setHelperSliderPage(2);
+      if (workSubPage === "detail") setWorkSubPage("info");
+      if (workSubPage === "more") setWorkSubPage("detail");
     }
     if (slide === 5) {
-      if (helperSliderPage === 0) setHelperSliderPage(1);
-      if (helperSliderPage === 1) setHelperSliderPage(2);
-      if (helperSliderPage === 2) setHelperSliderPage(3);
+      if (workSubPage === "info") setWorkSubPage("detail");
+      if (workSubPage === "detail") setWorkSubPage("more");
     }
   }, [slide]);
 
-  return { helperSliderPage, slide, slideImgStyle };
+  return { workSubPage, slide, slideImgStyle };
 };
 
 export default useSlideStyle;

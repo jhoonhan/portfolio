@@ -1,13 +1,10 @@
 import React, { useRef } from "react";
-import useSlideStyle from "./useSlideStyle";
 
-const WorkDetail = ({ pageControl }) => {
+const WorkDetail = () => {
   const render = () => {
     return (
       <div className="work__detail-container">
-        <div className="work__detail__slide slide-0">
-          <p>detail 1</p>
-        </div>
+        <p>aaang</p>
       </div>
     );
   };
