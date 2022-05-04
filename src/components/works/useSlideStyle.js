@@ -37,7 +37,6 @@ const useSlideStyle = (pageControl, refEl) => {
   }, [slide]);
 
   useEffect(() => {
-    console.log(slide);
     if (slide === -5) {
       if (workSubPage === "detail") setWorkSubPage("info");
       if (workSubPage === "more") setWorkSubPage("detail");
