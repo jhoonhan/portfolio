@@ -5,148 +5,142 @@ import sushi3 from "../../assests/image/5.jpg";
 import sushi4 from "../../assests/image/3.jpg";
 import throttle from "../../helpers/throttle";
 import useSlideStyle from "./useSlideStyle";
+import WorkPictureContainer from "./WorkPictureContainer";
 
 const WorkContent = ({ refEl }) => {
-  const [actImg, setActImg] = useState("img1");
-  const { actSlide, slidePage, slideImgStyle } = useSlideStyle();
+  // const [actImg, setActImg] = useState("img1");
+  const { slideImgStyle } = useSlideStyle();
+  // const { actImgPosition2 } = usePicturePosition();
 
-  // const [actSlide, setActSlide] = useState(0);
+  // const [position, setPosition] = useState({ x: 0, y: 0 });
+  // const [actImgPosition, setActImgPosition] = useState({
+  //   img1: { x: 0, y: 0 },
+  //   img2: { x: 0, y: 0 },
+  //   img3: { x: 0, y: 0 },
+  // });
 
-  // const [slidePage, setSlidePage] = useState(0);
+  // const [conditionalStyle, setConditionalStyle] = useState({
+  //   img3: {
+  //     left: "14vw",
+  //     height: "75vh",
+  //     opacity: 0.25,
+  //     zIndex: 1,
+  //   },
+  //   img2: {
+  //     left: "7vw",
+  //     height: "80vh",
+  //     opacity: 0.5,
+  //     zIndex: 2,
+  //   },
+  //   img1: {
+  //     left: "0vw",
+  //     height: "85vh",
+  //     opacity: 1,
+  //     zIndex: 3,
+  //   },
+  // });
 
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [actImgPosition, setActImgPosition] = useState({
-    img1: { x: 0, y: 0 },
-    img2: { x: 0, y: 0 },
-    img3: { x: 0, y: 0 },
-  });
+  // const onMouseMoveImg = useRef(throttle((e) => calculateAmount(e), 60));
 
-  const [conditionalStyle, setConditionalStyle] = useState({
-    img3: {
-      left: "14vw",
-      height: "75vh",
-      opacity: 0.25,
-      zIndex: 1,
-    },
-    img2: {
-      left: "7vw",
-      height: "80vh",
-      opacity: 0.5,
-      zIndex: 2,
-    },
-    img1: {
-      left: "0vw",
-      height: "85vh",
-      opacity: 1,
-      zIndex: 3,
-    },
-  });
-  // const [slideImgStyle, setSlideImgStyle] = useState({});
+  // const calculateAmount = (e) => {
+  //   const cursorX = e.clientX - e.target.parentNode.getBoundingClientRect().x;
+  //   const cursorY = e.clientY - e.target.parentNode.getBoundingClientRect().y;
+  //   const width = e.target.parentNode.getBoundingClientRect().width;
+  //   const height = e.target.parentNode.getBoundingClientRect().height;
 
-  const refImage1 = useRef(null);
-  const refImage2 = useRef(null);
-  const refImage3 = useRef(null);
-  const onMouseMoveImg = useRef(throttle((e) => calculateAmount(e), 60));
+  //   const amountX = -1 * ((width / 2 - cursorX) / (width / 20));
+  //   const amountY = -1 * ((height / 2 - cursorY) / (height / 20));
+  //   setPosition({ x: amountX, y: amountY });
+  // };
 
-  const calculateAmount = (e) => {
-    const cursorX = e.clientX - e.target.parentNode.getBoundingClientRect().x;
-    const cursorY = e.clientY - e.target.parentNode.getBoundingClientRect().y;
-    const width = e.target.parentNode.getBoundingClientRect().width;
-    const height = e.target.parentNode.getBoundingClientRect().height;
+  // useEffect(() => {
+  //   if (actImg === "img1")
+  //     setActImgPosition({
+  //       ...actImgPosition,
+  //       img1: { x: position.x, y: position.y },
+  //     });
+  //   if (actImg === "img2")
+  //     setActImgPosition({
+  //       ...actImgPosition,
+  //       img2: { x: position.x, y: position.y },
+  //     });
+  //   if (actImg === "img3")
+  //     setActImgPosition({
+  //       ...actImgPosition,
+  //       img3: { x: position.x, y: position.y },
+  //     });
+  // }, [position]);
 
-    const amountX = -1 * ((width / 2 - cursorX) / (width / 20));
-    const amountY = -1 * ((height / 2 - cursorY) / (height / 20));
-    setPosition({ x: amountX, y: amountY });
-  };
+  // useEffect(() => {
+  //   if (actImg === "img1") {
+  //     setConditionalStyle({
+  //       img3: {
+  //         left: "14vw",
+  //         height: "75vh",
+  //         opacity: 0.25,
+  //         zIndex: 1,
+  //       },
+  //       img2: {
+  //         left: "7vw",
+  //         height: "80vh",
+  //         opacity: 0.5,
+  //         zIndex: 2,
+  //       },
+  //       img1: {
+  //         // left: "0vw",
+  //         height: "85vh",
+  //         opacity: 1,
+  //         zIndex: 3,
+  //       },
+  //     });
+  //   }
 
-  useEffect(() => {
-    if (actImg === "img1")
-      setActImgPosition({
-        ...actImgPosition,
-        img1: { x: position.x, y: position.y },
-      });
-    if (actImg === "img2")
-      setActImgPosition({
-        ...actImgPosition,
-        img2: { x: position.x, y: position.y },
-      });
-    if (actImg === "img3")
-      setActImgPosition({
-        ...actImgPosition,
-        img3: { x: position.x, y: position.y },
-      });
-  }, [position]);
+  //   if (actImg === "img2") {
+  //     setConditionalStyle({
+  //       img3: {
+  //         left: "14vw",
+  //         height: "80vh",
+  //         opacity: 0.25,
+  //         zIndex: 1,
+  //       },
+  //       img2: {
+  //         left: "7vw",
+  //         height: "85vh",
+  //         opacity: 1,
+  //         zIndex: 3,
+  //       },
+  //       img1: {
+  //         left: "0vw",
+  //         height: "75vh",
+  //         opacity: 0.5,
+  //         zIndex: 2,
+  //       },
+  //     });
+  //   }
 
-  useEffect(() => {
-    if (actImg === "img1") {
-      setConditionalStyle({
-        img3: {
-          left: "14vw",
-          height: "75vh",
-          opacity: 0.25,
-          zIndex: 1,
-        },
-        img2: {
-          left: "7vw",
-          height: "80vh",
-          opacity: 0.5,
-          zIndex: 2,
-        },
-        img1: {
-          // left: "0vw",
-          height: "85vh",
-          opacity: 1,
-          zIndex: 3,
-        },
-      });
-    }
-
-    if (actImg === "img2") {
-      setConditionalStyle({
-        img3: {
-          left: "14vw",
-          height: "80vh",
-          opacity: 0.25,
-          zIndex: 1,
-        },
-        img2: {
-          left: "7vw",
-          height: "85vh",
-          opacity: 1,
-          zIndex: 3,
-        },
-        img1: {
-          left: "0vw",
-          height: "75vh",
-          opacity: 0.5,
-          zIndex: 2,
-        },
-      });
-    }
-
-    if (actImg === "img3") {
-      setConditionalStyle({
-        img3: {
-          left: "14vw",
-          height: "85vh",
-          opacity: 1,
-          zIndex: 3,
-        },
-        img2: {
-          left: "7vw",
-          height: "80vh",
-          opacity: 0.75,
-          zIndex: 2,
-        },
-        img1: {
-          left: "0vw",
-          height: "75vh",
-          opacity: 0.5,
-          zIndex: 1,
-        },
-      });
-    }
-  }, [actImg]);
+  //   if (actImg === "img3") {
+  //     setConditionalStyle({
+  //       img3: {
+  //         left: "14vw",
+  //         height: "85vh",
+  //         opacity: 1,
+  //         zIndex: 3,
+  //       },
+  //       img2: {
+  //         left: "7vw",
+  //         height: "80vh",
+  //         opacity: 0.75,
+  //         zIndex: 2,
+  //       },
+  //       img1: {
+  //         left: "0vw",
+  //         height: "75vh",
+  //         opacity: 0.5,
+  //         zIndex: 1,
+  //       },
+  //     });
+  //   }
+  // }, [actImg]);
 
   const renderInfo = () => {
     return (
@@ -203,64 +197,6 @@ const WorkContent = ({ refEl }) => {
     );
   };
 
-  const renderPictureContainer = () => {
-    return (
-      <div
-        onMouseLeave={() => setActImg("img1")}
-        className="works__picture-container"
-      >
-        <div
-          ref={refImage3}
-          onMouseOver={() => setActImg("img3")}
-          onMouseMove={(e) => onMouseMoveImg.current(e)}
-          className={`works_picture ${actImg === "img3" ? "active" : ""}`}
-          style={conditionalStyle.img3}
-        >
-          <img
-            src={sushi2}
-            alt="img3"
-            style={{
-              transform: `translateX(${actImgPosition.img3.x}%) translateY(${actImgPosition.img3.y}%)`,
-            }}
-          />
-        </div>
-
-        <div
-          ref={refImage2}
-          onMouseOver={() => setActImg("img2")}
-          onMouseMove={(e) => onMouseMoveImg.current(e)}
-          className={`works_picture ${actImg === "img2" ? "active" : ""}`}
-          style={conditionalStyle.img2}
-        >
-          <img
-            src={sushi1}
-            alt="img2"
-            style={{
-              transform: `translateX(${actImgPosition.img2.x}%) translateY(${actImgPosition.img2.y}%)`,
-            }}
-          />
-        </div>
-
-        <div
-          ref={refImage1}
-          onMouseOver={() => setActImg("img1")}
-          // onMouseMove={onMouseMoveImg}
-          onMouseMove={(e) => onMouseMoveImg.current(e)}
-          className={`works_picture ${actImg === "img1" ? "active" : ""}`}
-          style={conditionalStyle.img1}
-        >
-          <img
-            src={sushi3}
-            alt="img1"
-            style={{
-              transform: `translateX(${actImgPosition.img1.x}%) translateY(${actImgPosition.img1.y}%)`,
-            }}
-          />
-        </div>
-      </div>
-    );
-  };
-
   const renderDetail = () => {
     return (
       <div className="work__detail-container">
@@ -301,7 +237,7 @@ const WorkContent = ({ refEl }) => {
             gridTemplateColumns: "3fr 2fr",
           }}
         >
-          {renderPictureContainer()}
+          <WorkPictureContainer />
           {renderInfo()}
         </div>
         <div className="work__content" style={{}}>
