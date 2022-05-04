@@ -1,15 +1,10 @@
 import React, { useRef, useEffect, useState } from "react";
-import sushi1 from "../../assests/image/3.jpg";
-import sushi2 from "../../assests/image/4.jpg";
-import sushi3 from "../../assests/image/5.jpg";
-import sushi4 from "../../assests/image/3.jpg";
-import throttle from "../../helpers/throttle";
+
 import useSlideStyle from "./useSlideStyle";
 import WorkPictureContainer from "./WorkPictureContainer";
+import WorkDetail from "./WorkDetail";
 
 const WorkContent = ({ refEl }) => {
-  const { slideImgStyle } = useSlideStyle();
-
   const renderInfo = () => {
     return (
       <div className="works__info-container">
@@ -65,37 +60,6 @@ const WorkContent = ({ refEl }) => {
     );
   };
 
-  const renderDetail = () => {
-    return (
-      <div className="work__detail-container">
-        <div
-          className="work__detail__slide slide-0"
-          style={slideImgStyle.slide0}
-        >
-          <p>detail 1</p>
-        </div>
-        <div
-          className="work__detail__slide slide-1"
-          style={slideImgStyle.slide1}
-        >
-          <p>detail 2</p>
-        </div>
-        <div
-          className="work__detail__slide slide-2"
-          style={slideImgStyle.slide2}
-        >
-          <p>detail 3</p>
-        </div>
-        <div
-          className="work__detail__slide slide-3"
-          style={slideImgStyle.slide3}
-        >
-          <p>detail 4</p>
-        </div>
-      </div>
-    );
-  };
-
   const render = () => {
     return (
       <div ref={refEl} className="work__container">
@@ -109,7 +73,7 @@ const WorkContent = ({ refEl }) => {
           {renderInfo()}
         </div>
         <div className="work__content" style={{}}>
-          {renderDetail()}
+          <WorkDetail />
         </div>
       </div>
     );
