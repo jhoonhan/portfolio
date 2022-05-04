@@ -81,7 +81,7 @@
 
     box-sizing: border-box;
     // box-shadow: -10px 0px 10px rgba(0, 0, 0, 0.5);
-    border: $default--border;
+    // border: $default--border;
     box-sizing: border-box;
 
     overflow: hidden;
@@ -222,7 +222,7 @@
   }
 }
 
-.works__detail {
+.works__info__detail {
   width: 100%;
   display: grid;
   grid-template-columns: 1fr;

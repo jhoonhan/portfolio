@@ -1,6 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
 
-import useSlideStyle from "./useSlideStyle";
 import WorkPictureContainer from "./WorkPictureContainer";
 import WorkDetail from "./WorkDetail";
 
@@ -18,7 +17,7 @@ const WorkContent = ({ refEl }) => {
             provider.
           </h2>
         </div>
-        <div className="works__detail">
+        <div className="works__info__detail">
           <div className="column--grid--2" style={{ columnGap: "3rem" }}>
             <div className="row--grid--2 detail-item">
               <div className="detail-item__title">
