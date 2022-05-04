@@ -23,11 +23,11 @@ const Works = ({ refs, pageControl }) => {
           className="works__container container"
           style={activeSubPageStyle}
         >
-          <WorkContent refEl={refEl1} />
-          <WorkContent refEl={refEl2} />
-          <WorkContent refEl={refEl3} />
-          <WorkContent refEl={refEl4} />
-          <WorkContent refEl={refEl5} />
+          <WorkContent refEl={refEl1} pageControl={pageControl} />
+          <WorkContent refEl={refEl2} pageControl={pageControl} />
+          <WorkContent refEl={refEl3} pageControl={pageControl} />
+          <WorkContent refEl={refEl4} pageControl={pageControl} />
+          <WorkContent refEl={refEl5} pageControl={pageControl} />
         </section>
         <WorkNav
           pageControl={pageControl}

@@ -9,7 +9,8 @@ import "./scss/App.scss";
 
 const App = () => {
   const [curPage, setCurPage] = useState(null);
-  const [subWorkPage, setSubWorkPage] = useState("overview");
+  const [workPage, setWorkPage] = useState("overview");
+  const [workSlidePage, setWorkSlidePage] = useState(0);
   const [activeSubPageStylePosition, setActiveSubPageStylePosition] = useState({
     transform: "translateY(0vh)",
   });
@@ -31,10 +32,12 @@ const App = () => {
   const pageControl = {
     curPage,
     setCurPage,
-    subWorkPage,
-    setSubWorkPage,
+    workPage,
+    setWorkPage,
     activeSubPageStylePosition,
     setActiveSubPageStylePosition,
+    workSlidePage,
+    setWorkSlidePage,
   };
 
   const render = () => {

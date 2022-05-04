@@ -3,7 +3,7 @@ import React, { useRef, useEffect, useState } from "react";
 import WorkPictureContainer from "./WorkPictureContainer";
 import WorkDetail from "./WorkDetail";
 
-const WorkContent = ({ refEl }) => {
+const WorkContent = ({ refEl, pageControl }) => {
   const renderInfo = () => {
     return (
       <div className="works__info-container">
@@ -72,7 +72,7 @@ const WorkContent = ({ refEl }) => {
           {renderInfo()}
         </div>
         <div className="work__content" style={{}}>
-          <WorkDetail />
+          <WorkDetail pageControl={pageControl} />
         </div>
       </div>
     );
