@@ -4,36 +4,35 @@
   // left: calc(5vw + 10rem);
   // left: 0;
 
-  // width: calc((100% - 5vw - 10rem) * 1);
-  width: 200vw;
+  // width: 200vw;
+  width: 300vw;
   height: 100vh;
 
   display: grid;
   grid-auto-rows: 1fr;
   // flex-direction: column;
   // background-color: red;
-  overflow: hidden;
+  // overflow: hidden;
+  // overflow-y: hidden;
   box-sizing: border-box;
 
   transition: $default--transition;
 }
 .work__container {
-  width: 100%;
-
-  // padding-left: calc(5vw + 10rem);
+  width: auto;
 
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
 
   z-index: 5;
   transition: $default--transition;
 }
 
 .work__content {
-  position: relative;
+  // position: relative;
 
   // width: calc(90vw - 10rem);
-  width: 100%;
+  width: 100vw;
   // max-width: calc(90vw - 10rem);
   // width: calc(100% - 5vw - 10rem);
   // width: calc(95vw - 10rem);

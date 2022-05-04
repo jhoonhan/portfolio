@@ -79,7 +79,7 @@ const WorkContent = ({ refEl, pageControl }) => {
           <WorkDetail />
         </div>
         <div className="work__content" style={slideImgStyle}>
-          <p>aang</p>
+          <WorkDetail />
         </div>
       </div>
     );
