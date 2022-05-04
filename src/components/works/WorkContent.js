@@ -1,11 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
-import sushi1 from "../../assests/image/1.jpg";
-import sushi2 from "../../assests/image/2.jpg";
-import sushi3 from "../../assests/image/3.jpg";
-import sushi4 from "../../assests/image/4.jpg";
-import sushi5 from "../../assests/image/5.jpg";
-import throttle from "../../helpers/throttle";
 
+<<<<<<< HEAD
 const WorkContent = () => {
   const [actImg, setActImg] = useState("img1");
 
@@ -150,7 +145,12 @@ const WorkContent = () => {
       });
     }
   }, [actImg]);
+=======
+import WorkPictureContainer from "./WorkPictureContainer";
+import WorkDetail from "./WorkDetail";
+>>>>>>> school
 
+const WorkContent = ({ refEl, pageControl }) => {
   const renderInfo = () => {
     return (
       <div className="works__info-container">
@@ -164,7 +164,7 @@ const WorkContent = () => {
             provider.
           </h2>
         </div>
-        <div className="works__detail">
+        <div className="works__info__detail">
           <div className="column--grid--2" style={{ columnGap: "3rem" }}>
             <div className="row--grid--2 detail-item">
               <div className="detail-item__title">
@@ -206,6 +206,7 @@ const WorkContent = () => {
     );
   };
 
+<<<<<<< HEAD
   const renderPictureContainer = () => {
     return (
       <div
@@ -321,6 +322,8 @@ const WorkContent = () => {
     );
   };
 
+=======
+>>>>>>> school
   const render = () => {
     return (
       <div className="work__container">
@@ -330,51 +333,11 @@ const WorkContent = () => {
             gridTemplateColumns: "3fr 2fr",
           }}
         >
-          {renderPictureContainer()}
+          <WorkPictureContainer />
           {renderInfo()}
         </div>
         <div className="work__content" style={{}}>
-          {renderSlideShow()}
-          {/* <div className="work__gallery-container">
-            <div className="testbutton" onClick={testhandle}>
-              aaang
-            </div>
-            <ul className="work__gallery-slideshow">
-              <li
-                className="gallery__image"
-                onMouseOver={(e) => onMouseGalleryImg(e)}
-                style={{
-                  transform: "translateX(-100vw)",
-                }}
-              >
-                <img src={sushi1} alt="img3" />
-              </li>
-              <li
-                className="gallery__image"
-                style={{
-                  transform: "translateX(-90vw)",
-                }}
-              >
-                <img src={sushi2} alt="img3" />
-              </li>
-              <li
-                className="gallery__image"
-                style={{
-                  transform: "translateX(-80vw)",
-                }}
-              >
-                <img src={sushi3} alt="img3" />
-              </li>
-              <li
-                className="gallery__image"
-                style={{
-                  transform: "translateX(-70vw)",
-                }}
-              >
-                <img src={sushi4} alt="img3" />
-              </li>
-            </ul>
-          </div> */}
+          <WorkDetail pageControl={pageControl} />
         </div>
       </div>
     );

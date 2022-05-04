@@ -9,8 +9,10 @@ import "./scss/App.scss";
 
 const App = () => {
   const [curPage, setCurPage] = useState(null);
-  const [subWorkPage, setSubWorkPage] = useState("overview");
-  const [activeSubPagePosition, setActiveSubPagePosition] = useState({
+  const [workPage, setWorkPage] = useState("overview");
+  const [workSubPage, setWorkSubPage] = useState("info");
+  const [workSliderPage, setWorkSliderPage] = useState(0);
+  const [activeSubPageStylePosition, setActiveSubPageStylePosition] = useState({
     transform: "translateY(0vh)",
   });
 
@@ -31,10 +33,14 @@ const App = () => {
   const pageControl = {
     curPage,
     setCurPage,
-    subWorkPage,
-    setSubWorkPage,
-    activeSubPagePosition,
-    setActiveSubPagePosition,
+    workPage,
+    setWorkPage,
+    workSubPage,
+    setWorkSubPage,
+    activeSubPageStylePosition,
+    setActiveSubPageStylePosition,
+    workSliderPage,
+    setWorkSliderPage,
   };
 
   const render = () => {
@@ -46,7 +52,7 @@ const App = () => {
             style={curPage === "home" ? { opacity: 0 } : {}}
             className="overlay"
           ></div>
-          <LandingArt />
+          <LandingArt curPage={curPage} />
 
           <Landing curPage={curPage} refHome={refHome} />
           <Works refs={refs} pageControl={pageControl} />

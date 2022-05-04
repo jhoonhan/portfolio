@@ -76,7 +76,7 @@ const Header = ({ refs, pageControl }) => {
 
   const render = () => {
     const activeOpacity = { opacity: 1 };
-    const activeSubPage = { opacity: 1 };
+    const activeSubPageStyle = { opacity: 1 };
 
     return (
       <header className="header__container">
@@ -121,7 +121,7 @@ const Header = ({ refs, pageControl }) => {
                   refs.refWorks.current.scrollIntoView({ behavior: "smooth" });
                   pageControl.setCurPage("works");
                   setActiveHeight("10rem");
-                  pageControl.setSubWorkPage("overview");
+                  pageControl.setWorkPage("overview");
                 }}
                 href="#work"
                 style={pageControl.curPage === "works" ? activeOpacity : {}}
@@ -140,13 +140,13 @@ const Header = ({ refs, pageControl }) => {
                 <li
                   onClick={() => {
                     setActiveHeight("13.2rem");
-                    pageControl.setSubWorkPage("el1");
+                    pageControl.setWorkPage("el1");
                   }}
                 >
                   <a
                     href="#work/sushi-republic"
                     style={
-                      pageControl.subWorkPage === "el1" ? activeSubPage : {}
+                      pageControl.workPage === "el1" ? activeSubPageStyle : {}
                     }
                   >
                     Sushi Republic
@@ -155,13 +155,13 @@ const Header = ({ refs, pageControl }) => {
                 <li
                   onClick={() => {
                     setActiveHeight("16.4rem");
-                    pageControl.setSubWorkPage("el2");
+                    pageControl.setWorkPage("el2");
                   }}
                 >
                   <a
                     href="#work/danji"
                     style={
-                      pageControl.subWorkPage === "el2" ? activeSubPage : {}
+                      pageControl.workPage === "el2" ? activeSubPageStyle : {}
                     }
                   >
                     Danji
@@ -170,13 +170,13 @@ const Header = ({ refs, pageControl }) => {
                 <li
                   onClick={() => {
                     setActiveHeight("19.6rem");
-                    pageControl.setSubWorkPage("el3");
+                    pageControl.setWorkPage("el3");
                   }}
                 >
                   <a
                     href="#work/haans-cleaners"
                     style={
-                      pageControl.subWorkPage === "el3" ? activeSubPage : {}
+                      pageControl.workPage === "el3" ? activeSubPageStyle : {}
                     }
                   >
                     Haans Cleaners
@@ -185,13 +185,13 @@ const Header = ({ refs, pageControl }) => {
                 <li
                   onClick={() => {
                     setActiveHeight("22.8rem");
-                    pageControl.setSubWorkPage("el4");
+                    pageControl.setWorkPage("el4");
                   }}
                 >
                   <a
                     href="#work/this-is-bullshit"
                     style={
-                      pageControl.subWorkPage === "el4" ? activeSubPage : {}
+                      pageControl.workPage === "el4" ? activeSubPageStyle : {}
                     }
                   >
                     This Is Bullshit
@@ -200,13 +200,13 @@ const Header = ({ refs, pageControl }) => {
                 <li
                   onClick={() => {
                     setActiveHeight("26rem");
-                    pageControl.setSubWorkPage("el5");
+                    pageControl.setWorkPage("el5");
                   }}
                 >
                   <a
                     href="#work/salvation-army"
                     style={
-                      pageControl.subWorkPage === "el5" ? activeSubPage : {}
+                      pageControl.workPage === "el5" ? activeSubPageStyle : {}
                     }
                   >
                     Salvation Army
