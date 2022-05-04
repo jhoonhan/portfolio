@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useRef } from "react";
 import useSlideStyle from "./useSlideStyle";
 
 const WorkDetail = ({ pageControl }) => {
-  const { slideImgStyle } = useSlideStyle(pageControl);
+  const refWorkDetailContainer = useRef(null);
+  const { slideImgStyle } = useSlideStyle(pageControl, refWorkDetailContainer);
 
   const render = () => {
     return (
-      <div className="work__detail-container">
+      <div ref={refWorkDetailContainer} className="work__detail-container">
         <div
           className="work__detail__slide slide-0"
           style={slideImgStyle.slide0}

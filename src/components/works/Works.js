@@ -5,8 +5,7 @@ import useSubPageStyle from "./useSubPageStyle";
 import WorkNav from "./WorkNav";
 
 const Works = ({ refs, pageControl }) => {
-  const [workInfoSubPage, setWorkInfoSubPage] = useState("info");
-  const { activeSubPageStyle } = useSubPageStyle(workInfoSubPage, pageControl);
+  const { activeSubPageStyle } = useSubPageStyle(pageControl);
 
   const refEl1 = useRef(null);
   const refEl2 = useRef(null);
@@ -29,12 +28,7 @@ const Works = ({ refs, pageControl }) => {
           <WorkContent refEl={refEl4} pageControl={pageControl} />
           <WorkContent refEl={refEl5} pageControl={pageControl} />
         </section>
-        <WorkNav
-          pageControl={pageControl}
-          workRefs={workRefs}
-          workInfoSubPage={workInfoSubPage}
-          setWorkInfoSubPage={setWorkInfoSubPage}
-        />
+        <WorkNav pageControl={pageControl} workRefs={workRefs} />
       </>
     );
   };
