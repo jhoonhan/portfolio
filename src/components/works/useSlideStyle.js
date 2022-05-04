@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import throttle from "../../helpers/throttle";
 
-const useSlideStyle = (pageControl, refWorkDetailContainer) => {
-  const { setWorkSliderPage } = pageControl;
+const useSlideStyle = (pageControl, refEl) => {
+  const { workSubPage, setWorkSubPage, setWorkSliderPage } = pageControl;
   const [helperSliderPage, setHelperSliderPage] = useState(0);
   const [slide, setSlide] = useState(0);
   const [slideImgStyle, setSlideImgStyle] = useState({});
@@ -22,12 +22,12 @@ const useSlideStyle = (pageControl, refWorkDetailContainer) => {
         setSlide(0);
       }, 500);
     };
-    const workDetailContainer = refWorkDetailContainer.current;
+    const workSubPage2 = refEl.current;
     const throttled = throttle(fn, 1);
-    workDetailContainer.addEventListener("mousewheel", throttled, false);
+    workSubPage2.addEventListener("mousewheel", throttled, false);
 
     return () => {
-      workDetailContainer.removeEventListener("mousewheel", throttled);
+      workSubPage2.removeEventListener("mousewheel", throttled);
     };
   }, [slide]);
 

@@ -2,8 +2,11 @@ import React, { useRef, useEffect, useState } from "react";
 
 import WorkPictureContainer from "./WorkPictureContainer";
 import WorkDetail from "./WorkDetail";
+import useSlideStyle from "./useSlideStyle";
 
 const WorkContent = ({ refEl, pageControl }) => {
+  const { slideImgStyle } = useSlideStyle(pageControl, refEl);
+
   const renderInfo = () => {
     return (
       <div className="works__info-container">
