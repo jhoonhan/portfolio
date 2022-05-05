@@ -4,13 +4,13 @@ import img1 from "../../assests/image/projects/sushiRepublic/img1.jpg";
 import img2 from "../../assests/image/projects/sushiRepublic/img2.jpg";
 import desktops from "../../assests/image/projects/sushiRepublic/desktops.jpg";
 import throttle from "../../helpers/throttle";
+import Slide from "./Slide";
 
 const WorkDetail = ({ slideImgStyle }) => {
   const [slide2, setSlide2] = useState(0);
   const refCont = useRef(null);
 
   useEffect(() => {
-    console.log(slide2);
     const fn = (e) => {
       e.stopPropagation();
       if (e.deltaY >= 0) {
@@ -41,7 +41,8 @@ const WorkDetail = ({ slideImgStyle }) => {
             className="detail__img-container"
             style={{ transform: `translateX(-${slide2}vw)` }}
           >
-            <img src={img1} alt="img0" />
+            <Slide img={img1} />
+            {/* <img src={img1} alt="img0" /> */}
             <img src={img2} alt="img0" />
             <img src={desktops} alt="img1" />
           </div>
