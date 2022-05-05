@@ -315,7 +315,7 @@
 
   // display: flex;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: auto auto auto;
   align-items: center;
   // justify-content: center;
   gap: 7rem;
@@ -324,9 +324,16 @@
   & img {
     // position: absolute;
     height: 100vh;
+    transition: $default--transition;
     // border-radius: 2rem;
     // left: 0;
   }
+}
+.detail__slide {
+  min-width: 100vw;
+  display: flex;
+  justify-content: center;
+  // background-color: red;
 }
 .gallery-landing {
   width: 100vw;
