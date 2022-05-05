@@ -317,12 +317,13 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   align-items: center;
+  // justify-content: center;
   gap: 7rem;
 
   transition: transform 0.5s ease-in-out 0s;
   & img {
     // position: absolute;
-    max-height: 70vh;
+    height: 100vh;
     // border-radius: 2rem;
     // left: 0;
   }

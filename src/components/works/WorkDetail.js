@@ -2,9 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 import landing from "../../assests/image/projects/sushiRepublic/landing.jpg";
 import img1 from "../../assests/image/projects/sushiRepublic/img1.jpg";
 import img2 from "../../assests/image/projects/sushiRepublic/img2.jpg";
-import desktop1 from "../../assests/image/projects/sushiRepublic/desktop1.jpg";
-import desktop2 from "../../assests/image/projects/sushiRepublic/desktop2.jpg";
-import mobiles from "../../assests/image/projects/sushiRepublic/mobiles.jpg";
+import desktops from "../../assests/image/projects/sushiRepublic/desktops.jpg";
 import throttle from "../../helpers/throttle";
 
 const WorkDetail = ({ slideImgStyle }) => {
@@ -34,17 +32,18 @@ const WorkDetail = ({ slideImgStyle }) => {
 
   const render = () => {
     return (
-      <div ref={refCont} className="work__content padded" style={slideImgStyle}>
-        <div className="work__detail-container">
+      <div ref={refCont} className="work__content" style={slideImgStyle}>
+        <div
+          className="work__detail-container"
+          style={{ paddingLeft: "calc(5vw + 10rem)" }}
+        >
           <div
             className="detail__img-container"
             style={{ transform: `translateX(-${slide2}vw)` }}
           >
             <img src={img1} alt="img0" />
             <img src={img2} alt="img0" />
-            <img src={desktop1} alt="img1" />
-            <img src={desktop2} alt="img2" />
-            <img src={mobiles} alt="img3" />
+            <img src={desktops} alt="img1" />
           </div>
         </div>
       </div>
