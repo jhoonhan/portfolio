@@ -39,7 +39,7 @@ const WorkDetail = ({ slideImgStyle, pageControl }) => {
       <div ref={refCont} className="work__content" style={slideImgStyle}>
         <div
           className="work__detail-container"
-          // style={{ paddingLeft: "calc(5vw + 10rem)" }}
+          style={{ paddingLeft: "calc(5vw + 10rem)" }}
         >
           <div
             className="detail__img-container"

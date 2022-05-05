@@ -314,10 +314,10 @@
   width: 100%;
 
   // display: flex;
-  display: grid;
-  grid-template-columns: auto auto auto;
+  display: flex;
+  // grid-template-columns: 1fr 1fr 1fr;
+  // grid-auto-columns: min-content;
   align-items: center;
-  // justify-content: center;
   gap: 7rem;
 
   transition: transform 0.5s ease-in-out 0s;
@@ -329,12 +329,7 @@
     // left: 0;
   }
 }
-.detail__slide {
-  min-width: 100vw;
-  display: flex;
-  justify-content: center;
-  // background-color: red;
-}
+
 .gallery-landing {
   width: 100vw;
   height: 100vh;
