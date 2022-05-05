@@ -317,14 +317,15 @@
   display: flex;
   // grid-template-columns: 1fr 1fr 1fr;
   // grid-auto-columns: min-content;
-  align-items: center;
+  align-items: flex-end;
   gap: 7rem;
 
   transition: transform 0.5s ease-in-out 0s;
   & img {
     // position: absolute;
-    height: 100vh;
+    height: 85vh;
     transition: $default--transition;
+    margin-bottom: 9vh;
     // border-radius: 2rem;
     // left: 0;
   }

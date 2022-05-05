@@ -82,7 +82,7 @@ const WorkContent = ({ refEl, pageControl }) => {
     return (
       <div ref={refEl} className="work__container">
         {renderLanding()}
-        <WorkDetail slideImgStyle={slideImgStyle} pageControl={pageControl} />
+
         <div
           className="work__content padded"
           style={{
@@ -93,9 +93,7 @@ const WorkContent = ({ refEl, pageControl }) => {
           <WorkPictureContainer />
           {renderInfo()}
         </div>
-        <div className="work__content padded" style={slideImgStyle}>
-          <WorkDetail />
-        </div>
+        <WorkDetail slideImgStyle={slideImgStyle} pageControl={pageControl} />
       </div>
     );
   };
