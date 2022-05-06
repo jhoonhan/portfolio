@@ -50,7 +50,11 @@ const WorkDetail = ({ slideImgStyle, pageControl }) => {
         <div
           ref={wtf}
           className="work__detail-container"
-          style={{ paddingLeft: "calc((100vw - 127.5vh)/2)" }}
+          onWheel={(e) => {
+            // e.stopPropagation();
+            console.log(`aaang!`);
+          }}
+          // style={{ paddingLeft: "calc((100vw - 127.5vh)/2)" }}
         >
           <div
             ref={refSlides}

@@ -7,8 +7,12 @@ const useSlideStyle = (pageControl, refEl) => {
   const [slideImgStyle, setSlideImgStyle] = useState({});
 
   useEffect(() => {
+    // if (workSubPage === "more") return;
     let timeoutId = null;
     const fn = (e) => {
+      e.stopPropagation();
+      e.preventDefault();
+
       clearTimeout(timeoutId);
       if (e.deltaY >= 0) {
         if (slide >= 5) return;
@@ -23,12 +27,12 @@ const useSlideStyle = (pageControl, refEl) => {
     };
     const refWorkContainer = refEl.current;
     const throttled = throttle(fn, 1);
-    refWorkContainer.addEventListener("mousewheel", throttled, false);
+    refWorkContainer.addEventListener("wheel", throttled, false);
 
     return () => {
-      refWorkContainer.removeEventListener("mousewheel", throttled);
+      refWorkContainer.removeEventListener("wheel", throttled);
     };
-  }, [slide]);
+  }, [slide, workSubPage]);
 
   useEffect(() => {
     setSlideImgStyle({

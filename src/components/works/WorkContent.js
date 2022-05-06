@@ -80,7 +80,14 @@ const WorkContent = ({ refEl, pageControl }) => {
 
   const render = () => {
     return (
-      <div ref={refEl} className="work__container">
+      <div
+        ref={refEl}
+        className="work__container"
+        onClick={(e) => {
+          e.stopPropagation();
+          console.log("aaang");
+        }}
+      >
         {renderLanding()}
 
         <div

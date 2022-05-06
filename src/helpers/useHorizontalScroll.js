@@ -8,21 +8,19 @@ const useHorizontalScroll = () => {
 
     if (el) {
       const onWheel = (e) => {
-        console.log(e.deltaY);
-        e.preventDefault();
         e.stopPropagation();
 
+        e.preventDefault();
+
         if (e.deltaY === 0) return;
-        if (e.deltaY >= 0) {
-          el.scrollTo({
-            left: el.scrollLeft + e.deltaY * 5,
-            behavior: "smooth",
-          });
-        }
+        el.scrollTo({
+          left: el.scrollLeft + e.deltaY * 5,
+          behavior: "smooth",
+        });
       };
       const throttled = throttle(onWheel, 1);
-      el.addEventListener("wheel", throttled);
-      return () => el.removeEventListener("wheel", throttled);
+      el.addEventListener("mousewheel", throttled);
+      return () => el.removeEventListener("mousewheel", throttled);
     }
   }, []);
   return elRef;
