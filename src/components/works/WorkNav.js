@@ -32,7 +32,6 @@ const WorkNav = ({ pageControl, workRefs }) => {
   const active = (page) => {
     let style = {};
     if (curPage === "works") style.transform = "translateX(0vw)";
-
     if (workSubPage === page) style.opacity = "1";
     return style;
   };
@@ -41,14 +40,14 @@ const WorkNav = ({ pageControl, workRefs }) => {
     let width;
     if (workSubPage === "info") width = "5vw";
     if (workSubPage === "detail") width = "25vw";
-    if (workSubPage === "more") width = "75vw";
+    if (workSubPage === "slides") width = "25vw";
 
     return { width };
   };
 
   const onArrowClick = () => {
     if (workSubPage === "info") setWorkSubPage("detail");
-    if (workSubPage === "detail") setWorkSubPage("info");
+    if (workSubPage === "detail") setWorkSubPage("slides");
   };
 
   const renderContentArrow = () => {
@@ -84,7 +83,7 @@ const WorkNav = ({ pageControl, workRefs }) => {
           </div>
           <div
             className={`label more a--opacity ${activeClass()}`}
-            style={active("more")}
+            style={active("detail")}
           >
             <div className="box" />
             <span>More Works</span>

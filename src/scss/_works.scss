@@ -72,12 +72,16 @@
 
   overflow-x: scroll;
 
-  scrollbar-width: 0px;
+  scrollbar-width: none;
   // scroll-behavior: smooth;
 
   &::-webkit-scrollbar {
-    width: 0px;
+    // width: 0px;
+    display: none;
   }
+}
+.detail__slide {
+  display: flex;
 }
 .testbutton {
   position: absolute;

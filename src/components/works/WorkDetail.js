@@ -57,6 +57,7 @@ const WorkDetail = ({ slideImgStyle, pageControl }) => {
             ref={refSlides}
             className="detail__img-container"
             // style={{ transform: `translateX(-${slide}px)` }}
+            style={{ marginLeft: "calc(5vw + 10rem" }}
           >
             <Slide img={img1} />
             <Slide img={img2} />
