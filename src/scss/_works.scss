@@ -61,7 +61,7 @@
   width: 100vw;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 
   // background-color: red;
 
@@ -69,6 +69,12 @@
   left: 0;
 
   box-sizing: border-box;
+
+  overflow-x: scroll;
+
+  &::-webkit-scrollbar {
+    // width: 0px;
+  }
 }
 .testbutton {
   position: absolute;
@@ -311,7 +317,7 @@
 .detail__img-container {
   position: relative;
   height: 100%;
-  // width: 100%;
+  width: auto;
 
   // display: flex;
   display: flex;
