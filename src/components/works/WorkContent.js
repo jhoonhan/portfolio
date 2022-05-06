@@ -12,8 +12,8 @@ const WorkContent = ({ refEl, pageControl, content }) => {
     return (
       <div className="works__info-container">
         <div className="works__title">
-          <span>Sushi</span>
-          <span>Republic</span>
+          <span>{content?.name[0]}</span>
+          <span>{content?.name[1]}</span>
         </div>
         <div className="works__subtitle">
           <h2>{content?.description}</h2>

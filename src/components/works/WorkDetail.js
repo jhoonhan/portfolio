@@ -1,7 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
-import img1 from "../../assests/image/projects/sushiRepublic/img1.jpg";
-import img2 from "../../assests/image/projects/sushiRepublic/img2.jpg";
-import desktops from "../../assests/image/projects/sushiRepublic/desktops.jpg";
+
 import Slide from "./Slide";
 import useGalleryHoriScroll from "./useGalleryHoriScroll";
 
