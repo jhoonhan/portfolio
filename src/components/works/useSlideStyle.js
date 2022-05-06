@@ -10,7 +10,6 @@ const useSlideStyle = (pageControl, refEl) => {
     // if (workSubPage === "more") return;
     let timeoutId = null;
     const fn = (e) => {
-      console.log(`slider slide`);
       e.preventDefault();
 
       clearTimeout(timeoutId);
