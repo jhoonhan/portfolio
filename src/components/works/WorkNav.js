@@ -45,10 +45,10 @@ const WorkNav = ({ pageControl, workRefs }) => {
 
   useEffect(() => {
     console.log(workSubPage);
-    if (workSubPage === "workLanding") setWorkNavWidth("0vw");
-    if (workSubPage === "info") setWorkNavWidth("5vw");
-    if (workSubPage === "detail") setWorkNavWidth("25vw");
-    if (workSubPage === "slides") setWorkNavWidth("50vw");
+    if (workSubPage === "workLanding") setWorkNavWidth("0%");
+    if (workSubPage === "info") setWorkNavWidth("5%");
+    if (workSubPage === "detail") setWorkNavWidth("25%");
+    if (workSubPage === "slides") setWorkNavWidth("85%");
   }, [workSubPage]);
 
   // const barWidth = () => {
