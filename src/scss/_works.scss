@@ -333,6 +333,8 @@
   align-items: flex-end;
   gap: 7rem;
 
+  box-sizing: border-box;
+
   transition: transform 0.3s ease-in-out 0s;
   & img {
     // position: absolute;

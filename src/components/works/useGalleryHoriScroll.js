@@ -29,11 +29,18 @@ const useGalleryHoriScroll = (pageControl) => {
         ) {
           e.stopPropagation();
         }
-        console.log(el.children[0].getBoundingClientRect());
         // pageControl.setSlideScroll(
         //   el.children[0].getBoundingClientRect().right /
         //     el.children[0].getBoundingClientRect().width
         // );
+        const s = el.scrollLeft;
+        const w = el.children[0].getBoundingClientRect().width;
+        const vw = window.innerWidth;
+
+        const x = s / (w - vw);
+
+        // console.log(el.children[0].getBoundingClientRect());
+        console.log(x);
 
         onWheel(e);
       };
