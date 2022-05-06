@@ -8,16 +8,23 @@ import Slide from "./Slide";
 
 const WorkDetail = ({ slideImgStyle, pageControl }) => {
   const [slide, setSlide] = useState(0);
+  const [slidesWidth, setSlidesWith] = useState(1920);
   const refCont = useRef(null);
+  const refSlides = useRef(null);
 
   useEffect(() => {
+    setSlidesWith(refSlides.current.getBoundingClientRect().width);
+  }, []);
+
+  useEffect(() => {
+    console.log(slide);
     const fn = (e) => {
       e.stopPropagation();
       if (e.deltaY >= 0) {
-        setSlide(slide + 10);
+        setSlide(slide + 200);
       } else {
         if (slide === 0) return;
-        setSlide(slide - 10);
+        setSlide(slide - 200);
       }
     };
 
@@ -42,8 +49,9 @@ const WorkDetail = ({ slideImgStyle, pageControl }) => {
           style={{ paddingLeft: "calc((100vw - 127.5vh)/2)" }}
         >
           <div
+            ref={refSlides}
             className="detail__img-container"
-            style={{ transform: `translateX(-${slide}vw)` }}
+            style={{ transform: `translateX(-${slide}px)` }}
           >
             <Slide img={img1} />
             <Slide img={img2} />

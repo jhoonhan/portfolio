@@ -10,7 +10,7 @@ const Slide = ({ img }) => {
   };
 
   useEffect(() => {
-    const observer = new IntersectionObserver(visible, { threshold: 0.2 });
+    const observer = new IntersectionObserver(visible, { threshold: 0.3 });
     const node = refImg.current;
 
     if (refImg.current) {
