@@ -1,7 +1,6 @@
 import { useEffect, useRef } from "react";
-import throttle from "./throttle";
 
-const useHorizontalScroll = () => {
+const useGalleryHoriScroll = () => {
   const elRef = useRef();
   useEffect(() => {
     const el = elRef.current;
@@ -28,4 +27,4 @@ const useHorizontalScroll = () => {
   return elRef;
 };
 
-export default useHorizontalScroll;
+export default useGalleryHoriScroll;

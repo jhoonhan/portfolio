@@ -6,13 +6,14 @@ import desktops from "../../assests/image/projects/sushiRepublic/desktops.jpg";
 import throttle from "../../helpers/throttle";
 import Slide from "./Slide";
 import useHorizontalScroll from "../../helpers/useHorizontalScroll";
+import useGalleryHoriScroll from "./useGalleryHoriScroll";
 
 const WorkDetail = ({ slideImgStyle, pageControl }) => {
   const [slide, setSlide] = useState(0);
   const [slidesWidth, setSlidesWith] = useState(1920);
   const refCont = useRef(null);
   const refSlides = useRef(null);
-  const wtf = useHorizontalScroll();
+  const wtf = useGalleryHoriScroll();
 
   // useEffect(() => {
   //   const fn = (e) => {
@@ -50,10 +51,6 @@ const WorkDetail = ({ slideImgStyle, pageControl }) => {
         <div
           ref={wtf}
           className="work__detail-container"
-          onWheel={(e) => {
-            // e.stopPropagation();
-            console.log(`aaang!`);
-          }}
           // style={{ paddingLeft: "calc((100vw - 127.5vh)/2)" }}
         >
           <div
