@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import throttle from "../../helpers/throttle";
 
-const useGalleryHoriScroll = () => {
+const useGalleryHoriScroll = (pageControl) => {
   const elRef = useRef();
   useEffect(() => {
     const el = elRef.current;
@@ -29,6 +29,12 @@ const useGalleryHoriScroll = () => {
         ) {
           e.stopPropagation();
         }
+        console.log(el.children[0].getBoundingClientRect());
+        // pageControl.setSlideScroll(
+        //   el.children[0].getBoundingClientRect().right /
+        //     el.children[0].getBoundingClientRect().width
+        // );
+
         onWheel(e);
       };
       el.addEventListener("mousewheel", fn);

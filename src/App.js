@@ -15,6 +15,7 @@ const App = () => {
     transform: "translateY(0vh)",
   });
   const [workNavWidth, setWorkNavWidth] = useState(0);
+  const [slideScroll, setSlideScroll] = useState(0);
 
   const refMain = useRef(null);
   const refHome = useRef(null);
@@ -41,7 +42,13 @@ const App = () => {
     setActiveSubPageStylePosition,
     workNavWidth,
     setWorkNavWidth,
+    slideScroll,
+    setSlideScroll,
   };
+
+  useEffect(() => {
+    console.log(slideScroll);
+  }, [slideScroll]);
 
   const render = () => {
     return (
