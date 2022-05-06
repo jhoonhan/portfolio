@@ -5,7 +5,7 @@ import WorkDetail from "./WorkDetail";
 import useSlideStyle from "./useSlideStyle";
 import landing from "../../assests/image/projects/sushiRepublic/landing.jpg";
 
-const WorkContent = ({ refEl, pageControl }) => {
+const WorkContent = ({ refEl, pageControl, content }) => {
   const { slideImgStyle } = useSlideStyle(pageControl, refEl);
 
   const renderInfo = () => {
@@ -16,10 +16,7 @@ const WorkContent = ({ refEl, pageControl }) => {
           <span>Republic</span>
         </div>
         <div className="works__subtitle">
-          <h2>
-            A microsite showcasing stories of customers of a concept pension
-            provider.
-          </h2>
+          <h2>{content?.description}</h2>
         </div>
         <div className="works__info__detail">
           <div className="column--grid--2" style={{ columnGap: "3rem" }}>
@@ -29,7 +26,7 @@ const WorkContent = ({ refEl, pageControl }) => {
                 <div></div>
               </div>
 
-              <p>Senior developer</p>
+              <p>{content?.role}</p>
             </div>
 
             <div className="row--grid--2 detail-item">
@@ -38,7 +35,7 @@ const WorkContent = ({ refEl, pageControl }) => {
                 <div></div>
               </div>
 
-              <p>Senior developer</p>
+              <p>{content?.role}</p>
             </div>
           </div>
 
@@ -48,15 +45,19 @@ const WorkContent = ({ refEl, pageControl }) => {
               <div></div>
             </div>
 
-            <p>HTML5, CSS3, Sass, jQuery</p>
+            <p>{content?.technology}</p>
           </div>
 
           <div
             className="column--grid--2 detail-item"
             style={{ marginTop: "1rem", gap: "2rem" }}
           >
-            <div className="button">Live Demo</div>
-            <div className="button">Github</div>
+            <a href={content?.liveDemoURL} className="button">
+              Live Demo
+            </a>
+            <a href={content?.githubURL} className="button">
+              Github
+            </a>
           </div>
         </div>
       </div>
@@ -69,10 +70,10 @@ const WorkContent = ({ refEl, pageControl }) => {
         <div className="gallery-landing">
           <div
             className="gallery-landing__img"
-            style={{ backgroundImage: `url(${landing})` }}
+            style={{ backgroundImage: `url(${content?.images.landing})` }}
           ></div>
           <div className="gallery-landing__overlay"></div>
-          <h1>Sushi Republic</h1>
+          <h1>{content?.name}</h1>
         </div>
       </div>
     );
@@ -80,14 +81,7 @@ const WorkContent = ({ refEl, pageControl }) => {
 
   const render = () => {
     return (
-      <div
-        ref={refEl}
-        className="work__container"
-        onClick={(e) => {
-          e.stopPropagation();
-          console.log("aaang");
-        }}
-      >
+      <div ref={refEl} className="work__container">
         {renderLanding()}
 
         <div
@@ -97,10 +91,14 @@ const WorkContent = ({ refEl, pageControl }) => {
             ...slideImgStyle,
           }}
         >
-          <WorkPictureContainer />
+          <WorkPictureContainer images={content?.images} />
           {renderInfo()}
         </div>
-        <WorkDetail slideImgStyle={slideImgStyle} pageControl={pageControl} />
+        <WorkDetail
+          slideImgStyle={slideImgStyle}
+          pageControl={pageControl}
+          images={content?.images}
+        />
       </div>
     );
   };

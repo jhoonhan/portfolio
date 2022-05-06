@@ -4,6 +4,7 @@ const WorkNav = ({ pageControl, workRefs }) => {
   const {
     curPage,
     workPage,
+    setWorkPage,
     workSubPage,
     setWorkSubPage,
     workNavWidth,
@@ -26,7 +27,6 @@ const WorkNav = ({ pageControl, workRefs }) => {
       workRefs.refEl5.current.scrollIntoView({ behavior: "smooth" });
     }
     setWorkSubPage("workLanding");
-    // setWorkSliderPage(1); // 5/3
   }, [workPage]);
 
   const activeClass = () => {
@@ -44,27 +44,16 @@ const WorkNav = ({ pageControl, workRefs }) => {
   };
 
   useEffect(() => {
-    console.log(workSubPage);
     if (workSubPage === "workLanding") setWorkNavWidth("0%");
     if (workSubPage === "info") setWorkNavWidth("5%");
     if (workSubPage === "detail") setWorkNavWidth("25%");
     if (workSubPage === "slides") setWorkNavWidth("85%");
   }, [workSubPage]);
 
-  // const barWidth = () => {
-  //   let width;
-  //   if (workSubPage === "workLanding") width = "0vw";
-  //   if (workSubPage === "info") width = "5vw";
-  //   if (workSubPage === "detail") width = "25vw";
-  //   if (workSubPage === "slides") width = "50vw";
-
-  //   return { width };
-  // };
-
   const onArrowClick = () => {
     if (workSubPage === "workLanding") setWorkSubPage("info");
     if (workSubPage === "info") setWorkSubPage("detail");
-    if (workSubPage === "detail") setWorkSubPage("slides");
+    // if (workSubPage === "detail") setWorkPage(`el${workPage.slice(-1) + 1}`);
   };
 
   const renderContentArrow = () => {
@@ -89,7 +78,7 @@ const WorkNav = ({ pageControl, workRefs }) => {
             style={active("info")}
           >
             <div className="box" />
-            <span onClick={() => setWorkSubPage("info")}>Info</span>
+            <span onClick={() => setWorkSubPage("info")}>Overview</span>
           </div>
           <div
             className={`label detail a--opacity ${activeClass()}`}

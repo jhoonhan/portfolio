@@ -5,7 +5,7 @@ import desktops from "../../assests/image/projects/sushiRepublic/desktops.jpg";
 import Slide from "./Slide";
 import useGalleryHoriScroll from "./useGalleryHoriScroll";
 
-const WorkDetail = ({ slideImgStyle, pageControl }) => {
+const WorkDetail = ({ slideImgStyle, pageControl, images }) => {
   const refCont = useRef(null);
   const refSlides = useGalleryHoriScroll(pageControl);
 
@@ -22,9 +22,9 @@ const WorkDetail = ({ slideImgStyle, pageControl }) => {
             // style={{ transform: `translateX(-${slide}px)` }}
             style={{ paddingLeft: "calc(5vw + 10rem" }}
           >
-            <Slide img={img1} />
-            <Slide img={img2} />
-            <Slide img={desktops} />
+            <Slide img={images?.slideImages[0]} />
+            <Slide img={images?.slideImages[1]} />
+            <Slide img={images?.slideImages[2]} />
           </div>
         </div>
       </div>
