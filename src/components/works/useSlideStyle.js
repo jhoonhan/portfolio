@@ -7,7 +7,7 @@ const useSlideStyle = (pageControl, refEl) => {
   const [slideImgStyle, setSlideImgStyle] = useState({});
 
   useEffect(() => {
-    // if (workSubPage === "more") return;
+    // if (workSubPage === "slides") return;
     let timeoutId = null;
     const fn = (e) => {
       e.preventDefault();
@@ -41,12 +41,14 @@ const useSlideStyle = (pageControl, refEl) => {
 
   useEffect(() => {
     if (slide === -5) {
+      if (workSubPage === "info") setWorkSubPage("workLanding");
       if (workSubPage === "detail") setWorkSubPage("info");
-      if (workSubPage === "more") setWorkSubPage("detail");
+      // if (workSubPage === "slides") setWorkSubPage("detail");
     }
     if (slide === 5) {
+      if (workSubPage === "workLanding") setWorkSubPage("info");
       if (workSubPage === "info") setWorkSubPage("detail");
-      if (workSubPage === "detail") setWorkSubPage("more");
+      // if (workSubPage === "detail") setWorkSubPage("slides");
     }
   }, [slide]);
 

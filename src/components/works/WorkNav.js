@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from "react";
 
 const WorkNav = ({ pageControl, workRefs }) => {
-  const { curPage, workPage, workSubPage, setWorkSubPage } = pageControl;
+  const {
+    curPage,
+    workPage,
+    workSubPage,
+    setWorkSubPage,
+    workNavWidth,
+    setWorkNavWidth,
+  } = pageControl;
   useEffect(() => {
     if (workPage === "el1") {
       workRefs.refEl1.current.scrollIntoView({ behavior: "smooth" });
@@ -18,7 +25,7 @@ const WorkNav = ({ pageControl, workRefs }) => {
     if (workPage === "el5") {
       workRefs.refEl5.current.scrollIntoView({ behavior: "smooth" });
     }
-    setWorkSubPage("info");
+    setWorkSubPage("workLanding");
     // setWorkSliderPage(1); // 5/3
   }, [workPage]);
 
@@ -36,16 +43,26 @@ const WorkNav = ({ pageControl, workRefs }) => {
     return style;
   };
 
-  const barWidth = () => {
-    let width;
-    if (workSubPage === "info") width = "5vw";
-    if (workSubPage === "detail") width = "25vw";
-    if (workSubPage === "slides") width = "25vw";
+  useEffect(() => {
+    console.log(workSubPage);
+    if (workSubPage === "workLanding") setWorkNavWidth("0vw");
+    if (workSubPage === "info") setWorkNavWidth("5vw");
+    if (workSubPage === "detail") setWorkNavWidth("25vw");
+    if (workSubPage === "slides") setWorkNavWidth("50vw");
+  }, [workSubPage]);
 
-    return { width };
-  };
+  // const barWidth = () => {
+  //   let width;
+  //   if (workSubPage === "workLanding") width = "0vw";
+  //   if (workSubPage === "info") width = "5vw";
+  //   if (workSubPage === "detail") width = "25vw";
+  //   if (workSubPage === "slides") width = "50vw";
+
+  //   return { width };
+  // };
 
   const onArrowClick = () => {
+    if (workSubPage === "workLanding") setWorkSubPage("info");
     if (workSubPage === "info") setWorkSubPage("detail");
     if (workSubPage === "detail") setWorkSubPage("slides");
   };
@@ -65,7 +82,7 @@ const WorkNav = ({ pageControl, workRefs }) => {
         style={curPage !== "works" ? { transform: "translateX(100vw)" } : {}}
       >
         <div className="bar disabled" />
-        <div className="bar active" style={barWidth()} />
+        <div className="bar active" style={{ width: workNavWidth }} />
         <div className="labels">
           <div
             className={`label info a--opacity ${activeClass()}`}
@@ -83,7 +100,7 @@ const WorkNav = ({ pageControl, workRefs }) => {
           </div>
           <div
             className={`label more a--opacity ${activeClass()}`}
-            style={active("detail")}
+            style={active("end")}
           >
             <div className="box" />
             <span>More Works</span>

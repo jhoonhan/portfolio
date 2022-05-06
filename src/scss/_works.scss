@@ -236,7 +236,7 @@
   & .active {
     top: -1px;
     height: 1px;
-    min-width: 5vw;
+    // min-width: 5vw;
     background: $gradient--white--90;
   }
   & .disabled {

@@ -10,11 +10,11 @@ import "./scss/App.scss";
 const App = () => {
   const [curPage, setCurPage] = useState(null);
   const [workPage, setWorkPage] = useState("overview");
-  const [workSubPage, setWorkSubPage] = useState("info");
-  const [workSliderPage, setWorkSliderPage] = useState(0);
+  const [workSubPage, setWorkSubPage] = useState("workLanding");
   const [activeSubPageStylePosition, setActiveSubPageStylePosition] = useState({
     transform: "translateY(0vh)",
   });
+  const [workNavWidth, setWorkNavWidth] = useState(0);
 
   const refMain = useRef(null);
   const refHome = useRef(null);
@@ -39,8 +39,8 @@ const App = () => {
     setWorkSubPage,
     activeSubPageStylePosition,
     setActiveSubPageStylePosition,
-    workSliderPage,
-    setWorkSliderPage,
+    workNavWidth,
+    setWorkNavWidth,
   };
 
   const render = () => {
