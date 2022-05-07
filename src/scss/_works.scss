@@ -82,8 +82,10 @@
 }
 .detail__slide {
   display: flex;
-  height: 100%;
-  // margin-bottom: 9vh;
+  height: 85vh;
+  min-width: 200px;
+  margin-bottom: 9vh;
+  transition: $default--transition;
 }
 .testbutton {
   position: absolute;
@@ -335,6 +337,8 @@
   align-items: flex-end;
   gap: 7rem;
 
+  // background-color: yellow;
+
   box-sizing: border-box;
 
   transition: transform 0.3s ease-in-out 0s;
@@ -396,27 +400,28 @@
 
 .slide-img--desktop {
   // position: relative;
-  height: 100%;
+  // height: 85vh;
   width: auto;
 
   display: flex;
   align-items: flex-end;
 
+  // margin-bottom: 9vh;
+
   & svg {
     position: absolute;
     bottom: 0;
     height: 75vh;
-    margin-bottom: 9vh;
+    // margin-bottom: 9vh;
     box-sizing: border-box;
     z-index: 1;
   }
 
   & .masking {
     position: relative;
-    bottom: 34vh;
+    bottom: 25vh;
     height: calc(75vh / 3 * 2);
     aspect-ratio: 7 / 4;
-    background-color: blue;
     border-radius: 2vh;
     overflow: hidden;
     & img {
@@ -425,6 +430,49 @@
       left: 0;
       width: 100%;
       height: auto;
+    }
+  }
+}
+
+.slide-img--mobile {
+  // position: relative;
+  // height: 75vh;
+  width: auto;
+
+  display: flex;
+  align-items: flex-end;
+
+  margin-bottom: 10vh;
+
+  box-sizing: border-box;
+
+  & svg {
+    position: absolute;
+    // bottom: 0;
+    height: 50vh;
+    // margin-bottom: 9vh;
+    box-sizing: border-box;
+    z-index: 1;
+  }
+
+  & .masking {
+    position: relative;
+    // bottom: 34vh;
+    height: 50vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    aspect-ratio: 12 / 25;
+    border-radius: 12%;
+    overflow: hidden;
+    & img {
+      position: absolute;
+      width: auto;
+      height: 100%;
+
+      margin-bottom: 0;
     }
   }
 }

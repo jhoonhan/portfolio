@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 
-const Slide = ({ img }) => {
+const Slide = ({ type, img, data }) => {
   const refImg = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -10,7 +10,7 @@ const Slide = ({ img }) => {
   };
 
   useEffect(() => {
-    const observer = new IntersectionObserver(visible, { threshold: 0.35 });
+    const observer = new IntersectionObserver(visible, { threshold: 0.3 });
     const node = refImg.current;
 
     if (refImg.current) {
@@ -21,14 +21,33 @@ const Slide = ({ img }) => {
     };
   }, [refImg]);
 
+  const activeStyle = {
+    opacity: 1,
+    transform: "translateY(0vh)",
+  };
+  const disableStyle = {
+    opacity: 0,
+    transform: "translateY(-10vh)",
+  };
+
+  const condComponent = () => {
+    if (type === "image") {
+      return <img src={img} alt="slide-img" />;
+    }
+
+    if (type === "component") {
+      return <>{data}</>;
+    }
+  };
+
   return (
-    <div className="detail__slide">
-      <img
-        ref={refImg}
-        src={img}
-        alt="slide-img"
-        style={isVisible ? { opacity: 1 } : { opacity: 0.5 }}
-      />
+    <div
+      ref={refImg}
+      className="detail__slide"
+      // style={isVisible ? { opacity: 1 } : { opacity: 0.5 }}
+      style={isVisible ? activeStyle : disableStyle}
+    >
+      {condComponent()}
     </div>
   );
 };

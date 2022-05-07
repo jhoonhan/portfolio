@@ -4,14 +4,9 @@ const DesktopSVG = ({ img }) => {
   const st0 = {
     fill: "#1a1a1a",
   };
-  const st1 = {
-    fill: "#B3B3B3",
-  };
-  const st2 = {
-    fill: "url(#SVGID_1_)",
-  };
+
   return (
-    <div className="slide-img--desktop">
+    <div className="slide-img--mobile">
       <svg
         version="1.1"
         id="Layer_1"

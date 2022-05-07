@@ -20,13 +20,41 @@ const WorkDetail = ({ slideImgStyle, pageControl, images }) => {
           <div
             className="detail__img-container"
             // style={{ transform: `translateX(-${slide}px)` }}
-            style={{ paddingRight: "10vw" }}
+            style={{ padding: " 0 10vw 0 calc(5vw + 10rem)" }}
           >
-            <DesktopSVG img={images?.slideImages[2]} />
+            {/* <DesktopSVG img={images?.slideImages[2]} />
             <DesktopSVG img={images?.slideImages[1]} />
-            {/* <Slide img={images?.slideImages[0]} /> */}
-            <Slide img={images?.slideImages[1]} />
-            <Slide img={images?.slideImages[2]} />
+            <MobileSVG img={images?.slideImages[1]} />
+            <MobileSVG img={images?.slideImages[0]} />
+            <MobileSVG img={images?.slideImages[2]} /> */}
+            <Slide
+              type="component"
+              data={<DesktopSVG img={images?.slideImages[2]} />}
+              img={images?.slideImages[1]}
+            />
+            <Slide
+              type="component"
+              data={<DesktopSVG img={images?.slideImages[1]} />}
+              img={images?.slideImages[1]}
+            />
+            <Slide
+              type="component"
+              data={<MobileSVG img={images?.slideImages[1]} />}
+              img={images?.slideImages[1]}
+            />
+            <Slide
+              type="component"
+              data={<MobileSVG img={images?.slideImages[0]} />}
+              img={images?.slideImages[1]}
+            />
+            <Slide
+              type="component"
+              data={<MobileSVG img={images?.slideImages[2]} />}
+              img={images?.slideImages[1]}
+            />
+
+            <Slide type="image" img={images?.slideImages[1]} />
+            <Slide type="image" img={images?.slideImages[2]} />
           </div>
         </div>
       </div>

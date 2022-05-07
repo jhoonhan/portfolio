@@ -4,7 +4,7 @@ import WorkPictureContainer from "./WorkPictureContainer";
 import WorkDetail from "./WorkDetail";
 import useSlideStyle from "./useSlideStyle";
 
-const WorkContent = ({ refEl, pageControl, content }) => {
+const WorkContent = ({ refEl, pageControl, content, backgroundStyle }) => {
   const { slideImgStyle } = useSlideStyle(pageControl, refEl);
 
   const renderInfo = () => {
@@ -80,7 +80,7 @@ const WorkContent = ({ refEl, pageControl, content }) => {
 
   const render = () => {
     return (
-      <div ref={refEl} className="work__container">
+      <div ref={refEl} className="work__container" style={backgroundStyle}>
         {renderLanding()}
 
         <div
