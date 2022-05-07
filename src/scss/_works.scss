@@ -82,6 +82,8 @@
 }
 .detail__slide {
   display: flex;
+  height: 100%;
+  // margin-bottom: 9vh;
 }
 .testbutton {
   position: absolute;
@@ -338,7 +340,7 @@
   transition: transform 0.3s ease-in-out 0s;
   & img {
     // position: absolute;
-    height: 85vh;
+    height: 100%;
     transition: $default--transition;
     margin-bottom: 9vh;
     // border-radius: 2rem;

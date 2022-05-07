@@ -18,7 +18,7 @@ const WorkDetail = ({ slideImgStyle, pageControl, images }) => {
           <div
             className="detail__img-container"
             // style={{ transform: `translateX(-${slide}px)` }}
-            style={{ paddingLeft: "calc(5vw + 10rem" }}
+            style={{ paddingRight: "10vw" }}
           >
             <Slide img={images?.slideImages[0]} />
             <Slide img={images?.slideImages[1]} />
