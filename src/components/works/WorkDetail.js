@@ -29,7 +29,7 @@ const WorkDetail = ({ slideImgStyle, pageControl, images }) => {
             <MobileSVG img={images?.slideImages[2]} /> */}
             <Slide
               type="component"
-              data={<DesktopSVG img={images?.slideImages[2]} />}
+              data={<DesktopSVG img={images?.slideImages[0]} />}
               img={images?.slideImages[1]}
             />
             <Slide
@@ -39,22 +39,22 @@ const WorkDetail = ({ slideImgStyle, pageControl, images }) => {
             />
             <Slide
               type="component"
-              data={<MobileSVG img={images?.slideImages[1]} />}
-              img={images?.slideImages[1]}
-            />
-            <Slide
-              type="component"
-              data={<MobileSVG img={images?.slideImages[0]} />}
-              img={images?.slideImages[1]}
-            />
-            <Slide
-              type="component"
               data={<MobileSVG img={images?.slideImages[2]} />}
               img={images?.slideImages[1]}
             />
+            <Slide
+              type="component"
+              data={<MobileSVG img={images?.slideImages[3]} />}
+              img={images?.slideImages[1]}
+            />
+            <Slide
+              type="component"
+              data={<MobileSVG img={images?.slideImages[4]} />}
+              img={images?.slideImages[1]}
+            />
 
-            <Slide type="image" img={images?.slideImages[1]} />
-            <Slide type="image" img={images?.slideImages[2]} />
+            <Slide type="image" img={images?.slideImages[5]} />
+            <Slide type="image" img={images?.slideImages[6]} />
           </div>
         </div>
       </div>

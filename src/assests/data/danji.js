@@ -1,10 +1,15 @@
 import landing from "../image/projects/danji/landing.jpg";
-import img0 from "../image/projects/danji/0.jpg";
-import img1 from "../image/projects/danji/1.jpg";
-import img2 from "../image/projects/danji/2.jpg";
-import slideImg0 from "../image/projects/danji/0.jpg";
-import slideImg1 from "../image/projects/danji/1.jpg";
-import slideImg2 from "../image/projects/danji/desktops.jpg";
+
+import overviewImg0 from "../image/projects/danji/overview0.jpg";
+import overviewImg1 from "../image/projects/danji/overview1.jpg";
+// import overviewImg2 from "../image/projects/danji/overview2.jpg";
+import slideImg0 from "../image/projects/danji/desktop0.jpg";
+import slideImg1 from "../image/projects/danji/desktop1.jpg";
+import slideImg2 from "../image/projects/danji/mobile1.jpg";
+import slideImg3 from "../image/projects/danji/mobile0.jpg";
+import slideImg4 from "../image/projects/danji/mobile2.jpg";
+import slideImg5 from "../image/projects/danji/img0.jpg";
+import slideImg6 from "../image/projects/danji/img2.jpg";
 
 export const danji = {
   name: ["danji"],
@@ -16,8 +21,16 @@ export const danji = {
   githubURL: "https://github.com/",
   images: {
     landing,
-    overviewImages: [img0, img1, img2],
-    slideImages: [slideImg2, slideImg1, slideImg0],
+    overviewImages: [landing, overviewImg0, overviewImg1],
+    slideImages: [
+      slideImg0,
+      slideImg1,
+      slideImg2,
+      slideImg3,
+      slideImg4,
+      slideImg5,
+      slideImg6,
+    ],
   },
   theme: "light",
 };

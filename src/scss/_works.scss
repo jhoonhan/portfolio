@@ -335,7 +335,7 @@
   // grid-template-columns: 1fr 1fr 1fr;
   // grid-auto-columns: min-content;
   align-items: flex-end;
-  gap: 7rem;
+  gap: 15rem;
 
   // background-color: yellow;
 
@@ -420,13 +420,13 @@
   & .masking {
     position: relative;
     bottom: 25vh;
-    height: calc(75vh / 3 * 2);
+    height: calc((75vh / 3 * 2));
     aspect-ratio: 7 / 4;
     border-radius: 2vh;
     overflow: hidden;
     & img {
       position: absolute;
-      top: 0;
+      top: 1.3vh;
       left: 0;
       width: 100%;
       height: auto;

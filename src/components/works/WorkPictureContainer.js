@@ -22,7 +22,7 @@ const WorkPictureContainer = ({ images }) => {
           style={conditionalStyle.img3}
         >
           <img
-            src={images?.overviewImages[0]}
+            src={images?.overviewImages[2]}
             alt="img3"
             style={{
               transform: `translateX(${actImgPosition.img3.x}%) translateY(${actImgPosition.img3.y}%)`,
@@ -53,7 +53,7 @@ const WorkPictureContainer = ({ images }) => {
           style={conditionalStyle.img1}
         >
           <img
-            src={images?.overviewImages[2]}
+            src={images?.overviewImages[0]}
             alt="img1"
             style={{
               transform: `translateX(${actImgPosition.img1.x}%) translateY(${actImgPosition.img1.y}%)`,
