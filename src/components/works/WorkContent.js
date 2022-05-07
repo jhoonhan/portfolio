@@ -4,7 +4,13 @@ import WorkPictureContainer from "./WorkPictureContainer";
 import WorkDetail from "./WorkDetail";
 import useSlideStyle from "./useSlideStyle";
 
-const WorkContent = ({ refEl, pageControl, content, backgroundStyle }) => {
+const WorkContent = ({
+  refEl,
+  pageControl,
+  content,
+  backgroundStyle,
+  noOverview,
+}) => {
   const { slideImgStyle } = useSlideStyle(pageControl, refEl);
 
   const renderInfo = () => {
@@ -90,7 +96,11 @@ const WorkContent = ({ refEl, pageControl, content, backgroundStyle }) => {
             ...slideImgStyle,
           }}
         >
-          <WorkPictureContainer images={content?.images} />
+          {noOverview ? (
+            <div />
+          ) : (
+            <WorkPictureContainer images={content?.images} />
+          )}
           {renderInfo()}
         </div>
         <WorkDetail

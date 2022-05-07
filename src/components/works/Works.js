@@ -6,6 +6,7 @@ import WorkNav from "./WorkNav";
 
 import { sushiRepublic } from "../../assests/data/sushiRepublic";
 import { danji } from "../../assests/data/danji";
+import { salvationArmy } from "../../assests/data/salvationArmy";
 
 const Works = ({ refs, pageControl }) => {
   const { activeSubPageStyle } = useSubPageStyle(pageControl);
@@ -46,7 +47,13 @@ const Works = ({ refs, pageControl }) => {
             content={danji}
             backgroundStyle={backgroundStyleEl2}
           />
-          <WorkContent refEl={refEl3} pageControl={pageControl} />
+          <WorkContent
+            refEl={refEl3}
+            pageControl={pageControl}
+            content={salvationArmy}
+            backgroundStyle={backgroundStyleEl2}
+            noOverview={true}
+          />
           <WorkContent refEl={refEl4} pageControl={pageControl} />
           <WorkContent refEl={refEl5} pageControl={pageControl} />
         </section>

@@ -31,7 +31,7 @@ const Slide = ({ type, img, data }) => {
   };
 
   const condComponent = () => {
-    if (type === "image") {
+    if (img && type === "image") {
       return <img src={img} alt="slide-img" />;
     }
 

@@ -9,6 +9,28 @@ const WorkDetail = ({ slideImgStyle, pageControl, images }) => {
   const refCont = useRef(null);
   const refSlides = useGalleryHoriScroll(pageControl);
 
+  const renderComponentSlidesDesktop = images?.slideImages.desktop.map(
+    (img, i) => (
+      <React.Fragment key={i}>
+        <Slide
+          type="component"
+          data={<DesktopSVG img={images?.slideImages.desktop[i]} />}
+        />
+      </React.Fragment>
+    )
+  );
+
+  const renderComponentSlidesMobile = images?.slideImages.mobile.map(
+    (img, i) => (
+      <React.Fragment key={i}>
+        <Slide
+          type="component"
+          data={<MobileSVG img={images?.slideImages.mobile[i]} />}
+        />
+      </React.Fragment>
+    )
+  );
+
   const render = () => {
     return (
       <div ref={refCont} className="work__content" style={slideImgStyle}>
@@ -22,39 +44,11 @@ const WorkDetail = ({ slideImgStyle, pageControl, images }) => {
             // style={{ transform: `translateX(-${slide}px)` }}
             style={{ padding: " 0 10vw 0 calc(5vw + 10rem)" }}
           >
-            {/* <DesktopSVG img={images?.slideImages[2]} />
-            <DesktopSVG img={images?.slideImages[1]} />
-            <MobileSVG img={images?.slideImages[1]} />
-            <MobileSVG img={images?.slideImages[0]} />
-            <MobileSVG img={images?.slideImages[2]} /> */}
-            <Slide
-              type="component"
-              data={<DesktopSVG img={images?.slideImages[0]} />}
-              img={images?.slideImages[1]}
-            />
-            <Slide
-              type="component"
-              data={<DesktopSVG img={images?.slideImages[1]} />}
-              img={images?.slideImages[1]}
-            />
-            <Slide
-              type="component"
-              data={<MobileSVG img={images?.slideImages[2]} />}
-              img={images?.slideImages[1]}
-            />
-            <Slide
-              type="component"
-              data={<MobileSVG img={images?.slideImages[3]} />}
-              img={images?.slideImages[1]}
-            />
-            <Slide
-              type="component"
-              data={<MobileSVG img={images?.slideImages[4]} />}
-              img={images?.slideImages[1]}
-            />
+            {renderComponentSlidesDesktop}
+            {renderComponentSlidesMobile}
 
-            <Slide type="image" img={images?.slideImages[5]} />
-            <Slide type="image" img={images?.slideImages[6]} />
+            {/* <Slide type="image" img={images?.slideImages[5]} />
+            <Slide type="image" img={images?.slideImages[6]} /> */}
           </div>
         </div>
       </div>

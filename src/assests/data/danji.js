@@ -22,15 +22,11 @@ export const danji = {
   images: {
     landing,
     overviewImages: [landing, overviewImg0, overviewImg1],
-    slideImages: [
-      slideImg0,
-      slideImg1,
-      slideImg2,
-      slideImg3,
-      slideImg4,
-      slideImg5,
-      slideImg6,
-    ],
+    slideImages: {
+      desktop: [slideImg0, slideImg1],
+      mobile: [slideImg2, slideImg3, slideImg4],
+      photo: [slideImg5, slideImg6],
+    },
   },
   theme: "light",
 };

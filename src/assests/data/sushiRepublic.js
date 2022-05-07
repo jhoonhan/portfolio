@@ -22,14 +22,10 @@ export const sushiRepublic = {
   images: {
     landing,
     overviewImages: [overviewImg0, overviewImg1, overviewImg2],
-    slideImages: [
-      slideImg0,
-      slideImg1,
-      slideImg2,
-      slideImg3,
-      slideImg4,
-      slideImg5,
-      slideImg6,
-    ],
+    slideImages: {
+      desktop: [slideImg0, slideImg1],
+      mobile: [slideImg2, slideImg3, slideImg4],
+      photo: [slideImg5, slideImg6],
+    },
   },
 };
