@@ -2,6 +2,8 @@ import React, { useRef, useEffect, useState } from "react";
 
 import Slide from "./Slide";
 import useGalleryHoriScroll from "./useGalleryHoriScroll";
+import DesktopSVG from "../../assests/image/projects/DesktopSVG";
+import MobileSVG from "../../assests/image/projects/MobileSVG";
 
 const WorkDetail = ({ slideImgStyle, pageControl, images }) => {
   const refCont = useRef(null);
@@ -20,7 +22,9 @@ const WorkDetail = ({ slideImgStyle, pageControl, images }) => {
             // style={{ transform: `translateX(-${slide}px)` }}
             style={{ paddingRight: "10vw" }}
           >
-            <Slide img={images?.slideImages[0]} />
+            <DesktopSVG img={images?.slideImages[2]} />
+            <DesktopSVG img={images?.slideImages[1]} />
+            {/* <Slide img={images?.slideImages[0]} /> */}
             <Slide img={images?.slideImages[1]} />
             <Slide img={images?.slideImages[2]} />
           </div>

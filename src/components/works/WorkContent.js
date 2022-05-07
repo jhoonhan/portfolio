@@ -3,7 +3,6 @@ import React, { useRef, useEffect, useState } from "react";
 import WorkPictureContainer from "./WorkPictureContainer";
 import WorkDetail from "./WorkDetail";
 import useSlideStyle from "./useSlideStyle";
-import landing from "../../assests/image/projects/sushiRepublic/landing.jpg";
 
 const WorkContent = ({ refEl, pageControl, content }) => {
   const { slideImgStyle } = useSlideStyle(pageControl, refEl);

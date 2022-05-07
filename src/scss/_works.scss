@@ -388,3 +388,43 @@
   background-color: rgba(0, 0, 0, 0.3);
   // z-index: 5;
 }
+
+.web-portfolio__desktop {
+  width: 200px;
+  height: 200px;
+}
+
+.slide-img--desktop {
+  // position: relative;
+  height: 100%;
+  width: auto;
+
+  display: flex;
+  align-items: flex-end;
+
+  & svg {
+    position: absolute;
+    bottom: 0;
+    height: 75vh;
+    margin-bottom: 9vh;
+    box-sizing: border-box;
+    z-index: 1;
+  }
+
+  & .masking {
+    position: relative;
+    bottom: 34vh;
+    height: calc(75vh / 3 * 2);
+    aspect-ratio: 7 / 4;
+    background-color: blue;
+    border-radius: 2vh;
+    overflow: hidden;
+    & img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: auto;
+    }
+  }
+}
