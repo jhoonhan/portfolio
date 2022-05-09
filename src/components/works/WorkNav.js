@@ -10,6 +10,7 @@ const WorkNav = ({ pageControl, workRefs }) => {
     workNavWidth,
     setWorkNavWidth,
   } = pageControl;
+
   useEffect(() => {
     if (workPage === "el1") {
       workRefs.refEl1.current.scrollIntoView({ behavior: "smooth" });

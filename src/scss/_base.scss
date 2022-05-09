@@ -1,14 +1,13 @@
 body {
   color: white;
   font-size: $font-size--d;
+  font-weight: 300;
   background-image: url(../assests/image/bg1.jpg);
   background-size: 100% 100%;
   background-position: center center;
   background-blend-mode: difference;
 }
-h3 {
-  font-weight: 500;
-}
+
 a {
   color: white;
   text-decoration: none;
@@ -128,10 +127,10 @@ a {
 .detail-item {
   text-transform: uppercase;
   & h3 {
-    font-weight: 500;
+    font-weight: 300;
   }
   & p {
-    font-weight: bold;
+    font-weight: 600;
   }
 }
 .detail-item__title {

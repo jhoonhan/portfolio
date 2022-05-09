@@ -27,6 +27,11 @@ const Works = ({ refs, pageControl }) => {
       "linear-gradient(60deg, rgba(118,19,19,1) 0%,rgba(118,19,19,1) 33%,rgba(150, 50, 50, 1) 45%, rgba(220,115,45,1) 100%)",
   };
 
+  const backgroundStyleEl3 = {
+    background:
+      "linear-gradient(60deg, rgba(2,0,36,1) 0%,rgba(2,0,36,1) 23%, rgba(118,19,19,1) 100%)",
+  };
+
   const render = () => {
     return (
       <>
@@ -51,7 +56,7 @@ const Works = ({ refs, pageControl }) => {
             refEl={refEl3}
             pageControl={pageControl}
             content={salvationArmy}
-            backgroundStyle={backgroundStyleEl2}
+            backgroundStyle={backgroundStyleEl3}
             noOverview={true}
           />
           <WorkContent refEl={refEl4} pageControl={pageControl} />

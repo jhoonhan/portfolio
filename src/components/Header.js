@@ -121,7 +121,7 @@ const Header = ({ refs, pageControl }) => {
                   refs.refWorks.current.scrollIntoView({ behavior: "smooth" });
                   pageControl.setCurPage("works");
                   setActiveHeight("10rem");
-                  pageControl.setWorkPage("overview");
+                  pageControl.setWorkPage("el1");
                 }}
                 href="#work"
                 style={pageControl.curPage === "works" ? activeOpacity : {}}

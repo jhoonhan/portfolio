@@ -3,6 +3,7 @@ import React, { useRef, useEffect, useState } from "react";
 import WorkPictureContainer from "./WorkPictureContainer";
 import WorkDetail from "./WorkDetail";
 import useSlideStyle from "./useSlideStyle";
+import DesktopSVG from "../../assests/image/projects/DesktopSVG";
 
 const WorkContent = ({
   refEl,
@@ -83,6 +84,13 @@ const WorkContent = ({
       </div>
     );
   };
+  const renderMainPicture = () => {
+    return (
+      <div className="work__content__main-picture">
+        <img src={content?.images.overviewImages[0]} alt="img3" />
+      </div>
+    );
+  };
 
   const render = () => {
     return (
@@ -97,10 +105,11 @@ const WorkContent = ({
           }}
         >
           {noOverview ? (
-            <div />
+            <DesktopSVG img={content.images.overviewImages[0]} />
           ) : (
             <WorkPictureContainer images={content?.images} />
           )}
+
           {renderInfo()}
         </div>
         <WorkDetail

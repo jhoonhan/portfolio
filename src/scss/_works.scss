@@ -12,7 +12,7 @@
   grid-auto-rows: 1fr;
   // flex-direction: column;
   // background-color: red;
-  // overflow: hidden;
+  overflow: hidden;
   // overflow-y: hidden;
   box-sizing: border-box;
 
@@ -163,6 +163,7 @@
 
 .works__title {
   font-size: 20vh !important;
+  font-weight: 600;
   // line-height: 1;
   text-transform: uppercase;
 
@@ -410,7 +411,6 @@
 
   & svg {
     position: absolute;
-    bottom: 0;
     height: 75vh;
     // margin-bottom: 9vh;
     box-sizing: border-box;
@@ -427,8 +427,8 @@
     & img {
       position: absolute;
       top: 1.3vh;
-      left: 0;
-      width: 100%;
+      left: 1.2vh;
+      width: calc(100% - 2.4vh);
       height: auto;
     }
   }
