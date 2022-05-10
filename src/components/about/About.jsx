@@ -44,32 +44,32 @@ const About = ({ refs }) => {
     if (activeSlide === 0) {
       setActiveSlideStyle({
         slide0: { width: "115%" },
-        slide1: { width: "95%" },
+        slide1: { width: "105%" },
         slide2: { width: "95%" },
-        slide3: { width: "95%" },
+        slide3: { width: "85%" },
       });
     }
     if (activeSlide === 1) {
       setActiveSlideStyle({
-        slide0: { width: "95%" },
+        slide0: { width: "100%" },
         slide1: { width: "115%" },
-        slide2: { width: "95%" },
-        slide3: { width: "95%" },
+        slide2: { width: "100%" },
+        slide3: { width: "85%" },
       });
     }
     if (activeSlide === 2) {
       setActiveSlideStyle({
-        slide0: { width: "95%" },
-        slide1: { width: "95%" },
+        slide0: { width: "85%" },
+        slide1: { width: "100%" },
         slide2: { width: "115%" },
-        slide3: { width: "95%" },
+        slide3: { width: "100%" },
       });
     }
     if (activeSlide === 3) {
       setActiveSlideStyle({
-        slide0: { width: "95%" },
+        slide0: { width: "85%" },
         slide1: { width: "95%" },
-        slide2: { width: "95%" },
+        slide2: { width: "105%" },
         slide3: { width: "115%" },
       });
     }
@@ -129,7 +129,27 @@ const About = ({ refs }) => {
           </div>
         </div>
         <div className="about__info" onMouseOver={() => setActiveSlide(4)}>
-          info
+          <div className="text-wrapper">
+            <span className="title">Hello,</span>
+            <h3>
+              I'm a visual artist and web developer based in North Carolina,
+              USA. Creating digital experiences with an eye for beauty and
+              creativity.
+            </h3>
+            <p>
+              Being creative with visual aesthetic and motion design for
+              websites is what I've been fascinated with for the past few years.
+              Exploring interdisciplinary art making practice, I have been
+              learning how to develop in JavaScript, and exploring how it can be
+              merged with my previous experience as a visual artist.
+              <br />
+              <br />
+              As much as I have a great eye for a beauty, I am well skilled web
+              developer experience in JavaScript, React JS, MongoDb, Express,
+              NodeJs. I have been tirelessly making side projects to express my
+              passion as a maker and to release my undying curiosity.
+            </p>
+          </div>
         </div>
       </section>
     );
