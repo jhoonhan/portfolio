@@ -32,13 +32,24 @@
 }
 
 .about__slide-column {
-  width: 100%;
   max-height: 100vh;
   display: flex;
   flex-direction: column;
   gap: 2rem;
   overflow-y: scroll;
   scrollbar-width: none;
+
+  transition: $default--transition;
+
+  opacity: 0.5;
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
+
+  &:hover {
+    opacity: 1;
+    -webkit-filter: none; /* Safari 6.0 - 9.0 */
+    filter: none;
+  }
 
   & img {
     width: 100%;
