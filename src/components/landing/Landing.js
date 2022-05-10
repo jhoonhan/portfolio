@@ -12,7 +12,7 @@ const Landing = ({ curPage, refHome }) => {
       >
         <MiddleLine orientation="horizontal" />
 
-        <h3>visual artist & web developer</h3>
+        <h3 style={{ fontWeight: 300 }}>visual artist & web developer</h3>
       </div>
     );
   };

@@ -1,27 +1,37 @@
 import React, { useEffect, useState } from "react";
 import AboutImg from "./AboutImg";
 
-import img0 from "../../assests/image/about/0.jpg";
-import img1 from "../../assests/image/about/1.jpg";
-import img2 from "../../assests/image/about/2.jpg";
-import img3 from "../../assests/image/about/3.jpg";
-import img4 from "../../assests/image/about/4.jpg";
-import img5 from "../../assests/image/about/5.jpg";
-import img6 from "../../assests/image/about/6.jpg";
-import img7 from "../../assests/image/about/7.jpg";
-import img8 from "../../assests/image/about/8.jpg";
-import img9 from "../../assests/image/about/9.jpg";
-import img10 from "../../assests/image/about/10.jpg";
-import img11 from "../../assests/image/about/11.jpg";
-import img12 from "../../assests/image/about/12.jpg";
-import img13 from "../../assests/image/about/13.jpg";
-import img14 from "../../assests/image/about/14.jpg";
-import img15 from "../../assests/image/about/15.jpg";
-import img16 from "../../assests/image/about/16.jpg";
-import img17 from "../../assests/image/about/17.jpg";
-import img18 from "../../assests/image/about/18.jpg";
-import img19 from "../../assests/image/about/19.jpg";
-import img20 from "../../assests/image/about/20.jpg";
+import ah0 from "../../assests/image/about/ah0.jpg";
+import ah1 from "../../assests/image/about/ah1.jpg";
+import ah2 from "../../assests/image/about/ah2.jpg";
+import ah3 from "../../assests/image/about/ah3.jpg";
+import ah4 from "../../assests/image/about/ah4.jpg";
+import av0 from "../../assests/image/about/av0.jpg";
+import av1 from "../../assests/image/about/av1.jpg";
+import av2 from "../../assests/image/about/av2.jpg";
+import hh0 from "../../assests/image/about/hh0.jpg";
+import hh1 from "../../assests/image/about/hh1.jpg";
+import hh2 from "../../assests/image/about/hh2.jpg";
+import hh3 from "../../assests/image/about/hh3.jpg";
+import hh4 from "../../assests/image/about/hh4.jpg";
+import hh5 from "../../assests/image/about/hh5.jpg";
+import hh6 from "../../assests/image/about/hh6.jpg";
+import hv0 from "../../assests/image/about/hv0.jpg";
+import hv1 from "../../assests/image/about/hv1.jpg";
+import hv2 from "../../assests/image/about/hv2.jpg";
+import hv3 from "../../assests/image/about/hv3.jpg";
+import hv4 from "../../assests/image/about/hv4.jpg";
+import hv5 from "../../assests/image/about/hv5.jpg";
+import ph0 from "../../assests/image/about/ph0.jpg";
+import ph1 from "../../assests/image/about/ph1.jpg";
+import ph2 from "../../assests/image/about/ph2.jpg";
+import ph3 from "../../assests/image/about/ph3.jpg";
+import pv0 from "../../assests/image/about/pv0.jpg";
+import pv1 from "../../assests/image/about/pv1.jpg";
+import pv2 from "../../assests/image/about/pv2.jpg";
+import pv3 from "../../assests/image/about/pv3.jpg";
+import pv4 from "../../assests/image/about/pv4.jpg";
+import pv5 from "../../assests/image/about/pv5.jpg";
 
 const About = ({ refs }) => {
   const [activeSlide, setActiveSlide] = useState(-1);
@@ -88,44 +98,52 @@ const About = ({ refs }) => {
             onMouseOver={() => setActiveSlide(0)}
             style={activeSlideStyle.slide0}
           >
-            <AboutImg img={img0} />
-            <AboutImg img={img1} />
-            <AboutImg img={img2} />
-            <AboutImg img={img3} />
-            <AboutImg img={img4} />
+            <AboutImg img={ph3} />
+            <AboutImg img={av0} />
+            <AboutImg img={ah0} />
+            <AboutImg img={av2} />
+            <AboutImg img={ah4} />
+            <AboutImg img={av1} />
+            <AboutImg img={ah1} />
           </div>
           <div
             className="about__slide-column"
             onMouseOver={() => setActiveSlide(1)}
             style={activeSlideStyle.slide1}
           >
-            <AboutImg img={img5} />
-            <AboutImg img={img6} />
-            <AboutImg img={img7} />
-            <AboutImg img={img8} />
-            <AboutImg img={img9} />
+            <AboutImg img={pv5} />
+            <AboutImg img={ph0} />
+            <AboutImg img={pv0} />
+            <AboutImg img={ph2} />
+            <AboutImg img={pv1} />
+            <AboutImg img={ph1} />
+            <AboutImg img={pv3} />
+            <AboutImg img={hh4} />
+            <AboutImg img={pv2} />
           </div>
           <div
             className="about__slide-column"
             onMouseOver={() => setActiveSlide(2)}
             style={activeSlideStyle.slide2}
           >
-            <AboutImg img={img10} />
-            <AboutImg img={img11} />
-            <AboutImg img={img12} />
-            <AboutImg img={img13} />
-            <AboutImg img={img14} />
+            <AboutImg img={hh2} />
+            <AboutImg img={hv0} />
+            <AboutImg img={hh5} />
+            <AboutImg img={hv2} />
+            <AboutImg img={hh6} />
+            <AboutImg img={hv4} />
           </div>
           <div
             className="about__slide-column"
             onMouseOver={() => setActiveSlide(3)}
             style={activeSlideStyle.slide3}
           >
-            <AboutImg img={img15} />
-            <AboutImg img={img16} />
-            <AboutImg img={img17} />
-            <AboutImg img={img18} />
-            <AboutImg img={img19} />
+            <AboutImg img={hv1} />
+            <AboutImg img={hh0} />
+            <AboutImg img={hv3} />
+            <AboutImg img={hh1} />
+            <AboutImg img={hv5} />
+            <AboutImg img={hh3} />
           </div>
         </div>
         <div className="about__info" onMouseOver={() => setActiveSlide(4)}>
