@@ -58,6 +58,7 @@ const WorkNav = ({ pageControl, workRefs }) => {
   };
 
   const renderContentArrow = () => {
+    if (curPage !== "works") return;
     return (
       <div className="works__content__arrow" onClick={onArrowClick}>
         <span className="arrow"></span>

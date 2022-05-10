@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Landing from "./components/landing/Landing";
 import LandingArt from "./components/landing/LandingArt";
 import Works from "./components/works/Works";
+import About from "./components/about/About";
 
 import "./scss/App.scss";
 
@@ -59,9 +60,8 @@ const App = () => {
 
           <Landing curPage={curPage} refHome={refHome} />
           <Works refs={refs} pageControl={pageControl} />
-          <section ref={refAbout} className="container">
-            about
-          </section>
+          <About refs={refs} />
+
           <section ref={refContact} className="container">
             contact
           </section>
