@@ -13,9 +13,8 @@ import slideImg6 from "../image/projects/danji/img2.jpg";
 
 export const danji = {
   name: ["danji"],
-  description:
-    "A microsite showcasing stories of customers of a concept pension provider.",
-  role: "senior developer",
+  description: "A staple Korean restaurant serving the Triad area since 2015.",
+  role: "Developer, Designer, Photographer",
   technology: "HTML5, CSS3, SASS, JQUERY",
   liveDemoURL: "https://google.com",
   githubURL: "https://github.com/",

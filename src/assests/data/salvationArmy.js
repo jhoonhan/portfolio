@@ -7,9 +7,9 @@ import slideImg2 from "../image/projects/salvationArmy/desktop2.jpg";
 export const salvationArmy = {
   name: ["salvation", " army"],
   description:
-    "A microsite showcasing stories of customers of a concept pension provider.",
-  role: "senior developer",
-  technology: "HTML5, CSS3, SASS, JQUERY",
+    "A fast and easy bookeeping web application for a charitable organization.",
+  role: "Developer, Designer",
+  technology: "ReactJS, JavaScript, NodeJS, Express, MongoDB, HTML, CSS",
   liveDemoURL: "https://google.com",
   githubURL: "https://github.com/",
   images: {

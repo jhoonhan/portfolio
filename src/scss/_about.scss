@@ -24,7 +24,7 @@
 
 .about__slides-container {
   display: flex;
-  column-gap: 2rem;
+  column-gap: 1rem;
 
   margin-left: calc(5vw + 10rem);
 
@@ -36,10 +36,12 @@
   max-height: 100vh;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-  overflow-y: scroll;
-  scrollbar-width: none;
+  gap: 1rem;
 
+  box-sizing: border-box;
+
+  scrollbar-width: none;
+  overflow-y: scroll;
   transition: $default--transition;
 
   opacity: 0.5;

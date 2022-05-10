@@ -13,9 +13,8 @@ import slideImg6 from "../image/projects/sushiRepublic/img1.jpg";
 
 export const sushiRepublic = {
   name: ["sushi", " republic"],
-  description:
-    "A microsite showcasing stories of customers of a concept pension provider.",
-  role: "senior developer",
+  description: "A responsive website for a local fine Japanese restaurant.",
+  role: "developer, designer, photographer",
   technology: "HTML5, CSS3, SASS, JQUERY",
   liveDemoURL: "https://google.com",
   githubURL: "https://github.com/",

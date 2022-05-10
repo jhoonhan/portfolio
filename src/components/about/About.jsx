@@ -142,13 +142,25 @@ const About = ({ refs }) => {
               Exploring interdisciplinary art making practice, I have been
               learning how to develop in JavaScript, and exploring how it can be
               merged with my previous experience as a visual artist.
-              <br />
-              <br />
-              As much as I have a great eye for a beauty, I am well skilled web
-              developer experience in JavaScript, React JS, MongoDb, Express,
-              NodeJs. I have been tirelessly making side projects to express my
-              passion as a maker and to release my undying curiosity.
             </p>
+            <div className="row--grid--2 detail-item">
+              <div className="detail-item__title">
+                <h3>Web Development</h3>
+                <div></div>
+              </div>
+              <p style={{ textTransform: "none" }}>
+                ReactJS, JavaScript, NodeJS, HTML5, CSS3, SASS, MongoDb, Express
+              </p>
+            </div>
+            <div className="row--grid--2 detail-item">
+              <div className="detail-item__title">
+                <h3>Digital Design</h3>
+                <div></div>
+              </div>
+              <p style={{ textTransform: "none" }}>
+                Adobe Photoshop, Illustrator, XD, InDesign, Primere Pro
+              </p>
+            </div>
           </div>
         </div>
       </section>

@@ -25,24 +25,13 @@ const WorkContent = ({
           <h2>{content?.description}</h2>
         </div>
         <div className="works__info__detail">
-          <div className="column--grid--2" style={{ columnGap: "3rem" }}>
-            <div className="row--grid--2 detail-item">
-              <div className="detail-item__title">
-                <h3>Role</h3>
-                <div></div>
-              </div>
-
-              <p>{content?.role}</p>
+          <div className="row--grid--2 detail-item">
+            <div className="detail-item__title">
+              <h3>Role</h3>
+              <div></div>
             </div>
 
-            <div className="row--grid--2 detail-item">
-              <div className="detail-item__title">
-                <h3>Role</h3>
-                <div></div>
-              </div>
-
-              <p>{content?.role}</p>
-            </div>
+            <p>{content?.role}</p>
           </div>
 
           <div className="row--grid--2 detail-item">
