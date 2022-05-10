@@ -52,7 +52,9 @@
   }
 
   & img {
+    // opacity: 0.5;
     width: 100%;
+    transition: $default--transition;
   }
 
   &::-webkit-scrollbar {

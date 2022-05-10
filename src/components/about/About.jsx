@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import AboutImg from "./AboutImg";
+
 import img0 from "../../assests/image/about/0.jpg";
 import img1 from "../../assests/image/about/1.jpg";
 import img2 from "../../assests/image/about/2.jpg";
@@ -29,12 +31,6 @@ const About = ({ refs }) => {
     slide2: { width: "100%" },
     slide3: { width: "100%" },
   });
-  const [isVisible, setIsVisible] = useState(false);
-
-  const visible = (entries) => {
-    // console.log(entries[0].isIntersecting);
-    setIsVisible(entries[0].isIntersecting);
-  };
 
   useEffect(() => {
     if (activeSlide === -1) {
@@ -92,44 +88,44 @@ const About = ({ refs }) => {
             onMouseOver={() => setActiveSlide(0)}
             style={activeSlideStyle.slide0}
           >
-            <img src={img0} alt="img0" />
-            <img src={img1} alt="img1" />
-            <img src={img2} alt="img2" />
-            <img src={img3} alt="img2" />
-            <img src={img4} alt="img2" />
+            <AboutImg img={img0} />
+            <AboutImg img={img1} />
+            <AboutImg img={img2} />
+            <AboutImg img={img3} />
+            <AboutImg img={img4} />
           </div>
           <div
             className="about__slide-column"
             onMouseOver={() => setActiveSlide(1)}
             style={activeSlideStyle.slide1}
           >
-            <img src={img5} alt="img0" />
-            <img src={img6} alt="img1" />
-            <img src={img7} alt="img2" />
-            <img src={img8} alt="img2" />
-            <img src={img9} alt="img2" />
+            <AboutImg img={img5} />
+            <AboutImg img={img6} />
+            <AboutImg img={img7} />
+            <AboutImg img={img8} />
+            <AboutImg img={img9} />
           </div>
           <div
             className="about__slide-column"
             onMouseOver={() => setActiveSlide(2)}
             style={activeSlideStyle.slide2}
           >
-            <img src={img10} alt="img0" />
-            <img src={img11} alt="img1" />
-            <img src={img12} alt="img2" />
-            <img src={img13} alt="img2" />
-            <img src={img14} alt="img2" />
+            <AboutImg img={img10} />
+            <AboutImg img={img11} />
+            <AboutImg img={img12} />
+            <AboutImg img={img13} />
+            <AboutImg img={img14} />
           </div>
           <div
             className="about__slide-column"
             onMouseOver={() => setActiveSlide(3)}
             style={activeSlideStyle.slide3}
           >
-            <img src={img15} alt="img9" />
-            <img src={img16} alt="img10" />
-            <img src={img17} alt="img11" />
-            <img src={img18} alt="img11" />
-            <img src={img19} alt="img11" />
+            <AboutImg img={img15} />
+            <AboutImg img={img16} />
+            <AboutImg img={img17} />
+            <AboutImg img={img18} />
+            <AboutImg img={img19} />
           </div>
         </div>
         <div className="about__info" onMouseOver={() => setActiveSlide(4)}>
