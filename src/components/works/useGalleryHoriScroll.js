@@ -10,7 +10,7 @@ const useGalleryHoriScroll = (pageControl) => {
     el.scrollTo({ left: 0 });
 
     const onWheel = (e) => {
-      // console.log(e.deltaY);
+      console.log(e.deltaY);
       e.preventDefault();
 
       if (e.deltaY === 0) return;
@@ -21,7 +21,6 @@ const useGalleryHoriScroll = (pageControl) => {
     };
 
     const fn = (e) => {
-      console.log(e);
       const child = el.children[0].getBoundingClientRect();
       if (
         el.scrollLeft > 0 &&
@@ -46,9 +45,9 @@ const useGalleryHoriScroll = (pageControl) => {
       onWheel(e);
     };
 
-    el.addEventListener("mousewheel", fn);
+    el.addEventListener("wheel", fn);
     return () => {
-      el.removeEventListener("mousewheel", fn);
+      el.removeEventListener("wheel", fn);
     };
   }, [pageControl.workSubPage]);
   return elRef;

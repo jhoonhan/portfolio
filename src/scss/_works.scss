@@ -84,7 +84,7 @@
   display: flex;
   height: 85vh;
   min-width: 200px;
-  margin-bottom: 9vh;
+  margin-bottom: calc(9vh - 1px);
   transition: $default--transition;
 }
 .testbutton {
@@ -423,10 +423,13 @@
     height: calc((75vh / 3 * 2));
     aspect-ratio: 7 / 4;
     border-radius: 2vh;
+
+    background-color: #1a1a1a;
+
     overflow: hidden;
     & img {
       position: absolute;
-      top: 1.3vh;
+      top: 1.2vh;
       left: 1.2vh;
       width: calc(100% - 2.4vh);
       height: auto;
@@ -459,18 +462,27 @@
     position: relative;
     // bottom: 34vh;
     height: 50vh;
+    aspect-ratio: 12 / 25;
 
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
 
-    aspect-ratio: 12 / 25;
-    border-radius: 12%;
+    border-radius: 3vh;
+    background-color: #1a1a1a;
+    // background-color: red;
+    overflow: hidden;
+
     overflow: hidden;
     & img {
       position: absolute;
+      // width: auto;
+      left: 0.8vh;
+      top: 0.8vh;
       width: auto;
-      height: 100%;
+      aspect-ratio: 231 / 500;
+
+      max-height: 48.5vh;
 
       margin-bottom: 0;
     }
