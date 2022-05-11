@@ -11,11 +11,11 @@ const useSubPageStyle = (pageControl) => {
       // refs.refWorks.current.style.transform = "translateX(-0vw)";
       setActiveSubPageStyle({ transform: "translateX(-0vw)" });
     }
-    if (pageControl.workSubPage === "info") {
+    if (pageControl.workSubPage === "overview") {
       // refs.refWorks.current.style.transform = "translateX(-0vw)";
       setActiveSubPageStyle({ transform: "translateX(-100vw)" });
     }
-    if (pageControl.workSubPage === "detail") {
+    if (pageControl.workSubPage === "gallery") {
       // refs.refWorks.current.style.transform = "translateX(-100vw)";
       setActiveSubPageStyle({ transform: "translateX(-200vw)" });
     }

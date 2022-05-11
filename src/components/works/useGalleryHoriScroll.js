@@ -4,13 +4,12 @@ import throttle from "../../helpers/throttle";
 const useGalleryHoriScroll = (pageControl) => {
   const elRef = useRef();
   useEffect(() => {
-    if (pageControl.workSubPage !== "detail") return;
+    if (pageControl.workSubPage !== "gallery") return;
     const el = elRef.current;
     if (!el) return;
     el.scrollTo({ left: 0 });
 
     const onWheel = (e) => {
-      console.log(e.deltaY);
       e.preventDefault();
 
       if (e.deltaY === 0) return;
@@ -22,9 +21,10 @@ const useGalleryHoriScroll = (pageControl) => {
 
     const fn = (e) => {
       const child = el.children[0].getBoundingClientRect();
+
       if (
         el.scrollLeft > 0 &&
-        Math.floor(window.innerWidth) < Math.round(child.right) - 0
+        Math.floor(window.innerWidth) <= Math.round(child.right) - 10
       ) {
         e.stopPropagation();
       }
@@ -34,12 +34,13 @@ const useGalleryHoriScroll = (pageControl) => {
       const vw = window.innerWidth;
       const x = s / (w - vw + 700);
 
-      const amount = 0.6 * x * 100;
+      const amount = 0.5 * x * 100;
+
       if (s <= 0) {
-        pageControl.setWorkNavWidth(`${25}%`);
+        pageControl.setWorkNavWidth(`${50}%`);
       }
       if (s > 0) {
-        pageControl.setWorkNavWidth(`${25 + amount}%`);
+        pageControl.setWorkNavWidth(`${50 + amount}%`);
       }
 
       onWheel(e);

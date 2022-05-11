@@ -41,14 +41,12 @@ const useSlideStyle = (pageControl, refEl) => {
 
   useEffect(() => {
     if (slide === -5) {
-      if (workSubPage === "info") setWorkSubPage("workLanding");
-      if (workSubPage === "detail") setWorkSubPage("info");
-      // if (workSubPage === "slides") setWorkSubPage("detail");
+      if (workSubPage === "overview") setWorkSubPage("workLanding");
+      if (workSubPage === "gallery") setWorkSubPage("overview");
     }
     if (slide === 5) {
-      if (workSubPage === "workLanding") setWorkSubPage("info");
-      if (workSubPage === "info") setWorkSubPage("detail");
-      // if (workSubPage === "detail") setWorkSubPage("slides");
+      if (workSubPage === "workLanding") setWorkSubPage("overview");
+      if (workSubPage === "overview") setWorkSubPage("gallery");
     }
   }, [slide]);
 

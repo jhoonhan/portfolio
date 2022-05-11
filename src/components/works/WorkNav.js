@@ -31,10 +31,10 @@ const WorkNav = ({ pageControl, workRefs }) => {
   }, [workPage]);
 
   useEffect(() => {
-    if (workSubPage === "workLanding") setWorkNavWidth("5%");
-    if (workSubPage === "info") setWorkNavWidth("5%");
-    if (workSubPage === "detail") setWorkNavWidth("25%");
-    if (workSubPage === "slides") setWorkNavWidth("85%");
+    if (workSubPage === "workLanding") setWorkNavWidth("3%");
+    if (workSubPage === "overview") setWorkNavWidth("20%");
+    if (workSubPage === "gallery") setWorkNavWidth("50%");
+    // if (workSubPage === "slides") setWorkNavWidth("85%");
   }, [workSubPage]);
 
   const condWorkPage = () => {
@@ -60,9 +60,9 @@ const WorkNav = ({ pageControl, workRefs }) => {
   };
 
   const onArrowClick = () => {
-    if (workSubPage === "workLanding") setWorkSubPage("info");
-    if (workSubPage === "info") setWorkSubPage("detail");
-    // if (workSubPage === "detail") setWorkPage(`el${workPage.slice(-1) + 1}`);
+    if (workSubPage === "workLanding") setWorkSubPage("overview");
+    if (workSubPage === "overview") setWorkSubPage("gallery");
+    // if (workSubPage === "gallery") setWorkPage(`el${workPage.slice(-1) + 1}`);
   };
 
   const renderContentArrow = () => {
@@ -85,7 +85,7 @@ const WorkNav = ({ pageControl, workRefs }) => {
         <div className="labels">
           <div
             // className={`label info a--opacity ${activeClass()}`}
-            className={`label info a--opacity `}
+            className={`label landing a--opacity `}
             style={active("workLanding")}
           >
             <div className="box" />
@@ -95,15 +95,15 @@ const WorkNav = ({ pageControl, workRefs }) => {
           </div>
           <div
             // className={`label detail a--opacity ${activeClass()}`}
-            className={`label detail a--opacity `}
-            style={active("info")}
+            className={`label overview a--opacity `}
+            style={active("overview")}
           >
             <div className="box" />
-            <span onClick={() => setWorkSubPage("info")}>info</span>
+            <span onClick={() => setWorkSubPage("overview")}>overview</span>
           </div>
           <div
             // className={`label more a--opacity ${activeClass()}`}
-            className={`label more a--opacity`}
+            className={`label gallery a--opacity`}
             style={active("gallery")}
           >
             <div className="box" />
