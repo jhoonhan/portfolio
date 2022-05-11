@@ -7,6 +7,7 @@ import Works from "./components/works/Works";
 import About from "./components/about/About";
 
 import "./scss/App.scss";
+import Contact from "./components/contact/Contact";
 
 const App = () => {
   const [curPage, setCurPage] = useState(null);
@@ -61,10 +62,7 @@ const App = () => {
           <Landing curPage={curPage} refHome={refHome} />
           <Works refs={refs} pageControl={pageControl} />
           <About refs={refs} />
-
-          <section ref={refContact} className="container">
-            contact
-          </section>
+          <Contact refs={refs} />
         </main>
       </div>
     );

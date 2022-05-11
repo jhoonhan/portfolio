@@ -25,7 +25,7 @@ const WorkContent = ({
           <h2>{content?.description}</h2>
         </div>
         <div className="works__info__detail">
-          <div className="row--grid--2 detail-item">
+          <div className="grid--row--2 detail-item">
             <div className="detail-item__title">
               <h3>Role</h3>
               <div></div>
@@ -34,7 +34,7 @@ const WorkContent = ({
             <p>{content?.role}</p>
           </div>
 
-          <div className="row--grid--2 detail-item">
+          <div className="grid--row--2 detail-item">
             <div className="detail-item__title">
               <h3>Technology</h3>
               <div></div>
@@ -44,7 +44,7 @@ const WorkContent = ({
           </div>
 
           <div
-            className="column--grid--2 detail-item"
+            className="grid--column--2 detail-item"
             style={{ marginTop: "1rem", gap: "2rem" }}
           >
             <a href={content?.liveDemoURL} className="button">

@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import AboutImg from "./AboutImg";
+import icons from "../../assests/image/icons.svg";
 
 import ah0 from "../../assests/image/about/ah0.jpg";
 import ah1 from "../../assests/image/about/ah1.jpg";
@@ -33,6 +34,8 @@ import pv3 from "../../assests/image/about/pv3.jpg";
 import pv4 from "../../assests/image/about/pv4.jpg";
 import pv5 from "../../assests/image/about/pv5.jpg";
 
+import useIntersectionObserve from "../../helpers/useIntersectionObserve";
+
 const About = ({ refs }) => {
   const [activeSlide, setActiveSlide] = useState(-1);
   const [activeSlideStyle, setActiveSlideStyle] = useState({
@@ -41,6 +44,9 @@ const About = ({ refs }) => {
     slide2: { width: "100%" },
     slide3: { width: "100%" },
   });
+  const refInfo = useRef(null);
+
+  const intersectStyle = useIntersectionObserve(refInfo, 0.8);
 
   useEffect(() => {
     if (activeSlide === -1) {
@@ -148,22 +154,28 @@ const About = ({ refs }) => {
         </div>
         <div className="about__info" onMouseOver={() => setActiveSlide(4)}>
           <div className="text-wrapper">
-            <span className="title" style={{ paddingBottom: "5rem" }}>
-              Hello,
-            </span>
-            <h2 style={{ paddingBottom: "5rem" }}>
-              I'm a visual artist and web developer based in North Carolina,
-              USA.
-            </h2>
-            <p style={{ paddingBottom: "10rem" }}>
-              Being creative with visual aesthetic and motion design for
-              websites is what I've been fascinated with for the past few years.
-              Exploring interdisciplinary art making practice, I have been
-              learning how to develop in JavaScript, and exploring how it can be
-              merged with my previous experience as a visual artist.
-            </p>
+            <div className="flex--column">
+              <span className="title" style={{ paddingBottom: "5rem" }}>
+                Hello,
+              </span>
+              <h2 style={{ paddingBottom: "5rem" }}>
+                I'm a maker with unquenchable passion in web development and
+                visual art.
+              </h2>
+              <p style={{ paddingBottom: "10rem" }}>
+                Being creative with visual aesthetic and motion design for
+                websites is what I've been fascinated with for the past few
+                years. Exploring interdisciplinary art making practice, I have
+                been learning how to develop in JavaScript, and exploring how it
+                can be merged with my previous experience as a visual artist.
+              </p>
+            </div>
 
-            <div>
+            <div
+              ref={refInfo}
+              className="about__detail-info flex--column"
+              style={intersectStyle}
+            >
               <div
                 className="flex--column"
                 style={{ gap: "0.5rem", paddingBottom: "7rem" }}
@@ -176,12 +188,37 @@ const About = ({ refs }) => {
 
               <div
                 className="flex--column"
-                style={{ gap: "0.5rem", paddingBottom: "5rem" }}
+                style={{ gap: "0.5rem", paddingBottom: "10rem" }}
               >
                 <h2 style={{ paddingBottom: "1rem" }}>Expreience</h2>
                 <p>- 5 years experience in Web Design</p>
                 <p>- 5 years experience in Graphic Design</p>
                 <p>- 1 year in Front-end Web Development</p>
+              </div>
+
+              <div
+                className="flex--row"
+                style={{
+                  gap: "3rem",
+                  alignSelf: "center",
+                  borderTop: "1px solid #ccc",
+                  paddingTop: "2rem",
+                }}
+              >
+                <svg viewBox="0 0 100 100" className="social-icons ">
+                  <use href={`${icons}#github`} />
+                </svg>
+                <svg viewBox="0 0 100 100" className="social-icons ">
+                  <use href={`${icons}#linkedin`} />
+                </svg>
+
+                <svg viewBox="0 0 100 100" className="social-icons ">
+                  <use href={`${icons}#instagram`} />
+                </svg>
+
+                <svg viewBox="0 0 100 100" className="social-icons ">
+                  <use href={`${icons}#cv`} />
+                </svg>
               </div>
             </div>
           </div>

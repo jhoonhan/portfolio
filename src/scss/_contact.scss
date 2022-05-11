@@ -1,0 +1,47 @@
+.contact__container {
+  // position: relative;
+  // width: 100%;
+  // left: calc(5vw + 10rem);
+  // left: 0;
+
+  // width: 200vw;
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+  // overflow-y: hidden;
+  box-sizing: border-box;
+
+  transition: $default--transition;
+
+  z-index: 5;
+}
+
+.contact__text-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+
+  margin-left: -20%;
+
+  & .contact__title {
+    font-size: calc(min(20vw, 20vh));
+    margin-left: -1.5rem;
+  }
+
+  & .contact__subtitle {
+    font-size: calc(min(3.8vw, 3.8vh));
+  }
+  & p {
+    font-size: $font-size--ml;
+  }
+}
+
+.contact__container .social-icons {
+  width: 2rem;
+}

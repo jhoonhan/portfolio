@@ -86,7 +86,7 @@
 
     & .title {
       font-size: 8rem;
-      font-weight: 500;
+      font-weight: 300;
     }
     & .subtitle {
       font-size: 5rem;
@@ -102,4 +102,12 @@
       line-height: 1.5;
     }
   }
+}
+
+.about__container .social-icons {
+  width: 3rem;
+}
+
+.about__detail-info {
+  transition: $default--transition;
 }
