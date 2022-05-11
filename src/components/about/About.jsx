@@ -148,36 +148,41 @@ const About = ({ refs }) => {
         </div>
         <div className="about__info" onMouseOver={() => setActiveSlide(4)}>
           <div className="text-wrapper">
-            <span className="title">Hello,</span>
-            <h3>
+            <span className="title" style={{ paddingBottom: "5rem" }}>
+              Hello,
+            </span>
+            <h2 style={{ paddingBottom: "5rem" }}>
               I'm a visual artist and web developer based in North Carolina,
-              USA. Creating digital experiences with an eye for beauty and
-              creativity.
-            </h3>
-            <p>
+              USA.
+            </h2>
+            <p style={{ paddingBottom: "10rem" }}>
               Being creative with visual aesthetic and motion design for
               websites is what I've been fascinated with for the past few years.
               Exploring interdisciplinary art making practice, I have been
               learning how to develop in JavaScript, and exploring how it can be
               merged with my previous experience as a visual artist.
             </p>
-            <div className="row--grid--2 detail-item">
-              <div className="detail-item__title">
-                <h3>Web Development</h3>
-                <div></div>
+
+            <div>
+              <div
+                className="flex--column"
+                style={{ gap: "0.5rem", paddingBottom: "7rem" }}
+              >
+                <h2 style={{ paddingBottom: "1rem" }}>Skills</h2>
+                <p>React, JavaScript, HTML5, CSS3, Sass</p>
+                <p>Node.js, MongoDB, Express</p>
+                <p>Adobe Photoshop, Illustrator, Premiere Pro, XD</p>
               </div>
-              <p style={{ textTransform: "none" }}>
-                ReactJS, JavaScript, NodeJS, HTML5, CSS3, SASS, MongoDb, Express
-              </p>
-            </div>
-            <div className="row--grid--2 detail-item">
-              <div className="detail-item__title">
-                <h3>Digital Design</h3>
-                <div></div>
+
+              <div
+                className="flex--column"
+                style={{ gap: "0.5rem", paddingBottom: "5rem" }}
+              >
+                <h2 style={{ paddingBottom: "1rem" }}>Expreience</h2>
+                <p>- 5 years experience in Web Design</p>
+                <p>- 5 years experience in Graphic Design</p>
+                <p>- 1 year in Front-end Web Development</p>
               </div>
-              <p style={{ textTransform: "none" }}>
-                Adobe Photoshop, Illustrator, XD, InDesign, Primere Pro
-              </p>
             </div>
           </div>
         </div>

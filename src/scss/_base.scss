@@ -132,6 +132,13 @@ a {
   & p {
     font-weight: 600;
   }
+  & .text {
+    & p {
+      font-size: $font-size--ml;
+      font-weight: 300;
+      text-transform: none;
+    }
+  }
 }
 .detail-item__title {
   display: grid;
@@ -148,4 +155,17 @@ a {
     height: 1px;
     background: $gradient--white--270;
   }
+}
+
+.padding--bottom--3rem {
+  padding-bottom: 3rem;
+}
+
+.padding--bottom--5rem {
+  padding-bottom: 5rem;
+}
+
+.flex--column {
+  display: flex;
+  flex-direction: column;
 }
