@@ -30,6 +30,21 @@ const WorkNav = ({ pageControl, workRefs }) => {
     setWorkSubPage("workLanding");
   }, [workPage]);
 
+  useEffect(() => {
+    if (workSubPage === "workLanding") setWorkNavWidth("5%");
+    if (workSubPage === "info") setWorkNavWidth("5%");
+    if (workSubPage === "detail") setWorkNavWidth("25%");
+    if (workSubPage === "slides") setWorkNavWidth("85%");
+  }, [workSubPage]);
+
+  const condWorkPage = () => {
+    if (workPage === "el1") return "sushi republic";
+    if (workPage === "el2") return "danji";
+    if (workPage === "el3") return "haans cleaners";
+    if (workPage === "el4") return "this is bullshit";
+    if (workPage === "el5") return "salvation army";
+  };
+
   const activeClass = () => {
     if (curPage === "works") {
       return "active-box";
@@ -43,13 +58,6 @@ const WorkNav = ({ pageControl, workRefs }) => {
     if (workSubPage === page) style.opacity = "1";
     return style;
   };
-
-  useEffect(() => {
-    if (workSubPage === "workLanding") setWorkNavWidth("0%");
-    if (workSubPage === "info") setWorkNavWidth("5%");
-    if (workSubPage === "detail") setWorkNavWidth("25%");
-    if (workSubPage === "slides") setWorkNavWidth("85%");
-  }, [workSubPage]);
 
   const onArrowClick = () => {
     if (workSubPage === "workLanding") setWorkSubPage("info");
@@ -76,25 +84,30 @@ const WorkNav = ({ pageControl, workRefs }) => {
         <div className="bar active" style={{ width: workNavWidth }} />
         <div className="labels">
           <div
-            className={`label info a--opacity ${activeClass()}`}
+            // className={`label info a--opacity ${activeClass()}`}
+            className={`label info a--opacity `}
+            style={active("workLanding")}
+          >
+            <div className="box" />
+            <span onClick={() => setWorkSubPage("workLanding")}>
+              {condWorkPage()}
+            </span>
+          </div>
+          <div
+            // className={`label detail a--opacity ${activeClass()}`}
+            className={`label detail a--opacity `}
             style={active("info")}
           >
             <div className="box" />
-            <span onClick={() => setWorkSubPage("info")}>Overview</span>
+            <span onClick={() => setWorkSubPage("info")}>info</span>
           </div>
           <div
-            className={`label detail a--opacity ${activeClass()}`}
-            style={active("detail")}
+            // className={`label more a--opacity ${activeClass()}`}
+            className={`label more a--opacity`}
+            style={active("gallery")}
           >
             <div className="box" />
-            <span onClick={() => setWorkSubPage("detail")}>Detail</span>
-          </div>
-          <div
-            className={`label more a--opacity ${activeClass()}`}
-            style={active("end")}
-          >
-            <div className="box" />
-            <span>More Works</span>
+            <span onClick={() => setWorkSubPage("gallery")}>gallery</span>
           </div>
         </div>
       </div>
