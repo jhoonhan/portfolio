@@ -44,9 +44,16 @@ const About = ({ refs }) => {
     slide2: { width: "100%" },
     slide3: { width: "100%" },
   });
+
+  const [intersectingStyle, setIntersectingStyle] = useState({ opacity: 0.5 });
   const refInfo = useRef(null);
 
-  const intersectStyle = useIntersectionObserve(refInfo, 0.8);
+  const isIntersecting = useIntersectionObserve(refInfo, 0.8);
+
+  useEffect(() => {
+    if (isIntersecting) setIntersectingStyle({ opacity: 1 });
+    if (!isIntersecting) setIntersectingStyle({ opacity: 0.5 });
+  }, [isIntersecting]);
 
   useEffect(() => {
     if (activeSlide === -1) {
@@ -174,7 +181,7 @@ const About = ({ refs }) => {
             <div
               ref={refInfo}
               className="about__detail-info flex--column"
-              style={intersectStyle}
+              style={intersectingStyle}
             >
               <div
                 className="flex--column"

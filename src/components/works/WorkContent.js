@@ -4,6 +4,7 @@ import WorkPictureContainer from "./WorkPictureContainer";
 import WorkDetail from "./WorkDetail";
 import useSlideStyle from "./useSlideStyle";
 import DesktopSVG from "../../assests/image/projects/DesktopSVG";
+import useIntersectionObserve from "../../helpers/useIntersectionObserve";
 
 const WorkContent = ({
   refEl,
@@ -13,6 +14,14 @@ const WorkContent = ({
   noOverview,
 }) => {
   const { slideImgStyle } = useSlideStyle(pageControl, refEl);
+
+  const refIntersect = useRef(null);
+
+  const isIntersecting = useIntersectionObserve(refIntersect, 0.8);
+
+  useEffect(() => {
+    console.log(isIntersecting);
+  }, [isIntersecting]);
 
   const renderInfo = () => {
     return (
@@ -73,13 +82,13 @@ const WorkContent = ({
       </div>
     );
   };
-  const renderMainPicture = () => {
-    return (
-      <div className="work__content__main-picture">
-        <img src={content?.images.overviewImages[0]} alt="img3" />
-      </div>
-    );
-  };
+  // const renderMainPicture = () => {
+  //   return (
+  //     <div className="work__content__main-picture">
+  //       <img src={content?.images.overviewImages[0]} alt="img3" />
+  //     </div>
+  //   );
+  // };
 
   const render = () => {
     return (
@@ -87,6 +96,7 @@ const WorkContent = ({
         {renderLanding()}
 
         <div
+          ref={refIntersect}
           className="work__content padded"
           style={{
             gridTemplateColumns: "3fr 2fr",
