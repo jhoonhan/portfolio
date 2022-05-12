@@ -5,6 +5,7 @@ import Landing from "./components/landing/Landing";
 import LandingArt from "./components/landing/LandingArt";
 import Works from "./components/works/Works";
 import About from "./components/about/About";
+import Cursor from "./components/Cursor";
 
 import "./scss/App.scss";
 import Contact from "./components/contact/Contact";
@@ -63,6 +64,7 @@ const App = () => {
           <Works refs={refs} pageControl={pageControl} />
           <About refs={refs} />
           <Contact refs={refs} />
+          <Cursor />
         </main>
       </div>
     );
