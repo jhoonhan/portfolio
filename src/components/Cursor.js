@@ -1,30 +1,39 @@
 import React, { useRef, useEffect, useState } from "react";
 import throttle from "./helpers/throttle";
 
-const Cursor = () => {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+const Cursor = ({ pageControl, page, refEl, content }) => {
+  // const [position, setPosition] = useState({ x: 0, y: 0 });
 
   const refCursor = useRef(null);
 
   useEffect(() => {
     if (!refCursor) return;
+    if (pageControl.curPage !== page) return;
     const fn = (e) => {
       refCursor.current.style.transform = `translateX(${e.clientX}px) translateY(${e.clientY}px)`;
     };
     const throttled = throttle(fn, 60);
 
-    document.addEventListener("mousemove", throttled);
+    const node = refEl.current;
+
+    node.addEventListener("mousemove", throttled);
 
     return () => {
-      document.removeEventListener("mousemove", throttled);
+      node.removeEventListener("mousemove", throttled);
     };
-  }, [refCursor]);
+  }, [refEl, refCursor, pageControl, page]);
 
-  return (
-    <div ref={refCursor} className="cursor--follow">
-      useCursor
-    </div>
-  );
+  const render = () => {
+    if (pageControl.curPage !== page) return null;
+
+    return (
+      <div ref={refCursor} className="cursor--follow">
+        {content || "aaang"}
+      </div>
+    );
+  };
+
+  return render();
 };
 
 export default Cursor;

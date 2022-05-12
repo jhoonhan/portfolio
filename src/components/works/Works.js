@@ -3,6 +3,7 @@ import React, { useRef, useEffect, useState } from "react";
 import WorkContent from "./WorkContent";
 import useSubPageStyle from "./useSubPageStyle";
 import WorkNav from "./WorkNav";
+import Cursor from "../Cursor";
 
 import { sushiRepublic } from "../../assests/data/sushiRepublic";
 import { danji } from "../../assests/data/danji";
@@ -63,6 +64,11 @@ const Works = ({ refs, pageControl }) => {
           <WorkContent refEl={refEl5} pageControl={pageControl} />
         </section>
         <WorkNav pageControl={pageControl} workRefs={workRefs} />
+        <Cursor
+          pageControl={pageControl}
+          refEl={refs.refWorks}
+          page={"works"}
+        />
       </>
     );
   };
