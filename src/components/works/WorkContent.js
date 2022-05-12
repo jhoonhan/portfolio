@@ -4,7 +4,7 @@ import WorkPictureContainer from "./WorkPictureContainer";
 import WorkDetail from "./WorkDetail";
 import useSlideStyle from "./useSlideStyle";
 import DesktopSVG from "../../assests/image/projects/DesktopSVG";
-import useIntersectionObserve from "../../helpers/useIntersectionObserve";
+import useIntersectionObserve from "../helpers/useIntersectionObserve";
 
 const WorkContent = ({
   refEl,

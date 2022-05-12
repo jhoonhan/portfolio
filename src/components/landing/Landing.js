@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import LandingArt from "./LandingArt";
 import name2 from "../../assests/image/name2.svg";
-import MiddleLine from "../../helpers/MiddleLine";
+import MiddleLine from "../helpers/MiddleLine";
 
 const Landing = ({ curPage, refHome }) => {
   const renderFooter = () => {

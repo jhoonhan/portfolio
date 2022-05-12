@@ -34,7 +34,7 @@ import pv3 from "../../assests/image/about/pv3.jpg";
 import pv4 from "../../assests/image/about/pv4.jpg";
 import pv5 from "../../assests/image/about/pv5.jpg";
 
-import useIntersectionObserve from "../../helpers/useIntersectionObserve";
+import useIntersectionObserve from "../helpers/useIntersectionObserve";
 
 const About = ({ refs }) => {
   const [activeSlide, setActiveSlide] = useState(-1);

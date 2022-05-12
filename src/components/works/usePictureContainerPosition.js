@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import throttle from "../../helpers/throttle";
+import throttle from "../helpers/throttle";
 
 const usePictureContainerPosition = (actImg) => {
   const [position, setPosition] = useState({ x: 0, y: 0 });

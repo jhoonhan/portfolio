@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import throttle from "../../helpers/throttle";
+import throttle from "../helpers/throttle";
 
 const useGalleryHoriScroll = (pageControl) => {
   const elRef = useRef();

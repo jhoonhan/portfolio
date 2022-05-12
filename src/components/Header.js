@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
-import MiddleLine from "../helpers/MiddleLine";
+import MiddleLine from "./helpers/MiddleLine";
 import icons from "../assests/image/icons.svg";
-import throttle from "../helpers/throttle";
+import throttle from "./helpers/throttle";
 
 const Header = ({ refs, pageControl }) => {
   const [curScroll, setCurScroll] = useState(window.pageYOffset);
