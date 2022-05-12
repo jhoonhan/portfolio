@@ -20,7 +20,7 @@ const WorkContent = ({
   const isIntersecting = useIntersectionObserve(refIntersect, 0.8);
 
   useEffect(() => {
-    console.log(isIntersecting);
+    // console.log(isIntersecting);
   }, [isIntersecting]);
 
   const renderInfo = () => {

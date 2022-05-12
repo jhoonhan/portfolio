@@ -64,7 +64,11 @@ const Header = ({ refs, pageControl }) => {
       setActiveHeight("0rem");
     }
     if (pageControl.curPage === "works") {
-      setActiveHeight("10rem");
+      if (pageControl.workPage === 0) setActiveHeight("10rem");
+      if (pageControl.workPage === 1) setActiveHeight("13.2rem");
+      if (pageControl.workPage === 2) setActiveHeight("16.4rem");
+      if (pageControl.workPage === 3) setActiveHeight("19.6rem");
+      if (pageControl.workPage === 4) setActiveHeight("22.8rem");
     }
     if (pageControl.curPage === "about") {
       setActiveHeight("20rem");
@@ -72,7 +76,7 @@ const Header = ({ refs, pageControl }) => {
     if (pageControl.curPage === "contact") {
       setActiveHeight("30rem");
     }
-  }, [pageControl.curPage]);
+  }, [pageControl.workPage, pageControl.curPage]);
 
   const render = () => {
     const activeOpacity = { opacity: 1 };
@@ -121,7 +125,7 @@ const Header = ({ refs, pageControl }) => {
                   refs.refWorks.current.scrollIntoView({ behavior: "smooth" });
                   pageControl.setCurPage("works");
                   setActiveHeight("10rem");
-                  pageControl.setWorkPage("el1");
+                  pageControl.setWorkPage(0);
                 }}
                 href="#work"
                 style={pageControl.curPage === "works" ? activeOpacity : {}}
@@ -139,45 +143,39 @@ const Header = ({ refs, pageControl }) => {
               >
                 <li
                   onClick={() => {
-                    setActiveHeight("13.2rem");
-                    pageControl.setWorkPage("el1");
+                    // setActiveHeight("13.2rem");
+                    pageControl.setWorkPage(1);
                   }}
                 >
                   <a
                     href="#work/sushi-republic"
-                    style={
-                      pageControl.workPage === "el1" ? activeSubPageStyle : {}
-                    }
+                    style={pageControl.workPage === 1 ? activeSubPageStyle : {}}
                   >
                     Sushi Republic
                   </a>
                 </li>
                 <li
                   onClick={() => {
-                    setActiveHeight("16.4rem");
-                    pageControl.setWorkPage("el2");
+                    // setActiveHeight("16.4rem");
+                    pageControl.setWorkPage(2);
                   }}
                 >
                   <a
                     href="#work/danji"
-                    style={
-                      pageControl.workPage === "el2" ? activeSubPageStyle : {}
-                    }
+                    style={pageControl.workPage === 2 ? activeSubPageStyle : {}}
                   >
                     Danji
                   </a>
                 </li>
                 <li
                   onClick={() => {
-                    setActiveHeight("19.6rem");
-                    pageControl.setWorkPage("el3");
+                    // setActiveHeight("19.6rem");
+                    pageControl.setWorkPage(3);
                   }}
                 >
                   <a
                     href="#work/haans-cleaners"
-                    style={
-                      pageControl.workPage === "el3" ? activeSubPageStyle : {}
-                    }
+                    style={pageControl.workPage === 3 ? activeSubPageStyle : {}}
                   >
                     Haans Cleaners
                   </a>
@@ -185,14 +183,12 @@ const Header = ({ refs, pageControl }) => {
                 <li
                   onClick={() => {
                     setActiveHeight("22.8rem");
-                    pageControl.setWorkPage("el4");
+                    pageControl.setWorkPage(4);
                   }}
                 >
                   <a
                     href="#work/this-is-bullshit"
-                    style={
-                      pageControl.workPage === "el4" ? activeSubPageStyle : {}
-                    }
+                    style={pageControl.workPage === 4 ? activeSubPageStyle : {}}
                   >
                     This Is Bullshit
                   </a>
@@ -200,14 +196,12 @@ const Header = ({ refs, pageControl }) => {
                 <li
                   onClick={() => {
                     setActiveHeight("26rem");
-                    pageControl.setWorkPage("el5");
+                    pageControl.setWorkPage(5);
                   }}
                 >
                   <a
                     href="#work/salvation-army"
-                    style={
-                      pageControl.workPage === "el5" ? activeSubPageStyle : {}
-                    }
+                    style={pageControl.workPage === 5 ? activeSubPageStyle : {}}
                   >
                     Salvation Army
                   </a>

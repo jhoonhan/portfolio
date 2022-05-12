@@ -12,19 +12,19 @@ const WorkNav = ({ pageControl, workRefs }) => {
   } = pageControl;
 
   useEffect(() => {
-    if (workPage === "el1") {
+    if (workPage === 1) {
       workRefs.refEl1.current.scrollIntoView({ behavior: "smooth" });
     }
-    if (workPage === "el2") {
+    if (workPage === 2) {
       workRefs.refEl2.current.scrollIntoView({ behavior: "smooth" });
     }
-    if (workPage === "el3") {
+    if (workPage === 3) {
       workRefs.refEl3.current.scrollIntoView({ behavior: "smooth" });
     }
-    if (workPage === "el4") {
+    if (workPage === 4) {
       workRefs.refEl4.current.scrollIntoView({ behavior: "smooth" });
     }
-    if (workPage === "el5") {
+    if (workPage === 5) {
       workRefs.refEl5.current.scrollIntoView({ behavior: "smooth" });
     }
     setWorkSubPage("workLanding");
@@ -38,11 +38,11 @@ const WorkNav = ({ pageControl, workRefs }) => {
   }, [workSubPage]);
 
   const condWorkPage = () => {
-    if (workPage === "el1") return "sushi republic";
-    if (workPage === "el2") return "danji";
-    if (workPage === "el3") return "haans cleaners";
-    if (workPage === "el4") return "this is bullshit";
-    if (workPage === "el5") return "salvation army";
+    if (workPage === 1) return "sushi republic";
+    if (workPage === 2) return "danji";
+    if (workPage === 3) return "haans cleaners";
+    if (workPage === 4) return "this is bullshit";
+    if (workPage === 5) return "salvation army";
   };
 
   const activeClass = () => {
@@ -62,7 +62,7 @@ const WorkNav = ({ pageControl, workRefs }) => {
   const onArrowClick = () => {
     if (workSubPage === "workLanding") setWorkSubPage("overview");
     if (workSubPage === "overview") setWorkSubPage("gallery");
-    // if (workSubPage === "gallery") setWorkPage(`el${workPage.slice(-1) + 1}`);
+    if (workSubPage === "gallery") setWorkPage(workPage + 1);
   };
 
   const renderContentArrow = () => {
