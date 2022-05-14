@@ -21,8 +21,8 @@ const useHorizontalScroll = () => {
         e.stopPropagation();
         onWheel(e);
       };
-      el.addEventListener("mousewheel", fn);
-      return () => el.removeEventListener("mousewheel", fn);
+      el.addEventListener("wheel", fn);
+      return () => el.removeEventListener("wheel", fn);
     }
   }, []);
   return elRef;

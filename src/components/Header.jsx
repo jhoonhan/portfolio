@@ -41,10 +41,10 @@ const Header = ({ refs, pageControl }) => {
     };
     const throttled = throttle(handler, 1);
 
-    document.addEventListener("mousewheel", throttle(throttled, 1), false);
+    document.addEventListener("wheel", throttle(throttled, 1), false);
 
     return () => {
-      document.removeEventListener("mousewheel", throttled);
+      document.removeEventListener("wheel", throttled);
     };
   }, []);
 
