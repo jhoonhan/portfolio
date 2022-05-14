@@ -64,11 +64,6 @@ const Works = ({ refs, pageControl }) => {
           <WorkContent refEl={refEl5} pageControl={pageControl} />
         </section>
         <WorkNav pageControl={pageControl} workRefs={workRefs} />
-        <Cursor
-          refEl={refs.refWorks}
-          visible={true}
-          page={pageControl.curPage}
-        />
       </>
     );
   };

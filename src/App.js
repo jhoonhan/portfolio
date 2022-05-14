@@ -8,6 +8,7 @@ import About from "./components/about/About";
 
 import "./scss/App.scss";
 import Contact from "./components/contact/Contact";
+import Cursor from "./components/Cursor";
 
 const App = () => {
   const [curPage, setCurPage] = useState(null);
@@ -52,6 +53,7 @@ const App = () => {
     return (
       <div className="App">
         <Header refs={refs} pageControl={pageControl} />
+        <Cursor curPage={curPage} />
         <main ref={refMain} className="wrapper__main">
           <div
             style={curPage === "home" ? { opacity: 0 } : {}}

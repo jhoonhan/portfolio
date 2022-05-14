@@ -35,6 +35,8 @@ import pv4 from "../../assests/image/about/pv4.jpg";
 import pv5 from "../../assests/image/about/pv5.jpg";
 
 import useIntersectionObserve from "../helpers/useIntersectionObserve";
+import AboutSlide from "./AboutSlide";
+import Cursor from "../Cursor";
 
 const About = ({ refs }) => {
   const [activeSlide, setActiveSlide] = useState(-1);
@@ -104,60 +106,33 @@ const About = ({ refs }) => {
         <div
           className="about__slides-container"
           // onMouseOut={trigger}>
-          onMouseOut={() => setActiveSlide(-1)}
+          onMouseOut={() => {
+            setActiveSlide(-1);
+          }}
         >
-          <div
-            className="about__slide-column"
-            onMouseOver={() => setActiveSlide(0)}
+          <AboutSlide
+            imgs={[ph3, av0, ah0, av2, ah4, av1, ah1]}
             style={activeSlideStyle.slide0}
-          >
-            <AboutImg img={ph3} />
-            <AboutImg img={av0} />
-            <AboutImg img={ah0} />
-            <AboutImg img={av2} />
-            <AboutImg img={ah4} />
-            <AboutImg img={av1} />
-            <AboutImg img={ah1} />
-          </div>
-          <div
-            className="about__slide-column"
-            onMouseOver={() => setActiveSlide(1)}
+            setActiveSlide={() => setActiveSlide(0)}
+          />
+
+          <AboutSlide
+            imgs={[pv5, ph0, pv0, ph2, pv1, ph1, pv3, hh4, pv2]}
             style={activeSlideStyle.slide1}
-          >
-            <AboutImg img={pv5} />
-            <AboutImg img={ph0} />
-            <AboutImg img={pv0} />
-            <AboutImg img={ph2} />
-            <AboutImg img={pv1} />
-            <AboutImg img={ph1} />
-            <AboutImg img={pv3} />
-            <AboutImg img={hh4} />
-            <AboutImg img={pv2} />
-          </div>
-          <div
-            className="about__slide-column"
-            onMouseOver={() => setActiveSlide(2)}
+            setActiveSlide={() => setActiveSlide(1)}
+          />
+
+          <AboutSlide
+            imgs={[hh2, hv0, hh5, hv2, hh6, hv4]}
             style={activeSlideStyle.slide2}
-          >
-            <AboutImg img={hh2} />
-            <AboutImg img={hv0} />
-            <AboutImg img={hh5} />
-            <AboutImg img={hv2} />
-            <AboutImg img={hh6} />
-            <AboutImg img={hv4} />
-          </div>
-          <div
-            className="about__slide-column"
-            onMouseOver={() => setActiveSlide(3)}
+            setActiveSlide={() => setActiveSlide(2)}
+          />
+
+          <AboutSlide
+            imgs={[hv1, hh0, hv3, hh1, hv5, hh3]}
             style={activeSlideStyle.slide3}
-          >
-            <AboutImg img={hv1} />
-            <AboutImg img={hh0} />
-            <AboutImg img={hv3} />
-            <AboutImg img={hh1} />
-            <AboutImg img={hv5} />
-            <AboutImg img={hh3} />
-          </div>
+            setActiveSlide={() => setActiveSlide(3)}
+          />
         </div>
         <div className="about__info" onMouseOver={() => setActiveSlide(4)}>
           <div className="text-wrapper">

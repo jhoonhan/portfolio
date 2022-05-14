@@ -2,36 +2,39 @@ import React, { useRef, useEffect, useState } from "react";
 import throttle from "./helpers/throttle";
 import icons from "../assests/image/icons.svg";
 
-const Cursor = ({ refEl, visible, page }) => {
+const Cursor = ({ curPage }) => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [visibleStyle, setVisibleStyle] = useState({ opacity: 0 });
 
   const refCursor = useRef(null);
 
   useEffect(() => {
-    if (!refCursor) return;
-    const ref = refEl.current;
-
     const fn = (e) => {
       setPosition({ x: e.clientX, y: e.clientY });
     };
     const throttled = throttle(fn, 60);
 
-    ref.addEventListener("mousemove", throttled);
-
-    if (!visible) {
-      ref.removeEventListener("mousemove", throttled);
-    }
+    document.addEventListener("mousemove", throttled);
 
     return () => {
-      ref.removeEventListener("mousemove", throttled);
+      document.removeEventListener("mousemove", throttled);
     };
-  }, [refEl, refCursor, visible]);
+  }, []);
+
+  useEffect(() => {
+    if (curPage === "works" || curPage === "about") {
+      setVisibleStyle({ opacity: 0.5 });
+    } else {
+      setVisibleStyle({ opacity: 0 });
+    }
+  }, [curPage]);
 
   return (
     <div
       ref={refCursor}
       className="cursor--follow"
       style={{
+        ...visibleStyle,
         transform: `translateX(${position.x}px) translateY(${position.y}px)`,
       }}
     >
