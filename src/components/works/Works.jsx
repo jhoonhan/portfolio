@@ -11,6 +11,8 @@ import { salvationArmy } from "../../assests/data/salvationArmy";
 import { Switch, Route } from "react-router-dom";
 
 import SushiRepublic from "./projects/SushiRepublic";
+import Danji from "./projects/Danji";
+import SalvationArmy from "./projects/SalvationArmy";
 
 const Works = ({ refs, pageControl }) => {
   // const { activeSubPageStyle } = useSubPageStyle(pageControl);
@@ -41,25 +43,10 @@ const Works = ({ refs, pageControl }) => {
       return <SushiRepublic refEl={refEl1} pageControl={pageControl} />;
 
     if (pageControl.workPage === 2)
-      return (
-        <WorkContent
-          refEl={refEl2}
-          pageControl={pageControl}
-          content={danji}
-          backgroundStyle={backgroundStyleEl2}
-        />
-      );
+      return <Danji refEl={refEl2} pageControl={pageControl} />;
 
     if (pageControl.workPage === 3)
-      return (
-        <WorkContent
-          refEl={refEl3}
-          pageControl={pageControl}
-          content={salvationArmy}
-          backgroundStyle={backgroundStyleEl3}
-          noOverview={true}
-        />
-      );
+      return <SalvationArmy refEl={refEl3} pageControl={pageControl} />;
 
     if (pageControl.workPage === 4)
       return <WorkContent refEl={refEl4} pageControl={pageControl} />;
@@ -70,43 +57,21 @@ const Works = ({ refs, pageControl }) => {
 
   const render = () => {
     return (
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ type: "spring", duration: 0.5 }}
+      <div
+      // initial={{ opacity: 0 }}
+      // animate={{ opacity: 1 }}
+      // exit={{ opacity: 0 }}
+      // transition={{ type: "spring", duration: 0.5 }}
       >
         <section
           ref={refs.refWorks}
           className="works__container container"
           // style={activeSubPageStyle}
         >
-          {/* {renderContent()} */}
-          <Switch>
-            <Route
-              path="/works/sushi-republic"
-              exact
-              render={() => (
-                <SushiRepublic refEl={refEl1} pageControl={pageControl} />
-              )}
-            />
-
-            <Route
-              path="/works/danji"
-              exact
-              render={() => (
-                <WorkContent
-                  refEl={refEl2}
-                  pageControl={pageControl}
-                  content={danji}
-                  backgroundStyle={backgroundStyleEl2}
-                />
-              )}
-            />
-          </Switch>
+          {renderContent()}
         </section>
         <WorkNav pageControl={pageControl} workRefs={workRefs} />
-      </motion.div>
+      </div>
     );
   };
 
