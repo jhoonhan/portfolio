@@ -82,40 +82,45 @@ const WorkContent = ({
       </div>
     );
   };
-  // const renderMainPicture = () => {
-  //   return (
-  //     <div className="work__content__main-picture">
-  //       <img src={content?.images.overviewImages[0]} alt="img3" />
-  //     </div>
-  //   );
-  // };
 
-  const render = () => {
+  const renderOverview = () => {
     return (
-      <div ref={refEl} className="work__container" style={backgroundStyle}>
-        {renderLanding()}
+      <div
+        ref={refIntersect}
+        className="work__content padded"
+        style={{
+          gridTemplateColumns: "3fr 2fr",
+          ...slideImgStyle,
+        }}
+      >
+        {noOverview ? (
+          <DesktopSVG img={content.images.overviewImages[0]} />
+        ) : (
+          <WorkPictureContainer images={content?.images} />
+        )}
 
-        <div
-          ref={refIntersect}
-          className="work__content padded"
-          style={{
-            gridTemplateColumns: "3fr 2fr",
-            ...slideImgStyle,
-          }}
-        >
-          {noOverview ? (
-            <DesktopSVG img={content.images.overviewImages[0]} />
-          ) : (
-            <WorkPictureContainer images={content?.images} />
-          )}
+        {renderInfo()}
+      </div>
+    );
+  };
 
-          {renderInfo()}
-        </div>
+  const renderContent = () => {
+    if (pageControl.workSubPage === "workLanding") return renderLanding();
+    if (pageControl.workSubPage === "overview") return renderOverview();
+    if (pageControl.workSubPage === "gallery")
+      return (
         <WorkDetail
           slideImgStyle={slideImgStyle}
           pageControl={pageControl}
           images={content?.images}
         />
+      );
+  };
+
+  const render = () => {
+    return (
+      <div ref={refEl} className="work__container" style={backgroundStyle}>
+        {renderContent()}
       </div>
     );
   };

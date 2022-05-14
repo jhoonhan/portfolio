@@ -1,5 +1,4 @@
 import React, { useRef, useEffect, useState } from "react";
-import { Route, Switch, useLocation } from "react-router-dom";
 
 import WorkContent from "./WorkContent";
 import useSubPageStyle from "./useSubPageStyle";
@@ -8,10 +7,9 @@ import WorkNav from "./WorkNav";
 import { sushiRepublic } from "../../assests/data/sushiRepublic";
 import { danji } from "../../assests/data/danji";
 import { salvationArmy } from "../../assests/data/salvationArmy";
-import Cursor from "../Cursor";
 
 const Works = ({ refs, pageControl }) => {
-  const { activeSubPageStyle } = useSubPageStyle(pageControl);
+  // const { activeSubPageStyle } = useSubPageStyle(pageControl);
 
   const refEl1 = useRef(null);
   const refEl2 = useRef(null);
@@ -79,7 +77,7 @@ const Works = ({ refs, pageControl }) => {
         <section
           ref={refs.refWorks}
           className="works__container container"
-          style={activeSubPageStyle}
+          // style={activeSubPageStyle}
         >
           {renderContent()}
         </section>
