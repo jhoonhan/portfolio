@@ -204,8 +204,10 @@ const Header = ({ refs, pageControl }) => {
                 </li>
               </ul>
             </div>
+
             <div className="nav__link about" ref={refNavAbout}>
               <Link
+                onClick={() => pageControl.setCurPage("about")}
                 to="/about"
                 className="a--transition a--opacity"
                 style={pageControl.curPage === "about" ? activeOpacity : {}}
@@ -213,8 +215,14 @@ const Header = ({ refs, pageControl }) => {
                 about
               </Link>
             </div>
+
             <div className="nav__link contact" ref={refNavContact}>
-              <Link to="/contact" className="a--transition a--opacity">
+              <Link
+                onClick={() => pageControl.setCurPage("contact")}
+                to="/contact"
+                className="a--transition a--opacity"
+                style={pageControl.curPage === "contact" ? activeOpacity : {}}
+              >
                 contact
               </Link>
             </div>

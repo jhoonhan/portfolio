@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 import WorkContent from "./WorkContent";
 import useSubPageStyle from "./useSubPageStyle";
@@ -7,6 +8,9 @@ import WorkNav from "./WorkNav";
 import { sushiRepublic } from "../../assests/data/sushiRepublic";
 import { danji } from "../../assests/data/danji";
 import { salvationArmy } from "../../assests/data/salvationArmy";
+import { Switch, Route } from "react-router-dom";
+
+import SushiRepublic from "./projects/SushiRepublic";
 
 const Works = ({ refs, pageControl }) => {
   // const { activeSubPageStyle } = useSubPageStyle(pageControl);
@@ -34,14 +38,7 @@ const Works = ({ refs, pageControl }) => {
 
   const renderContent = () => {
     if (pageControl.workPage === 1)
-      return (
-        <WorkContent
-          refEl={refEl1}
-          pageControl={pageControl}
-          content={sushiRepublic}
-          backgroundStyle={backgroundStyleEl1}
-        />
-      );
+      return <SushiRepublic refEl={refEl1} pageControl={pageControl} />;
 
     if (pageControl.workPage === 2)
       return (
@@ -73,16 +70,43 @@ const Works = ({ refs, pageControl }) => {
 
   const render = () => {
     return (
-      <>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ type: "spring", duration: 0.5 }}
+      >
         <section
           ref={refs.refWorks}
           className="works__container container"
           // style={activeSubPageStyle}
         >
-          {renderContent()}
+          {/* {renderContent()} */}
+          <Switch>
+            <Route
+              path="/works/sushi-republic"
+              exact
+              render={() => (
+                <SushiRepublic refEl={refEl1} pageControl={pageControl} />
+              )}
+            />
+
+            <Route
+              path="/works/danji"
+              exact
+              render={() => (
+                <WorkContent
+                  refEl={refEl2}
+                  pageControl={pageControl}
+                  content={danji}
+                  backgroundStyle={backgroundStyleEl2}
+                />
+              )}
+            />
+          </Switch>
         </section>
         <WorkNav pageControl={pageControl} workRefs={workRefs} />
-      </>
+      </motion.div>
     );
   };
 

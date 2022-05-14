@@ -13,7 +13,7 @@ import Cursor from "./components/Cursor";
 
 const App = () => {
   const [curPage, setCurPage] = useState(null);
-  const [workPage, setWorkPage] = useState("overview");
+  const [workPage, setWorkPage] = useState(1);
   const [workSubPage, setWorkSubPage] = useState("workLanding");
   const [activeSubPageStylePosition, setActiveSubPageStylePosition] = useState({
     transform: "translateY(0vh)",
@@ -49,10 +49,6 @@ const App = () => {
     slideScroll,
     setSlideScroll,
   };
-
-  useEffect(() => {
-    console.log(workPage);
-  }, [workPage]);
 
   const render = () => {
     return (

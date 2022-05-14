@@ -11,24 +11,24 @@ const WorkNav = ({ pageControl, workRefs }) => {
     setWorkNavWidth,
   } = pageControl;
 
-  useEffect(() => {
-    if (workPage === 1) {
-      workRefs.refEl1.current.scrollIntoView({ behavior: "smooth" });
-    }
-    if (workPage === 2) {
-      workRefs.refEl2.current.scrollIntoView({ behavior: "smooth" });
-    }
-    if (workPage === 3) {
-      workRefs.refEl3.current.scrollIntoView({ behavior: "smooth" });
-    }
-    if (workPage === 4) {
-      workRefs.refEl4.current.scrollIntoView({ behavior: "smooth" });
-    }
-    if (workPage === 5) {
-      workRefs.refEl5.current.scrollIntoView({ behavior: "smooth" });
-    }
-    setWorkSubPage("workLanding");
-  }, [workPage]);
+  // useEffect(() => {
+  //   if (workPage === 1) {
+  //     workRefs.refEl1.current.scrollIntoView({ behavior: "smooth" });
+  //   }
+  //   if (workPage === 2) {
+  //     workRefs.refEl2.current.scrollIntoView({ behavior: "smooth" });
+  //   }
+  //   if (workPage === 3) {
+  //     workRefs.refEl3.current.scrollIntoView({ behavior: "smooth" });
+  //   }
+  //   if (workPage === 4) {
+  //     workRefs.refEl4.current.scrollIntoView({ behavior: "smooth" });
+  //   }
+  //   if (workPage === 5) {
+  //     workRefs.refEl5.current.scrollIntoView({ behavior: "smooth" });
+  //   }
+  //   setWorkSubPage("workLanding");
+  // }, [workPage]);
 
   useEffect(() => {
     if (workSubPage === "workLanding") setWorkNavWidth("3%");

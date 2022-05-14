@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 import WorkPictureContainer from "./WorkPictureContainer";
 import WorkDetail from "./WorkDetail";
@@ -20,8 +21,9 @@ const WorkContent = ({
   const isIntersecting = useIntersectionObserve(refIntersect, 0.8);
 
   useEffect(() => {
-    // console.log(isIntersecting);
-  }, [isIntersecting]);
+    console.log(`mounted`);
+    return () => console.log(`unmounted`);
+  }, []);
 
   const renderInfo = () => {
     return (
@@ -119,7 +121,15 @@ const WorkContent = ({
 
   const render = () => {
     return (
-      <div ref={refEl} className="work__container" style={backgroundStyle}>
+      <div
+        ref={refEl}
+        className="work__container"
+        style={backgroundStyle}
+        // initial={{ opacity: 0 }}
+        // animate={{ opacity: 1 }}
+        // exit={{ opacity: 0 }}
+        // transition={{ type: "spring", duration: 0.5 }}
+      >
         {renderContent()}
       </div>
     );
