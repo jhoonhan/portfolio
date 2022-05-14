@@ -49,6 +49,10 @@ const App = () => {
     setSlideScroll,
   };
 
+  useEffect(() => {
+    console.log(workPage);
+  }, [workPage]);
+
   const render = () => {
     return (
       <div className="App">

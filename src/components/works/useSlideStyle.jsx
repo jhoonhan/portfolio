@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import throttle from "../helpers/throttle";
 
 const useSlideStyle = (pageControl, refEl) => {
-  const { workSubPage, setWorkSubPage } = pageControl;
+  const { workPage, setWorkPage, workSubPage, setWorkSubPage } = pageControl;
   const [slide, setSlide] = useState(0);
   const [slideImgStyle, setSlideImgStyle] = useState({});
 
@@ -41,12 +41,15 @@ const useSlideStyle = (pageControl, refEl) => {
 
   useEffect(() => {
     if (slide === -5) {
+      if (workSubPage === "workLanding" && workPage > 1)
+        setWorkPage(workPage - 1);
       if (workSubPage === "overview") setWorkSubPage("workLanding");
       if (workSubPage === "gallery") setWorkSubPage("overview");
     }
     if (slide === 5) {
       if (workSubPage === "workLanding") setWorkSubPage("overview");
       if (workSubPage === "overview") setWorkSubPage("gallery");
+      if (workSubPage === "gallery" && workPage < 5) setWorkPage(workPage + 1);
     }
   }, [slide]);
 

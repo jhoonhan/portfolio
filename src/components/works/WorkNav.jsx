@@ -62,7 +62,7 @@ const WorkNav = ({ pageControl, workRefs }) => {
   const onArrowClick = () => {
     if (workSubPage === "workLanding") setWorkSubPage("overview");
     if (workSubPage === "overview") setWorkSubPage("gallery");
-    if (workSubPage === "gallery") setWorkPage(workPage + 1);
+    if (workSubPage === "gallery" && workPage < 5) setWorkPage(workPage + 1);
   };
 
   const renderContentArrow = () => {
@@ -70,7 +70,6 @@ const WorkNav = ({ pageControl, workRefs }) => {
     return (
       <div className="works__content__arrow" onClick={onArrowClick}>
         <span className="arrow"></span>
-        {/* <span className="text">next</span> */}
       </div>
     );
   };
