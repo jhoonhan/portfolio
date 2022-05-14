@@ -1,8 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { Router } from "react-router-dom";
 import "./index.scss";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import history from "./history";
 
 // const root = ReactDOM.createRoot(document.getElementById("root"));
 // root.render(
@@ -13,9 +15,9 @@ import reportWebVitals from "./reportWebVitals";
 // );
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Router history={history}>
     <App />
-  </React.StrictMode>,
+  </Router>,
 
   document.getElementById("root")
 );

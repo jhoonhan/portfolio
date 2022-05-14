@@ -27,11 +27,14 @@ const Landing = ({ curPage, refHome }) => {
   };
   const render = () => {
     return (
-      <section ref={refHome} className="landing__container container">
-        {renderCenterInfo()}
+      <>
+        <LandingArt curPage={curPage} />
+        <section ref={refHome} className="landing__container container">
+          {renderCenterInfo()}
 
-        {renderFooter()}
-      </section>
+          {renderFooter()}
+        </section>
+      </>
     );
   };
 

@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
+import { Route, Switch, useLocation } from "react-router-dom";
 
 import WorkContent from "./WorkContent";
 import useSubPageStyle from "./useSubPageStyle";
@@ -33,6 +34,45 @@ const Works = ({ refs, pageControl }) => {
       "linear-gradient(60deg, rgba(2,0,36,1) 0%,rgba(2,0,36,1) 23%, rgba(118,19,19,1) 100%)",
   };
 
+  const renderContent = () => {
+    if (pageControl.workPage === 1)
+      return (
+        <WorkContent
+          refEl={refEl1}
+          pageControl={pageControl}
+          content={sushiRepublic}
+          backgroundStyle={backgroundStyleEl1}
+        />
+      );
+
+    if (pageControl.workPage === 2)
+      return (
+        <WorkContent
+          refEl={refEl2}
+          pageControl={pageControl}
+          content={danji}
+          backgroundStyle={backgroundStyleEl2}
+        />
+      );
+
+    if (pageControl.workPage === 3)
+      return (
+        <WorkContent
+          refEl={refEl3}
+          pageControl={pageControl}
+          content={salvationArmy}
+          backgroundStyle={backgroundStyleEl3}
+          noOverview={true}
+        />
+      );
+
+    if (pageControl.workPage === 4)
+      return <WorkContent refEl={refEl4} pageControl={pageControl} />;
+
+    if (pageControl.workPage === 5)
+      return <WorkContent refEl={refEl5} pageControl={pageControl} />;
+  };
+
   const render = () => {
     return (
       <>
@@ -41,27 +81,7 @@ const Works = ({ refs, pageControl }) => {
           className="works__container container"
           style={activeSubPageStyle}
         >
-          <WorkContent
-            refEl={refEl1}
-            pageControl={pageControl}
-            content={sushiRepublic}
-            backgroundStyle={backgroundStyleEl1}
-          />
-          <WorkContent
-            refEl={refEl2}
-            pageControl={pageControl}
-            content={danji}
-            backgroundStyle={backgroundStyleEl2}
-          />
-          <WorkContent
-            refEl={refEl3}
-            pageControl={pageControl}
-            content={salvationArmy}
-            backgroundStyle={backgroundStyleEl3}
-            noOverview={true}
-          />
-          <WorkContent refEl={refEl4} pageControl={pageControl} />
-          <WorkContent refEl={refEl5} pageControl={pageControl} />
+          {renderContent()}
         </section>
         <WorkNav pageControl={pageControl} workRefs={workRefs} />
       </>

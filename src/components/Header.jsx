@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import MiddleLine from "./helpers/MiddleLine";
+import { Link } from "react-router-dom";
 import icons from "../assests/image/icons.svg";
 import throttle from "./helpers/throttle";
 
@@ -107,32 +108,29 @@ const Header = ({ refs, pageControl }) => {
           </div>
           <nav className="nav" ref={refNav}>
             <div className="nav__link home" ref={refNavHome}>
-              <a
+              <Link
                 onClick={() => {
-                  refs.refHome.current.scrollIntoView({ behavior: "smooth" });
                   pageControl.setCurPage("home");
                 }}
                 className="a--transition a--opacity"
                 style={pageControl.curPage === "home" ? activeOpacity : {}}
-                href="#home"
+                to="/"
               >
                 home
-              </a>
+              </Link>
             </div>
             <div className="nav__link works" ref={refNavWorks}>
-              <a
+              <Link
                 onClick={() => {
-                  refs.refWorks.current.scrollIntoView({ behavior: "smooth" });
                   pageControl.setCurPage("works");
                   setActiveHeight("10rem");
-                  pageControl.setWorkPage(1);
                 }}
-                href="#work"
+                to="/works/sushi-republic"
                 style={pageControl.curPage === "works" ? activeOpacity : {}}
                 className="a--transition a--opacity"
               >
                 works
-              </a>
+              </Link>
               <ul
                 className="nav__sublinks"
                 style={
@@ -143,29 +141,27 @@ const Header = ({ refs, pageControl }) => {
               >
                 <li
                   onClick={() => {
-                    // setActiveHeight("13.2rem");
                     pageControl.setWorkPage(1);
                   }}
                 >
-                  <a
-                    href="#work/sushi-republic"
+                  <Link
+                    to="/works/sushi-republic"
                     style={pageControl.workPage === 1 ? activeSubPageStyle : {}}
                   >
                     Sushi Republic
-                  </a>
+                  </Link>
                 </li>
                 <li
                   onClick={() => {
-                    // setActiveHeight("16.4rem");
                     pageControl.setWorkPage(2);
                   }}
                 >
-                  <a
-                    href="#work/danji"
+                  <Link
+                    to="/works/danji"
                     style={pageControl.workPage === 2 ? activeSubPageStyle : {}}
                   >
                     Danji
-                  </a>
+                  </Link>
                 </li>
                 <li
                   onClick={() => {
@@ -173,12 +169,12 @@ const Header = ({ refs, pageControl }) => {
                     pageControl.setWorkPage(3);
                   }}
                 >
-                  <a
-                    href="#work/haans-cleaners"
+                  <Link
+                    to="/works/haans-cleaners"
                     style={pageControl.workPage === 3 ? activeSubPageStyle : {}}
                   >
                     Haans Cleaners
-                  </a>
+                  </Link>
                 </li>
                 <li
                   onClick={() => {
@@ -186,12 +182,12 @@ const Header = ({ refs, pageControl }) => {
                     pageControl.setWorkPage(4);
                   }}
                 >
-                  <a
-                    href="#work/this-is-bullshit"
+                  <Link
+                    to="/works/this-is-bullshit"
                     style={pageControl.workPage === 4 ? activeSubPageStyle : {}}
                   >
                     This Is Bullshit
-                  </a>
+                  </Link>
                 </li>
                 <li
                   onClick={() => {
@@ -199,47 +195,28 @@ const Header = ({ refs, pageControl }) => {
                     pageControl.setWorkPage(5);
                   }}
                 >
-                  <a
-                    href="#work/salvation-army"
+                  <Link
+                    to="/works/salvation-army"
                     style={pageControl.workPage === 5 ? activeSubPageStyle : {}}
                   >
                     Salvation Army
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
             <div className="nav__link about" ref={refNavAbout}>
-              <a
-                onClick={() => {
-                  refs.refAbout.current.scrollIntoView({ behavior: "smooth" });
-                  pageControl.setCurPage("about");
-                }}
-                href="#about"
-                style={pageControl.curPage === "about" ? activeOpacity : {}}
-                className="a--transition a--opacity"
-              >
+              <Link to="/about" className="a--transition a--opacity">
                 about
-              </a>
+              </Link>
             </div>
             <div className="nav__link contact" ref={refNavContact}>
-              <a
-                onClick={() => {
-                  refs.refContact.current.scrollIntoView({
-                    behavior: "smooth",
-                  });
-                  pageControl.setCurPage("contact");
-                }}
-                href="#contact"
-                style={pageControl.curPage === "contact" ? activeOpacity : {}}
-                className="a--transition a--opacity"
-              >
+              <Link to="/contact" className="a--transition a--opacity">
                 contact
-              </a>
+              </Link>
             </div>
           </nav>
         </div>
         <div className="icons__container">
-          {/* <MiddleLine orientation={"vertical"} style={{ height: "20rem" }} /> */}
           <svg viewBox="0 0 100 100" className="social-icons a--opacity">
             <use href={`${icons}#github`}></use>
           </svg>

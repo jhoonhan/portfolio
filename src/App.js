@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { Route, Switch, useLocation } from "react-router-dom";
 
 import Header from "./components/Header";
 import Landing from "./components/landing/Landing";
@@ -55,7 +56,7 @@ const App = () => {
 
   const render = () => {
     return (
-      <div className="App">
+      <div className="app">
         <Header refs={refs} pageControl={pageControl} />
         <Cursor curPage={curPage} />
         <main ref={refMain} className="wrapper__main">
@@ -63,12 +64,23 @@ const App = () => {
             style={curPage === "home" ? { opacity: 0 } : {}}
             className="overlay"
           ></div>
-          <LandingArt curPage={curPage} />
-
-          <Landing curPage={curPage} refHome={refHome} />
-          <Works refs={refs} pageControl={pageControl} />
-          <About refs={refs} />
-          <Contact refs={refs} />
+          <Switch>
+            <Route
+              path="/"
+              exact
+              render={() => <Landing curPage={curPage} refHome={refHome} />}
+            />
+            <Route
+              path="/works"
+              render={() => <Works refs={refs} pageControl={pageControl} />}
+            />
+            <Route path="/about" exact render={() => <About refs={refs} />} />
+            <Route
+              path="/contact"
+              exact
+              render={() => <Contact refs={refs} />}
+            />
+          </Switch>
         </main>
       </div>
     );
