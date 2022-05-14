@@ -7,6 +7,7 @@ import WorkNav from "./WorkNav";
 import { sushiRepublic } from "../../assests/data/sushiRepublic";
 import { danji } from "../../assests/data/danji";
 import { salvationArmy } from "../../assests/data/salvationArmy";
+import Cursor from "../Cursor";
 
 const Works = ({ refs, pageControl }) => {
   const { activeSubPageStyle } = useSubPageStyle(pageControl);
@@ -63,6 +64,11 @@ const Works = ({ refs, pageControl }) => {
           <WorkContent refEl={refEl5} pageControl={pageControl} />
         </section>
         <WorkNav pageControl={pageControl} workRefs={workRefs} />
+        <Cursor
+          refEl={refs.refWorks}
+          visible={true}
+          page={pageControl.curPage}
+        />
       </>
     );
   };
