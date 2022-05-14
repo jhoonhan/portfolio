@@ -205,7 +205,11 @@ const Header = ({ refs, pageControl }) => {
               </ul>
             </div>
             <div className="nav__link about" ref={refNavAbout}>
-              <Link to="/about" className="a--transition a--opacity">
+              <Link
+                to="/about"
+                className="a--transition a--opacity"
+                style={pageControl.curPage === "about" ? activeOpacity : {}}
+              >
                 about
               </Link>
             </div>
