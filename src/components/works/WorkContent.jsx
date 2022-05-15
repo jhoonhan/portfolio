@@ -22,50 +22,33 @@ const WorkContent = ({
   useEffect(() => {
     pageControl.setWorkPage(props.match.path.split("/")[2]);
   }, [props.match.path]);
-  const slideInfo = useSlideStyle(pageControl, refEl);
-  const [slideAnimationStyle, setSlideAnimationStyle] = useState("up");
-  const [direction, setDirection] = useState("up");
-
-  const refIntersect = useRef(null);
 
   const location = useLocation();
 
-  const isIntersecting = useIntersectionObserve(refIntersect, 0.8);
+  const slideInfo = useSlideStyle(pageControl, refEl);
+  const [slideAnimationStyle, setSlideAnimationStyle] = useState({
+    initial: { opacity: 0 },
+    animate: { opacity: 1 },
+    exit: { opacity: 0 },
+    transition: { duration: 1 },
+  });
 
   useEffect(() => {
     if (slideInfo.slide < 0)
       setSlideAnimationStyle({
-        initial: { x: -window.innerWidth },
-        animate: { x: 0 },
-        exit: { x: window.innerWidth },
+        initial: { x: -window.innerWidth, opacity: 0 },
+        animate: { x: 0, opacity: 1 },
+        exit: { x: window.innerWidth, opacity: 0 },
+        transition: { duration: 0.3 },
       });
     if (slideInfo.slide > 0)
       setSlideAnimationStyle({
-        initial: { x: window.innerWidth },
-        animate: { x: 0 },
-        exit: { x: -window.innerWidth },
+        initial: { x: window.innerWidth, opacity: 0 },
+        animate: { x: 0, opacity: 1 },
+        exit: { x: -window.innerWidth, opacity: 0 },
+        transition: { duration: 0.3 },
       });
   }, [slideInfo.slide]);
-
-  // const variants = {
-  //   enter: (direction) => {
-  //     return {
-  //       x: direction > 0 ? -1000 : 1000,
-  //       opacity: 0,
-  //     };
-  //   },
-  //   center: {
-  //     zIndex: 1,
-  //     x: 0,
-  //     opacity: 1,
-  //   },
-  //   exit: (direction) => {
-  //     return {
-  //       x: direction > 0 ? 1000 : -1000,
-  //       opacity: 0,
-  //     };
-  //   },
-  // };
 
   const render = () => {
     return (
@@ -78,11 +61,10 @@ const WorkContent = ({
               render={(props) => (
                 <motion.div
                   key="landing"
-                  // variants={variants}
                   initial={slideAnimationStyle.initial}
                   animate={slideAnimationStyle.animate}
                   exit={slideAnimationStyle.exit}
-                  transition={{ duration: 1 }}
+                  transition={slideAnimationStyle.transition}
                 >
                   <Landing
                     slideInfo={slideInfo}
@@ -104,7 +86,7 @@ const WorkContent = ({
                   initial={slideAnimationStyle.initial}
                   animate={slideAnimationStyle.animate}
                   exit={slideAnimationStyle.exit}
-                  transition={{ duration: 1 }}
+                  transition={slideAnimationStyle.transition}
                 >
                   <Overview
                     slideInfo={slideInfo}
@@ -127,7 +109,7 @@ const WorkContent = ({
                   initial={slideAnimationStyle.initial}
                   animate={slideAnimationStyle.animate}
                   exit={slideAnimationStyle.exit}
-                  transition={{ duration: 1 }}
+                  transition={slideAnimationStyle.transition}
                 >
                   <Gallery
                     slideInfo={slideInfo}

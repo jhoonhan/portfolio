@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, useLocation } from "react-router-dom";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 import WorkContent from "./WorkContent";
 import WorkNav from "./WorkNav";
@@ -12,6 +12,7 @@ import SalvationArmy from "./projects/SalvationArmy";
 
 const Works = ({ refs, pageControl, props }) => {
   // const { activeSubPageStyle } = useSubPageStyle(pageControl);
+  const location = useLocation();
 
   const refEl1 = useRef(null);
   const refEl2 = useRef(null);
@@ -37,58 +38,59 @@ const Works = ({ refs, pageControl, props }) => {
           className="works__container container"
           // style={activeSubPageStyle}
         >
-          <Switch>
-            <Route
-              path="/works/sushi-republic"
-              render={(props) => (
-                <SushiRepublic
-                  refEl={refEl1}
-                  pageControl={pageControl}
-                  props={props}
-                />
-              )}
-            />
+          {/* <AnimatePresence exitBeforeEnter> */}
+          {/* <Switch location={location} key={location.pathname}> */}
+          <Route
+            path="/works/sushi-republic"
+            render={(props) => (
+              <SushiRepublic
+                refEl={refEl1}
+                pageControl={pageControl}
+                props={props}
+              />
+            )}
+          />
 
-            <Route
-              path="/works/danji"
-              render={(props) => (
-                <Danji refEl={refEl2} pageControl={pageControl} props={props} />
-              )}
-            />
+          <Route
+            path="/works/danji"
+            render={(props) => (
+              <Danji refEl={refEl2} pageControl={pageControl} props={props} />
+            )}
+          />
 
-            <Route
-              path="/works/salvation-army"
-              render={(props) => (
-                <SalvationArmy
-                  refEl={refEl3}
-                  pageControl={pageControl}
-                  props={props}
-                />
-              )}
-            />
+          <Route
+            path="/works/salvation-army"
+            render={(props) => (
+              <SalvationArmy
+                refEl={refEl3}
+                pageControl={pageControl}
+                props={props}
+              />
+            )}
+          />
 
-            <Route
-              path="/works/haans-cleaner"
-              render={(props) => (
-                <WorkContent
-                  refEl={refEl4}
-                  pageControl={pageControl}
-                  props={props}
-                />
-              )}
-            />
+          <Route
+            path="/works/haans-cleaner"
+            render={(props) => (
+              <WorkContent
+                refEl={refEl4}
+                pageControl={pageControl}
+                props={props}
+              />
+            )}
+          />
 
-            <Route
-              path="/works/this-is-bullshit"
-              render={(props) => (
-                <WorkContent
-                  refEl={refEl5}
-                  pageControl={pageControl}
-                  props={props}
-                />
-              )}
-            />
-          </Switch>
+          <Route
+            path="/works/this-is-bullshit"
+            render={(props) => (
+              <WorkContent
+                refEl={refEl5}
+                pageControl={pageControl}
+                props={props}
+              />
+            )}
+          />
+          {/* </AnimatePresence> */}
         </section>
         <WorkNav pageControl={pageControl} />
       </div>
