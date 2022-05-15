@@ -12,6 +12,7 @@ export const salvationArmy = {
   technology: "ReactJS, JavaScript, NodeJS, Express, MongoDB, HTML, CSS",
   liveDemoURL: "https://google.com",
   githubURL: "https://github.com/",
+  path: "salvation-army",
   images: {
     landing,
     overviewImages: [slideImg0, slideImg1, slideImg2],

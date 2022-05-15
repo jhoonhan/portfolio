@@ -68,7 +68,9 @@ const App = () => {
             />
             <Route
               path="/works"
-              render={() => <Works refs={refs} pageControl={pageControl} />}
+              render={(props) => (
+                <Works refs={refs} pageControl={pageControl} props={props} />
+              )}
             />
             <Route path="/about" exact render={() => <About refs={refs} />} />
             <Route

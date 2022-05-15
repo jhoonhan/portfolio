@@ -18,6 +18,7 @@ export const sushiRepublic = {
   technology: "HTML5, CSS3, SASS, JQUERY",
   liveDemoURL: "https://google.com",
   githubURL: "https://github.com/",
+  path: "sushi-republic",
   images: {
     landing,
     overviewImages: [overviewImg0, overviewImg1, overviewImg2],

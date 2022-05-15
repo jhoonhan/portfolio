@@ -18,6 +18,7 @@ export const danji = {
   technology: "HTML5, CSS3, SASS, JQUERY",
   liveDemoURL: "https://google.com",
   githubURL: "https://github.com/",
+  path: "danji",
   images: {
     landing,
     overviewImages: [landing, overviewImg0, overviewImg1],

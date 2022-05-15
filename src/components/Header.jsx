@@ -65,11 +65,12 @@ const Header = ({ refs, pageControl }) => {
       setActiveHeight("0rem");
     }
     if (pageControl.curPage === "works") {
-      if (pageControl.workPage === 0) setActiveHeight("10rem");
-      if (pageControl.workPage === 1) setActiveHeight("13.2rem");
-      if (pageControl.workPage === 2) setActiveHeight("16.4rem");
-      if (pageControl.workPage === 3) setActiveHeight("19.6rem");
-      if (pageControl.workPage === 4) setActiveHeight("22.8rem");
+      if (pageControl.workPage === "sushi-republic") setActiveHeight("13.2rem");
+      if (pageControl.workPage === "danji") setActiveHeight("16.4rem");
+      if (pageControl.workPage === "salvation-army") setActiveHeight("19.6rem");
+      if (pageControl.workPage === "haans-cleaner") setActiveHeight("22.8rem");
+      if (pageControl.workPage === "this-is-bullshit")
+        setActiveHeight("22.8rem");
     }
     if (pageControl.curPage === "about") {
       setActiveHeight("20rem");
@@ -123,7 +124,9 @@ const Header = ({ refs, pageControl }) => {
               <Link
                 onClick={() => {
                   pageControl.setCurPage("works");
-                  setActiveHeight("10rem");
+                  pageControl.setWorkPage("sushi-republic");
+
+                  // setActiveHeight("10rem");
                 }}
                 to="/works/sushi-republic"
                 style={pageControl.curPage === "works" ? activeOpacity : {}}
@@ -141,24 +144,30 @@ const Header = ({ refs, pageControl }) => {
               >
                 <li
                   onClick={() => {
-                    pageControl.setWorkPage(1);
+                    pageControl.setWorkPage("sushi-republic");
                   }}
                 >
                   <Link
                     to="/works/sushi-republic"
-                    style={pageControl.workPage === 1 ? activeSubPageStyle : {}}
+                    style={
+                      pageControl.workPage === "sushi-republic"
+                        ? activeSubPageStyle
+                        : {}
+                    }
                   >
                     Sushi Republic
                   </Link>
                 </li>
                 <li
                   onClick={() => {
-                    pageControl.setWorkPage(2);
+                    pageControl.setWorkPage("danji");
                   }}
                 >
                   <Link
                     to="/works/danji"
-                    style={pageControl.workPage === 2 ? activeSubPageStyle : {}}
+                    style={
+                      pageControl.workPage === "danji" ? activeSubPageStyle : {}
+                    }
                   >
                     Danji
                   </Link>
@@ -166,40 +175,52 @@ const Header = ({ refs, pageControl }) => {
                 <li
                   onClick={() => {
                     // setActiveHeight("19.6rem");
-                    pageControl.setWorkPage(3);
+                    pageControl.setWorkPage("salvation-army");
                   }}
                 >
                   <Link
-                    to="/works/haans-cleaners"
-                    style={pageControl.workPage === 3 ? activeSubPageStyle : {}}
+                    to="/works/salvation-army"
+                    style={
+                      pageControl.workPage === "salvation-army"
+                        ? activeSubPageStyle
+                        : {}
+                    }
                   >
-                    Haans Cleaners
+                    Salvation Army
                   </Link>
                 </li>
                 <li
                   onClick={() => {
                     setActiveHeight("22.8rem");
-                    pageControl.setWorkPage(4);
+                    pageControl.setWorkPage("haans-cleaner");
                   }}
                 >
                   <Link
-                    to="/works/this-is-bullshit"
-                    style={pageControl.workPage === 4 ? activeSubPageStyle : {}}
+                    to="/works/haans-cleaner"
+                    style={
+                      pageControl.workPage === "haans-cleaner"
+                        ? activeSubPageStyle
+                        : {}
+                    }
                   >
-                    This Is Bullshit
+                    Haans Cleaner
                   </Link>
                 </li>
                 <li
                   onClick={() => {
                     setActiveHeight("26rem");
-                    pageControl.setWorkPage(5);
+                    pageControl.setWorkPage("this-is-bullshit");
                   }}
                 >
                   <Link
-                    to="/works/salvation-army"
-                    style={pageControl.workPage === 5 ? activeSubPageStyle : {}}
+                    to="/works/this-is-bullshit"
+                    style={
+                      pageControl.workPage === "this-is-bullshit"
+                        ? activeSubPageStyle
+                        : {}
+                    }
                   >
-                    Salvation Army
+                    This is Bullshit
                   </Link>
                 </li>
               </ul>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import landing from "../../../assests/image/projects/sushiRepublic/landing.jpg";
 
@@ -14,7 +14,7 @@ import slideImg5 from "../../../assests/image/projects/sushiRepublic/img0.jpg";
 import slideImg6 from "../../../assests/image/projects/sushiRepublic/img1.jpg";
 import WorkContent from "../WorkContent";
 
-const SushiRepublic = ({ refEl, pageControl }) => {
+const SushiRepublic = ({ refEl, pageControl, props }) => {
   const data = {
     name: ["sushi", " republic"],
     description: "A responsive website for a local fine Japanese restaurant.",
@@ -22,6 +22,7 @@ const SushiRepublic = ({ refEl, pageControl }) => {
     technology: "HTML5, CSS3, SASS, JQUERY",
     liveDemoURL: "https://google.com",
     githubURL: "https://github.com/",
+    path: "sushi-republic",
     images: {
       landing,
       overviewImages: [overviewImg0, overviewImg1, overviewImg2],
@@ -42,6 +43,7 @@ const SushiRepublic = ({ refEl, pageControl }) => {
       pageControl={pageControl}
       content={data}
       backgroundStyle={backgroundStyle}
+      props={props}
     />
   );
 };

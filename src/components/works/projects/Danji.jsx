@@ -14,7 +14,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import WorkContent from "../WorkContent";
 
-const Danji = ({ refEl, pageControl }) => {
+const Danji = ({ refEl, pageControl, props }) => {
   const data = {
     name: ["danji"],
     description:
@@ -23,6 +23,7 @@ const Danji = ({ refEl, pageControl }) => {
     technology: "HTML5, CSS3, SASS, JQUERY",
     liveDemoURL: "https://google.com",
     githubURL: "https://github.com/",
+    path: "danji",
     images: {
       landing,
       overviewImages: [landing, overviewImg0, overviewImg1],
@@ -36,7 +37,7 @@ const Danji = ({ refEl, pageControl }) => {
   };
   const backgroundStyle = {
     background:
-      "linear-gradient(60deg, rgba(25,25,25, 1) 0%, rgba(25,35,35, 1) 33%, rgba(50, 50, 50, 1) 45%, rgba(150, 37, 37, 1) 100%  )",
+      "linear-gradient(60deg, rgba(118,19,19,1) 0%,rgba(118,19,19,1) 33%,rgba(150, 50, 50, 1) 45%, rgba(220,115,45,1) 100%)",
   };
   return (
     <WorkContent
@@ -44,6 +45,7 @@ const Danji = ({ refEl, pageControl }) => {
       pageControl={pageControl}
       content={data}
       backgroundStyle={backgroundStyle}
+      props={props}
     />
   );
 };

@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const WorkNav = ({ pageControl, workRefs }) => {
+  console.log(pageControl.workPage);
+
   const {
     curPage,
     workPage,
@@ -11,25 +14,6 @@ const WorkNav = ({ pageControl, workRefs }) => {
     setWorkNavWidth,
   } = pageControl;
 
-  // useEffect(() => {
-  //   if (workPage === 1) {
-  //     workRefs.refEl1.current.scrollIntoView({ behavior: "smooth" });
-  //   }
-  //   if (workPage === 2) {
-  //     workRefs.refEl2.current.scrollIntoView({ behavior: "smooth" });
-  //   }
-  //   if (workPage === 3) {
-  //     workRefs.refEl3.current.scrollIntoView({ behavior: "smooth" });
-  //   }
-  //   if (workPage === 4) {
-  //     workRefs.refEl4.current.scrollIntoView({ behavior: "smooth" });
-  //   }
-  //   if (workPage === 5) {
-  //     workRefs.refEl5.current.scrollIntoView({ behavior: "smooth" });
-  //   }
-  //   setWorkSubPage("workLanding");
-  // }, [workPage]);
-
   useEffect(() => {
     if (workSubPage === "workLanding") setWorkNavWidth("3%");
     if (workSubPage === "overview") setWorkNavWidth("20%");
@@ -38,11 +22,11 @@ const WorkNav = ({ pageControl, workRefs }) => {
   }, [workSubPage]);
 
   const condWorkPage = () => {
-    if (workPage === 1) return "sushi republic";
-    if (workPage === 2) return "danji";
-    if (workPage === 3) return "haans cleaners";
-    if (workPage === 4) return "this is bullshit";
-    if (workPage === 5) return "salvation army";
+    if (workPage === "sushi-republic") return "sushi republic";
+    if (workPage === "danji") return "danji";
+    if (workPage === "salvation-army") return "salvation army";
+    if (workPage === "haans-cleaner") return "haans cleaner";
+    if (workPage === "this is bullshit") return "this is bullshit";
   };
 
   const activeClass = () => {
@@ -88,9 +72,12 @@ const WorkNav = ({ pageControl, workRefs }) => {
             style={active("workLanding")}
           >
             <div className="box" />
-            <span onClick={() => setWorkSubPage("workLanding")}>
+            <Link
+              onClick={() => setWorkSubPage("workLanding")}
+              to={`/works/${pageControl.workPage}`}
+            >
               {condWorkPage()}
-            </span>
+            </Link>
           </div>
           <div
             // className={`label detail a--opacity ${activeClass()}`}
@@ -98,7 +85,12 @@ const WorkNav = ({ pageControl, workRefs }) => {
             style={active("overview")}
           >
             <div className="box" />
-            <span onClick={() => setWorkSubPage("overview")}>overview</span>
+            <Link
+              onClick={() => setWorkSubPage("overview")}
+              to={`/works/${pageControl.workPage}/overview`}
+            >
+              overview
+            </Link>
           </div>
           <div
             // className={`label more a--opacity ${activeClass()}`}
@@ -106,7 +98,12 @@ const WorkNav = ({ pageControl, workRefs }) => {
             style={active("gallery")}
           >
             <div className="box" />
-            <span onClick={() => setWorkSubPage("gallery")}>gallery</span>
+            <Link
+              onClick={() => setWorkSubPage("gallery")}
+              to={`/works/${pageControl.workPage}/gallery`}
+            >
+              gallery
+            </Link>
           </div>
         </div>
       </div>

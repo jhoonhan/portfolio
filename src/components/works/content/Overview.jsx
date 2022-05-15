@@ -61,9 +61,10 @@ const Overview = ({ slideImgStyle, content, noOverview }) => {
 
   return (
     <motion.div
-      initial={{ x: 100 }}
+      key="overview"
+      initial={{ x: window.innerWidth }}
       animate={{ x: 0 }}
-      exit={{ x: 100 }}
+      exit={{ x: window.innerWidth }}
       transition={{ duration: 1 }}
     >
       <div

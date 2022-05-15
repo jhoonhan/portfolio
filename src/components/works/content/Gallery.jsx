@@ -42,9 +42,10 @@ const Gallery = ({ slideImgStyle, pageControl, images }) => {
   const render = () => {
     return (
       <motion.div
-        initial={{ x: 100 }}
+        key="gallery"
+        initial={{ x: window.innerWidth }}
         animate={{ x: 0 }}
-        exit={{ x: 100 }}
+        exit={{ x: window.innerWidth }}
         transition={{ duration: 1 }}
       >
         <div ref={refCont} className="work__content" style={slideImgStyle}>

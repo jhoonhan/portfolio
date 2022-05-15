@@ -8,7 +8,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import WorkContent from "../WorkContent";
 
-const SalvationArmy = ({ refEl, pageControl }) => {
+const SalvationArmy = ({ refEl, pageControl, props }) => {
   const data = {
     name: ["salvation", " army"],
     description:
@@ -17,6 +17,7 @@ const SalvationArmy = ({ refEl, pageControl }) => {
     technology: "ReactJS, JavaScript, NodeJS, Express, MongoDB, HTML, CSS",
     liveDemoURL: "https://google.com",
     githubURL: "https://github.com/",
+    path: "salvation-army",
     images: {
       landing,
       overviewImages: [slideImg0, slideImg1, slideImg2],
@@ -29,7 +30,7 @@ const SalvationArmy = ({ refEl, pageControl }) => {
   };
   const backgroundStyle = {
     background:
-      "linear-gradient(60deg, rgba(25,25,25, 1) 0%, rgba(25,35,35, 1) 33%, rgba(50, 50, 50, 1) 45%, rgba(150, 37, 37, 1) 100%  )",
+      "linear-gradient(60deg, rgba(2,0,36,1) 0%,rgba(2,0,36,1) 23%, rgba(118,19,19,1) 100%)",
   };
   return (
     <WorkContent
@@ -37,6 +38,7 @@ const SalvationArmy = ({ refEl, pageControl }) => {
       pageControl={pageControl}
       content={data}
       backgroundStyle={backgroundStyle}
+      props={props}
     />
   );
 };

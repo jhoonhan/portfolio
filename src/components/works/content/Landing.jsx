@@ -10,9 +10,10 @@ const Landing = ({ slideImgStyle, content }) => {
   // }, []);
   return (
     <motion.div
-      initial={{ x: 100 }}
+      key="landing"
+      initial={{ x: window.innerWidth }}
       animate={{ x: 0 }}
-      exit={{ x: 100 }}
+      exit={{ x: -window.innerWidth }}
       transition={{ duration: 1 }}
     >
       <div className="work__content" style={slideImgStyle}>
