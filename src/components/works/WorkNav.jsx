@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const WorkNav = ({ pageControl }) => {
-  console.log(pageControl.workPage);
-
   const {
     curPage,
     workPage,

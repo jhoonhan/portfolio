@@ -4,13 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import DesktopSVG from "../../../assests/image/projects/DesktopSVG";
 import WorkPictureContainer from "../WorkPictureContainer";
 
-const Overview = ({
-  slideImgStyle,
-  pageControl,
-  content,
-  noOverview,
-  props,
-}) => {
+const Overview = ({ slideInfo, pageControl, content, noOverview, props }) => {
   const refIntersect = useRef(null);
 
   // useEffect(() => {
@@ -69,30 +63,22 @@ const Overview = ({
   };
 
   return (
-    <motion.div
-      key="overview"
-      initial={{ x: window.innerWidth }}
-      animate={{ x: 0 }}
-      exit={{ x: window.innerWidth }}
-      transition={{ duration: 1 }}
+    <div
+      ref={refIntersect}
+      className="work__content padded"
+      style={{
+        gridTemplateColumns: "3fr 2fr",
+        ...slideInfo.slideImgStyle,
+      }}
     >
-      <div
-        ref={refIntersect}
-        className="work__content padded"
-        style={{
-          gridTemplateColumns: "3fr 2fr",
-          ...slideImgStyle,
-        }}
-      >
-        {noOverview ? (
-          <DesktopSVG img={content.images.overviewImages[0]} />
-        ) : (
-          <WorkPictureContainer images={content?.images} />
-        )}
+      {noOverview ? (
+        <DesktopSVG img={content.images.overviewImages[0]} />
+      ) : (
+        <WorkPictureContainer images={content?.images} />
+      )}
 
-        {renderInfo()}
-      </div>
-    </motion.div>
+      {renderInfo()}
+    </div>
   );
 };
 

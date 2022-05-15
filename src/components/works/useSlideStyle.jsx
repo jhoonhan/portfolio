@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import throttle from "../helpers/throttle";
+import history from "../../history";
 
 const useSlideStyle = (pageControl, refEl) => {
   const { workPage, setWorkPage, workSubPage, setWorkSubPage } = pageControl;
   const [slide, setSlide] = useState(0);
   const [slideImgStyle, setSlideImgStyle] = useState({});
+  const [slideDirection, setSlideDirection] = useState("up");
 
   useEffect(() => {
     // if (workSubPage === "slides") return;
@@ -34,26 +36,40 @@ const useSlideStyle = (pageControl, refEl) => {
   }, [slide, workSubPage]);
 
   useEffect(() => {
+    // if (0 - slide > 0) {
+    //   setSlideImgStyle({ left: `${0 - slide}vw` });
+    // }
+
+    // if (0 - slide <= 0) {
+    //   setSlideImgStyle({ right: `${0 - slide}vw` });
+    // }
     setSlideImgStyle({
       transform: `translateX(${0 - slide}vw)`,
     });
+    // console.log(slide);
   }, [slide]);
 
   useEffect(() => {
     if (slide === -5) {
       // if (workSubPage === "workLanding" && workPage > 1)
       //   setWorkPage(workPage - 1);
-      if (workSubPage === "overview") setWorkSubPage("workLanding");
-      if (workSubPage === "gallery") setWorkSubPage("overview");
+      if (workSubPage === "overview")
+        history.push(`/works/${pageControl.workPage}/landing`);
+      if (workSubPage === "gallery")
+        history.push(`/works/${pageControl.workPage}/overview`);
+      setSlideDirection("up");
     }
     if (slide === 5) {
-      if (workSubPage === "workLanding") setWorkSubPage("overview");
-      if (workSubPage === "overview") setWorkSubPage("gallery");
+      if (workSubPage === "workLanding")
+        history.push(`/works/${pageControl.workPage}/overview`);
+      if (workSubPage === "overview")
+        history.push(`/works/${pageControl.workPage}/gallery`);
+      setSlideDirection("down");
       // if (workSubPage === "gallery" && workPage < 5) setWorkPage(workPage + 1);
     }
   }, [slide]);
 
-  return { workSubPage, slide, slideImgStyle };
+  return { slide, slideDirection, slideImgStyle };
 };
 
 export default useSlideStyle;
