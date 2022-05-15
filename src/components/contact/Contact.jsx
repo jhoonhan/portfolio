@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { motion } from "framer-motion";
 import icons from "../../assests/image/icons.svg";
 
 const Contact = ({ pageControl, props, refs }) => {
@@ -7,7 +8,14 @@ const Contact = ({ pageControl, props, refs }) => {
   }, [props.match.path]);
   const render = () => {
     return (
-      <section ref={refs.refContact} className="contact__container container">
+      <motion.section
+        ref={refs.refContact}
+        className="contact__container container"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.5 }}
+      >
         <div className="contact__text-wrapper">
           <div className="flex--column">
             <span className="contact__title">Yeah</span>
@@ -40,7 +48,7 @@ const Contact = ({ pageControl, props, refs }) => {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
     );
   };
 

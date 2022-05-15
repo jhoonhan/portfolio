@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+import { motion } from "framer-motion";
 import AboutImg from "./AboutImg";
 import icons from "../../assests/image/icons.svg";
 
@@ -106,7 +107,14 @@ const About = ({ pageControl, props, refs }) => {
 
   const render = () => {
     return (
-      <section ref={refs.refAbout} className="about__container container">
+      <motion.section
+        ref={refs.refAbout}
+        className="about__container container"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.5 }}
+      >
         <div
           className="about__slides-container"
           // onMouseOut={trigger}>
@@ -209,7 +217,7 @@ const About = ({ pageControl, props, refs }) => {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
     );
   };
 

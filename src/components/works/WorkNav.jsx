@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import history from "../../history";
 import { Link } from "react-router-dom";
 
 const WorkNav = ({ pageControl }) => {
@@ -42,13 +43,14 @@ const WorkNav = ({ pageControl }) => {
   };
 
   const onArrowClick = () => {
-    if (workSubPage === "workLanding") setWorkSubPage("overview");
-    if (workSubPage === "overview") setWorkSubPage("gallery");
-    if (workSubPage === "gallery" && workPage < 5) setWorkPage(workPage + 1);
+    if (workSubPage === "workLanding")
+      history.push(`/works/${workPage}/overview`);
+    if (workSubPage === "overview") history.push(`/works/${workPage}/gallery`);
+    // if (workSubPage === "gallery" && workPage < 5) setWorkPage(workPage + 1);
   };
 
   const renderContentArrow = () => {
-    if (curPage !== "works") return;
+    if (curPage !== "works" || workSubPage === "gallery") return;
     return (
       <div className="works__content__arrow" onClick={onArrowClick}>
         <span className="arrow"></span>
