@@ -4,7 +4,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import DesktopSVG from "../../../assests/image/projects/DesktopSVG";
 import WorkPictureContainer from "../WorkPictureContainer";
 
-const Overview = ({ slideImgStyle, content, noOverview }) => {
+const Overview = ({
+  slideImgStyle,
+  pageControl,
+  content,
+  noOverview,
+  props,
+}) => {
   const refIntersect = useRef(null);
 
   // useEffect(() => {
@@ -13,6 +19,9 @@ const Overview = ({ slideImgStyle, content, noOverview }) => {
   //     console.log(`Overview unmounted`);
   //   };
   // }, []);
+  useEffect(() => {
+    pageControl.setWorkSubPage("overview");
+  }, [props.match.path]);
 
   const renderInfo = () => {
     return (

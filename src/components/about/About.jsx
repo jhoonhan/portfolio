@@ -38,7 +38,7 @@ import useIntersectionObserve from "../helpers/useIntersectionObserve";
 import AboutSlide from "./AboutSlide";
 import Cursor from "../Cursor";
 
-const About = ({ refs }) => {
+const About = ({ pageControl, props, refs }) => {
   const [activeSlide, setActiveSlide] = useState(-1);
   const [activeSlideStyle, setActiveSlideStyle] = useState({
     slide0: { width: "100%" },
@@ -51,6 +51,10 @@ const About = ({ refs }) => {
   const refInfo = useRef(null);
 
   const isIntersecting = useIntersectionObserve(refInfo, 0.8);
+
+  useEffect(() => {
+    pageControl.setCurPage(props.match.path.slice(1));
+  }, [props.match.path]);
 
   useEffect(() => {
     if (isIntersecting) setIntersectingStyle({ opacity: 1 });

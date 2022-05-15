@@ -4,12 +4,7 @@ import { Switch, Route } from "react-router-dom";
 import { motion } from "framer-motion";
 
 import WorkContent from "./WorkContent";
-import useSubPageStyle from "./useSubPageStyle";
 import WorkNav from "./WorkNav";
-
-import { sushiRepublic } from "../../assests/data/sushiRepublic";
-import { danji } from "../../assests/data/danji";
-import { salvationArmy } from "../../assests/data/salvationArmy";
 
 import SushiRepublic from "./projects/SushiRepublic";
 import Danji from "./projects/Danji";
@@ -24,6 +19,10 @@ const Works = ({ refs, pageControl, props }) => {
   const refEl4 = useRef(null);
   const refEl5 = useRef(null);
   const workRefs = { refEl1, refEl2, refEl3, refEl4, refEl5 };
+
+  useEffect(() => {
+    pageControl.setCurPage(props.match.path.slice(1));
+  }, [props.match.path]);
 
   const render = () => {
     return (
@@ -91,7 +90,7 @@ const Works = ({ refs, pageControl, props }) => {
             />
           </Switch>
         </section>
-        <WorkNav pageControl={pageControl} workRefs={workRefs} />
+        <WorkNav pageControl={pageControl} />
       </div>
     );
   };

@@ -54,21 +54,28 @@ const WorkContent = ({
           )} */}
           <Switch location={location} key={location.pathname}>
             <Route
-              path={`/works/${content.path}`}
+              path={`/works/${content.path}/landing`}
               exact
-              render={() => (
-                <Landing slideImgStyle={slideImgStyle} content={content} />
+              render={(props) => (
+                <Landing
+                  slideImgStyle={slideImgStyle}
+                  pageControl={pageControl}
+                  content={content}
+                  props={props}
+                />
               )}
             />
 
             <Route
               path={`/works/${content.path}/overview`}
               exact
-              render={() => (
+              render={(props) => (
                 <Overview
                   slideImgStyle={slideImgStyle}
+                  pageControl={pageControl}
                   content={content}
                   noOverview={noOverview}
+                  props={props}
                 />
               )}
             />
@@ -76,11 +83,12 @@ const WorkContent = ({
             <Route
               path={`/works/${content.path}/gallery`}
               exact
-              render={() => (
+              render={(props) => (
                 <Gallery
                   slideImgStyle={slideImgStyle}
                   pageControl={pageControl}
                   images={content?.images}
+                  props={props}
                 />
               )}
             />

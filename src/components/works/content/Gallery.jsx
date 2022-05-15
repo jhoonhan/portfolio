@@ -6,13 +6,17 @@ import useGalleryHoriScroll from "../useGalleryHoriScroll";
 import DesktopSVG from "../../../assests/image/projects/DesktopSVG";
 import MobileSVG from "../../../assests/image/projects/MobileSVG";
 
-const Gallery = ({ slideImgStyle, pageControl, images }) => {
+const Gallery = ({ slideImgStyle, pageControl, images, props }) => {
   // useEffect(() => {
   //   console.log(`workDetail mounted`);
   //   return () => {
   //     console.log(`workDetail unmounted`);
   //   };
   // }, []);
+
+  useEffect(() => {
+    pageControl.setWorkSubPage("gallery");
+  }, [props.match.path]);
 
   const refCont = useRef(null);
   const refSlides = useGalleryHoriScroll(pageControl);

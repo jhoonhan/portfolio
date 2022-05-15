@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import icons from "../../assests/image/icons.svg";
 
-const Contact = ({ refs }) => {
+const Contact = ({ pageControl, props, refs }) => {
+  useEffect(() => {
+    pageControl.setCurPage(props.match.path.slice(1));
+  }, [props.match.path]);
   const render = () => {
     return (
       <section ref={refs.refContact} className="contact__container container">

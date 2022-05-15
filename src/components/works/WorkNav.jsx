@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-const WorkNav = ({ pageControl, workRefs }) => {
+const WorkNav = ({ pageControl }) => {
   console.log(pageControl.workPage);
 
   const {
@@ -74,7 +74,7 @@ const WorkNav = ({ pageControl, workRefs }) => {
             <div className="box" />
             <Link
               onClick={() => setWorkSubPage("workLanding")}
-              to={`/works/${pageControl.workPage}`}
+              to={`/works/${pageControl.workPage}/landing`}
             >
               {condWorkPage()}
             </Link>

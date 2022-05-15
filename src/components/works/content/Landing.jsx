@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const Landing = ({ slideImgStyle, content }) => {
+const Landing = ({ slideImgStyle, pageControl, content, props }) => {
   // useEffect(() => {
   //   console.log(`Landing mounted`);
   //   return () => {
   //     console.log(`Landing unmounted`);
   //   };
   // }, []);
+
+  useEffect(() => {
+    pageControl.setWorkSubPage("workLanding");
+  }, [props.match.path]);
+
   return (
     <motion.div
       key="landing"

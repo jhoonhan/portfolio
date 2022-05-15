@@ -64,7 +64,14 @@ const App = () => {
             <Route
               path="/"
               exact
-              render={() => <Landing curPage={curPage} refHome={refHome} />}
+              render={(props) => (
+                <Landing
+                  pageControl={pageControl}
+                  curPage={curPage}
+                  refHome={refHome}
+                  props={props}
+                />
+              )}
             />
             <Route
               path="/works"
@@ -72,11 +79,19 @@ const App = () => {
                 <Works refs={refs} pageControl={pageControl} props={props} />
               )}
             />
-            <Route path="/about" exact render={() => <About refs={refs} />} />
+            <Route
+              path="/about"
+              exact
+              render={(props) => (
+                <About pageControl={pageControl} refs={refs} props={props} />
+              )}
+            />
             <Route
               path="/contact"
               exact
-              render={() => <Contact refs={refs} />}
+              render={(props) => (
+                <Contact pageControl={pageControl} refs={refs} props={props} />
+              )}
             />
           </Switch>
         </main>

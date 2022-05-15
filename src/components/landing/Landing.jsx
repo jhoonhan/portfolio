@@ -3,12 +3,20 @@ import LandingArt from "./LandingArt";
 import name2 from "../../assests/image/name2.svg";
 import MiddleLine from "../helpers/MiddleLine";
 
-const Landing = ({ curPage, refHome }) => {
+const Landing = ({ pageControl, refHome, props }) => {
+  useEffect(() => {
+    pageControl.setCurPage("home");
+  }, [props.match.path]);
+
   const renderFooter = () => {
     return (
       <div
         className="landing__footer"
-        style={curPage !== "home" ? { transform: "translateX(100vw)" } : {}}
+        style={
+          pageControl.curPage !== "home"
+            ? { transform: "translateX(100vw)" }
+            : {}
+        }
       >
         <MiddleLine orientation="horizontal" />
 
@@ -28,7 +36,7 @@ const Landing = ({ curPage, refHome }) => {
   const render = () => {
     return (
       <>
-        <LandingArt curPage={curPage} />
+        <LandingArt curPage={pageControl.curPage} />
         <section ref={refHome} className="landing__container container">
           {renderCenterInfo()}
 

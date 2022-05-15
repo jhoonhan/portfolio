@@ -19,18 +19,18 @@ const Header = ({ refs, pageControl }) => {
   //   console.log(refMain.current.offsetHeight);
   // }, []);
 
-  useEffect(() => {
-    const innerHeight = window.innerHeight;
-    // const totalHeight = document.body.scrollHeight;
-    if (innerHeight > curScroll + innerHeight / 2)
-      pageControl.setCurPage("home");
-    if (innerHeight <= curScroll + innerHeight / 2)
-      pageControl.setCurPage("works");
-    if (innerHeight * 2 <= curScroll + innerHeight / 2)
-      pageControl.setCurPage("about");
-    if (innerHeight * 3 - 10 <= curScroll + innerHeight / 2)
-      pageControl.setCurPage("contact");
-  }, []);
+  // useEffect(() => {
+  //   const innerHeight = window.innerHeight;
+  //   // const totalHeight = document.body.scrollHeight;
+  //   if (innerHeight > curScroll + innerHeight / 2)
+  //     pageControl.setCurPage("home");
+  //   if (innerHeight <= curScroll + innerHeight / 2)
+  //     pageControl.setCurPage("works");
+  //   if (innerHeight * 2 <= curScroll + innerHeight / 2)
+  //     pageControl.setCurPage("about");
+  //   if (innerHeight * 3 - 10 <= curScroll + innerHeight / 2)
+  //     pageControl.setCurPage("contact");
+  // }, []);
 
   useEffect(() => {
     const handler = (e) => {
@@ -110,9 +110,6 @@ const Header = ({ refs, pageControl }) => {
           <nav className="nav" ref={refNav}>
             <div className="nav__link home" ref={refNavHome}>
               <Link
-                onClick={() => {
-                  pageControl.setCurPage("home");
-                }}
                 className="a--transition a--opacity"
                 style={pageControl.curPage === "home" ? activeOpacity : {}}
                 to="/"
@@ -123,12 +120,9 @@ const Header = ({ refs, pageControl }) => {
             <div className="nav__link works" ref={refNavWorks}>
               <Link
                 onClick={() => {
-                  pageControl.setCurPage("works");
                   pageControl.setWorkPage("sushi-republic");
-
-                  // setActiveHeight("10rem");
                 }}
-                to="/works/sushi-republic"
+                to="/works/sushi-republic/landing"
                 style={pageControl.curPage === "works" ? activeOpacity : {}}
                 className="a--transition a--opacity"
               >
@@ -142,13 +136,9 @@ const Header = ({ refs, pageControl }) => {
                     : {}
                 }
               >
-                <li
-                  onClick={() => {
-                    pageControl.setWorkPage("sushi-republic");
-                  }}
-                >
+                <li>
                   <Link
-                    to="/works/sushi-republic"
+                    to="/works/sushi-republic/landing"
                     style={
                       pageControl.workPage === "sushi-republic"
                         ? activeSubPageStyle
@@ -158,13 +148,9 @@ const Header = ({ refs, pageControl }) => {
                     Sushi Republic
                   </Link>
                 </li>
-                <li
-                  onClick={() => {
-                    pageControl.setWorkPage("danji");
-                  }}
-                >
+                <li>
                   <Link
-                    to="/works/danji"
+                    to="/works/danji/landing"
                     style={
                       pageControl.workPage === "danji" ? activeSubPageStyle : {}
                     }
@@ -172,14 +158,9 @@ const Header = ({ refs, pageControl }) => {
                     Danji
                   </Link>
                 </li>
-                <li
-                  onClick={() => {
-                    // setActiveHeight("19.6rem");
-                    pageControl.setWorkPage("salvation-army");
-                  }}
-                >
+                <li>
                   <Link
-                    to="/works/salvation-army"
+                    to="/works/salvation-army/landing"
                     style={
                       pageControl.workPage === "salvation-army"
                         ? activeSubPageStyle
@@ -189,14 +170,9 @@ const Header = ({ refs, pageControl }) => {
                     Salvation Army
                   </Link>
                 </li>
-                <li
-                  onClick={() => {
-                    setActiveHeight("22.8rem");
-                    pageControl.setWorkPage("haans-cleaner");
-                  }}
-                >
+                <li>
                   <Link
-                    to="/works/haans-cleaner"
+                    to="/works/haans-cleaner/landing"
                     style={
                       pageControl.workPage === "haans-cleaner"
                         ? activeSubPageStyle
@@ -206,14 +182,9 @@ const Header = ({ refs, pageControl }) => {
                     Haans Cleaner
                   </Link>
                 </li>
-                <li
-                  onClick={() => {
-                    setActiveHeight("26rem");
-                    pageControl.setWorkPage("this-is-bullshit");
-                  }}
-                >
+                <li>
                   <Link
-                    to="/works/this-is-bullshit"
+                    to="/works/this-is-bullshit/landing"
                     style={
                       pageControl.workPage === "this-is-bullshit"
                         ? activeSubPageStyle
@@ -228,7 +199,6 @@ const Header = ({ refs, pageControl }) => {
 
             <div className="nav__link about" ref={refNavAbout}>
               <Link
-                onClick={() => pageControl.setCurPage("about")}
                 to="/about"
                 className="a--transition a--opacity"
                 style={pageControl.curPage === "about" ? activeOpacity : {}}
@@ -239,7 +209,6 @@ const Header = ({ refs, pageControl }) => {
 
             <div className="nav__link contact" ref={refNavContact}>
               <Link
-                onClick={() => pageControl.setCurPage("contact")}
                 to="/contact"
                 className="a--transition a--opacity"
                 style={pageControl.curPage === "contact" ? activeOpacity : {}}

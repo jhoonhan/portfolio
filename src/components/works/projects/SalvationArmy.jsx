@@ -39,6 +39,7 @@ const SalvationArmy = ({ refEl, pageControl, props }) => {
       content={data}
       backgroundStyle={backgroundStyle}
       props={props}
+      noOverview={true}
     />
   );
 };
