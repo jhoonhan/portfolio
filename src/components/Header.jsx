@@ -8,6 +8,7 @@ const Header = ({ refs, pageControl }) => {
   const [curScroll, setCurScroll] = useState(window.pageYOffset);
   const [direction, setDirection] = useState(false);
   const [activeHeight, setActiveHeight] = useState("0rem");
+  const [mobileShowNav, setMobileShowNav] = useState(false);
 
   const refNav = useRef(null);
   const refNavHome = useRef(null);
@@ -87,14 +88,42 @@ const Header = ({ refs, pageControl }) => {
     return (
       <header className="header__container">
         <div
-          className="nav__container"
+          className="m--nav__overlay"
+          style={mobileShowNav ? { display: "flex" } : { display: "none" }}
+        >
+          <div className="icons__container">
+            <svg viewBox="0 0 100 100" className="social-icons a--opacity">
+              <use href={`${icons}#github`}></use>
+            </svg>
+            <svg viewBox="0 0 100 100" className="social-icons a--opacity">
+              <use href={`${icons}#linkedin`}></use>
+            </svg>
+            <svg viewBox="0 0 100 100" className="social-icons a--opacity">
+              <use href={`${icons}#instagram`}></use>
+            </svg>
+            <svg viewBox="0 0 100 100" className="social-icons a--opacity">
+              <use href={`${icons}#cv`}></use>
+            </svg>
+          </div>
+        </div>
+        <div
+          className="m--nav__toggle"
+          onClick={() => setMobileShowNav(!mobileShowNav)}
+        >
+          {mobileShowNav ? "X" : "O"}
+        </div>
+        <div
+          className={`nav__container ${mobileShowNav && "m--nav__container"}`}
           style={
             pageControl.curPage === "works"
               ? { height: `43.2rem` }
               : { height: `31.2rem` }
           }
         >
-          <div className="scroll-status__container">
+          <div
+            className="scroll-status__container"
+            onClick={() => setMobileShowNav(!mobileShowNav)}
+          >
             <div className="scroll-status--disabled"></div>
             <div
               className="scroll-status--active"
@@ -107,7 +136,11 @@ const Header = ({ refs, pageControl }) => {
               <span></span>
             </div>
           </div>
-          <nav className="nav" ref={refNav}>
+          <nav
+            className="nav"
+            ref={refNav}
+            style={mobileShowNav ? { transform: "translateX(0vw)" } : {}}
+          >
             <div className="nav__link home" ref={refNavHome}>
               <Link
                 className="a--transition a--opacity"

@@ -67,7 +67,6 @@ const Overview = ({ slideInfo, pageControl, content, noOverview, props }) => {
       ref={refIntersect}
       className="work__content padded"
       style={{
-        gridTemplateColumns: "3fr 2fr",
         ...slideInfo.slideImgStyle,
       }}
     >

@@ -39,6 +39,7 @@ const WorkNav = ({ pageControl }) => {
     let style = {};
     if (curPage === "works") style.transform = "translateX(0vw)";
     if (workSubPage === page) style.opacity = "1";
+    style.width = "auto";
     return style;
   };
 
@@ -66,45 +67,47 @@ const WorkNav = ({ pageControl }) => {
         <div className="bar disabled" />
         <div className="bar active" style={{ width: workNavWidth }} />
         <div className="labels">
-          <div
-            // className={`label info a--opacity ${activeClass()}`}
+          <Link
+            to={`/works/${pageControl.workPage}/landing`}
             className={`label landing a--opacity `}
             style={active("workLanding")}
           >
             <div className="box" />
-            <Link
-              onClick={() => setWorkSubPage("workLanding")}
-              to={`/works/${pageControl.workPage}/landing`}
+            <span
+              className="a--opacity--m"
+              style={workSubPage === "workLanding" ? { opacity: 1 } : {}}
             >
               {condWorkPage()}
-            </Link>
-          </div>
-          <div
+            </span>
+          </Link>
+          <Link
             // className={`label detail a--opacity ${activeClass()}`}
+            to={`/works/${pageControl.workPage}/overview`}
             className={`label overview a--opacity `}
             style={active("overview")}
           >
             <div className="box" />
-            <Link
-              onClick={() => setWorkSubPage("overview")}
-              to={`/works/${pageControl.workPage}/overview`}
+            <span
+              className="a--opacity--m"
+              style={workSubPage === "overview" ? { opacity: 1 } : {}}
             >
               overview
-            </Link>
-          </div>
-          <div
+            </span>
+          </Link>
+          <Link
+            to={`/works/${pageControl.workPage}/gallery`}
             // className={`label more a--opacity ${activeClass()}`}
-            className={`label gallery a--opacity`}
+            className={`label gallery a--opacity `}
             style={active("gallery")}
           >
             <div className="box" />
-            <Link
-              onClick={() => setWorkSubPage("gallery")}
-              to={`/works/${pageControl.workPage}/gallery`}
+            <span
+              className="a--opacity--m"
+              style={workSubPage === "gallery" ? { opacity: 1 } : {}}
             >
               gallery
-            </Link>
-          </div>
+            </span>
+          </Link>
         </div>
       </div>
     );

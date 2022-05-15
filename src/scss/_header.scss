@@ -1,7 +1,12 @@
+.m--nav__toggle {
+  display: none;
+}
+.m--nav__overlay {
+  display: none;
+}
 .header__container {
   position: fixed;
   left: 3vw;
-  top: 0;
 
   height: 100vh;
 
@@ -18,15 +23,14 @@
 
 //
 .nav__container {
-  width: 10rem;
+  width: auto;
   height: auto;
 
   display: flex;
-  gap: 2rem;
+  gap: 1rem;
 
   // left: 5vw;
   // margin-top: 7vw;
-  padding-top: 5vh;
 
   // background-color: red;
   transition-property: height;
@@ -71,8 +75,7 @@
   flex-direction: column;
   max-height: 100%;
   // gap: 2rem;
-  margin: 2rem 0rem 3rem 0rem;
-  padding-left: 1rem;
+  padding: 1rem 0rem 3rem 1rem;
   opacity: 1;
   box-sizing: border-box;
   // transition-property: max-height;
@@ -82,7 +85,8 @@
   transition: $default--transition;
   overflow: hidden;
   & li {
-    padding-bottom: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 
     list-style: none;
     white-space: nowrap;
@@ -120,6 +124,10 @@
 
 .scroll-status__container {
   position: relative;
+  min-width: 20px;
+  // background-color: red;
+  display: flex;
+  justify-content: center;
   top: 0rem;
   height: calc(100% - 0rem);
 }
@@ -128,7 +136,7 @@
   position: absolute;
   width: 1px;
 
-  left: 0;
+  left: 9px;
   top: 0;
   border-width: 0 0 0 0px;
   border-style: solid;
@@ -163,7 +171,7 @@
   position: absolute;
   top: 0;
   // transform: translateY(33%);
-  left: -4.5px;
+  left: 4.75px;
   // height: calc(100% - 1rem);
   display: grid;
   // grid-template-rows: 1fr 1fr 1fr auto;
