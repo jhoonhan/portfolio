@@ -30,7 +30,7 @@ const WorkContent = ({
     initial: { opacity: 0 },
     animate: { opacity: 1 },
     exit: { opacity: 0 },
-    transition: { duration: 1 },
+    transition: { duration: 0.5 },
   });
 
   useEffect(() => {
@@ -49,6 +49,17 @@ const WorkContent = ({
         transition: { duration: 0.3 },
       });
   }, [slideInfo.slide]);
+
+  useEffect(() => {
+    if (slideInfo.slide === 0) {
+      setSlideAnimationStyle({
+        initial: { opacity: 0 },
+        animate: { opacity: 1 },
+        exit: { opacity: 0 },
+        transition: { duration: 0.5 },
+      });
+    }
+  }, [pageControl.workSubPage]);
 
   const render = () => {
     return (
