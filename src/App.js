@@ -10,7 +10,31 @@ import "./scss/App.scss";
 import Contact from "./components/contact/Contact";
 import Cursor from "./components/Cursor";
 
+let windowInnerWidth = 0;
+
 const App = () => {
+  const handleResize = () => {
+    const currentWindowInnerWidth = window.innerWidth;
+    if (
+      windowInnerWidth === 0 ||
+      currentWindowInnerWidth !== windowInnerWidth
+    ) {
+      windowInnerWidth = currentWindowInnerWidth;
+      document.documentElement.style.setProperty(
+        "--app-height",
+        `${window.innerHeight}px`
+      );
+    }
+  };
+  handleResize();
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  });
+
   const [curPage, setCurPage] = useState(null);
   const [workPage, setWorkPage] = useState(1);
   const [workSubPage, setWorkSubPage] = useState("workLanding");

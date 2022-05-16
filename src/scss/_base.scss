@@ -1,11 +1,25 @@
+html {
+  height: -webkit-fill-available;
+}
+
 body {
   color: white;
+  font-family: "Raleway", sans-serif;
+  font-weight: 400;
   font-size: $font-size--d;
   font-weight: 300;
+  line-height: 1;
+
   background-image: url(../assests/image/bg1.jpg);
   background-size: 100% 100%;
   background-position: center center;
   background-blend-mode: difference;
+
+  // height: 100vh;
+  // height: var(--app-height, 100vh);
+
+  // overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 a {
@@ -14,7 +28,11 @@ a {
 }
 .wrapper__main {
   width: 100%;
-  max-height: 100vh;
+  // max-height: 100vh;
+
+  height: 50vh;
+  height: var(--app-height, 100vh);
+
   display: flex;
   flex-direction: column;
 
