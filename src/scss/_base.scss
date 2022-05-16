@@ -11,13 +11,18 @@ body {
   font-weight: 300;
   line-height: 1;
 
+  // width: 50vw;
+  // max-height: 100vh;
+
   background-image: url(../assests/image/bg1.jpg);
-  background-size: 100% 100%;
+  // background-size: 100% 100%;
+  background-size: cover;
   background-position: center center;
   background-blend-mode: difference;
 
   // overflow-y: hidden;
   overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 a {

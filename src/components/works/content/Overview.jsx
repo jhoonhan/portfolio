@@ -71,7 +71,10 @@ const Overview = ({ slideInfo, pageControl, content, noOverview, props }) => {
       }}
     >
       {noOverview ? (
-        <DesktopSVG img={content.images.overviewImages[0]} />
+        <DesktopSVG
+          img={content.images.overviewImages[0]}
+          customClass="overview"
+        />
       ) : (
         <WorkPictureContainer images={content?.images} />
       )}

@@ -155,8 +155,11 @@
     align-items: center;
     gap: 2rem;
   }
+  .slide-img--desktop.overview {
+    max-height: 30vh;
+  }
   .work__content.padded {
-    padding: 2rem 2rem 8rem 2rem;
+    padding: 2rem 2rem 0rem 2rem;
     // padding: 0;
     // padding-bottom: 0rem;
     box-sizing: border-box;
@@ -167,6 +170,13 @@
     row-gap: 2rem;
     & .works__info__detail {
       margin-bottom: 0rem;
+
+      & .detail-item {
+        &:last-child {
+          // background-color: red;
+          padding-bottom: 8rem;
+        }
+      }
     }
 
     & .works__subtitle {

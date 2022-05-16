@@ -1,6 +1,6 @@
 import React from "react";
 
-const DesktopSVG = ({ img }) => {
+const DesktopSVG = ({ img, customClass }) => {
   const st0 = {
     fill: "#CCCCCC",
   };
@@ -11,7 +11,7 @@ const DesktopSVG = ({ img }) => {
     fill: "url(#SVGID_1_)",
   };
   return (
-    <div className="slide-img--desktop">
+    <div className={`slide-img--desktop ${customClass}`}>
       <svg
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
