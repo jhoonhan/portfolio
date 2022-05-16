@@ -149,14 +149,12 @@ const About = ({ pageControl, props, refs }) => {
         <div className="about__info" onMouseOver={() => setActiveSlide(4)}>
           <div className="text-wrapper">
             <div className="flex--column">
-              <span className="title" style={{ paddingBottom: "5rem" }}>
-                Hello,
-              </span>
-              <h2 style={{ paddingBottom: "5rem" }}>
+              <span className="title el">Hello,</span>
+              <h2 className="el">
                 I'm a maker with unquenchable passion in web development and
                 visual art.
               </h2>
-              <p style={{ paddingBottom: "10rem" }}>
+              <p className="el">
                 Being creative with visual aesthetic and motion design for
                 websites is what I've been fascinated with for the past few
                 years. Exploring interdisciplinary art making practice, I have
@@ -168,22 +166,19 @@ const About = ({ pageControl, props, refs }) => {
             <div
               ref={refInfo}
               className="about__detail-info flex--column"
-              style={intersectingStyle}
+              style={{
+                ...intersectingStyle,
+                marginTop: "3rem",
+              }}
             >
-              <div
-                className="flex--column"
-                style={{ gap: "0.5rem", paddingBottom: "7rem" }}
-              >
+              <div className="flex--column el" style={{ gap: "0.5rem" }}>
                 <h2 style={{ paddingBottom: "1rem" }}>Skills</h2>
                 <p>React, JavaScript, HTML5, CSS3, Sass</p>
                 <p>Node.js, MongoDB, Express</p>
                 <p>Adobe Photoshop, Illustrator, Premiere Pro, XD</p>
               </div>
 
-              <div
-                className="flex--column"
-                style={{ gap: "0.5rem", paddingBottom: "10rem" }}
-              >
+              <div className="flex--column el" style={{ gap: "0.5rem" }}>
                 <h2 style={{ paddingBottom: "1rem" }}>Expreience</h2>
                 <p>- 5 years experience in Web Design</p>
                 <p>- 5 years experience in Graphic Design</p>
@@ -191,12 +186,14 @@ const About = ({ pageControl, props, refs }) => {
               </div>
 
               <div
-                className="flex--row"
+                className="flex--row el"
                 style={{
                   gap: "3rem",
                   alignSelf: "center",
                   borderTop: "1px solid #ccc",
+                  marginTop: "3rem",
                   paddingTop: "2rem",
+                  paddingBottom: "3rem",
                 }}
               >
                 <svg viewBox="0 0 100 100" className="social-icons ">

@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 import WorkContent from "./WorkContent";
 import WorkNav from "./WorkNav";
+import useListenSwipe from "../helpers/useListenSwipe";
 
 import SushiRepublic from "./projects/SushiRepublic";
 import Danji from "./projects/Danji";
@@ -20,6 +21,7 @@ const Works = ({ refs, pageControl, props }) => {
   const refEl4 = useRef(null);
   const refEl5 = useRef(null);
   const workRefs = { refEl1, refEl2, refEl3, refEl4, refEl5 };
+  const { onTouchStart, onTouchMove, onTouchEnd } = useListenSwipe();
 
   useEffect(() => {
     pageControl.setCurPage(props.match.path.slice(1));
@@ -36,6 +38,9 @@ const Works = ({ refs, pageControl, props }) => {
         <section
           ref={refs.refWorks}
           className="works__container container"
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
           // style={activeSubPageStyle}
         >
           {/* <AnimatePresence exitBeforeEnter> */}

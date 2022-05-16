@@ -66,10 +66,10 @@ const Header = ({ refs, pageControl }) => {
       setActiveHeight("0rem");
     }
     if (pageControl.curPage === "works") {
-      if (pageControl.workPage === "sushi-republic") setActiveHeight("13.2rem");
-      if (pageControl.workPage === "danji") setActiveHeight("16.4rem");
-      if (pageControl.workPage === "salvation-army") setActiveHeight("19.6rem");
-      if (pageControl.workPage === "haans-cleaner") setActiveHeight("22.8rem");
+      if (pageControl.workPage === "sushi-republic") setActiveHeight("13.4rem");
+      if (pageControl.workPage === "danji") setActiveHeight("16.8rem");
+      if (pageControl.workPage === "salvation-army") setActiveHeight("20.2rem");
+      if (pageControl.workPage === "haans-cleaner") setActiveHeight("23.6rem");
       if (pageControl.workPage === "this-is-bullshit")
         setActiveHeight("22.8rem");
     }

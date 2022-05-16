@@ -91,6 +91,9 @@
     & .subtitle {
       font-size: 5rem;
     }
+    & .el {
+      padding-bottom: 5rem;
+    }
     & h2 {
       font-size: 3rem;
       font-weight: 300;
@@ -98,7 +101,7 @@
     }
 
     & p {
-      font-size: $font-size--ml;
+      // font-size: $font-size--ml;
       line-height: 1.5;
     }
   }
