@@ -35,11 +35,9 @@
   .nav__container {
     max-width: 1px;
     padding-left: 0;
-  }
-  .m--nav__container {
-    padding-left: 5vw;
     transition: $default--transition;
   }
+
   .scroll-status--disabled {
     mix-blend-mode: normal;
   }
@@ -48,7 +46,7 @@
   }
   .nav {
     // display: none;
-    transform: translateX(-100vw);
+    // transform: translateX(-100vw);
   }
 
   .m--nav__toggle {
