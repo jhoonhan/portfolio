@@ -4,7 +4,6 @@ const useListenSwipe = (fnLeft, fnRight) => {
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
   const distance = touchStart - touchEnd;
-  const [swipe, setSwipe] = useState(null);
 
   // the required distance between touchStart and touchEnd to be detected as a swipe
   const minSwipeDistance = 50;
@@ -22,12 +21,12 @@ const useListenSwipe = (fnLeft, fnRight) => {
     const isLeftSwipe = distance > minSwipeDistance;
     const isRightSwipe = distance < -minSwipeDistance;
 
-    if (isLeftSwipe) setSwipe("left");
-    if (isRightSwipe) setSwipe("right");
+    if (isLeftSwipe) fnLeft();
+    if (isRightSwipe) fnRight();
     // add your conditional logic here
   };
 
-  return { swipe, onTouchStart, onTouchMove, onTouchEnd, distance };
+  return { onTouchStart, onTouchMove, onTouchEnd, distance };
 };
 
 export default useListenSwipe;

@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import { Switch, Route, useLocation } from "react-router-dom";
-
 import { motion, AnimatePresence } from "framer-motion";
+import history from "../../history";
 
 import WorkContent from "./WorkContent";
 import WorkNav from "./WorkNav";
@@ -12,16 +12,31 @@ import Danji from "./projects/Danji";
 import SalvationArmy from "./projects/SalvationArmy";
 
 const Works = ({ refs, pageControl, props }) => {
-  // const { activeSubPageStyle } = useSubPageStyle(pageControl);
+  const fnRight = () => {
+    if (pageControl.workSubPage === "workLanding") return;
+    if (pageControl.workSubPage === "overview")
+      history.push(`/works/${pageControl.workPage}/landing`);
+    if (pageControl.workSubPage === "gallery")
+      history.push(`/works/${pageControl.workPage}/overview`);
+  };
+
+  const fnLeft = () => {
+    if (pageControl.workSubPage === "workLanding")
+      history.push(`/works/${pageControl.workPage}/overview`);
+    if (pageControl.workSubPage === "overview")
+      history.push(`/works/${pageControl.workPage}/gallery`);
+    if (pageControl.workSubPage === "gallery") return;
+  };
 
   const refEl1 = useRef(null);
   const refEl2 = useRef(null);
   const refEl3 = useRef(null);
   const refEl4 = useRef(null);
   const refEl5 = useRef(null);
-  const workRefs = { refEl1, refEl2, refEl3, refEl4, refEl5 };
-  const { swipe, onTouchStart, onTouchMove, onTouchEnd, distance } =
-    useListenSwipe();
+  const { onTouchStart, onTouchMove, onTouchEnd } = useListenSwipe(
+    fnLeft,
+    fnRight
+  );
 
   useEffect(() => {
     pageControl.setCurPage(props.match.path.slice(1));
