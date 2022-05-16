@@ -270,19 +270,18 @@
         background-color: white;
       }
     }
-
-    & .landing {
-      left: 3%;
-      transition: transform 0.3s ease-in-out 0.6s, opacity 0.3s 0s;
-    }
-    & .overview {
-      left: 20%;
-      transition: transform 0.3s ease-in-out 0.8s, opacity 0.3s 0s;
-    }
-    & .gallery {
-      left: 50%;
-      transition: transform 0.3s ease-in-out 1s, opacity 0.3s 0s;
-    }
+  }
+  & .landing {
+    left: 3%;
+    transition: transform 0.3s ease-in-out 0.6s, opacity 0.3s 0s;
+  }
+  & .overview {
+    left: 20%;
+    transition: transform 0.3s ease-in-out 0.8s, opacity 0.3s 0s;
+  }
+  & .gallery {
+    left: 50%;
+    transition: transform 0.3s ease-in-out 1s, opacity 0.3s 0s;
   }
 }
 .works__content-nav.active-box {

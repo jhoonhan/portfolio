@@ -47,7 +47,7 @@ const Header = ({ refs, pageControl }) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        transition={{ duration: 1 }}
+        transition={{ duration: 0.5 }}
       >
         <div className="icons__container">
           <svg viewBox="0 0 100 100" className="social-icons a--opacity">
@@ -75,12 +75,10 @@ const Header = ({ refs, pageControl }) => {
       style.height = "31.2rem";
     }
     if (isMobile && mobileShowNav) {
-      console.log(`aaang`);
       style.transform = "translateX(5vw)";
     } else {
       style.transform = "translateX(0vw)";
     }
-    console.log(style);
     return style;
   };
 
@@ -98,9 +96,6 @@ const Header = ({ refs, pageControl }) => {
         </div>
         <div className="nav__link works" ref={refNavWorks}>
           <Link
-            onClick={() => {
-              pageControl.setWorkPage("sushi-republic");
-            }}
             to="/works/sushi-republic/landing"
             style={pageControl.curPage === "works" ? activeOpacity : {}}
             className="a--transition a--opacity"

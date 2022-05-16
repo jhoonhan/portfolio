@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { isBrowser, isMobile } from "react-device-detect";
+
 import history from "../../history";
 import { Link } from "react-router-dom";
 
@@ -14,9 +16,16 @@ const WorkNav = ({ pageControl }) => {
   } = pageControl;
 
   useEffect(() => {
-    if (workSubPage === "workLanding") setWorkNavWidth("3%");
-    if (workSubPage === "overview") setWorkNavWidth("20%");
-    if (workSubPage === "gallery") setWorkNavWidth("50%");
+    if (isBrowser) {
+      if (workSubPage === "workLanding") setWorkNavWidth("3%");
+      if (workSubPage === "overview") setWorkNavWidth("20%");
+      if (workSubPage === "gallery") setWorkNavWidth("50%");
+    }
+    if (isMobile) {
+      if (workSubPage === "workLanding") setWorkNavWidth("0%");
+      if (workSubPage === "overview") setWorkNavWidth("33%");
+      if (workSubPage === "gallery") setWorkNavWidth("66%");
+    }
     // if (workSubPage === "slides") setWorkNavWidth("85%");
   }, [workSubPage]);
 

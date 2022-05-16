@@ -13,7 +13,6 @@ import SalvationArmy from "./projects/SalvationArmy";
 
 const Works = ({ refs, pageControl, props }) => {
   // const { activeSubPageStyle } = useSubPageStyle(pageControl);
-  const location = useLocation();
 
   const refEl1 = useRef(null);
   const refEl2 = useRef(null);
@@ -21,11 +20,16 @@ const Works = ({ refs, pageControl, props }) => {
   const refEl4 = useRef(null);
   const refEl5 = useRef(null);
   const workRefs = { refEl1, refEl2, refEl3, refEl4, refEl5 };
-  const { onTouchStart, onTouchMove, onTouchEnd } = useListenSwipe();
+  const { swipe, onTouchStart, onTouchMove, onTouchEnd, distance } =
+    useListenSwipe();
 
   useEffect(() => {
     pageControl.setCurPage(props.match.path.slice(1));
   }, [props.match.path]);
+
+  useEffect(() => {
+    console.log(pageControl.workPage);
+  }, [pageControl.workPage]);
 
   const render = () => {
     return (

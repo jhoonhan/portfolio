@@ -110,6 +110,18 @@
     right: 0;
     left: calc(5vw + 1rem);
     bottom: 4.5rem;
+    & .landing {
+      left: 0%;
+      transition: transform 0.3s ease-in-out 0.6s, opacity 0.3s 0s;
+    }
+    & .overview {
+      left: 33%;
+      transition: transform 0.3s ease-in-out 0.8s, opacity 0.3s 0s;
+    }
+    & .gallery {
+      left: 66%;
+      transition: transform 0.3s ease-in-out 1s, opacity 0.3s 0s;
+    }
   }
   .works__content__arrow {
     display: none;
