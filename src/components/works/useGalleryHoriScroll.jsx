@@ -1,10 +1,11 @@
 import { useEffect, useRef } from "react";
+import { isBrowser, isMobile } from "react-device-detect";
 import throttle from "../helpers/throttle";
 
 const useGalleryHoriScroll = (pageControl) => {
   const elRef = useRef();
   useEffect(() => {
-    if (pageControl.workSubPage !== "gallery") return;
+    if (pageControl.workSubPage !== "gallery" || isMobile) return;
     const el = elRef.current;
     if (!el) return;
     el.scrollTo({ left: 0 });

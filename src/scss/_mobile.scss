@@ -217,27 +217,38 @@
       height: 40vh;
       & img {
         max-height: 38.5vh;
+        left: 0.7vh;
       }
     }
   }
   .work__detail-container {
     height: 100%;
-    padding: 5rem 2rem;
+    // padding: 5rem 2rem;
+    overflow-x: hidden;
+    overflow-y: scroll;
   }
   .detail__img-container {
+    position: relative;
     width: 100%;
+    // height: auto;
     gap: 5rem;
     flex-direction: column;
     align-items: center;
-
-    padding: 0;
+    justify-content: flex-start;
+    // padding: 0;
+    padding: 10vh 2rem;
+    box-sizing: border-box;
+    overflow-y: visible;
   }
   .detail__slide {
-    height: auto;
+    height: 100%;
     width: 100%;
     margin: 0;
 
     justify-content: center;
+    &:last-child {
+      padding-bottom: 10vh;
+    }
   }
   // About
   .about__container {

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { isBrowser, isMobile } from "react-device-detect";
 
 const Slide = ({ type, img, data }) => {
   const refImg = useRef(null);
@@ -23,11 +24,11 @@ const Slide = ({ type, img, data }) => {
 
   const activeStyle = {
     opacity: 1,
-    transform: "translateY(0vh)",
+    transform: isBrowser ? "translateY(0vh)" : "translateX(0vw)",
   };
   const disableStyle = {
     opacity: 0,
-    transform: "translateY(-10vh)",
+    transform: isBrowser ? "translateY(-10vh)" : "translateX(-10vw)",
   };
 
   const condComponent = () => {

@@ -3,7 +3,6 @@ import { Route, Switch, useLocation } from "react-router-dom";
 
 import Header from "./components/Header";
 import Landing from "./components/landing/Landing";
-import LandingArt from "./components/landing/LandingArt";
 import Works from "./components/works/Works";
 import About from "./components/about/About";
 
