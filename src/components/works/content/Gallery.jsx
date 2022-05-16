@@ -47,18 +47,14 @@ const Gallery = ({ slideInfo, pageControl, images, props }) => {
       <div
         ref={refCont}
         className="work__content"
-        style={slideInfo.slideImgStyle}
+        style={{ ...slideInfo.slideImgStyle, gridTemplateRows: "1fr" }}
       >
         <div
           ref={refSlides}
           className="work__detail-container"
           // style={{ paddingLeft: "calc((100vw - 127.5vh)/2)" }}
         >
-          <div
-            className="detail__img-container"
-            // style={{ transform: `translateX(-${slide}px)` }}
-            style={{ padding: " 0 10vw 0 calc(5vw + 10rem)" }}
-          >
+          <div className="detail__img-container">
             {renderComponentSlidesDesktop}
             {renderComponentSlidesMobile}
 
