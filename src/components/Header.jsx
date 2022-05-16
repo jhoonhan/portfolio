@@ -1,12 +1,11 @@
 import React, { useRef, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { isBrowser, isMobile } from "react-device-detect";
 import { Link } from "react-router-dom";
 import icons from "../assests/image/icons.svg";
 import throttle from "./helpers/throttle";
 
 const Header = ({ refs, pageControl }) => {
-  const [curScroll, setCurScroll] = useState(window.pageYOffset);
-  const [direction, setDirection] = useState(false);
   const [activeHeight, setActiveHeight] = useState("0rem");
   const [mobileShowNav, setMobileShowNav] = useState(false);
 
@@ -16,33 +15,8 @@ const Header = ({ refs, pageControl }) => {
   const refNavAbout = useRef(null);
   const refNavContact = useRef(null);
 
-  useEffect(() => {
-    const handler = (e) => {
-      if (e.deltaY >= 0) {
-        setDirection("down");
-      } else {
-        setDirection("up");
-      }
-    };
-    const throttled = throttle(handler, 1);
-
-    document.addEventListener("wheel", throttle(throttled, 1), false);
-
-    return () => {
-      document.removeEventListener("wheel", throttled);
-    };
-  }, []);
-
-  useEffect(() => {
-    const fn = () => {
-      setCurScroll(Math.abs(refs.refHome.current.getBoundingClientRect().top));
-    };
-    refs.refMain.current.addEventListener("scroll", throttle(fn, 60));
-
-    return () => {
-      window.removeEventListener("scroll", throttle(fn, 60));
-    };
-  }, []);
+  const activeOpacity = { opacity: 1 };
+  const activeSubPageStyle = { opacity: 1 };
 
   useEffect(() => {
     if (pageControl.curPage === "home") {
@@ -62,13 +36,14 @@ const Header = ({ refs, pageControl }) => {
     if (pageControl.curPage === "contact") {
       setActiveHeight("30rem");
     }
-  }, [pageControl.workPage, pageControl.curPage]);
+    setMobileShowNav(false);
+  }, [pageControl.workPage, pageControl.curPage, pageControl.workSubPage]);
 
   const renderMobileOverlay = () => {
     return (
       <motion.div
         className="m--nav__overlay"
-        // style={mobileShowNav ? { display: "flex" } : { display: "none" }}
+        onClick={() => setMobileShowNav(!mobileShowNav)}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -99,7 +74,7 @@ const Header = ({ refs, pageControl }) => {
     } else {
       style.height = "31.2rem";
     }
-    if (mobileShowNav) {
+    if (isMobile && mobileShowNav) {
       console.log(`aaang`);
       style.transform = "translateX(5vw)";
     } else {
@@ -109,14 +84,124 @@ const Header = ({ refs, pageControl }) => {
     return style;
   };
 
-  const render = () => {
-    const activeOpacity = { opacity: 1 };
-    const activeSubPageStyle = { opacity: 1 };
+  const renderNavLinks = () => {
+    return (
+      <>
+        <div className="nav__link home" ref={refNavHome}>
+          <Link
+            className="a--transition a--opacity"
+            style={pageControl.curPage === "home" ? activeOpacity : {}}
+            to="/"
+          >
+            home
+          </Link>
+        </div>
+        <div className="nav__link works" ref={refNavWorks}>
+          <Link
+            onClick={() => {
+              pageControl.setWorkPage("sushi-republic");
+            }}
+            to="/works/sushi-republic/landing"
+            style={pageControl.curPage === "works" ? activeOpacity : {}}
+            className="a--transition a--opacity"
+          >
+            works
+          </Link>
+          <ul
+            className="nav__sublinks"
+            style={
+              pageControl.curPage !== "works"
+                ? { maxHeight: "0", opacity: 0 }
+                : {}
+            }
+          >
+            <li>
+              <Link
+                to="/works/sushi-republic/landing"
+                style={
+                  pageControl.workPage === "sushi-republic"
+                    ? activeSubPageStyle
+                    : {}
+                }
+              >
+                Sushi Republic
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/works/danji/landing"
+                style={
+                  pageControl.workPage === "danji" ? activeSubPageStyle : {}
+                }
+              >
+                Danji
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/works/salvation-army/landing"
+                style={
+                  pageControl.workPage === "salvation-army"
+                    ? activeSubPageStyle
+                    : {}
+                }
+              >
+                Salvation Army
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/works/haans-cleaner/landing"
+                style={
+                  pageControl.workPage === "haans-cleaner"
+                    ? activeSubPageStyle
+                    : {}
+                }
+              >
+                Haans Cleaner
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/works/this-is-bullshit/landing"
+                style={
+                  pageControl.workPage === "this-is-bullshit"
+                    ? activeSubPageStyle
+                    : {}
+                }
+              >
+                This is Bullshit
+              </Link>
+            </li>
+          </ul>
+        </div>
+        <div className="nav__link about" ref={refNavAbout}>
+          <Link
+            to="/about"
+            className="a--transition a--opacity"
+            style={pageControl.curPage === "about" ? activeOpacity : {}}
+          >
+            about
+          </Link>
+        </div>
+        <div className="nav__link contact" ref={refNavContact}>
+          <Link
+            to="/contact"
+            className="a--transition a--opacity"
+            style={pageControl.curPage === "contact" ? activeOpacity : {}}
+          >
+            contact
+          </Link>
+        </div>
+      </>
+    );
+  };
 
+  const render = () => {
     return (
       <header className="header__container">
         <AnimatePresence>
-          {mobileShowNav ? renderMobileOverlay() : ""}
+          {isMobile && mobileShowNav ? renderMobileOverlay() : ""}
         </AnimatePresence>
         <div
           className="m--nav__toggle"
@@ -142,129 +227,22 @@ const Header = ({ refs, pageControl }) => {
             </div>
           </div>
           <AnimatePresence>
-            {mobileShowNav && (
+            {isMobile && mobileShowNav && (
               <motion.nav
                 className="nav"
                 ref={refNav}
-                // style={mobileShowNav ? { transform: "translateX(0vw)" } : {}}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.5, delay: mobileShowNav ? 0.3 : 0 }}
+                transition={{ duration: 0.5 }}
               >
-                <div className="nav__link home" ref={refNavHome}>
-                  <Link
-                    className="a--transition a--opacity"
-                    style={pageControl.curPage === "home" ? activeOpacity : {}}
-                    to="/"
-                  >
-                    home
-                  </Link>
-                </div>
-                <div className="nav__link works" ref={refNavWorks}>
-                  <Link
-                    onClick={() => {
-                      pageControl.setWorkPage("sushi-republic");
-                    }}
-                    to="/works/sushi-republic/landing"
-                    style={pageControl.curPage === "works" ? activeOpacity : {}}
-                    className="a--transition a--opacity"
-                  >
-                    works
-                  </Link>
-                  <ul
-                    className="nav__sublinks"
-                    style={
-                      pageControl.curPage !== "works"
-                        ? { maxHeight: "0", opacity: 0 }
-                        : {}
-                    }
-                  >
-                    <li>
-                      <Link
-                        to="/works/sushi-republic/landing"
-                        style={
-                          pageControl.workPage === "sushi-republic"
-                            ? activeSubPageStyle
-                            : {}
-                        }
-                      >
-                        Sushi Republic
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        to="/works/danji/landing"
-                        style={
-                          pageControl.workPage === "danji"
-                            ? activeSubPageStyle
-                            : {}
-                        }
-                      >
-                        Danji
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        to="/works/salvation-army/landing"
-                        style={
-                          pageControl.workPage === "salvation-army"
-                            ? activeSubPageStyle
-                            : {}
-                        }
-                      >
-                        Salvation Army
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        to="/works/haans-cleaner/landing"
-                        style={
-                          pageControl.workPage === "haans-cleaner"
-                            ? activeSubPageStyle
-                            : {}
-                        }
-                      >
-                        Haans Cleaner
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        to="/works/this-is-bullshit/landing"
-                        style={
-                          pageControl.workPage === "this-is-bullshit"
-                            ? activeSubPageStyle
-                            : {}
-                        }
-                      >
-                        This is Bullshit
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="nav__link about" ref={refNavAbout}>
-                  <Link
-                    to="/about"
-                    className="a--transition a--opacity"
-                    style={pageControl.curPage === "about" ? activeOpacity : {}}
-                  >
-                    about
-                  </Link>
-                </div>
-
-                <div className="nav__link contact" ref={refNavContact}>
-                  <Link
-                    to="/contact"
-                    className="a--transition a--opacity"
-                    style={
-                      pageControl.curPage === "contact" ? activeOpacity : {}
-                    }
-                  >
-                    contact
-                  </Link>
-                </div>
+                {renderNavLinks()}
               </motion.nav>
+            )}
+            {isBrowser && (
+              <nav className="nav" ref={refNav}>
+                {renderNavLinks()}
+              </nav>
             )}
           </AnimatePresence>
         </div>
