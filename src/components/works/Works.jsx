@@ -48,12 +48,7 @@ const Works = ({ refs, pageControl, props }) => {
 
   const render = () => {
     return (
-      <div
-      // initial={{ opacity: 0 }}
-      // animate={{ opacity: 1 }}
-      // exit={{ opacity: 0 }}
-      // transition={{ type: "spring", duration: 0.5 }}
-      >
+      <>
         <section
           ref={refs.refWorks}
           className="works__container container"
@@ -117,7 +112,7 @@ const Works = ({ refs, pageControl, props }) => {
           {/* </AnimatePresence> */}
         </section>
         <WorkNav pageControl={pageControl} />
-      </div>
+      </>
     );
   };
 

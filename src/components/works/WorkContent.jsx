@@ -76,6 +76,7 @@ const WorkContent = ({
                   animate={slideAnimationStyle.animate}
                   exit={slideAnimationStyle.exit}
                   transition={slideAnimationStyle.transition}
+                  // className="container"
                 >
                   <Landing
                     slideInfo={slideInfo}
@@ -98,6 +99,7 @@ const WorkContent = ({
                   animate={slideAnimationStyle.animate}
                   exit={slideAnimationStyle.exit}
                   transition={slideAnimationStyle.transition}
+                  className="container"
                 >
                   <Overview
                     slideInfo={slideInfo}
@@ -121,6 +123,7 @@ const WorkContent = ({
                   animate={slideAnimationStyle.animate}
                   exit={slideAnimationStyle.exit}
                   transition={slideAnimationStyle.transition}
+                  className="container"
                 >
                   <Gallery
                     slideInfo={slideInfo}
