@@ -22,7 +22,7 @@
   height: 100%;
 
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  // grid-template-columns: 1fr 1fr 1fr;
 
   z-index: 5;
   margin: 0;
@@ -45,8 +45,8 @@
   transition: transform 0.3s ease-in-out 0s;
 }
 .work__content.padded {
-  // padding-top: 6vh;
-  // padding-bottom: 9vh;
+  padding-top: 6vh;
+  padding-bottom: 9vh;
   padding-left: calc(5vw + 10rem);
   padding-right: 5vw;
 }
