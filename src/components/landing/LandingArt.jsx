@@ -125,7 +125,7 @@ const LandingArt = ({ curPage }) => {
         // onMouseLeave={() => console.log(`left aaang`)}
         className="landing-art__container container"
       >
-        <div ref={refCursor} className="cursor"></div>
+        {/* <div ref={refCursor} className="cursor"></div> */}
         <div className="lname-container">
           <svg
             ref={refFirstName}
