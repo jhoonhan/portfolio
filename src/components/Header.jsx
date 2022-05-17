@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { isBrowser, isMobile } from "react-device-detect";
 import { Link } from "react-router-dom";
 import icons from "../assests/image/icons.svg";
-import throttle from "./helpers/throttle";
 
 const Header = ({ refs, pageControl }) => {
   const [activeHeight, setActiveHeight] = useState("0rem");

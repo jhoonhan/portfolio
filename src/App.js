@@ -6,6 +6,8 @@ import Landing from "./components/landing/Landing";
 import Works from "./components/works/Works";
 import About from "./components/about/About";
 
+import useListenSwipe from "./components/helpers/useListenSwipe";
+
 import "./scss/App.scss";
 import Contact from "./components/contact/Contact";
 import Cursor from "./components/Cursor";
@@ -43,6 +45,9 @@ const App = () => {
   });
   const [workNavWidth, setWorkNavWidth] = useState(0);
   const [slideScroll, setSlideScroll] = useState(0);
+
+  const { onTouchStart, onTouchMove, onTouchEnd, swipeAction } =
+    useListenSwipe();
 
   const refMain = useRef(null);
   const refHome = useRef(null);
@@ -84,11 +89,17 @@ const App = () => {
     setWorkNavWidth,
     slideScroll,
     setSlideScroll,
+    swipeAction,
   };
 
   const render = () => {
     return (
-      <div className="app">
+      <div
+        className="app"
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
+      >
         <Header refs={refs} pageControl={pageControl} />
         <Cursor curPage={curPage} />
         <main ref={refMain} className="wrapper__main">

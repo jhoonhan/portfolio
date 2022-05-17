@@ -34,7 +34,8 @@ const Works = ({ refs, pageControl, props }) => {
   const refEl3 = useRef(null);
   const refEl4 = useRef(null);
   const refEl5 = useRef(null);
-  const { onTouchStart, onTouchMove, onTouchEnd } = useListenSwipe(swipeFn);
+  const { onTouchStart, onTouchMove, onTouchEnd, swipeAction } =
+    useListenSwipe(swipeFn);
 
   useEffect(() => {
     pageControl.setCurPage(props.match.path.slice(1));
