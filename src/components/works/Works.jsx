@@ -1,11 +1,8 @@
-import React, { useRef, useEffect, useState } from "react";
-import { Switch, Route, useLocation } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
-import history from "../../history";
+import React, { useRef, useEffect } from "react";
+import { Route } from "react-router-dom";
 
 import WorkContent from "./WorkContent";
 import WorkNav from "./WorkNav";
-import useListenSwipe from "../helpers/useListenSwipe";
 
 import SushiRepublic from "./projects/SushiRepublic";
 import Danji from "./projects/Danji";
@@ -22,7 +19,7 @@ const Works = ({ refs, pageControl, props }) => {
 
   useEffect(() => {
     setCurPage(props.match.path.slice(1));
-  }, [props.match.path]);
+  }, [setCurPage, pageControl, props.match.path]);
 
   const render = () => {
     return (
