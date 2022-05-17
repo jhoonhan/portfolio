@@ -1,12 +1,27 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const useListenSwipe = (fnLeft, fnRight) => {
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
+  const [stickySlide, setStickSlide] = useState(0);
+
   const distance = touchStart - touchEnd;
 
   // the required distance between touchStart and touchEnd to be detected as a swipe
   const minSwipeDistance = 100;
+
+  useEffect(() => {
+    let timeoutId = null;
+
+    clearTimeout(timeoutId);
+
+    const stickyDistance = distance > 50 ? 50 : distance < 0 ? -50 : distance;
+
+    setStickSlide(stickyDistance);
+    timeoutId = setTimeout(() => {
+      setStickSlide(0);
+    }, 500);
+  }, [distance]);
 
   const onTouchStart = (e) => {
     setTouchEnd(null); // otherwise the swipe is fired even with usual touch events
@@ -27,7 +42,7 @@ const useListenSwipe = (fnLeft, fnRight) => {
     // add your conditional logic here
   };
 
-  return { onTouchStart, onTouchMove, onTouchEnd, distance };
+  return { onTouchStart, onTouchMove, onTouchEnd, distance, stickySlide };
 };
 
 export default useListenSwipe;

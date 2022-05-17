@@ -3,22 +3,19 @@ import { isMobile } from "react-device-detect";
 import useListenSwipe from "../../helpers/useListenSwipe";
 
 const Landing = ({ slideInfo, pageControl, content, props }) => {
-  const { onTouchStart, onTouchMove, onTouchEnd, distance } = useListenSwipe();
+  const { onTouchStart, onTouchMove, onTouchEnd, stickySlide } =
+    useListenSwipe();
 
   useEffect(() => {
     pageControl.setWorkSubPage("workLanding");
   }, [props.match.path]);
-
-  useEffect(() => {
-    console.log(distance);
-  }, [distance]);
 
   return (
     <div
       className="work__content"
       style={
         isMobile
-          ? { transform: `translateX(${distance}px)` }
+          ? { transform: `translateX(${-stickySlide}px)` }
           : slideInfo.slideImgStyle
       }
       onTouchStart={onTouchStart}
