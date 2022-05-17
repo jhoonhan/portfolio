@@ -10,6 +10,8 @@ const Header = ({ refs, pageControl }) => {
   const [mobileShowNav, setMobileShowNav] = useState(false);
   const [expandWorkNav, setExpandWorkNav] = useState(false);
 
+  const { urls, curPage, workPage, setWorkPage, workSubPage } = pageControl;
+
   const refNav = useRef(null);
   const refNavHome = useRef(null);
   const refNavWorks = useRef(null);
@@ -20,27 +22,29 @@ const Header = ({ refs, pageControl }) => {
   const activeSubPageStyle = { opacity: 1 };
 
   useEffect(() => {
-    if (pageControl.curPage === "home") {
+    if (curPage === urls.curPage[0]) {
       setActiveHeight("0rem");
     }
-    if (pageControl.curPage === "works") {
-      if (pageControl.workPage === "sushi-republic") setActiveHeight("13.4rem");
-      if (pageControl.workPage === "danji") setActiveHeight("16.8rem");
-      if (pageControl.workPage === "salvation-army") setActiveHeight("20.2rem");
-      if (pageControl.workPage === "haans-cleaner") setActiveHeight("23.6rem");
-      if (pageControl.workPage === "this-is-bullshit")
-        setActiveHeight("22.8rem");
+    if (curPage === urls.curPage[1]) {
+      if (workPage === urls.workPage[0]) setActiveHeight("13.4rem");
+      if (workPage === urls.workPage[1]) setActiveHeight("16.8rem");
+      if (workPage === urls.workPage[2]) setActiveHeight("20.2rem");
+      if (workPage === urls.workPage[3]) setActiveHeight("23.6rem");
+      if (workPage === urls.workPage[4]) setActiveHeight("22.8rem");
     }
-    if (pageControl.curPage === "about") {
+    if (curPage === urls.curPage[2]) {
       setActiveHeight("20rem");
     }
-    if (pageControl.curPage === "contact") {
+    if (curPage === urls.curPage[3]) {
       setActiveHeight("30rem");
     }
-    if (pageControl.curPage !== "work") setExpandWorkNav(false);
+    if (curPage !== urls.curPage[1]) {
+      setExpandWorkNav(false);
+      setWorkPage(null);
+    }
 
     setMobileShowNav(false);
-  }, [pageControl.workPage, pageControl.curPage, pageControl.workSubPage]);
+  }, [workPage, curPage, workSubPage]);
 
   useEffect(() => {
     if (expandWorkNav) setActiveHeight("10rem");
@@ -76,7 +80,7 @@ const Header = ({ refs, pageControl }) => {
 
   const condiNavContainerStyle = () => {
     let style = {};
-    if (pageControl.curPage === "works") {
+    if (curPage === urls.curPage[1]) {
       style.height = "43.2rem";
     } else if (expandWorkNav) {
       style.height = "43.2rem";
@@ -101,7 +105,7 @@ const Header = ({ refs, pageControl }) => {
         <div className="nav__link home" ref={refNavHome}>
           <Link
             className="a--transition a--opacity"
-            style={pageControl.curPage === "home" ? activeOpacity : {}}
+            style={curPage === urls.curPage[0] ? activeOpacity : {}}
             to="/"
           >
             home
@@ -111,7 +115,7 @@ const Header = ({ refs, pageControl }) => {
           <span
             // to="/works/sushi-republic/landing"
             onClick={handleWorkClick}
-            style={pageControl.curPage === "works" ? activeOpacity : {}}
+            style={curPage === urls.curPage[1] ? activeOpacity : {}}
             className="a--transition a--opacity"
           >
             works
@@ -119,7 +123,7 @@ const Header = ({ refs, pageControl }) => {
           <ul
             className="nav__sublinks"
             style={
-              pageControl.curPage !== "works" && !expandWorkNav
+              curPage !== urls.curPage[1] && !expandWorkNav
                 ? { maxHeight: "0", opacity: 0 }
                 : {}
             }
@@ -127,11 +131,7 @@ const Header = ({ refs, pageControl }) => {
             <li>
               <Link
                 to="/works/sushi-republic/landing"
-                style={
-                  pageControl.workPage === "sushi-republic"
-                    ? activeSubPageStyle
-                    : {}
-                }
+                style={workPage === urls.workPage[0] ? activeSubPageStyle : {}}
               >
                 Sushi Republic
               </Link>
@@ -139,9 +139,7 @@ const Header = ({ refs, pageControl }) => {
             <li>
               <Link
                 to="/works/danji/landing"
-                style={
-                  pageControl.workPage === "danji" ? activeSubPageStyle : {}
-                }
+                style={workPage === urls.workPage[1] ? activeSubPageStyle : {}}
               >
                 Danji
               </Link>
@@ -149,11 +147,7 @@ const Header = ({ refs, pageControl }) => {
             <li>
               <Link
                 to="/works/salvation-army/landing"
-                style={
-                  pageControl.workPage === "salvation-army"
-                    ? activeSubPageStyle
-                    : {}
-                }
+                style={workPage === urls.workPage[2] ? activeSubPageStyle : {}}
               >
                 Salvation Army
               </Link>
@@ -161,11 +155,7 @@ const Header = ({ refs, pageControl }) => {
             <li>
               <Link
                 to="/works/haans-cleaner/landing"
-                style={
-                  pageControl.workPage === "haans-cleaner"
-                    ? activeSubPageStyle
-                    : {}
-                }
+                style={workPage === urls.workPage[3] ? activeSubPageStyle : {}}
               >
                 Haans Cleaner
               </Link>
@@ -173,11 +163,7 @@ const Header = ({ refs, pageControl }) => {
             <li>
               <Link
                 to="/works/this-is-bullshit/landing"
-                style={
-                  pageControl.workPage === "this-is-bullshit"
-                    ? activeSubPageStyle
-                    : {}
-                }
+                style={workPage === urls.workPage[4] ? activeSubPageStyle : {}}
               >
                 This is Bullshit
               </Link>
@@ -188,7 +174,7 @@ const Header = ({ refs, pageControl }) => {
           <Link
             to="/about"
             className="a--transition a--opacity"
-            style={pageControl.curPage === "about" ? activeOpacity : {}}
+            style={curPage === urls.curPage[2] ? activeOpacity : {}}
           >
             about
           </Link>
@@ -197,7 +183,7 @@ const Header = ({ refs, pageControl }) => {
           <Link
             to="/contact"
             className="a--transition a--opacity"
-            style={pageControl.curPage === "contact" ? activeOpacity : {}}
+            style={curPage === urls.curPage[3] ? activeOpacity : {}}
           >
             contact
           </Link>

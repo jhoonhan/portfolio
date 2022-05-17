@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 const WorkNav = ({ pageControl }) => {
   const {
+    urls,
     curPage,
     workPage,
     setWorkPage,
@@ -17,14 +18,14 @@ const WorkNav = ({ pageControl }) => {
 
   useEffect(() => {
     if (isBrowser) {
-      if (workSubPage === "workLanding") setWorkNavWidth("3%");
-      if (workSubPage === "overview") setWorkNavWidth("20%");
-      if (workSubPage === "gallery") setWorkNavWidth("50%");
+      if (workSubPage === urls.workSubPage[0]) setWorkNavWidth("3%");
+      if (workSubPage === urls.workSubPage[1]) setWorkNavWidth("20%");
+      if (workSubPage === urls.workSubPage[2]) setWorkNavWidth("50%");
     }
     if (isMobile) {
-      if (workSubPage === "workLanding") setWorkNavWidth("0%");
-      if (workSubPage === "overview") setWorkNavWidth("33%");
-      if (workSubPage === "gallery") setWorkNavWidth("66%");
+      if (workSubPage === urls.workSubPage[0]) setWorkNavWidth("0%");
+      if (workSubPage === urls.workSubPage[1]) setWorkNavWidth("33%");
+      if (workSubPage === urls.workSubPage[2]) setWorkNavWidth("66%");
     }
     // if (workSubPage === "slides") setWorkNavWidth("85%");
   }, [workSubPage]);
@@ -38,7 +39,7 @@ const WorkNav = ({ pageControl }) => {
   };
 
   const activeClass = () => {
-    if (curPage === "works") {
+    if (curPage === urls.curPage[1]) {
       return "active-box";
     } else {
       return "";
@@ -46,21 +47,23 @@ const WorkNav = ({ pageControl }) => {
   };
   const active = (page) => {
     let style = {};
-    if (curPage === "works") style.transform = "translateX(0vw)";
+    if (curPage === urls.curPage[1]) style.transform = "translateX(0vw)";
     if (workSubPage === page) style.opacity = "1";
     style.width = "auto";
     return style;
   };
 
   const onArrowClick = () => {
-    if (workSubPage === "workLanding")
-      history.push(`/works/${workPage}/overview`);
-    if (workSubPage === "overview") history.push(`/works/${workPage}/gallery`);
-    // if (workSubPage === "gallery" && workPage < 5) setWorkPage(workPage + 1);
+    if (workSubPage === urls.workSubPage[0])
+      history.push(`/works/${workPage}/${urls.workSubPage[0 + 1]}`);
+    if (workSubPage === urls.workSubPage[1])
+      history.push(`/works/${workPage}/${urls.workSubPage[1 + 1]}`);
+    // if (workSubPage === urls.workSubPage[2] && workPage < 5) setWorkPage(workPage + 1);
   };
 
   const renderContentArrow = () => {
-    if (curPage !== "works" || workSubPage === "gallery") return;
+    if (curPage !== urls.curPage[1] || workSubPage === urls.workSubPage[2])
+      return;
     return (
       <div className="works__content__arrow" onClick={onArrowClick}>
         <span className="arrow"></span>
@@ -71,48 +74,50 @@ const WorkNav = ({ pageControl }) => {
     return (
       <div
         className={`${activeClass()} works__content-nav`}
-        style={curPage !== "works" ? { transform: "translateX(100vw)" } : {}}
+        style={
+          curPage !== urls.curPage[1] ? { transform: "translateX(100vw)" } : {}
+        }
       >
         <div className="bar disabled" />
         <div className="bar active" style={{ width: workNavWidth }} />
         <div className="labels">
           <Link
-            to={`/works/${pageControl.workPage}/landing`}
+            to={`/works/${pageControl.workPage}/${urls.workSubPage[0]}`}
             className={`label landing a--opacity `}
-            style={active("workLanding")}
+            style={active(urls.workSubPage[0])}
           >
             <div className="box" />
             <span
               className="a--opacity--m"
-              style={workSubPage === "workLanding" ? { opacity: 1 } : {}}
+              style={workSubPage === urls.workSubPage[0] ? { opacity: 1 } : {}}
             >
               {condWorkPage()}
             </span>
           </Link>
           <Link
             // className={`label detail a--opacity ${activeClass()}`}
-            to={`/works/${pageControl.workPage}/overview`}
+            to={`/works/${pageControl.workPage}/${urls.workSubPage[1]}`}
             className={`label overview a--opacity `}
-            style={active("overview")}
+            style={active(urls.workSubPage[1])}
           >
             <div className="box" />
             <span
               className="a--opacity--m"
-              style={workSubPage === "overview" ? { opacity: 1 } : {}}
+              style={workSubPage === urls.workSubPage[1] ? { opacity: 1 } : {}}
             >
               overview
             </span>
           </Link>
           <Link
-            to={`/works/${pageControl.workPage}/gallery`}
+            to={`/works/${pageControl.workPage}/${urls.workSubPage[2]}`}
             // className={`label more a--opacity ${activeClass()}`}
             className={`label gallery a--opacity `}
-            style={active("gallery")}
+            style={active(urls.workSubPage[2])}
           >
             <div className="box" />
             <span
               className="a--opacity--m"
-              style={workSubPage === "gallery" ? { opacity: 1 } : {}}
+              style={workSubPage === urls.workSubPage[2] ? { opacity: 1 } : {}}
             >
               gallery
             </span>

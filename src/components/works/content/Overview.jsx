@@ -1,18 +1,16 @@
 import React, { useRef, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { isMobile } from "react-device-detect";
+import useListenSwipe from "../../helpers/useListenSwipe";
 
 import DesktopSVG from "../../../assests/image/projects/DesktopSVG";
 import WorkPictureContainer from "../WorkPictureContainer";
 
 const Overview = ({ slideInfo, pageControl, content, noOverview, props }) => {
+  const { onTouchStart, onTouchMove, onTouchEnd, stickySlide } =
+    useListenSwipe();
+
   const refIntersect = useRef(null);
 
-  // useEffect(() => {
-  //   console.log(`Overview mounted`);
-  //   return () => {
-  //     console.log(`Overview unmounted`);
-  //   };
-  // }, []);
   useEffect(() => {
     pageControl.setWorkSubPage("overview");
   }, [props.match.path]);
@@ -66,9 +64,14 @@ const Overview = ({ slideInfo, pageControl, content, noOverview, props }) => {
     <div
       ref={refIntersect}
       className="work__content padded"
-      style={{
-        ...slideInfo.slideImgStyle,
-      }}
+      style={
+        isMobile
+          ? { transform: `translateX(${-stickySlide}px)` }
+          : slideInfo.slideImgStyle
+      }
+      onTouchStart={onTouchStart}
+      onTouchMove={onTouchMove}
+      onTouchEnd={onTouchEnd}
     >
       {noOverview ? (
         <DesktopSVG

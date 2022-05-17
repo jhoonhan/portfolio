@@ -1,4 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
+import { isMobile } from "react-device-detect";
+import useListenSwipe from "../../helpers/useListenSwipe";
 
 import Slide from "../Slide";
 import useGalleryHoriScroll from "../useGalleryHoriScroll";
@@ -6,6 +8,8 @@ import DesktopSVG from "../../../assests/image/projects/DesktopSVG";
 import MobileSVG from "../../../assests/image/projects/MobileSVG";
 
 const Gallery = ({ slideInfo, pageControl, images, props }) => {
+  const { onTouchStart, onTouchMove, onTouchEnd, stickySlide } =
+    useListenSwipe();
   // useEffect(() => {
   //   console.log(`workDetail mounted`);
   //   return () => {
@@ -47,7 +51,14 @@ const Gallery = ({ slideInfo, pageControl, images, props }) => {
       <div
         ref={refCont}
         className="work__content"
-        style={{ ...slideInfo.slideImgStyle, gridTemplateRows: "1fr" }}
+        style={
+          isMobile
+            ? { transform: `translateX(${-stickySlide}px)` }
+            : slideInfo.slideImgStyle
+        }
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
       >
         <div
           ref={refSlides}

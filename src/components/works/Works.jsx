@@ -12,20 +12,21 @@ import Danji from "./projects/Danji";
 import SalvationArmy from "./projects/SalvationArmy";
 
 const Works = ({ refs, pageControl, props }) => {
-  const fnRight = () => {
-    if (pageControl.workSubPage === "workLanding") return;
-    if (pageControl.workSubPage === "overview")
-      history.push(`/works/${pageControl.workPage}/landing`);
-    if (pageControl.workSubPage === "gallery")
-      history.push(`/works/${pageControl.workPage}/overview`);
-  };
-
-  const fnLeft = () => {
-    if (pageControl.workSubPage === "workLanding")
-      history.push(`/works/${pageControl.workPage}/overview`);
-    if (pageControl.workSubPage === "overview")
-      history.push(`/works/${pageControl.workPage}/gallery`);
-    if (pageControl.workSubPage === "gallery") return;
+  const swipeFn = {
+    fnRight: () => {
+      if (pageControl.workSubPage === "workLanding") return;
+      if (pageControl.workSubPage === "overview")
+        history.push(`/works/${pageControl.workPage}/landing`);
+      if (pageControl.workSubPage === "gallery")
+        history.push(`/works/${pageControl.workPage}/overview`);
+    },
+    fnLeft: () => {
+      if (pageControl.workSubPage === "workLanding")
+        history.push(`/works/${pageControl.workPage}/overview`);
+      if (pageControl.workSubPage === "overview")
+        history.push(`/works/${pageControl.workPage}/gallery`);
+      if (pageControl.workSubPage === "gallery") return;
+    },
   };
 
   const refEl1 = useRef(null);
@@ -33,18 +34,11 @@ const Works = ({ refs, pageControl, props }) => {
   const refEl3 = useRef(null);
   const refEl4 = useRef(null);
   const refEl5 = useRef(null);
-  const { onTouchStart, onTouchMove, onTouchEnd } = useListenSwipe(
-    fnLeft,
-    fnRight
-  );
+  const { onTouchStart, onTouchMove, onTouchEnd } = useListenSwipe(swipeFn);
 
   useEffect(() => {
     pageControl.setCurPage(props.match.path.slice(1));
   }, [props.match.path]);
-
-  useEffect(() => {
-    console.log(pageControl.workPage);
-  }, [pageControl.workPage]);
 
   const render = () => {
     return (

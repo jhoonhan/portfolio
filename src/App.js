@@ -58,7 +58,20 @@ const App = () => {
     refContact,
   };
 
+  const urls = {
+    curPage: ["home", "works", "about", "contact"],
+    workPage: [
+      "sushi-republic",
+      "danji",
+      "salvation-army",
+      "haans-cleaner",
+      "this-is-bullshit",
+    ],
+    workSubPage: ["workLanding", "overview", "gallery"],
+  };
+
   const pageControl = {
+    urls,
     curPage,
     setCurPage,
     workPage,

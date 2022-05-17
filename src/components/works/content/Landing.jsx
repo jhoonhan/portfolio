@@ -3,8 +3,13 @@ import { isMobile } from "react-device-detect";
 import useListenSwipe from "../../helpers/useListenSwipe";
 
 const Landing = ({ slideInfo, pageControl, content, props }) => {
+  const swipeFn = {
+    fnBottom: () => {
+      console.log(`aaang`);
+    },
+  };
   const { onTouchStart, onTouchMove, onTouchEnd, stickySlide } =
-    useListenSwipe();
+    useListenSwipe(swipeFn);
 
   useEffect(() => {
     pageControl.setWorkSubPage("workLanding");
