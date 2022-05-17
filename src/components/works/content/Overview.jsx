@@ -6,8 +6,7 @@ import DesktopSVG from "../../../assests/image/projects/DesktopSVG";
 import WorkPictureContainer from "../WorkPictureContainer";
 
 const Overview = ({ slideInfo, pageControl, content, noOverview, props }) => {
-  const { onTouchStart, onTouchMove, onTouchEnd, stickySlide } =
-    useListenSwipe();
+  const { onTouchStart, onTouchMove, onTouchEnd, sticky } = useListenSwipe();
 
   const refIntersect = useRef(null);
 
@@ -66,7 +65,9 @@ const Overview = ({ slideInfo, pageControl, content, noOverview, props }) => {
       className="work__content padded"
       style={
         isMobile
-          ? { transform: `translateX(${-stickySlide}px)` }
+          ? {
+              transform: `translateX(${-sticky.x}px) translateY(${-sticky.y}px)`,
+            }
           : slideInfo.slideImgStyle
       }
       onTouchStart={onTouchStart}

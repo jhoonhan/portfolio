@@ -1,33 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { isMobile } from "react-device-detect";
 import useListenSwipe from "../../helpers/useListenSwipe";
-import history from "../../../history";
+import useVerticalNavigation from "./useVerticalNavigation";
 
 const Landing = ({ slideInfo, pageControl, content, props }) => {
+  const { setWorkSubPage } = pageControl;
+  useVerticalNavigation(pageControl);
+
   useEffect(() => {
-    pageControl.setWorkSubPage("landing");
-  }, [props.match.path]);
+    setWorkSubPage("landing");
+  }, [setWorkSubPage]);
 
   //////
   const { onTouchStart, onTouchMove, onTouchEnd, sticky } = useListenSwipe();
-
-  // useEffect(() => {
-  //   if (pageControl.touch.action.top) {
-  //     console.log(`aaang top`);
-  //     const i = pageControl.urls.workPage.indexOf(pageControl.workPage);
-  //     console.log(i);
-  //     if (pageControl.urls.workPage[i + 1]) {
-  //       history.push(
-  //         `/works/${pageControl.urls.workPage[i + 1]}/${
-  //           pageControl.urls.workSubPage[0]
-  //         }`
-  //       );
-  //     }
-  //   }
-  //   if (pageControl.touch.action.bottom) {
-  //     console.log(`aaang bottom`);
-  //   }
-  // }, [pageControl.touch.action]);
 
   /////////
   return (

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const useListenSwipe = (fn) => {
   const [touchStart, setTouchStart] = useState(null);
@@ -20,16 +20,30 @@ const useListenSwipe = (fn) => {
   const isVertical = Math.abs(distanceY) > Math.abs(distance);
 
   // the required distance between touchStart and touchEnd to be detected as a swipe
-  const minSwipeDistance = 100;
+  const minSwipeDistanceX = 100;
+  const minSwipeDistanceY = 100;
 
+  const minStickyDistanceX = 50;
+  const minStickyDistanceY = 50;
+
+  const refTimeoutId = useRef(null);
   useEffect(() => {
-    let timeoutId = null;
+    if (!touchEnd) return;
 
-    clearTimeout(timeoutId);
+    clearTimeout(refTimeoutId.current);
 
-    const stickyXDistance = distance > 50 ? 50 : distance < 0 ? -50 : distance;
+    const stickyXDistance =
+      distance > minStickyDistanceX
+        ? minStickyDistanceX
+        : distance < 0
+        ? -minStickyDistanceX
+        : distance;
     const stickyYDistance =
-      distanceY > 50 ? 50 : distanceY < 0 ? -50 : distanceY;
+      distanceY > minStickyDistanceY
+        ? minStickyDistanceY
+        : distanceY < 0
+        ? -minStickyDistanceY
+        : distanceY;
 
     if (isHorizontal) {
       setStickX(stickyXDistance);
@@ -37,7 +51,7 @@ const useListenSwipe = (fn) => {
     if (isVertical) {
       setStickyY(stickyYDistance);
     }
-    timeoutId = setTimeout(() => {
+    refTimeoutId.current = setTimeout(() => {
       setStickX(0);
       setStickyY(0);
     }, 500);
@@ -45,9 +59,9 @@ const useListenSwipe = (fn) => {
     return () => {
       setStickX(0);
       setStickyY(0);
-      clearTimeout(timeoutId);
+      clearTimeout(refTimeoutId.current);
     };
-  }, [distance]);
+  }, [distance, distanceY]);
 
   const onTouchStart = (e) => {
     setTouchEnd(null); // otherwise the swipe is fired even with usual touch events
@@ -69,11 +83,11 @@ const useListenSwipe = (fn) => {
     // const isHorizontal = Math.abs(distanceY) < Math.abs(distance);
     // const isVertical = Math.abs(distanceY) > Math.abs(distance);
 
-    const isLeftSwipe = isHorizontal && distance > minSwipeDistance;
-    const isRightSwipe = isHorizontal && distance < -minSwipeDistance;
+    const isLeftSwipe = isHorizontal && distance > minSwipeDistanceX;
+    const isRightSwipe = isHorizontal && distance < -minSwipeDistanceX;
 
-    const isTopSwipe = isVertical && distanceY > minSwipeDistance;
-    const isBottomSwipe = isVertical && distanceY < -minSwipeDistance;
+    const isTopSwipe = isVertical && distanceY > minSwipeDistanceY;
+    const isBottomSwipe = isVertical && distanceY < -minSwipeDistanceY;
 
     // add your conditional logic here
     if (fn?.fnLeft && isLeftSwipe) fn.fnLeft();

@@ -8,18 +8,11 @@ import DesktopSVG from "../../../assests/image/projects/DesktopSVG";
 import MobileSVG from "../../../assests/image/projects/MobileSVG";
 
 const Gallery = ({ slideInfo, pageControl, images, props }) => {
-  const { onTouchStart, onTouchMove, onTouchEnd, stickySlide } =
-    useListenSwipe();
-  // useEffect(() => {
-  //   console.log(`workDetail mounted`);
-  //   return () => {
-  //     console.log(`workDetail unmounted`);
-  //   };
-  // }, []);
+  const { onTouchStart, onTouchMove, onTouchEnd, sticky } = useListenSwipe();
 
   useEffect(() => {
     pageControl.setWorkSubPage("gallery");
-  }, [props.match.path]);
+  }, []);
 
   const refCont = useRef(null);
   const refSlides = useGalleryHoriScroll(pageControl);
@@ -53,7 +46,9 @@ const Gallery = ({ slideInfo, pageControl, images, props }) => {
         className="work__content"
         style={
           isMobile
-            ? { transform: `translateX(${-stickySlide}px)` }
+            ? {
+                transform: `translateX(${-sticky.x}px)`,
+              }
             : slideInfo.slideImgStyle
         }
         onTouchStart={onTouchStart}
