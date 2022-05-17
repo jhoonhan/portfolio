@@ -36,7 +36,7 @@ const App = () => {
   });
 
   const [curPage, setCurPage] = useState(null);
-  const [workPage, setWorkPage] = useState(1);
+  const [workPage, setWorkPage] = useState(null);
   const [workSubPage, setWorkSubPage] = useState("workLanding");
   const [activeSubPageStylePosition, setActiveSubPageStylePosition] = useState({
     transform: "translateY(0vh)",

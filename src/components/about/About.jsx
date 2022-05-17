@@ -49,9 +49,14 @@ const About = ({ pageControl, props, refs }) => {
   });
 
   const [intersectingStyle, setIntersectingStyle] = useState({ opacity: 0.5 });
+  const [intersectingStyle2, setIntersectingStyle2] = useState({
+    opacity: 0,
+  });
   const refInfo = useRef(null);
+  const refContainer = useRef(null);
 
   const isIntersecting = useIntersectionObserve(refInfo, 0.8);
+  const isIntersecting2 = useIntersectionObserve(refInfo, 0.5);
 
   useEffect(() => {
     pageControl.setCurPage(props.match.path.slice(1));
@@ -61,6 +66,11 @@ const About = ({ pageControl, props, refs }) => {
     if (isIntersecting) setIntersectingStyle({ opacity: 1 });
     if (!isIntersecting) setIntersectingStyle({ opacity: 0.5 });
   }, [isIntersecting]);
+
+  useEffect(() => {
+    if (isIntersecting2) setIntersectingStyle2({ opacity: 1 });
+    if (!isIntersecting2) setIntersectingStyle2({ opacity: 0 });
+  }, [isIntersecting2]);
 
   useEffect(() => {
     if (activeSlide === -1) {
@@ -147,7 +157,11 @@ const About = ({ pageControl, props, refs }) => {
           />
         </div>
         <div className="about__info" onMouseOver={() => setActiveSlide(4)}>
-          <div className="text-wrapper">
+          <div
+            className="text-wrapper"
+            ref={refContainer}
+            style={intersectingStyle2}
+          >
             <div className="flex--column">
               <span className="title el">Hello,</span>
               <h2 className="el">

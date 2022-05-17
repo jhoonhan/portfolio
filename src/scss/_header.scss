@@ -56,7 +56,8 @@
   transition-timing-function: ease-in-out;
   transition-delay: 0.5s;
 
-  & a {
+  & a,
+  span {
     // color: $color--disabled;
     text-transform: uppercase;
   }
@@ -91,7 +92,8 @@
     white-space: nowrap;
     // text-transform: uppercase;
     cursor: pointer;
-    & a {
+    & a,
+    span {
       opacity: 0.5;
       transition: $default--transition;
     }

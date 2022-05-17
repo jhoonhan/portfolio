@@ -8,6 +8,7 @@ import throttle from "./helpers/throttle";
 const Header = ({ refs, pageControl }) => {
   const [activeHeight, setActiveHeight] = useState("0rem");
   const [mobileShowNav, setMobileShowNav] = useState(false);
+  const [expandWorkNav, setExpandWorkNav] = useState(false);
 
   const refNav = useRef(null);
   const refNavHome = useRef(null);
@@ -36,8 +37,14 @@ const Header = ({ refs, pageControl }) => {
     if (pageControl.curPage === "contact") {
       setActiveHeight("30rem");
     }
+    if (pageControl.curPage !== "work") setExpandWorkNav(false);
+
     setMobileShowNav(false);
   }, [pageControl.workPage, pageControl.curPage, pageControl.workSubPage]);
+
+  // useEffect(() => {
+  //   if (expandWorkNav) setActiveHeight("10rem");
+  // }, [expandWorkNav]);
 
   const renderMobileOverlay = () => {
     return (
@@ -71,6 +78,8 @@ const Header = ({ refs, pageControl }) => {
     let style = {};
     if (pageControl.curPage === "works") {
       style.height = "43.2rem";
+    } else if (expandWorkNav) {
+      style.height = "43.2rem";
     } else {
       style.height = "31.2rem";
     }
@@ -80,6 +89,10 @@ const Header = ({ refs, pageControl }) => {
       style.transform = "translateX(0vw)";
     }
     return style;
+  };
+
+  const handleWorkClick = () => {
+    setExpandWorkNav(true);
   };
 
   const renderNavLinks = () => {
@@ -95,17 +108,18 @@ const Header = ({ refs, pageControl }) => {
           </Link>
         </div>
         <div className="nav__link works" ref={refNavWorks}>
-          <Link
-            to="/works/sushi-republic/landing"
+          <span
+            // to="/works/sushi-republic/landing"
+            onClick={handleWorkClick}
             style={pageControl.curPage === "works" ? activeOpacity : {}}
             className="a--transition a--opacity"
           >
             works
-          </Link>
+          </span>
           <ul
             className="nav__sublinks"
             style={
-              pageControl.curPage !== "works"
+              pageControl.curPage !== "works" && !expandWorkNav
                 ? { maxHeight: "0", opacity: 0 }
                 : {}
             }
