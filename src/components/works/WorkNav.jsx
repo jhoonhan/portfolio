@@ -9,12 +9,33 @@ const WorkNav = ({ pageControl }) => {
     urls,
     curPage,
     workPage,
-    setWorkPage,
     workSubPage,
-    setWorkSubPage,
     workNavWidth,
     setWorkNavWidth,
+    touch,
   } = pageControl;
+
+  const swipeFn = {
+    fnRight: () => {
+      if (workSubPage === urls.workSubPage[0]) return;
+      if (workSubPage === urls.workSubPage[1])
+        history.push(`/works/${workPage}/${urls.workSubPage[1 - 1]}`);
+      if (workSubPage === urls.workSubPage[2])
+        history.push(`/works/${workPage}/${urls.workSubPage[2 - 1]}`);
+    },
+    fnLeft: () => {
+      if (workSubPage === urls.workSubPage[0])
+        history.push(`/works/${workPage}/${urls.workSubPage[0 + 1]}`);
+      if (workSubPage === urls.workSubPage[1])
+        history.push(`/works/${workPage}/${urls.workSubPage[1 + 1]}`);
+      if (workSubPage === urls.workSubPage[2]) return;
+    },
+  };
+
+  useEffect(() => {
+    if (touch.action.left) swipeFn.fnLeft();
+    if (touch.action.right) swipeFn.fnRight();
+  }, [touch.action]);
 
   useEffect(() => {
     if (isBrowser) {

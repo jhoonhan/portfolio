@@ -12,55 +12,22 @@ import Danji from "./projects/Danji";
 import SalvationArmy from "./projects/SalvationArmy";
 
 const Works = ({ refs, pageControl, props }) => {
-  const { urls, setCurPage, workPage, workSubPage, touch } = pageControl;
+  const { setCurPage } = pageControl;
 
   const refEl1 = useRef(null);
   const refEl2 = useRef(null);
   const refEl3 = useRef(null);
   const refEl4 = useRef(null);
   const refEl5 = useRef(null);
-  // const { onTouchStart, onTouchMove, onTouchEnd, touch } =
-  //   useListenSwipe(swipeFn);
 
   useEffect(() => {
     setCurPage(props.match.path.slice(1));
   }, [props.match.path]);
 
-  const swipeFn = {
-    fnRight: () => {
-      if (workSubPage === urls.workSubPage[0]) return;
-      if (workSubPage === urls.workSubPage[1])
-        history.push(`/works/${workPage}/${urls.workSubPage[1 - 1]}`);
-      if (workSubPage === urls.workSubPage[2])
-        history.push(`/works/${workPage}/${urls.workSubPage[2 - 1]}`);
-    },
-    fnLeft: () => {
-      if (workSubPage === urls.workSubPage[0])
-        history.push(`/works/${workPage}/${urls.workSubPage[0 + 1]}`);
-      if (workSubPage === urls.workSubPage[1])
-        history.push(`/works/${workPage}/${urls.workSubPage[1 + 1]}`);
-      if (workSubPage === urls.workSubPage[2]) return;
-    },
-  };
-
-  useEffect(() => {
-    if (touch.action.left) swipeFn.fnLeft();
-    if (touch.action.right) swipeFn.fnRight();
-  }, [touch.action]);
-
   const render = () => {
     return (
       <>
-        <section
-          ref={refs.refWorks}
-          className="works__container container"
-          // onTouchStart={onTouchStart}
-          // onTouchMove={onTouchMove}
-          // onTouchEnd={onTouchEnd}
-          // style={activeSubPageStyle}
-        >
-          {/* <AnimatePresence exitBeforeEnter> */}
-          {/* <Switch location={location} key={location.pathname}> */}
+        <section ref={refs.refWorks} className="works__container container">
           <Route
             path="/works/sushi-republic"
             render={(props) => (
