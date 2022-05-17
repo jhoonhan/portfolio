@@ -42,9 +42,9 @@ const Header = ({ refs, pageControl }) => {
     setMobileShowNav(false);
   }, [pageControl.workPage, pageControl.curPage, pageControl.workSubPage]);
 
-  // useEffect(() => {
-  //   if (expandWorkNav) setActiveHeight("10rem");
-  // }, [expandWorkNav]);
+  useEffect(() => {
+    if (expandWorkNav) setActiveHeight("10rem");
+  }, [expandWorkNav]);
 
   const renderMobileOverlay = () => {
     return (

@@ -1,19 +1,30 @@
 import React, { useEffect, useState } from "react";
+import { isMobile } from "react-device-detect";
+import useListenSwipe from "../../helpers/useListenSwipe";
 
 const Landing = ({ slideInfo, pageControl, content, props }) => {
-  // useEffect(() => {
-  //   console.log(`Landing mounted`);
-  //   return () => {
-  //     console.log(`Landing unmounted`);
-  //   };
-  // }, []);
+  const { onTouchStart, onTouchMove, onTouchEnd, distance } = useListenSwipe();
 
   useEffect(() => {
     pageControl.setWorkSubPage("workLanding");
   }, [props.match.path]);
 
+  useEffect(() => {
+    console.log(distance);
+  }, [distance]);
+
   return (
-    <div className="work__content" style={slideInfo.slideImgStyle}>
+    <div
+      className="work__content"
+      style={
+        isMobile
+          ? { transform: `translateX(${distance}px)` }
+          : slideInfo.slideImgStyle
+      }
+      onTouchStart={onTouchStart}
+      onTouchMove={onTouchMove}
+      onTouchEnd={onTouchEnd}
+    >
       <div className="gallery-landing">
         <div
           className="gallery-landing__img"
