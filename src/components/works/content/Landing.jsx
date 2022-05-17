@@ -1,15 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
+import { motion } from "framer-motion";
 import { isMobile } from "react-device-detect";
 import useListenSwipe from "../../helpers/useListenSwipe";
 import useVerticalNavigation from "./useVerticalNavigation";
+import { transition } from "../../helpers/config";
 
 const Landing = ({ slideInfo, pageControl, content, props }) => {
   const { setWorkSubPage } = pageControl;
+
   useVerticalNavigation(pageControl);
 
   useEffect(() => {
     setWorkSubPage("landing");
   }, [setWorkSubPage]);
+
+  const refHasRenderd = useRef(false);
+
+  useEffect(() => {
+    refHasRenderd.current = true;
+  }, [refHasRenderd]);
 
   //////
   const { onTouchStart, onTouchMove, onTouchEnd, sticky } = useListenSwipe();
@@ -29,13 +38,26 @@ const Landing = ({ slideInfo, pageControl, content, props }) => {
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
     >
-      <div className="gallery-landing">
+      <div className="work__landing">
         <div
-          className="gallery-landing__img"
+          className="work__landing__img"
           style={{ backgroundImage: `url(${content?.images.landing})` }}
         ></div>
-        <div className="gallery-landing__overlay"></div>
-        <h1>{content?.name}</h1>
+        <div className="work__landing__overlay"></div>
+        <div className="work__landing__titlebox">
+          <motion.h1
+            initial={{ color: "#000" }}
+            animate={{ color: "#fff" }}
+            exit={{ color: "#000" }}
+            transition={
+              refHasRenderd.current
+                ? { duration: transition.default, delay: 0 }
+                : { duration: transition.default, delay: 0.5 }
+            }
+          >
+            {content?.name}
+          </motion.h1>
+        </div>
       </div>
     </div>
   );

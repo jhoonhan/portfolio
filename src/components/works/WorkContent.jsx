@@ -1,7 +1,8 @@
 import React, { useRef, useEffect, useState } from "react";
-import { Switch, Route, useLocation } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 
 import { motion, AnimatePresence } from "framer-motion";
+import { transition } from "../helpers/config";
 
 import WorkPictureContainer from "./WorkPictureContainer";
 import Gallery from "./content/Gallery";
@@ -23,14 +24,12 @@ const WorkContent = ({
     pageControl.setWorkPage(props.match.path.split("/")[2]);
   }, [props.match.path]);
 
-  const location = useLocation();
-
   const slideInfo = useSlideStyle(pageControl, refEl);
   const [slideAnimationStyle, setSlideAnimationStyle] = useState({
     initial: { opacity: 0 },
     animate: { opacity: 1 },
     exit: { opacity: 0 },
-    transition: { duration: 0.5 },
+    transition: { duration: transition.default },
   });
 
   useEffect(() => {
@@ -39,14 +38,14 @@ const WorkContent = ({
         initial: { x: -window.innerWidth, opacity: 0 },
         animate: { x: 0, opacity: 1 },
         exit: { x: window.innerWidth, opacity: 0 },
-        transition: { duration: 0.3 },
+        transition: { duration: transition.default },
       });
     if (slideInfo.slide > 0)
       setSlideAnimationStyle({
         initial: { x: window.innerWidth, opacity: 0 },
         animate: { x: 0, opacity: 1 },
         exit: { x: -window.innerWidth, opacity: 0 },
-        transition: { duration: 0.3 },
+        transition: { duration: transition.default },
       });
   }, [slideInfo.slide]);
 
@@ -56,7 +55,7 @@ const WorkContent = ({
         initial: { opacity: 0 },
         animate: { opacity: 1 },
         exit: { opacity: 0 },
-        transition: { duration: 0.3 },
+        transition: { duration: transition.default },
       });
     }
   }, [pageControl.workSubPage]);

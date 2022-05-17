@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { isBrowser, isMobile } from "react-device-detect";
 import { Link } from "react-router-dom";
 import icons from "../assests/image/icons.svg";
+import { transition } from "./helpers/config";
 
 const Header = ({ refs, pageControl }) => {
   const [activeHeight, setActiveHeight] = useState("0rem");
@@ -57,7 +58,7 @@ const Header = ({ refs, pageControl }) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: transition.default }}
       >
         <div className="icons__container">
           <svg viewBox="0 0 100 100" className="social-icons a--opacity">
@@ -228,7 +229,7 @@ const Header = ({ refs, pageControl }) => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.5 }}
+                transition={{ duration: transition.default }}
               >
                 {renderNavLinks()}
               </motion.nav>
