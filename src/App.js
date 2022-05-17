@@ -16,6 +16,8 @@ import Cursor from "./components/Cursor";
 let windowInnerWidth = 0;
 
 const App = () => {
+  const location = useLocation();
+
   const handleResize = () => {
     const currentWindowInnerWidth = window.innerWidth;
     if (
@@ -126,40 +128,47 @@ const App = () => {
             style={curPage === "home" ? { opacity: 0 } : {}}
             className="overlay"
           ></div>
-          <Switch>
-            <Route
-              path="/"
-              exact
-              render={(props) => (
-                <Landing
-                  pageControl={pageControl}
-                  curPage={curPage}
-                  refHome={refHome}
-                  props={props}
-                />
-              )}
-            />
-            <Route
-              path="/works"
-              render={(props) => (
-                <Works refs={refs} pageControl={pageControl} props={props} />
-              )}
-            />
-            <Route
-              path="/about"
-              exact
-              render={(props) => (
-                <About pageControl={pageControl} refs={refs} props={props} />
-              )}
-            />
-            <Route
-              path="/contact"
-              exact
-              render={(props) => (
-                <Contact pageControl={pageControl} refs={refs} props={props} />
-              )}
-            />
-          </Switch>
+          {/* <Switch> */}
+          <AnimatePresence exitBeforeEnter>
+            <Switch location={location} key={location.pathname}>
+              <Route
+                path="/"
+                exact
+                render={(props) => (
+                  <Landing
+                    pageControl={pageControl}
+                    curPage={curPage}
+                    refHome={refHome}
+                    props={props}
+                  />
+                )}
+              />
+              <Route
+                path="/works"
+                render={(props) => (
+                  <Works refs={refs} pageControl={pageControl} props={props} />
+                )}
+              />
+              <Route
+                path="/about"
+                exact
+                render={(props) => (
+                  <About pageControl={pageControl} refs={refs} props={props} />
+                )}
+              />
+              <Route
+                path="/contact"
+                exact
+                render={(props) => (
+                  <Contact
+                    pageControl={pageControl}
+                    refs={refs}
+                    props={props}
+                  />
+                )}
+              />
+            </Switch>
+          </AnimatePresence>
         </main>
       </div>
     );

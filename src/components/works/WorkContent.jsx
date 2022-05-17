@@ -64,78 +64,79 @@ const WorkContent = ({
   const render = () => {
     return (
       <div ref={refEl} className="work__container" style={backgroundStyle}>
-        <AnimatePresence exitBeforeEnter>
-          <Switch location={location} key={location.pathname}>
-            <Route
-              path={`/works/${content.path}/landing`}
-              exact
-              render={(props) => (
-                <motion.div
-                  key="landing"
-                  initial={slideAnimationStyle.initial}
-                  animate={slideAnimationStyle.animate}
-                  exit={slideAnimationStyle.exit}
-                  transition={slideAnimationStyle.transition}
-                  // className="container"
-                >
-                  <Landing
-                    slideInfo={slideInfo}
-                    pageControl={pageControl}
-                    content={content}
-                    props={props}
-                  />
-                </motion.div>
-              )}
-            />
+        {/* <AnimatePresence exitBeforeEnter> */}
+        {/* <Switch location={location} key={location.pathname}> */}
+        <Switch>
+          <Route
+            path={`/works/${content.path}/landing`}
+            exact
+            render={(props) => (
+              <motion.div
+                key="landing"
+                initial={slideAnimationStyle.initial}
+                animate={slideAnimationStyle.animate}
+                exit={slideAnimationStyle.exit}
+                transition={slideAnimationStyle.transition}
+                // className="container"
+              >
+                <Landing
+                  slideInfo={slideInfo}
+                  pageControl={pageControl}
+                  content={content}
+                  props={props}
+                />
+              </motion.div>
+            )}
+          />
 
-            <Route
-              path={`/works/${content.path}/overview`}
-              exact
-              render={(props) => (
-                <motion.div
-                  key="overview"
-                  // variants={variants}
-                  initial={slideAnimationStyle.initial}
-                  animate={slideAnimationStyle.animate}
-                  exit={slideAnimationStyle.exit}
-                  transition={slideAnimationStyle.transition}
-                  className="container"
-                >
-                  <Overview
-                    slideInfo={slideInfo}
-                    pageControl={pageControl}
-                    content={content}
-                    noOverview={noOverview}
-                    props={props}
-                  />
-                </motion.div>
-              )}
-            />
+          <Route
+            path={`/works/${content.path}/overview`}
+            exact
+            render={(props) => (
+              <motion.div
+                key="overview"
+                // variants={variants}
+                initial={slideAnimationStyle.initial}
+                animate={slideAnimationStyle.animate}
+                exit={slideAnimationStyle.exit}
+                transition={slideAnimationStyle.transition}
+                className="container"
+              >
+                <Overview
+                  slideInfo={slideInfo}
+                  pageControl={pageControl}
+                  content={content}
+                  noOverview={noOverview}
+                  props={props}
+                />
+              </motion.div>
+            )}
+          />
 
-            <Route
-              path={`/works/${content.path}/gallery`}
-              exact
-              render={(props) => (
-                <motion.div
-                  key="gallery"
-                  // variants={variants}
-                  initial={slideAnimationStyle.initial}
-                  animate={slideAnimationStyle.animate}
-                  exit={slideAnimationStyle.exit}
-                  transition={slideAnimationStyle.transition}
-                  className="container"
-                >
-                  <Gallery
-                    slideInfo={slideInfo}
-                    pageControl={pageControl}
-                    images={content?.images}
-                    props={props}
-                  />
-                </motion.div>
-              )}
-            />
-          </Switch>
-        </AnimatePresence>
+          <Route
+            path={`/works/${content.path}/gallery`}
+            exact
+            render={(props) => (
+              <motion.div
+                key="gallery"
+                // variants={variants}
+                initial={slideAnimationStyle.initial}
+                animate={slideAnimationStyle.animate}
+                exit={slideAnimationStyle.exit}
+                transition={slideAnimationStyle.transition}
+                className="container"
+              >
+                <Gallery
+                  slideInfo={slideInfo}
+                  pageControl={pageControl}
+                  images={content?.images}
+                  props={props}
+                />
+              </motion.div>
+            )}
+          />
+        </Switch>
+        {/* </AnimatePresence> */}
       </div>
     );
   };
