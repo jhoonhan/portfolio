@@ -51,8 +51,6 @@ const useSlideStyle = (pageControl, refEl) => {
 
   useEffect(() => {
     if (slide === -5) {
-      // if (workSubPage === "workLanding" && workPage > 1)
-      //   setWorkPage(workPage - 1);
       if (workSubPage === "overview")
         history.push(`/works/${pageControl.workPage}/landing`);
       if (workSubPage === "gallery")
@@ -60,7 +58,7 @@ const useSlideStyle = (pageControl, refEl) => {
       setSlideDirection("up");
     }
     if (slide === 5) {
-      if (workSubPage === "workLanding")
+      if (workSubPage === "landing")
         history.push(`/works/${pageControl.workPage}/overview`);
       if (workSubPage === "overview")
         history.push(`/works/${pageControl.workPage}/gallery`);

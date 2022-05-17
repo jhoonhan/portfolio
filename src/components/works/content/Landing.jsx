@@ -1,26 +1,43 @@
 import React, { useEffect, useState } from "react";
 import { isMobile } from "react-device-detect";
 import useListenSwipe from "../../helpers/useListenSwipe";
+import history from "../../../history";
 
 const Landing = ({ slideInfo, pageControl, content, props }) => {
-  const swipeFn = {
-    fnBottom: () => {
-      console.log(`aaang`);
-    },
-  };
-  const { onTouchStart, onTouchMove, onTouchEnd, stickySlide } =
-    useListenSwipe(swipeFn);
-
   useEffect(() => {
-    pageControl.setWorkSubPage("workLanding");
+    pageControl.setWorkSubPage("landing");
   }, [props.match.path]);
 
+  //////
+  const { onTouchStart, onTouchMove, onTouchEnd, sticky } = useListenSwipe();
+
+  // useEffect(() => {
+  //   if (pageControl.touch.action.top) {
+  //     console.log(`aaang top`);
+  //     const i = pageControl.urls.workPage.indexOf(pageControl.workPage);
+  //     console.log(i);
+  //     if (pageControl.urls.workPage[i + 1]) {
+  //       history.push(
+  //         `/works/${pageControl.urls.workPage[i + 1]}/${
+  //           pageControl.urls.workSubPage[0]
+  //         }`
+  //       );
+  //     }
+  //   }
+  //   if (pageControl.touch.action.bottom) {
+  //     console.log(`aaang bottom`);
+  //   }
+  // }, [pageControl.touch.action]);
+
+  /////////
   return (
     <div
       className="work__content"
       style={
         isMobile
-          ? { transform: `translateX(${-stickySlide}px)` }
+          ? {
+              transform: `translateX(${-sticky.x}px) translateY(${-sticky.y}px)`,
+            }
           : slideInfo.slideImgStyle
       }
       onTouchStart={onTouchStart}

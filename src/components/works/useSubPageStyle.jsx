@@ -7,7 +7,7 @@ const useSubPageStyle = (pageControl) => {
 
   useEffect(() => {
     if (pageControl.curPage !== "works") return;
-    if (pageControl.workSubPage === "workLanding") {
+    if (pageControl.workSubPage === "landing") {
       // refs.refWorks.current.style.transform = "translateX(-0vw)";
       setActiveSubPageStyle({ transform: "translateX(-0vw)" });
     }

@@ -5,9 +5,9 @@ const useListenSwipe = (fn) => {
   const [touchStartY, setTouchStartY] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
   const [touchEndY, setTouchEndY] = useState(null);
-  const [stickySlide, setStickSlide] = useState(0);
-  const [stickySlideY, setStickSlideY] = useState(0);
-  const [swipeAction, setSwipeAction] = useState({
+  const [stickyX, setStickX] = useState(0);
+  const [stickyY, setStickyY] = useState(0);
+  const [touchAction, setTouchAction] = useState({
     left: false,
     right: false,
     top: false,
@@ -16,6 +16,8 @@ const useListenSwipe = (fn) => {
 
   const distance = touchStart - touchEnd;
   const distanceY = touchStartY - touchEndY;
+  const isHorizontal = Math.abs(distanceY) < Math.abs(distance);
+  const isVertical = Math.abs(distanceY) > Math.abs(distance);
 
   // the required distance between touchStart and touchEnd to be detected as a swipe
   const minSwipeDistance = 100;
@@ -25,20 +27,24 @@ const useListenSwipe = (fn) => {
 
     clearTimeout(timeoutId);
 
-    const stickyDistance = distance > 50 ? 50 : distance < 0 ? -50 : distance;
+    const stickyXDistance = distance > 50 ? 50 : distance < 0 ? -50 : distance;
+    const stickyYDistance =
+      distanceY > 50 ? 50 : distanceY < 0 ? -50 : distanceY;
 
-    if (Math.abs(distanceY) < Math.abs(distance)) {
-      setStickSlide(stickyDistance);
+    if (isHorizontal) {
+      setStickX(stickyXDistance);
     }
-    if (Math.abs(distanceY) > Math.abs(distance)) {
-      setStickSlideY(stickyDistance);
+    if (isVertical) {
+      setStickyY(stickyYDistance);
     }
     timeoutId = setTimeout(() => {
-      setStickSlide(0);
-      setStickSlideY(0);
+      setStickX(0);
+      setStickyY(0);
     }, 500);
 
     return () => {
+      setStickX(0);
+      setStickyY(0);
       clearTimeout(timeoutId);
     };
   }, [distance]);
@@ -60,8 +66,8 @@ const useListenSwipe = (fn) => {
     const distance = touchStart - touchEnd;
     const distanceY = touchStartY - touchEndY;
 
-    const isHorizontal = Math.abs(distanceY) < Math.abs(distance);
-    const isVertical = Math.abs(distanceY) > Math.abs(distance);
+    // const isHorizontal = Math.abs(distanceY) < Math.abs(distance);
+    // const isVertical = Math.abs(distanceY) > Math.abs(distance);
 
     const isLeftSwipe = isHorizontal && distance > minSwipeDistance;
     const isRightSwipe = isHorizontal && distance < -minSwipeDistance;
@@ -75,7 +81,7 @@ const useListenSwipe = (fn) => {
     if (fn?.fnTop && isTopSwipe) fn.fnTop();
     if (fn?.fnBottom && isBottomSwipe) fn.fnBottom();
 
-    setSwipeAction({
+    setTouchAction({
       left: isLeftSwipe,
       right: isRightSwipe,
       top: isTopSwipe,
@@ -84,12 +90,16 @@ const useListenSwipe = (fn) => {
   };
 
   return {
-    swipeAction,
+    touchAction,
     onTouchStart,
     onTouchMove,
     onTouchEnd,
     distance,
-    stickySlide,
+    sticky: {
+      x: stickyX,
+      y: stickyY,
+    },
+    setTouchAction,
   };
 };
 

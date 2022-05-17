@@ -39,15 +39,30 @@ const App = () => {
 
   const [curPage, setCurPage] = useState(null);
   const [workPage, setWorkPage] = useState(null);
-  const [workSubPage, setWorkSubPage] = useState("workLanding");
+  const [workSubPage, setWorkSubPage] = useState("landing");
   const [activeSubPageStylePosition, setActiveSubPageStylePosition] = useState({
     transform: "translateY(0vh)",
   });
   const [workNavWidth, setWorkNavWidth] = useState(0);
   const [slideScroll, setSlideScroll] = useState(0);
 
-  const { onTouchStart, onTouchMove, onTouchEnd, swipeAction } =
-    useListenSwipe();
+  const {
+    onTouchStart,
+    onTouchMove,
+    onTouchEnd,
+    touchAction,
+    setTouchAction,
+    stickySlide,
+  } = useListenSwipe();
+
+  useEffect(() => {
+    setTouchAction({
+      left: false,
+      right: false,
+      top: false,
+      bottom: false,
+    });
+  }, [curPage, workPage, workSubPage]);
 
   const refMain = useRef(null);
   const refHome = useRef(null);
@@ -69,10 +84,10 @@ const App = () => {
       "sushi-republic",
       "danji",
       "salvation-army",
-      "haans-cleaner",
-      "this-is-bullshit",
+      // "haans-cleaner",
+      // "this-is-bullshit",
     ],
-    workSubPage: ["workLanding", "overview", "gallery"],
+    workSubPage: ["landing", "overview", "gallery"],
   };
 
   const pageControl = {
@@ -89,7 +104,10 @@ const App = () => {
     setWorkNavWidth,
     slideScroll,
     setSlideScroll,
-    swipeAction,
+    touch: {
+      action: touchAction,
+      sticky: stickySlide,
+    },
   };
 
   const render = () => {
