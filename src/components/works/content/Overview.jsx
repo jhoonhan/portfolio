@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from "react";
+import { motion } from "framer-motion";
 import { isMobile } from "react-device-detect";
 import useListenSwipe from "../../helpers/useListenSwipe";
 
@@ -14,38 +15,92 @@ const Overview = ({ slideInfo, pageControl, content, noOverview, props }) => {
     pageControl.setWorkSubPage("overview");
   }, [props.match.path]);
 
+  const animateBrowser = {
+    container: {
+      hidden: { x: window.innerWidth / 2 },
+      show: {
+        x: 0,
+        transition: {
+          type: "spring",
+          staggerChildren: 0.2,
+        },
+      },
+    },
+    item: {
+      hidden: { x: window.innerWidth / 2 },
+      show: { x: 0 },
+    },
+  };
+  const animateMobile = {
+    container: {
+      hidden: { opacity: 0 },
+      show: {
+        opacity: 1,
+        transition: {
+          type: "spring",
+          staggerChildren: 0.3,
+        },
+      },
+    },
+    item: {
+      hidden: { opacity: 0 },
+      show: { opacity: 1 },
+    },
+  };
+
   const renderInfo = () => {
     return (
-      <div className="works__info-container">
-        <div className="works__title">
+      <motion.div
+        className="works__info-container"
+        variants={isMobile ? animateMobile.container : animateBrowser.container}
+        initial="hidden"
+        animate="show"
+      >
+        <motion.div
+          className="works__title"
+          variants={isMobile ? animateMobile.item : animateBrowser.item}
+          style={
+            content?.name.length > 1 ? { justifyContent: "flex-start" } : ""
+          }
+        >
           <span>{content?.name[0]}</span>
           <span>{content?.name[1]}</span>
-        </div>
-        <div className="works__subtitle">
+        </motion.div>
+        <motion.div
+          className="works__subtitle"
+          variants={isMobile ? animateMobile.item : animateBrowser.item}
+        >
           <h2>{content?.description}</h2>
-        </div>
+        </motion.div>
         <div className="works__info__detail">
-          <div className="grid--row--2 detail-item">
+          <motion.div
+            className="grid--row--2 detail-item"
+            variants={isMobile ? animateMobile.item : animateBrowser.item}
+          >
             <div className="detail-item__title">
               <h3>Role</h3>
               <div></div>
             </div>
 
             <p>{content?.role}</p>
-          </div>
+          </motion.div>
 
-          <div className="grid--row--2 detail-item">
+          <motion.div
+            className="grid--row--2 detail-item"
+            variants={isMobile ? animateMobile.item : animateBrowser.item}
+          >
             <div className="detail-item__title">
               <h3>Technology</h3>
               <div></div>
             </div>
 
             <p>{content?.technology}</p>
-          </div>
+          </motion.div>
 
-          <div
+          <motion.div
             className="grid--column--2 detail-item"
             style={{ marginTop: "1rem", gap: "2rem" }}
+            variants={isMobile ? animateMobile.item : animateBrowser.item}
           >
             <a href={content?.liveDemoURL} className="button">
               Live Demo
@@ -53,9 +108,9 @@ const Overview = ({ slideInfo, pageControl, content, noOverview, props }) => {
             <a href={content?.githubURL} className="button">
               Github
             </a>
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
     );
   };
 

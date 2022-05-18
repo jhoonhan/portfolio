@@ -131,9 +131,15 @@
       font-size: 10vw;
     }
   }
+  .work__landing__titlebox {
+    max-height: 10vw;
+  }
   .works__title {
-    min-height: calc(10vw + 2.5rem);
+    font-size: 5rem;
+    display: flex;
+    min-height: calc(8rem);
     justify-content: center;
+    // padding-top: calc(100% - 4rem);
     // align-items: center;
     & span {
       font-size: 5rem;
@@ -167,7 +173,7 @@
   .works__info-container {
     height: 100%;
     grid-template-rows: 1fr auto minmax(min-content, max-content);
-    row-gap: 2rem;
+    row-gap: 1.5rem;
     & .works__info__detail {
       margin-bottom: 0rem;
 

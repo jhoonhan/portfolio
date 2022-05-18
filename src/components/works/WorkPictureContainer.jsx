@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 
 import usePictureContainerStyle from "./usePictureContainerStyle";
 import usePictureContainerPosition from "./usePictureContainerPosition";
@@ -9,17 +10,43 @@ const WorkPictureContainer = ({ images }) => {
   const { actImgPosition, onMouseMoveImg } =
     usePictureContainerPosition(actImg);
 
+  const refImg1 = useRef(null);
+  const refImg2 = useRef(null);
+  const refImg3 = useRef(null);
+
+  const animate = {
+    container: {
+      hidden: { y: -window.innerHeight },
+      show: {
+        y: 0,
+        transition: {
+          type: "spring",
+          staggerChildren: 0.2,
+        },
+      },
+    },
+    item: {
+      hidden: { y: -window.innerHeight },
+      show: { y: 0 },
+    },
+  };
+
   const render = () => {
     return (
-      <div
+      <motion.div
         onMouseLeave={() => setActImg("img1")}
         className="works__picture-container"
+        variants={animate.container}
+        initial="hidden"
+        animate="show"
       >
-        <div
+        <motion.div
+          ref={refImg1}
           onMouseOver={() => setActImg("img3")}
           onMouseMove={(e) => onMouseMoveImg.current(e)}
           className={`works_picture ${actImg === "img3" ? "active" : ""}`}
           style={conditionalStyle.img3}
+          variants={animate.item}
         >
           <img
             src={images?.overviewImages[2]}
@@ -28,13 +55,15 @@ const WorkPictureContainer = ({ images }) => {
               transform: `translateX(${actImgPosition.img3.x}%) translateY(${actImgPosition.img3.y}%)`,
             }}
           />
-        </div>
+        </motion.div>
 
-        <div
+        <motion.div
+          ref={refImg2}
           onMouseOver={() => setActImg("img2")}
           onMouseMove={(e) => onMouseMoveImg.current(e)}
           className={`works_picture ${actImg === "img2" ? "active" : ""}`}
           style={conditionalStyle.img2}
+          variants={animate.item}
         >
           <img
             src={images?.overviewImages[1]}
@@ -43,14 +72,15 @@ const WorkPictureContainer = ({ images }) => {
               transform: `translateX(${actImgPosition.img2.x}%) translateY(${actImgPosition.img2.y}%)`,
             }}
           />
-        </div>
+        </motion.div>
 
-        <div
+        <motion.div
+          ref={refImg3}
           onMouseOver={() => setActImg("img1")}
-          // onMouseMove={onMouseMoveImg}
           onMouseMove={(e) => onMouseMoveImg.current(e)}
           className={`works_picture ${actImg === "img1" ? "active" : ""}`}
           style={conditionalStyle.img1}
+          variants={animate.item}
         >
           <img
             src={images?.overviewImages[0]}
@@ -59,8 +89,8 @@ const WorkPictureContainer = ({ images }) => {
               transform: `translateX(${actImgPosition.img1.x}%) translateY(${actImgPosition.img1.y}%)`,
             }}
           />
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     );
   };
   return render();
