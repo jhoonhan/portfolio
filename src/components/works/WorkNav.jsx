@@ -12,8 +12,14 @@ const WorkNav = ({ pageControl }) => {
     workSubPage,
     workNavWidth,
     setWorkNavWidth,
+    mobileShowNav,
+    setMobileShowNav,
     touch,
   } = pageControl;
+
+  useEffect(() => {
+    console.log(mobileShowNav);
+  }, [mobileShowNav]);
 
   const swipeFn = {
     fnRight: () => {
@@ -74,12 +80,24 @@ const WorkNav = ({ pageControl }) => {
     return style;
   };
 
+  const activeSpan = (page) => {
+    if (!isMobile) return;
+    if (!mobileShowNav) return { opacity: 0 };
+    if (workSubPage === page && mobileShowNav) return { opacity: 1 };
+  };
+
   const onArrowClick = () => {
     if (workSubPage === urls.workSubPage[0])
       history.push(`/works/${workPage}/${urls.workSubPage[0 + 1]}`);
     if (workSubPage === urls.workSubPage[1])
       history.push(`/works/${workPage}/${urls.workSubPage[1 + 1]}`);
     // if (workSubPage === urls.workSubPage[2] && workPage < 5) setWorkPage(workPage + 1);
+  };
+
+  const activeContainer = () => {
+    if (curPage !== urls.curPage[1]) return { transform: "translateX(100vw)" };
+    if (!isMobile) return;
+    if (!mobileShowNav) return { transform: "translateY(1.6rem)" };
   };
 
   const renderContentArrow = () => {
@@ -91,13 +109,15 @@ const WorkNav = ({ pageControl }) => {
       </div>
     );
   };
+
   const renderContentNav = () => {
     return (
       <div
         className={`${activeClass()} works__content-nav`}
-        style={
-          curPage !== urls.curPage[1] ? { transform: "translateX(100vw)" } : {}
-        }
+        // style={
+        //   curPage !== urls.curPage[1] ? { transform: "translateX(100vw)" } : {}
+        // }
+        style={activeContainer()}
       >
         <div className="bar disabled" />
         <div className="bar active" style={{ width: workNavWidth }} />
@@ -110,7 +130,14 @@ const WorkNav = ({ pageControl }) => {
             <div className="box" />
             <span
               className="a--opacity--m"
-              style={workSubPage === urls.workSubPage[0] ? { opacity: 1 } : {}}
+              // style={
+              //   workSubPage === urls.workSubPage[0]
+              //     ? { opacity: 1 }
+              //     : mobileShowNav
+              //     ? { opacity: 1 }
+              //     : { opacity: 0 }
+              // }
+              style={activeSpan(urls.workSubPage[0])}
             >
               {condWorkPage()}
             </span>
@@ -124,7 +151,7 @@ const WorkNav = ({ pageControl }) => {
             <div className="box" />
             <span
               className="a--opacity--m"
-              style={workSubPage === urls.workSubPage[1] ? { opacity: 1 } : {}}
+              style={activeSpan(urls.workSubPage[1])}
             >
               overview
             </span>
@@ -138,7 +165,8 @@ const WorkNav = ({ pageControl }) => {
             <div className="box" />
             <span
               className="a--opacity--m"
-              style={workSubPage === urls.workSubPage[2] ? { opacity: 1 } : {}}
+              // style={workSubPage === urls.workSubPage[2] ? { opacity: 1 } : {}}
+              style={activeSpan(urls.workSubPage[2])}
             >
               gallery
             </span>

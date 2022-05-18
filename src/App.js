@@ -48,6 +48,7 @@ const App = () => {
   });
   const [workNavWidth, setWorkNavWidth] = useState(0);
   const [slideScroll, setSlideScroll] = useState(0);
+  const [mobileShowNav, setMobileShowNav] = useState(false);
 
   const {
     onTouchStart,
@@ -101,6 +102,8 @@ const App = () => {
     setWorkPage,
     workSubPage,
     setWorkSubPage,
+    mobileShowNav,
+    setMobileShowNav,
     activeSubPageStylePosition,
     setActiveSubPageStylePosition,
     workNavWidth,

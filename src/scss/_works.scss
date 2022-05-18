@@ -226,6 +226,7 @@
   // height: auto;
   z-index: 10;
   transition: $default--transition;
+  // transition: transform 0.3s ease-in-out 0s;
 
   & .bar {
     position: relative;

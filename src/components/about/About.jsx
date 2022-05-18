@@ -161,7 +161,7 @@ const About = ({ pageControl, props, refs }) => {
           <div
             className="text-wrapper"
             ref={refContainer}
-            style={intersectingStyle2}
+            // style={intersectingStyle2}
           >
             <div className="flex--column">
               <span className="title el">Hello,</span>

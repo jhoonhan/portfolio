@@ -122,6 +122,9 @@
       left: 66%;
       transition: transform 0.3s ease-in-out 1s, opacity 0.3s 0s;
     }
+    & span {
+      transition: $default--transition;
+    }
   }
   .works__content__arrow {
     display: none;

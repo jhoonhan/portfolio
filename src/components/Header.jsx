@@ -7,7 +7,6 @@ import { transition } from "./helpers/config";
 
 const Header = ({ refs, pageControl }) => {
   const [activeHeight, setActiveHeight] = useState("0rem");
-  const [mobileShowNav, setMobileShowNav] = useState(false);
   const [expandWorkNav, setExpandWorkNav] = useState(false);
 
   const { urls, curPage, workPage, setWorkPage, workSubPage } = pageControl;
@@ -43,7 +42,7 @@ const Header = ({ refs, pageControl }) => {
       setWorkPage(null);
     }
 
-    setMobileShowNav(false);
+    pageControl.setMobileShowNav(false);
   }, [workPage, curPage, workSubPage]);
 
   useEffect(() => {
@@ -54,7 +53,7 @@ const Header = ({ refs, pageControl }) => {
     return (
       <motion.div
         className="m--nav__overlay"
-        onClick={() => setMobileShowNav(!mobileShowNav)}
+        onClick={() => pageControl.setMobileShowNav(!pageControl.mobileShowNav)}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -87,7 +86,7 @@ const Header = ({ refs, pageControl }) => {
     } else {
       style.height = "31.2rem";
     }
-    if (isMobile && mobileShowNav) {
+    if (isMobile && pageControl.mobileShowNav) {
       style.transform = "translateX(5vw)";
     } else {
       style.transform = "translateX(0vw)";
@@ -196,18 +195,22 @@ const Header = ({ refs, pageControl }) => {
     return (
       <header className="header__container">
         <AnimatePresence>
-          {isMobile && mobileShowNav ? renderMobileOverlay() : ""}
+          {isMobile && pageControl.mobileShowNav ? renderMobileOverlay() : ""}
         </AnimatePresence>
         <div
           className="m--nav__toggle"
-          onClick={() => setMobileShowNav(!mobileShowNav)}
+          onClick={() =>
+            pageControl.setMobileShowNav(!pageControl.mobileShowNav)
+          }
         >
-          {mobileShowNav ? "X" : "O"}
+          {pageControl.mobileShowNav ? "X" : "O"}
         </div>
         <div className="nav__container" style={condiNavContainerStyle()}>
           <div
             className="scroll-status__container"
-            onClick={() => setMobileShowNav(!mobileShowNav)}
+            onClick={() =>
+              pageControl.setMobileShowNav(!pageControl.mobileShowNav)
+            }
           >
             <div className="scroll-status--disabled"></div>
             <div
@@ -222,7 +225,7 @@ const Header = ({ refs, pageControl }) => {
             </div>
           </div>
           <AnimatePresence>
-            {isMobile && mobileShowNav && (
+            {isMobile && pageControl.mobileShowNav && (
               <motion.nav
                 className="nav"
                 ref={refNav}
