@@ -44,20 +44,18 @@ const Landing = ({ slideInfo, pageControl, content, props }) => {
           style={{ backgroundImage: `url(${content?.images.landing})` }}
         ></div>
         <div className="work__landing__overlay"></div>
-        <div className="work__landing__titlebox">
-          <motion.h1
-            initial={{ color: "#000" }}
-            animate={{ color: "#fff" }}
-            exit={{ color: "#000" }}
-            transition={
-              refHasRenderd.current
-                ? { duration: transition.default, delay: 0 }
-                : { duration: transition.default, delay: 0.5 }
-            }
-          >
-            {content?.name}
-          </motion.h1>
-        </div>
+        <motion.h1
+          initial={{ color: "#000" }}
+          animate={{ color: "#fff" }}
+          exit={{ color: "#000" }}
+          transition={
+            refHasRenderd.current
+              ? { duration: transition.default, delay: 0 }
+              : { duration: transition.default, delay: 0.5 }
+          }
+        >
+          {content?.name}
+        </motion.h1>
       </div>
     </div>
   );
