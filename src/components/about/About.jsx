@@ -116,19 +116,37 @@ const About = ({ pageControl, props, refs }) => {
     }
   }, [activeSlide]);
 
+  const animate = {
+    container: {
+      hidden: { opacity: 0 },
+      show: {
+        opacity: 1,
+        transition: {
+          type: "spring",
+          staggerChildren: 0.2,
+        },
+      },
+    },
+    item: {
+      hidden: { opacity: 1 },
+      show: {
+        opacity: 1,
+        transition: { duration: transition.default, type: "spring" },
+      },
+    },
+  };
+
   const render = () => {
     return (
       <motion.section
         ref={refs.refAbout}
         className="about__container container"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: transition.default }}
+        variants={animate.container}
+        initial="hidden"
+        animate="show"
       >
         <div
           className="about__slides-container"
-          // onMouseOut={trigger}>
           onMouseOut={() => {
             setActiveSlide(-1);
           }}
