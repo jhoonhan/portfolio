@@ -77,7 +77,8 @@
     align-items: center;
     justify-content: flex-end;
 
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: var(--color-overlay);
+    transition: background-color 0.3s ease-in-out;
 
     & .icons__container {
       right: 7vw;
@@ -305,7 +306,7 @@
       width: 100%;
       padding: 15vh 3rem 10vh 5rem;
 
-      background-color: rgba(0, 0, 0, 0.9);
+      background-color: var(--color-overlay);
       box-sizing: border-box;
       & h2 {
         font-size: 2rem;

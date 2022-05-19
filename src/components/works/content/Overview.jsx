@@ -12,6 +12,13 @@ const Overview = ({ slideInfo, pageControl, content, noOverview, props }) => {
   const refIntersect = useRef(null);
 
   useEffect(() => {
+    document.documentElement.setAttribute("data-theme", "light");
+    return () => {
+      document.documentElement.setAttribute("data-theme", "dark");
+    };
+  }, []);
+
+  useEffect(() => {
     pageControl.setWorkSubPage("overview");
   }, [props.match.path]);
 

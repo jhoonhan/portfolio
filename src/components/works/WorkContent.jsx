@@ -62,8 +62,8 @@ const WorkContent = ({
 
   const render = () => {
     return (
-      // <div ref={refEl} className="work__container" style={backgroundStyle}>
-      <div ref={refEl} className="work__container">
+      <div ref={refEl} className="work__container" style={backgroundStyle}>
+        {/* <div ref={refEl} className="work__container"> */}
         <Switch>
           <Route
             path={`/works/${content.path}/landing`}

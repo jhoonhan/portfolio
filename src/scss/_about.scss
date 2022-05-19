@@ -13,6 +13,14 @@
   column-gap: 2rem;
   // flex-direction: column;
   // background-color: red;
+  // background: linear-gradient(
+  //   60deg,
+  //   rgba(2, 0, 36, 0.7) 0%,
+  //   rgba(2, 0, 36, 0.7) 50%,
+  //   rgba(118, 19, 19, 0.7) 100%
+  // );
+  background-color: var(--color-background);
+
   overflow: hidden;
   // overflow-y: hidden;
   box-sizing: border-box;
@@ -28,7 +36,6 @@
 
   margin-left: calc(5vw + 10rem);
 
-  // background-color: red;
   box-sizing: border-box;
 }
 

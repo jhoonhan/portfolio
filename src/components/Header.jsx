@@ -107,7 +107,9 @@ const Header = ({ refs, pageControl }) => {
       <>
         <div className="nav__link home" ref={refNavHome}>
           <Link
-            className="a--transition a--opacity"
+            className={`a--transition a--opacity ${
+              curPage === urls.curPage[0] ? "active--text" : {}
+            }`}
             style={curPage === urls.curPage[0] ? activeStyle : {}}
             to="/"
           >
@@ -116,10 +118,10 @@ const Header = ({ refs, pageControl }) => {
         </div>
         <div className="nav__link works" ref={refNavWorks}>
           <span
-            // to="/works/sushi-republic/landing"
             onClick={handleWorkClick}
-            style={curPage === urls.curPage[1] ? activeStyle : {}}
-            className="a--transition a--opacity"
+            className={`a--transition a--opacity ${
+              curPage === urls.curPage[1] ? "active--text" : {}
+            }`}
           >
             works
           </span>
@@ -134,7 +136,7 @@ const Header = ({ refs, pageControl }) => {
             <li>
               <Link
                 to="/works/sushi-republic/landing"
-                style={workPage === urls.workPage[0] ? activeSubPageStyle : {}}
+                className={workPage === urls.workPage[0] ? "active--text" : ""}
               >
                 Sushi Republic
               </Link>
@@ -142,7 +144,7 @@ const Header = ({ refs, pageControl }) => {
             <li>
               <Link
                 to="/works/danji/landing"
-                style={workPage === urls.workPage[1] ? activeSubPageStyle : {}}
+                className={workPage === urls.workPage[1] ? "active--text" : ""}
               >
                 Danji
               </Link>
@@ -150,7 +152,7 @@ const Header = ({ refs, pageControl }) => {
             <li>
               <Link
                 to="/works/salvation-army/landing"
-                style={workPage === urls.workPage[2] ? activeSubPageStyle : {}}
+                className={workPage === urls.workPage[2] ? "active--text" : ""}
               >
                 Salvation Army
               </Link>
@@ -158,7 +160,7 @@ const Header = ({ refs, pageControl }) => {
             <li>
               <Link
                 to="/works/haans-cleaner/landing"
-                style={workPage === urls.workPage[3] ? activeSubPageStyle : {}}
+                className={workPage === urls.workPage[3] ? "active--text" : ""}
               >
                 Haans Cleaner
               </Link>
@@ -166,7 +168,7 @@ const Header = ({ refs, pageControl }) => {
             <li>
               <Link
                 to="/works/this-is-bullshit/landing"
-                style={workPage === urls.workPage[4] ? activeSubPageStyle : {}}
+                className={workPage === urls.workPage[4] ? "active--text" : ""}
               >
                 This is Bullshit
               </Link>
@@ -176,8 +178,9 @@ const Header = ({ refs, pageControl }) => {
         <div className="nav__link about" ref={refNavAbout}>
           <Link
             to="/about"
-            className="a--transition a--opacity"
-            style={curPage === urls.curPage[2] ? activeStyle : {}}
+            className={`a--transition a--opacity ${
+              curPage === urls.curPage[2] ? "active--text" : {}
+            }`}
           >
             about
           </Link>
@@ -185,8 +188,9 @@ const Header = ({ refs, pageControl }) => {
         <div className="nav__link contact" ref={refNavContact}>
           <Link
             to="/contact"
-            className="a--transition a--opacity"
-            style={curPage === urls.curPage[3] ? activeStyle : {}}
+            className={`a--transition a--opacity ${
+              curPage === urls.curPage[3] ? "active--text" : {}
+            }`}
           >
             contact
           </Link>

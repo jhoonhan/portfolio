@@ -5,5 +5,6 @@ export const transition = {
 };
 
 export const color = {
-  primary: "rgba(220, 50, 50, 1)",
+  // primary: "rgba(220, 50, 50, 1)",
+  primary: "rgba(255, 255, 255, 1)",
 };

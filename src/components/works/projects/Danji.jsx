@@ -37,7 +37,7 @@ const Danji = ({ refEl, pageControl, props }) => {
   };
   const backgroundStyle = {
     background:
-      "linear-gradient(60deg, rgba(118,19,19,1) 0%,rgba(118,19,19,1) 33%,rgba(150, 50, 50, 1) 45%, rgba(220,115,45,1) 100%)",
+      "linear-gradient(60deg, rgba(118,19,19,0.7) 0%,rgba(118,19,19,0.7) 33%,rgba(150, 50, 50, 0.7) 45%, rgba(220,115,45,0.7) 100%)",
   };
   return (
     <WorkContent

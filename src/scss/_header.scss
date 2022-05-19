@@ -147,22 +147,27 @@
   //   rgba(255, 255, 255, 0.1) 0%,
   //   rgba(255, 255, 255, 1) 100%
   // );
+  // transition: background 1s ease-in-out, height 0.3s ease-in-out;
+  transition: $default--transition;
 }
 
 .scroll-status--disabled {
   @extend .scroll-status;
   height: calc(100% - 0px);
-  background: $color--disabled-border;
+  background: var(--color-disabled);
   mix-blend-mode: overlay;
+  // transition: background 1s ease-in-out;
 }
 
 .scroll-status--active {
   @extend .scroll-status;
   height: 100%;
   // border-color: white;
-  background: $gradient--primary--180;
+  background: var(--gradient-primary-180);
   overflow: hidden;
-  transition: $default--transition;
+  // transition: width 0.5s ease-in-out, background 1s ease-in-out;
+  // transition: $default--transition;
+  // transition: background 1s ease-in-out;
 }
 .scroll-status--boxes {
   position: absolute;
@@ -172,14 +177,14 @@
   // height: calc(100% - 1rem);
   display: grid;
   // grid-template-rows: 1fr 1fr 1fr auto;
-  transition-property: transform;
-  transition-duration: 0.3s;
-  transition-timing-function: ease-in-out;
+  transition: transform 0.3s ease-in-out;
+
   & span {
     width: 1rem;
     height: 1rem;
     // border: 1px solid $color--disabled;
     box-sizing: border-box;
-    background-color: $color--primary;
+    background-color: var(--color-primary);
+    transition: background-color 0.3s ease-in-out;
   }
 }

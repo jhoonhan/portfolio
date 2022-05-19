@@ -60,6 +60,13 @@ const About = ({ pageControl, props, refs }) => {
   const isIntersecting2 = useIntersectionObserve(refInfo, 0.5);
 
   useEffect(() => {
+    document.documentElement.setAttribute("data-theme", "light");
+    return () => {
+      document.documentElement.setAttribute("data-theme", "dark");
+    };
+  }, []);
+
+  useEffect(() => {
     pageControl.setCurPage(props.match.path.slice(1));
   }, [props.match.path]);
 

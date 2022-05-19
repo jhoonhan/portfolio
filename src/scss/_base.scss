@@ -4,7 +4,7 @@ html {
 }
 
 body {
-  color: $color--font;
+  color: var(--color-font);
   font-family: "Raleway", sans-serif;
   font-weight: 500;
   font-size: $font-size--d;
@@ -26,7 +26,7 @@ body {
 }
 
 a {
-  color: $color--font;
+  color: var(--color-font);
   text-decoration: none;
 }
 .wrapper__main {
@@ -44,13 +44,14 @@ a {
   // scroll-snap-type: y mandatory;
   overflow-y: hidden;
   overflow-x: hidden;
-  & section {
-    // z-index: 0;
-  }
+}
+.active--text {
+  color: var(--color-active-font);
+  opacity: 1 !important;
 }
 .button {
   width: 100%;
-  border: $default--border;
+  border: var(--default-border);
   padding: 1rem;
   display: flex;
   justify-content: center;
@@ -90,7 +91,7 @@ a {
       justify-content: center;
       align-items: center;
       background-color: white;
-      border: $default--border;
+      border: var(--default-border);
       box-sizing: border-box;
     }
   }
@@ -119,7 +120,6 @@ a {
   width: 100vw;
   height: 100vh;
   // background-color: rgba(66, 55, 55, 0.95);
-  background-color: $color--background;
   background-blend-mode: normal;
 
   opacity: 1;
@@ -127,12 +127,19 @@ a {
   z-index: 0;
 
   transition: $default--transition;
+  &.default {
+    background-color: var(--color-background);
+  }
+  &.about {
+    background-color: yellow;
+  }
 }
 
 .detail-item {
   text-transform: uppercase;
   & h3 {
-    font-weight: 300;
+    font-weight: 400;
+    // color: var(--color-primary);
   }
   & p {
     font-weight: 600;
@@ -158,7 +165,7 @@ a {
 
   & div:last-child {
     height: 1px;
-    background: $gradient--primary--270;
+    background: var(--gradient-primary-270);
   }
 }
 

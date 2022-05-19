@@ -30,7 +30,7 @@ const SalvationArmy = ({ refEl, pageControl, props }) => {
   };
   const backgroundStyle = {
     background:
-      "linear-gradient(60deg, rgba(2,0,36,1) 0%,rgba(2,0,36,1) 23%, rgba(118,19,19,1) 100%)",
+      "linear-gradient(60deg, rgba(2,0,36,0.7) 0%,rgba(2,0,36,0.7) 23%, rgba(118,19,19,0.7) 100%)",
   };
   return (
     <WorkContent

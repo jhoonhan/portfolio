@@ -11,6 +11,13 @@ const Gallery = ({ slideInfo, pageControl, images, props }) => {
   const { onTouchStart, onTouchMove, onTouchEnd, sticky } = useListenSwipe();
 
   useEffect(() => {
+    document.documentElement.setAttribute("data-theme", "light");
+    return () => {
+      document.documentElement.setAttribute("data-theme", "dark");
+    };
+  }, []);
+
+  useEffect(() => {
     pageControl.setWorkSubPage("gallery");
   }, []);
 
