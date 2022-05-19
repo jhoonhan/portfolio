@@ -45,9 +45,9 @@ const Landing = ({ slideInfo, pageControl, content, props }) => {
         ></div>
         <div className="work__landing__overlay"></div>
         <motion.h1
-          initial={{ color: "#000" }}
-          animate={{ color: "#fff" }}
-          exit={{ color: "#000" }}
+          initial={{ color: "#000", opacity: 0 }}
+          animate={{ color: "#fff", opacity: 1 }}
+          exit={{ color: "#000", opacity: 0 }}
           transition={
             refHasRenderd.current
               ? { duration: transition.default, delay: 0 }
