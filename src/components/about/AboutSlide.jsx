@@ -8,10 +8,17 @@ const AboutSlide = ({ imgs, style, setActiveSlide, slideNumber }) => {
     return <AboutImg img={img} key={i} />;
   });
 
+  // const animate = {
+  //   hidden: { y: -window.innerHeight },
+  //   show: {
+  //     y: 0,
+  //     transition: { duration: transition.default, type: "spring" },
+  //   },
+  // };
   const animate = {
-    hidden: { y: -window.innerHeight },
+    hidden: { opacity: 0 },
     show: {
-      y: 0,
+      opacity: 1,
       transition: { duration: transition.default, type: "spring" },
     },
   };

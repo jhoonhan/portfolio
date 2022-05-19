@@ -21,14 +21,7 @@ const AboutImg = ({ img }) => {
     };
   }, [refImg]);
 
-  return (
-    <img
-      ref={refImg}
-      src={img}
-      alt="aboutImg"
-      style={isVisible ? { opacity: 1 } : {}}
-    />
-  );
+  return <img ref={refImg} src={img} alt="aboutImg" />;
 };
 
 export default AboutImg;

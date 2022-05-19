@@ -40,23 +40,26 @@
   overflow-y: scroll;
   scrollbar-width: none;
 
-  transition: $default--transition;
+  // transition: $default--transition;
   // transition: transform 0.3s;
-  // transition: width 0.3s ease-in-out, filter 0.3s ease-in-out;
+  transition: width 0.3s ease-in-out, filter 0.3s ease-in-out;
 
-  opacity: 0.5;
   -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
   filter: grayscale(100%);
 
   &:hover {
-    opacity: 1;
+    // opacity: 1;
     -webkit-filter: none; /* Safari 6.0 - 9.0 */
     filter: none;
+    & img {
+      opacity: 1;
+    }
   }
 
   & img {
     // opacity: 0.5;
     width: 100%;
+    opacity: 0.5;
     transition: $default--transition;
   }
 

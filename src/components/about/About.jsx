@@ -123,7 +123,7 @@ const About = ({ pageControl, props, refs }) => {
         opacity: 1,
         transition: {
           type: "spring",
-          staggerChildren: 0.2,
+          staggerChildren: 0.3,
         },
       },
     },
