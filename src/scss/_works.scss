@@ -158,8 +158,9 @@
 }
 
 .works__title {
+  color: $color--primary;
   font-size: 20vh;
-  font-weight: 600;
+  font-weight: 700;
   // line-height: 1;
   text-transform: uppercase;
 
@@ -236,7 +237,7 @@
     top: -1px;
     height: 1px;
     // min-width: 5vw;
-    background: $gradient--white--90;
+    background: $gradient--primary--90;
   }
   & .disabled {
     height: 1px;
@@ -262,7 +263,7 @@
         position: relative;
         width: 1.2rem;
         height: 1.2rem;
-        background-color: white;
+        background-color: $color--primary;
       }
     }
   }
@@ -492,7 +493,7 @@
   height: 100%;
   width: 100%;
 
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: $color--overlay;
   // z-index: 5;
 }
 .work__landing__titlebox {

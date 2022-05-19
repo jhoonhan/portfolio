@@ -1,7 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap");
 
+$color--font: black;
+$color--disabled: rgba(255, 255, 255, 0.5);
+$color--disabled-border: rgba(255, 255, 255, 0.3);
+$color--primary: rgba(220, 50, 50, 1);
+$color--primary--hover: #ff4040;
+$color--background: rgba(239, 239, 239, 1);
+$color--overlay: rgba(239, 239, 239, 0.3);
+
 $default--font: "Raleway", sans-serif;
-$default--border: 1px solid white;
+$default--border: 1px solid $color--font;
 $default--transition: 0.3s ease-in-out;
 
 $font-size--s: 1rem;
@@ -10,24 +18,36 @@ $font-size--d: 1.4rem;
 $font-size--ml: 1.6rem;
 $font-size--l: 2rem;
 
-$color--font: white;
-$color--disabled: rgba(255, 255, 255, 0.5);
-$color--disabled-border: rgba(255, 255, 255, 0.3);
-
-$color--primary: #4064ff;
-$color--primary--hover: #ff4040;
-
-$color--background: rgba(233, 233, 244, 0.9);
-
+$gradient--white--90: linear-gradient(
+  90deg,
+  rgba(255, 255, 255, 0.1) 0%,
+  rgba(255, 255, 255, 1) 100%
+);
+$gradient--white--180: linear-gradient(
+  180deg,
+  rgba(255, 255, 255, 0.1) 0%,
+  rgba(255, 255, 255, 1) 100%
+);
 $gradient--white--270: linear-gradient(
   270deg,
   rgba(255, 255, 255, 0.1) 0%,
   rgba(255, 255, 255, 1) 100%
 );
-$gradient--white--90: linear-gradient(
+
+$gradient--primary--90: linear-gradient(
   90deg,
-  rgba(255, 255, 255, 0.1) 0%,
-  rgba(255, 255, 255, 1) 100%
+  rgba(255, 255, 255, 1) 0%,
+  $color--primary 100%
+);
+$gradient--primary--180: linear-gradient(
+  180deg,
+  rgba(255, 255, 255, 1) 0%,
+  $color--primary 100%
+);
+$gradient--primary--270: linear-gradient(
+  270deg,
+  rgba(255, 255, 255, 1) 0%,
+  $color--primary 100%
 );
 
 @import "base";

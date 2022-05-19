@@ -4,6 +4,7 @@ import { isBrowser, isMobile } from "react-device-detect";
 import { Link } from "react-router-dom";
 import icons from "../assests/image/icons.svg";
 import { transition } from "./helpers/config";
+import { color } from "./helpers/config";
 
 const Header = ({ refs, pageControl }) => {
   const [activeHeight, setActiveHeight] = useState("0rem");
@@ -17,8 +18,11 @@ const Header = ({ refs, pageControl }) => {
   const refNavAbout = useRef(null);
   const refNavContact = useRef(null);
 
-  const activeOpacity = { opacity: 1 };
-  const activeSubPageStyle = { opacity: 1 };
+  // const activeStyle = { opacity: 1 };
+  const activeStyle = { color: color.primary, opacity: 1 };
+
+  // const activeSubPageStyle = { opacity: 1 };
+  const activeSubPageStyle = { color: color.primary, opacity: 1 };
 
   useEffect(() => {
     if (curPage === urls.curPage[0]) {
@@ -104,7 +108,7 @@ const Header = ({ refs, pageControl }) => {
         <div className="nav__link home" ref={refNavHome}>
           <Link
             className="a--transition a--opacity"
-            style={curPage === urls.curPage[0] ? activeOpacity : {}}
+            style={curPage === urls.curPage[0] ? activeStyle : {}}
             to="/"
           >
             home
@@ -114,7 +118,7 @@ const Header = ({ refs, pageControl }) => {
           <span
             // to="/works/sushi-republic/landing"
             onClick={handleWorkClick}
-            style={curPage === urls.curPage[1] ? activeOpacity : {}}
+            style={curPage === urls.curPage[1] ? activeStyle : {}}
             className="a--transition a--opacity"
           >
             works
@@ -173,7 +177,7 @@ const Header = ({ refs, pageControl }) => {
           <Link
             to="/about"
             className="a--transition a--opacity"
-            style={curPage === urls.curPage[2] ? activeOpacity : {}}
+            style={curPage === urls.curPage[2] ? activeStyle : {}}
           >
             about
           </Link>
@@ -182,7 +186,7 @@ const Header = ({ refs, pageControl }) => {
           <Link
             to="/contact"
             className="a--transition a--opacity"
-            style={curPage === urls.curPage[3] ? activeOpacity : {}}
+            style={curPage === urls.curPage[3] ? activeStyle : {}}
           >
             contact
           </Link>

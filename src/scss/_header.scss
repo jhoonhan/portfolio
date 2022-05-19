@@ -160,11 +160,7 @@
   @extend .scroll-status;
   height: 100%;
   // border-color: white;
-  background: linear-gradient(
-    184deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 1) 100%
-  );
+  background: $gradient--primary--180;
   overflow: hidden;
   transition: $default--transition;
 }
@@ -184,6 +180,6 @@
     height: 1rem;
     // border: 1px solid $color--disabled;
     box-sizing: border-box;
-    background-color: white;
+    background-color: $color--primary;
   }
 }

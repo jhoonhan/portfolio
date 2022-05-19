@@ -4,11 +4,11 @@ html {
 }
 
 body {
-  color: white;
+  color: $color--font;
   font-family: "Raleway", sans-serif;
-  font-weight: 400;
+  font-weight: 500;
   font-size: $font-size--d;
-  font-weight: 300;
+  // font-weight: 300;
   line-height: 1;
 
   // width: 50vw;
@@ -26,7 +26,7 @@ body {
 }
 
 a {
-  color: white;
+  color: $color--font;
   text-decoration: none;
 }
 .wrapper__main {
@@ -118,7 +118,8 @@ a {
 
   width: 100vw;
   height: 100vh;
-  background-color: rgba(66, 55, 55, 0.95);
+  // background-color: rgba(66, 55, 55, 0.95);
+  background-color: $color--background;
   background-blend-mode: normal;
 
   opacity: 1;
@@ -157,7 +158,7 @@ a {
 
   & div:last-child {
     height: 1px;
-    background: $gradient--white--270;
+    background: $gradient--primary--270;
   }
 }
 
