@@ -7,28 +7,56 @@ const Contact = ({ pageControl, props, refs }) => {
   useEffect(() => {
     pageControl.setCurPage(props.match.path.slice(1));
   }, [props.match.path]);
+
+  const animate = {
+    container: {
+      hidden: { opacity: 0 },
+      show: {
+        opacity: 1,
+        transition: {
+          type: "spring",
+          staggerChildren: 0.7,
+        },
+      },
+    },
+    item: {
+      hidden: { opacity: 0 },
+      show: {
+        opacity: 1,
+        transition: { duration: transition.slow, type: "spring", dealy: 0.5 },
+      },
+    },
+  };
+
   const render = () => {
     return (
       <motion.section
         ref={refs.refContact}
         className="contact__container container"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: transition.default }}
+        variants={animate.container}
+        initial="hidden"
+        animate="show"
+        exit="hidden"
       >
         <div className="contact__text-wrapper">
           <div className="flex--column">
-            <span className="contact__title">Yeah</span>
-            <span
+            <motion.span className="contact__title" variants={animate.item}>
+              Yeah
+            </motion.span>
+            <motion.span
               className="contact__subtitle"
               style={{ paddingBottom: "3rem" }}
+              variants={animate.item}
             >
               Just keeping this simple
-            </span>
+            </motion.span>
           </div>
 
-          <div className="flex--column" style={{ gap: "1.5rem" }}>
+          <motion.div
+            className="flex--column"
+            style={{ gap: "1.5rem" }}
+            variants={animate.item}
+          >
             <p>hanj1112@outlook.com</p>
 
             <div className="flex--row" style={{ gap: "1.5rem" }}>
@@ -47,7 +75,7 @@ const Contact = ({ pageControl, props, refs }) => {
                 <use href={`${icons}#cv`} />
               </svg>
             </div>
-          </div>
+          </motion.div>
         </div>
       </motion.section>
     );

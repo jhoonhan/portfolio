@@ -3,57 +3,58 @@
 :root {
   --color-primary: white;
   --color-font: white;
-  --color-background: rgba(239, 239, 239, 1);
+  // --color-background: rgba(0, 0, 0, 1);
   --color-overlay: rgba(0, 0, 0, 0.9);
+  --color-overlay-50: rgba(0, 0, 0, 0.5);
   --color-disabled: rgba(255, 255, 255, 0.3);
 
   --gradient-primary-90: linear-gradient(
     90deg,
-    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0) 0%,
     var(--color-primary) 100%
   );
   --gradient-primary-180: linear-gradient(
     180deg,
-    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0) 0%,
     var(--color-primary) 100%
   );
   --gradient-primary-270: linear-gradient(
     270deg,
-    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0) 0%,
     var(--color-primary) 100%
   );
 
   --default-border: 1px solid var(--color-font);
 }
 
-[data-theme="light"] {
-  --color-primary: red;
-  --color-font: black;
-  --color-active-font: red;
-  --color-border: #666;
+// [data-theme="light"] {
+//   --color-primary: red;
+//   --color-font: black;
+//   --color-active-font: red;
+//   --color-border: #666;
 
-  --color-background: rgb(239, 239, 239);
-  --color-overlay: rgba(239, 239, 239, 0.9);
-  --color-disabled: white;
+//   --color-background: rgb(239, 239, 239);
+//   --color-overlay: rgba(239, 239, 239, 0.9);
+//   --color-disabled: white;
 
-  --gradient-primary-90: linear-gradient(
-    90deg,
-    var(--color-disabled) 0%,
-    var(--color-primary) 100%
-  );
-  --gradient-primary-180: linear-gradient(
-    180deg,
-    var(--color-disabled) 0%,
-    var(--color-primary) 100%
-  );
-  --gradient-primary-270: linear-gradient(
-    270deg,
-    var(--color-disabled) 0%,
-    var(--color-primary) 100%
-  );
+//   --gradient-primary-90: linear-gradient(
+//     90deg,
+//     var(--color-disabled) 0%,
+//     var(--color-primary) 100%
+//   );
+//   --gradient-primary-180: linear-gradient(
+//     180deg,
+//     var(--color-disabled) 0%,
+//     var(--color-primary) 100%
+//   );
+//   --gradient-primary-270: linear-gradient(
+//     270deg,
+//     var(--color-disabled) 0%,
+//     var(--color-primary) 100%
+//   );
 
-  --default-border: 1px solid var(--color-border);
-}
+//   --default-border: 1px solid var(--color-border);
+// }
 
 // $color--font: black;
 // $color--font: white;

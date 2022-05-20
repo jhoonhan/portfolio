@@ -151,6 +151,7 @@ const About = ({ pageControl, props, refs }) => {
         variants={animate.container}
         initial="hidden"
         animate="show"
+        exit="hidden"
       >
         <div
           className="about__slides-container"

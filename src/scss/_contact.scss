@@ -12,13 +12,20 @@
   justify-content: center;
   align-items: center;
 
+  background: linear-gradient(
+    60deg,
+    rgba(166, 176, 224, 0.7) 0%,
+    rgba(254, 228, 179, 0.7) 40%,
+    rgba(36, 109, 175, 0.7) 100%
+  );
+
   overflow: hidden;
   // overflow-y: hidden;
   box-sizing: border-box;
 
   // transition: $default--transition;
 
-  z-index: 5;
+  // z-index: 5;
 }
 
 .contact__text-wrapper {
@@ -32,6 +39,8 @@
   & .contact__title {
     font-size: calc(min(20vw, 20vh));
     margin-left: -1.5rem;
+
+    mix-blend-mode: difference;
   }
 
   & .contact__subtitle {
