@@ -77,7 +77,14 @@
     align-items: center;
     justify-content: flex-end;
 
-    background-color: var(--color-overlay);
+    // background-color: var(--color-overlay);
+    background: linear-gradient(
+      180deg,
+      rgba(96, 128, 176, 1) 0%,
+      rgba(158, 102, 97, 1) 40%,
+      rgba(158, 102, 97, 1) 60%,
+      rgba(35, 49, 73, 1) 100%
+    );
     transition: background-color 0.3s ease-in-out;
 
     & .icons__container {
@@ -306,7 +313,13 @@
       width: 100%;
       padding: 15vh 3rem 10vh 5rem;
 
-      background-color: var(--color-overlay);
+      // background-color: var(--color-overlay);
+      background: linear-gradient(
+        60deg,
+        rgba(96, 128, 176, 0.9) 0%,
+        rgba(158, 102, 97, 0.9) 30%,
+        rgba(35, 49, 73, 0.9) 100%
+      );
       box-sizing: border-box;
       & h2 {
         font-size: 2rem;

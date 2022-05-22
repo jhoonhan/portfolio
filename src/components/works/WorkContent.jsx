@@ -67,6 +67,7 @@ const WorkContent = ({
   }, [pageControl.workSubPage]);
 
   const render = () => {
+    console.log(`workContent rendered`);
     return (
       <div ref={refEl} className="work__container" style={backgroundStyle}>
         {/* <div ref={refEl} className="work__container"> */}

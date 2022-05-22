@@ -36,7 +36,7 @@ const Landing = ({ pageControl, refHome, props }) => {
   const render = () => {
     return (
       <>
-        <LandingArt curPage={pageControl.curPage} />
+        {/* <LandingArt curPage={pageControl.curPage} /> */}
         <section ref={refHome} className="landing__container container">
           {renderCenterInfo()}
 

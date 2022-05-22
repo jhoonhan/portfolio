@@ -3,6 +3,7 @@ import { Route } from "react-router-dom";
 
 import WorkContent from "./WorkContent";
 import WorkNav from "./WorkNav";
+import Cursor from "../Cursor";
 
 import SushiRepublic from "./projects/SushiRepublic";
 import Danji from "./projects/Danji";
@@ -22,9 +23,15 @@ const Works = ({ refs, pageControl, props }) => {
   }, [setCurPage, pageControl, props.match.path]);
 
   const render = () => {
+    // console.log(`works rendered`);
     return (
       <>
-        <section ref={refs.refWorks} className="works__container container">
+        <section
+          ref={refs.refWorks}
+          className="works__container container"
+          // onMouseEnter={() => pageControl.setShowCursor(true)}
+          // onMouseLeave={() => pageControl.setShowCursor(false)}
+        >
           <Route
             path="/works/sushi-republic"
             render={(props) => (

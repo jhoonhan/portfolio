@@ -17,9 +17,9 @@ const WorkNav = ({ pageControl }) => {
     touch,
   } = pageControl;
 
-  useEffect(() => {
-    console.log(mobileShowNav);
-  }, [mobileShowNav]);
+  // useEffect(() => {
+  //   console.log(mobileShowNav);
+  // }, [mobileShowNav]);
 
   const swipeFn = {
     fnRight: () => {

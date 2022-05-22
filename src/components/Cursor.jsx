@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 import throttle from "./helpers/throttle";
 import icons from "../assests/image/icons.svg";
 
-const Cursor = ({ curPage }) => {
+const Cursor = ({ curPage, show }) => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [visibleStyle, setVisibleStyle] = useState({ opacity: 0 });
 
@@ -21,13 +21,21 @@ const Cursor = ({ curPage }) => {
     };
   }, []);
 
+  // useEffect(() => {
+  //   if (curPage === "works" || curPage === "about") {
+  //     setVisibleStyle({ opacity: 0.5 });
+  //   } else {
+  //     setVisibleStyle({ opacity: 0 });
+  //   }
+  // }, [curPage]);
+
   useEffect(() => {
-    if (curPage === "works" || curPage === "about") {
+    if (show) {
       setVisibleStyle({ opacity: 0.5 });
     } else {
       setVisibleStyle({ opacity: 0 });
     }
-  }, [curPage]);
+  }, [show]);
 
   return (
     <div

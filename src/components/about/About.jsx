@@ -135,7 +135,7 @@ const About = ({ pageControl, props, refs }) => {
       },
     },
     item: {
-      hidden: { opacity: 1 },
+      hidden: { opacity: 0 },
       show: {
         opacity: 1,
         transition: { duration: transition.default, type: "spring" },
@@ -148,6 +148,8 @@ const About = ({ pageControl, props, refs }) => {
       <motion.section
         ref={refs.refAbout}
         className="about__container container"
+        onMouseEnter={() => pageControl.setShowCursor(true)}
+        onMouseLeave={() => pageControl.setShowCursor(false)}
         variants={animate.container}
         initial="hidden"
         animate="show"
@@ -184,10 +186,10 @@ const About = ({ pageControl, props, refs }) => {
           />
         </div>
         <div className="about__info" onMouseOver={() => setActiveSlide(4)}>
-          <div
+          <motion.div
             className="text-wrapper"
             ref={refContainer}
-            // style={intersectingStyle2}
+            variants={animate.item}
           >
             <div className="flex--column">
               <span className="title el">Hello,</span>
@@ -253,7 +255,7 @@ const About = ({ pageControl, props, refs }) => {
                 </svg>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </motion.section>
     );

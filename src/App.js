@@ -50,6 +50,8 @@ const App = () => {
   const [slideScroll, setSlideScroll] = useState(0);
   const [mobileShowNav, setMobileShowNav] = useState(false);
 
+  const [showCursor, setShowCursor] = useState(false);
+
   const {
     onTouchStart,
     onTouchMove,
@@ -110,6 +112,8 @@ const App = () => {
     setWorkNavWidth,
     slideScroll,
     setSlideScroll,
+    showCursor,
+    setShowCursor,
     touch: {
       action: touchAction,
       sticky: stickySlide,
@@ -117,6 +121,7 @@ const App = () => {
   };
 
   const render = () => {
+    // console.log(`app rendered`);
     return (
       <div
         className="app"
@@ -125,7 +130,7 @@ const App = () => {
         onTouchEnd={onTouchEnd}
       >
         <Header refs={refs} pageControl={pageControl} />
-        <Cursor curPage={curPage} />
+        <Cursor show={showCursor} />
         <main ref={refMain} className="wrapper__main">
           <div
             style={curPage === "home" ? { opacity: 0 } : {}}
