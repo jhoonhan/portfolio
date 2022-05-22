@@ -4,6 +4,7 @@ import { isMobile } from "react-device-detect";
 import useListenSwipe from "../../helpers/useListenSwipe";
 import useVerticalNavigation from "./useVerticalNavigation";
 import { transition } from "../../helpers/config";
+import RandomTextAnimation from "../../helpers/RandomTextAnimation";
 
 const Landing = ({ slideInfo, pageControl, content }) => {
   const { setWorkSubPage } = pageControl;
@@ -24,48 +25,6 @@ const Landing = ({ slideInfo, pageControl, content }) => {
   const { onTouchStart, onTouchMove, onTouchEnd, sticky } = useListenSwipe();
 
   /////////
-
-  const refInterval = useRef(null);
-  const [result, setResult] = useState("0123456789abc");
-
-  useEffect(() => {
-    makeid();
-  }, []);
-
-  const makeid = (unmount) => {
-    const chars = content?.name.join("").split("");
-    let res = result.split("");
-
-    chars.forEach((char, i) => {
-      let tmout = null;
-      clearInterval(tmout);
-      // const res = chars.map((char) => {
-      //   let result = "";
-      const characters = "abcdefghijklmnopqrstuvwxyz";
-      tmout = setInterval(() => {
-        const generated = characters.charAt(
-          Math.floor(Math.random() * characters.length)
-        );
-        if (generated !== char) {
-          // console.log(`keep going // ${generated}/${char}`);
-          res[i] = generated;
-          setResult(res.join(""));
-        } else {
-          // console.log(`clearing interval // ${generated}/${char}`);
-          clearInterval(tmout);
-          res[i] = char;
-          // console.log(res);
-          setResult(res.join(""));
-          // return char;
-        }
-      }, 100);
-    });
-  };
-
-  const randomChar = (str) => {
-    console.log(`random`);
-    return content?.name;
-  };
 
   //////////
 
@@ -103,7 +62,8 @@ const Landing = ({ slideInfo, pageControl, content }) => {
           >
             {/* {content?.name} */}
             {/* {makeid(content?.name.length)} */}
-            {result}
+            {/* {result} */}
+            <RandomTextAnimation text={content?.name} />
           </motion.h1>
         </div>
       </div>
