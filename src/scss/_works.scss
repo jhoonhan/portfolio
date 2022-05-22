@@ -487,7 +487,7 @@
   --aang: 100px;
 }
 .work__landing__title-box {
-  width: 100%;
+  // width: 90%;
   display: grid;
   grid-auto-columns: auto;
   // grid-auto-columns: minmax(3vw, auto);
@@ -503,11 +503,10 @@
     top: 0;
     left: 0;
 
-    // width: 100%;
+    // width: 5vw;
     // margin-left: var(--aang);
-    margin: auto;
     height: 6.5vw;
-    // aspect-ratio: 1/1;
+    aspect-ratio: 1/1;
 
     display: flex;
     justify-content: center;
