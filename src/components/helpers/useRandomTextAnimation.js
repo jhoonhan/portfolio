@@ -15,7 +15,8 @@ const useRandomTextAnimation = (text) => {
     return result;
   };
 
-  const [result, setResult] = useState(initialRandomText);
+  const [title, setTitle] = useState(initialRandomText);
+  const [hasFinished, setHasFinished] = useState(false);
   const threshold = () => {
     if (textLength >= 7) return 200;
     if (textLength < 7) return 500;
@@ -33,7 +34,7 @@ const useRandomTextAnimation = (text) => {
 
   const makeid = () => {
     const chars = text.join("").split("");
-    let res = result.split("");
+    let res = title.split("");
 
     refInterval.current = setInterval(() => {
       chars.forEach((char, i) => {
@@ -57,16 +58,17 @@ const useRandomTextAnimation = (text) => {
 
         res[i] = generated;
       });
-      setResult(res.join(""));
+      setTitle(res.join(""));
 
       if (res.join("") === text.join("")) {
         clearInterval(refInterval.current);
+        setHasFinished(true);
       }
     }, 30);
   };
 
-  // return <>{override ? text.join("") : result}</>;
-  return result;
+  // return <>{override ? text.join("") : title}</>;
+  return { hasFinished, title };
 };
 
 export default useRandomTextAnimation;

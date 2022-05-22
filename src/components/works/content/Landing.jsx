@@ -8,7 +8,7 @@ import useRandomTextAnimation from "../../helpers/useRandomTextAnimation";
 
 const Landing = ({ slideInfo, pageControl, content }) => {
   const { setWorkSubPage } = pageControl;
-  const title = useRandomTextAnimation(content?.name);
+  const { hasFinished, title } = useRandomTextAnimation(content?.name);
 
   useVerticalNavigation(pageControl);
 
@@ -27,6 +27,21 @@ const Landing = ({ slideInfo, pageControl, content }) => {
 
   /////////
 
+  useEffect(() => {
+    hasFinished && document.documentElement.style.setProperty("--aang", "0px");
+  }, [hasFinished]);
+
+  const renderTitle = () => {
+    const text = title.split("").map((char, i) => {
+      return (
+        <h1 key={i} style={hasFinished ? { minWidth: "none" } : {}}>
+          {char}
+        </h1>
+      );
+    });
+
+    return text;
+  };
   //////////
 
   const render = () => {
@@ -51,7 +66,8 @@ const Landing = ({ slideInfo, pageControl, content }) => {
             style={{ backgroundImage: `url(${content?.images.landing})` }}
           ></div>
           <div className="work__landing__overlay"></div>
-          <motion.h1
+          <motion.div
+            className="work__landing__title-box"
             initial={{ color: "#000", opacity: 0 }}
             animate={{ color: "#fff", opacity: 1 }}
             exit={{ color: "#000", opacity: 0 }}
@@ -63,8 +79,8 @@ const Landing = ({ slideInfo, pageControl, content }) => {
           >
             {/* <useRandomTextAnimation text={content?.name} />
              */}
-            {title}
-          </motion.h1>
+            {renderTitle()}
+          </motion.div>
         </div>
       </div>
     );
