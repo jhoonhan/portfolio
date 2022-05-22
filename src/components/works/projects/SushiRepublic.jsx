@@ -16,7 +16,7 @@ import WorkContent from "../WorkContent";
 
 const SushiRepublic = ({ refEl, pageControl, props }) => {
   const data = {
-    name: ["sushi", "republic"],
+    name: ["sushi", " republic"],
     description: "A responsive website for a local fine Japanese restaurant.",
     role: "developer, designer, photographer",
     technology: "HTML5, CSS3, SASS, JQUERY",

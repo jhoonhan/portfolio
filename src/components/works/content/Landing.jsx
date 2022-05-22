@@ -4,10 +4,11 @@ import { isMobile } from "react-device-detect";
 import useListenSwipe from "../../helpers/useListenSwipe";
 import useVerticalNavigation from "./useVerticalNavigation";
 import { transition } from "../../helpers/config";
-import RandomTextAnimation from "../../helpers/RandomTextAnimation";
+import useRandomTextAnimation from "../../helpers/useRandomTextAnimation";
 
 const Landing = ({ slideInfo, pageControl, content }) => {
   const { setWorkSubPage } = pageControl;
+  const title = useRandomTextAnimation(content?.name);
 
   useVerticalNavigation(pageControl);
 
@@ -60,10 +61,9 @@ const Landing = ({ slideInfo, pageControl, content }) => {
                 : { duration: transition.default, delay: 0.5 }
             }
           >
-            {/* {content?.name} */}
-            {/* {makeid(content?.name.length)} */}
-            {/* {result} */}
-            <RandomTextAnimation text={content?.name} />
+            {/* <useRandomTextAnimation text={content?.name} />
+             */}
+            {title}
           </motion.h1>
         </div>
       </div>
