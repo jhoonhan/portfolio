@@ -34,7 +34,9 @@ const Landing = ({ slideInfo, pageControl, content }) => {
   const renderTitle = () => {
     const text = title.split("").map((char, i) => {
       return (
-        <h1 key={i} style={hasFinished ? { minWidth: "none" } : {}}>
+        <h1 key={i} 
+        style={hasFinished ? { color: "white" } : {color: "#999"}}
+        >
           {char}
         </h1>
       );
@@ -63,19 +65,19 @@ const Landing = ({ slideInfo, pageControl, content }) => {
         <div className="work__landing">
           <div
             className="work__landing__img"
-            style={{ backgroundImage: `url(${content?.images.landing})` }}
-          ></div>
+            style={{ backgroundImage: `url(${content?.images.landing})`, filter: hasFinished && "blur(2rem)"}}
+          />
           <div className="work__landing__overlay"></div>
           <motion.div
             className="work__landing__title-box"
-            initial={{ color: "#000", opacity: 0 }}
-            animate={{ color: "#fff", opacity: 1 }}
-            exit={{ color: "#000", opacity: 0 }}
-            transition={
-              refHasRenderd.current
-                ? { duration: transition.default, delay: 0 }
-                : { duration: transition.default, delay: 0.5 }
-            }
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            // exit={{ filter: "blur(2rem)" }}
+            // transition={
+            //   refHasRenderd.current
+            //     ? { duration: transition.default, delay: 0 }
+            //     : { duration: transition.default, delay: 0.5 }
+            // }
           >
             {/* <useRandomTextAnimation text={content?.name} />
              */}
