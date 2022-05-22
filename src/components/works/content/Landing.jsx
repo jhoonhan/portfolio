@@ -26,46 +26,40 @@ const Landing = ({ slideInfo, pageControl, content }) => {
   /////////
 
   const refInterval = useRef(null);
+  const [result, setResult] = useState("0123456789abc");
 
   useEffect(() => {
-    const characters = "abcdefghijklmnopqrstuvwxyz";
-
-    refInterval.current = setInterval(makeid, 1000);
+    makeid();
   }, []);
 
-  const makeid = (length) => {
-    // const chars = content?.name.join("").split("");
-    // const res = chars.map((char) => {
-    //   let result = "";
-    const characters = "abcdefghijklmnopqrstuvwxyz";
+  const makeid = (unmount) => {
+    const chars = content?.name.join("").split("");
+    let res = result.split("");
 
-    const generate = () => {
-      return characters.charAt(Math.floor(Math.random() * characters.length));
-      // return "s";
-    };
-    const generated = characters.charAt(
-      Math.floor(Math.random() * characters.length)
-    );
-
-    // console.log(generate());
-
-    if (generated !== "s") {
-      console.log(`keep going // ${generated}`);
-    } else {
-      // console.log(`yay // ${generate()}`);
-      console.log(`clearing interval // ${generated}`);
-      clearInterval(refInterval.current);
-      return "s";
-    }
-
-    var result = "";
-    // var characters = "abcdefghijklmnopqrstuvwxyz";
-    // var charactersLength = characters.length;
-
-    // for (var i = 0; i < length; i++) {
-    //   result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    // }
-    return result;
+    chars.forEach((char, i) => {
+      let tmout = null;
+      clearInterval(tmout);
+      // const res = chars.map((char) => {
+      //   let result = "";
+      const characters = "abcdefghijklmnopqrstuvwxyz";
+      tmout = setInterval(() => {
+        const generated = characters.charAt(
+          Math.floor(Math.random() * characters.length)
+        );
+        if (generated !== char) {
+          // console.log(`keep going // ${generated}/${char}`);
+          res[i] = generated;
+          setResult(res.join(""));
+        } else {
+          // console.log(`clearing interval // ${generated}/${char}`);
+          clearInterval(tmout);
+          res[i] = char;
+          // console.log(res);
+          setResult(res.join(""));
+          // return char;
+        }
+      }, 100);
+    });
   };
 
   const randomChar = (str) => {
@@ -109,6 +103,7 @@ const Landing = ({ slideInfo, pageControl, content }) => {
           >
             {/* {content?.name} */}
             {/* {makeid(content?.name.length)} */}
+            {result}
           </motion.h1>
         </div>
       </div>
