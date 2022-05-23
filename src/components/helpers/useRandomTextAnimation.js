@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 
-const useRandomTextAnimation = (text) => {
+const useRandomTextAnimation = (text, delay) => {
   const textLength = text.join("").split("").length;
   const characters = "abcdefghijklmnopqrstuvwxyz";
 
@@ -18,14 +18,14 @@ const useRandomTextAnimation = (text) => {
   const [title, setTitle] = useState(initialRandomText);
   const [hasFinished, setHasFinished] = useState(false);
   const threshold = () => {
-    if (textLength >= 7) return 200;
-    if (textLength < 7) return 500;
+    if (textLength >= 7) return 100;
+    if (textLength < 7) return 400;
   };
 
   const refInterval = useRef(null);
 
   useEffect(() => {
-    makeid();
+    setTimeout(makeid, delay);
 
     return () => {
       clearInterval(refInterval.current);

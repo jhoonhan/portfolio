@@ -8,7 +8,7 @@ import useRandomTextAnimation from "../../helpers/useRandomTextAnimation";
 
 const Landing = ({ slideInfo, pageControl, content }) => {
   const { setWorkSubPage } = pageControl;
-  const { hasFinished, title } = useRandomTextAnimation(content?.name);
+  const { hasFinished, title } = useRandomTextAnimation(content?.name, 500);
 
   useVerticalNavigation(pageControl);
 
@@ -34,8 +34,9 @@ const Landing = ({ slideInfo, pageControl, content }) => {
   const renderTitle = () => {
     const text = title.split("").map((char, i) => {
       return (
-        <h1 key={i} 
-        style={hasFinished ? { color: "white" } : {color: "#999"}}
+        <h1
+          key={i}
+          style={hasFinished ? { color: "white" } : { color: "#999" }}
         >
           {char}
         </h1>
@@ -65,9 +66,12 @@ const Landing = ({ slideInfo, pageControl, content }) => {
         <div className="work__landing">
           <div
             className="work__landing__img"
-            style={{ backgroundImage: `url(${content?.images.landing})`, filter: hasFinished && "blur(2rem)"}}
+            style={{
+              backgroundImage: `url(${content?.images.landing})`,
+              filter: hasFinished && "blur(2rem)",
+            }}
           />
-          <div className="work__landing__overlay"></div>
+          <div className="work__landing__overlay" />
           <motion.div
             className="work__landing__title-box"
             initial={{ opacity: 0 }}
@@ -78,6 +82,7 @@ const Landing = ({ slideInfo, pageControl, content }) => {
             //     ? { duration: transition.default, delay: 0 }
             //     : { duration: transition.default, delay: 0.5 }
             // }
+            transition={{ delay: 0.5 }}
           >
             {/* <useRandomTextAnimation text={content?.name} />
              */}

@@ -150,6 +150,7 @@
     display: flex;
     min-height: calc(8rem);
     justify-content: center;
+    padding-top: 0;
     // padding-top: calc(100% - 4rem);
     // align-items: center;
     & span {
@@ -184,7 +185,7 @@
   .works__info-container {
     height: 100%;
     grid-template-rows: 1fr auto minmax(min-content, max-content);
-    row-gap: 1.5rem;
+    row-gap: 3rem;
     & .works__info__detail {
       margin-bottom: 0rem;
 
@@ -289,6 +290,13 @@
     justify-content: center;
     &:last-child {
       padding-bottom: 10vh;
+    }
+  }
+  .work__landing__title-box {
+    grid-auto-columns: minmax(4vw, auto);
+    & h1 {
+      aspect-ratio: auto;
+      height: auto;
     }
   }
   // About

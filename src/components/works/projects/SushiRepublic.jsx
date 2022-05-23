@@ -37,6 +37,10 @@ const SushiRepublic = ({ refEl, pageControl, props }) => {
     background:
       "linear-gradient(60deg, rgba(25,25,25, 0.7) 0%, rgba(25,35,35, 0.7) 33%, rgba(50, 50, 50, 0.7) 45%, rgba(150, 37, 37, 0.7) 100%  )",
   };
+  // const backgroundStyle = {
+  //   backgroundColor: "rgba(120, 20, 20, 1)",
+  // };
+
   return (
     <WorkContent
       refEl={refEl}
