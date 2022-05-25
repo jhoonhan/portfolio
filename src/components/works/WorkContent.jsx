@@ -43,14 +43,14 @@ const WorkContent = ({
       setSlideAnimationStyle({
         initial: { x: -window.innerWidth, opacity: 0 },
         animate: { x: 0, opacity: 1 },
-        exit: { x: window.innerWidth, opacity: 0, filter: "blur(2rem)" },
+        exit: { x: window.innerWidth, opacity: 0 },
         transition: { duration: transition.default },
       });
     if (slideInfo.slide > 0)
       setSlideAnimationStyle({
         initial: { x: window.innerWidth, opacity: 0 },
         animate: { x: 0, opacity: 1 },
-        exit: { x: -window.innerWidth, opacity: 0, filter: "blur(2rem)" },
+        exit: { x: -window.innerWidth, opacity: 0 },
         transition: { duration: transition.default },
       });
   }, [slideInfo.slide]);
@@ -60,7 +60,7 @@ const WorkContent = ({
       setSlideAnimationStyle({
         initial: { opacity: 0 },
         animate: { opacity: 1 },
-        exit: { opacity: 0, filter: "blur(2rem)" },
+        exit: { opacity: 0 },
         transition: { duration: transition.default },
       });
     }

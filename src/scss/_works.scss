@@ -247,7 +247,7 @@
 
   & .labels {
     position: relative;
-    font-size: $font-size--m;
+    font-size: $font-size--d;
     text-transform: uppercase;
     display: flex;
     margin-top: 1.5rem;
@@ -469,10 +469,12 @@
   height: 100%;
 
   background-position: center center;
-  background-size: cover;
+  background-size: 110% auto;
   background-repeat: no-repeat;
 
   filter: blur(0rem);
+
+  overflow: hidden;
 
   transition: filter 0.5s ease-in-out 0s;
 }
@@ -487,8 +489,6 @@
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
-
-  filter: blur(0rem);
 
   transition: filter 0.5s ease-in-out 0s;
 }
@@ -507,7 +507,7 @@
   --aang: 100px;
 }
 .work__landing__title-box {
-  width: 90%;
+  max-width: 90%;
   display: grid;
   grid-auto-columns: 1fr;
   // grid-auto-columns: 1fr;

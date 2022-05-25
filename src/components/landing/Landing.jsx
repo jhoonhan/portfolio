@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { motion } from "framer-motion";
 import LandingArt from "./LandingArt";
 import name2 from "../../assests/image/name2.svg";
 import MiddleLine from "../helpers/MiddleLine";
@@ -35,14 +36,19 @@ const Landing = ({ pageControl, refHome, props }) => {
   };
   const render = () => {
     return (
-      <>
-        {/* <LandingArt curPage={pageControl.curPage} /> */}
-        <section ref={refHome} className="landing__container container">
+      <motion.section
+        className="landing__container"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      >
+        <LandingArt curPage={pageControl.curPage} />
+        <div ref={refHome} className="landing__info container">
           {renderCenterInfo()}
 
           {renderFooter()}
-        </section>
-      </>
+        </div>
+      </motion.section>
     );
   };
 

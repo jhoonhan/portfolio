@@ -63,6 +63,7 @@ const About = ({ pageControl, props, refs }) => {
     document.documentElement.setAttribute("data-theme", "light");
     return () => {
       document.documentElement.setAttribute("data-theme", "dark");
+      pageControl.setShowCursor(false);
     };
   }, []);
 

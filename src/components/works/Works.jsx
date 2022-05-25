@@ -29,8 +29,8 @@ const Works = ({ refs, pageControl, props }) => {
         <section
           ref={refs.refWorks}
           className="works__container container"
-          // onMouseEnter={() => pageControl.setShowCursor(true)}
-          // onMouseLeave={() => pageControl.setShowCursor(false)}
+          onMouseEnter={() => pageControl.setShowCursor(true)}
+          onMouseLeave={() => pageControl.setShowCursor(false)}
         >
           <Route
             path="/works/sushi-republic"
