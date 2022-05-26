@@ -397,6 +397,14 @@
       width: calc(100% - 2.4vh);
       height: auto;
     }
+
+    & video {
+      position: absolute;
+      top: 1.2vh;
+      left: 1.2vh;
+      width: calc(100% - 2.4vh);
+      height: auto;
+    }
   }
 }
 

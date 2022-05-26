@@ -131,6 +131,9 @@ const Overview = ({
   };
 
   const renderOverviewVisual = () => {
+    console.log(noOverview);
+    console.log(video);
+
     if (noOverview && !video) {
       return (
         <DesktopSVG

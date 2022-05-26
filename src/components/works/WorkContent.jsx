@@ -19,6 +19,7 @@ const WorkContent = ({
   backgroundStyle,
   noOverview,
   props,
+  video,
 }) => {
   const refHasRendered = useRef(false);
 
@@ -119,7 +120,7 @@ const WorkContent = ({
                   pageControl={pageControl}
                   content={content}
                   noOverview={noOverview}
-                  video={true}
+                  video={video}
                 />
               </motion.div>
             )}

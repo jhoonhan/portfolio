@@ -16,10 +16,9 @@ const DesktopSVG = ({ img, video, type, customClass }) => {
       return <img src={img} alt="overview" />;
     }
     if (type === "video") {
-      return <video src={video} />;
+      return <video src={video} autoPlay={true} muted />;
     }
   };
-
   return (
     <div className={`slide-img--desktop ${customClass}`}>
       <svg
