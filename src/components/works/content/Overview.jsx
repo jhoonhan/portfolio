@@ -12,7 +12,7 @@ const Overview = ({
   content,
   noOverview,
   props,
-  video,
+  isVideo,
 }) => {
   const { onTouchStart, onTouchMove, onTouchEnd, sticky } = useListenSwipe();
 
@@ -131,29 +131,26 @@ const Overview = ({
   };
 
   const renderOverviewVisual = () => {
-    console.log(noOverview);
-    console.log(video);
-
-    if (noOverview && !video) {
+    if (noOverview && !isVideo) {
       return (
         <DesktopSVG
           img={content.images.overviewImages[0]}
           customClass="overview"
-          type={video ? "video" : "image"}
+          isVideo={false}
         />
       );
     }
 
-    if (!noOverview && !video) {
+    if (!noOverview && !isVideo) {
       return <WorkPictureContainer images={content?.images} />;
     }
 
-    if (!noOverview && video) {
+    if (!noOverview && isVideo) {
       return (
         <DesktopSVG
-          video={content.videos[0]}
+          video={content.videos.landing}
           customClass="overview"
-          type={video ? "video" : "image"}
+          isVideo={true}
         />
       );
     }

@@ -32,7 +32,7 @@ const SalvationArmy = ({ refEl, pageControl, props }) => {
         photo: [],
       },
     },
-    videos: [video0, video1, video2, video3],
+    videos: { landing: video0, slideVideos: [video1, video2, video3] },
   };
   const backgroundStyle = {
     background:
@@ -46,7 +46,7 @@ const SalvationArmy = ({ refEl, pageControl, props }) => {
       backgroundStyle={backgroundStyle}
       props={props}
       noOverview={false}
-      video={true}
+      isVideo={true}
     />
   );
 };

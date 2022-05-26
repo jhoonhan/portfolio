@@ -7,7 +7,14 @@ import useGalleryHoriScroll from "../useGalleryHoriScroll";
 import DesktopSVG from "../../../assests/image/projects/DesktopSVG";
 import MobileSVG from "../../../assests/image/projects/MobileSVG";
 
-const Gallery = ({ slideInfo, pageControl, images, props }) => {
+const Gallery = ({
+  slideInfo,
+  pageControl,
+  images,
+  videos,
+  isVideo,
+  props,
+}) => {
   const { onTouchStart, onTouchMove, onTouchEnd, sticky } = useListenSwipe();
 
   useEffect(() => {
@@ -19,32 +26,54 @@ const Gallery = ({ slideInfo, pageControl, images, props }) => {
 
   useEffect(() => {
     pageControl.setWorkSubPage("gallery");
+    console.log(videos);
   }, []);
 
   const refCont = useRef(null);
   const refSlides = useGalleryHoriScroll(pageControl);
 
-  const renderComponentSlidesDesktop = images?.slideImages.desktop.map(
-    (img, i) => (
-      <React.Fragment key={i}>
-        <Slide
-          type="component"
-          data={<DesktopSVG img={images?.slideImages.desktop[i]} />}
-        />
-      </React.Fragment>
-    )
-  );
+  const renderSlidesDesktop = images?.slideImages.desktop.map((img, i) => (
+    <React.Fragment key={i}>
+      <Slide
+        type="component"
+        data={
+          <DesktopSVG isVideo={isVideo} img={images?.slideImages.desktop[i]} />
+        }
+      />
+    </React.Fragment>
+  ));
 
-  const renderComponentSlidesMobile = images?.slideImages.mobile.map(
-    (img, i) => (
-      <React.Fragment key={i}>
-        <Slide
-          type="component"
-          data={<MobileSVG img={images?.slideImages.mobile[i]} />}
-        />
-      </React.Fragment>
-    )
-  );
+  const renderSlidesMobile = images?.slideImages.mobile.map((img, i) => (
+    <React.Fragment key={i}>
+      <Slide
+        type="component"
+        data={<MobileSVG img={images?.slideImages.mobile[i]} />}
+      />
+    </React.Fragment>
+  ));
+
+  const renderSlidesDesktopVideo = videos?.slideVideos.map((video, i) => (
+    <React.Fragment key={i}>
+      <Slide
+        type="component"
+        data={<DesktopSVG isVideo={isVideo} video={video} />}
+      />
+    </React.Fragment>
+  ));
+
+  const renderSlides = () => {
+    if (isVideo) {
+      return renderSlidesDesktopVideo;
+    }
+    if (!isVideo) {
+      return (
+        <>
+          {renderSlidesDesktop}
+          {renderSlidesMobile}
+        </>
+      );
+    }
+  };
 
   const render = () => {
     return (
@@ -68,8 +97,7 @@ const Gallery = ({ slideInfo, pageControl, images, props }) => {
           // style={{ paddingLeft: "calc((100vw - 127.5vh)/2)" }}
         >
           <div className="detail__img-container">
-            {renderComponentSlidesDesktop}
-            {renderComponentSlidesMobile}
+            {renderSlides()}
 
             {/* <Slide type="image" img={images?.slideImages[5]} />
             <Slide type="image" img={images?.slideImages[6]} /> */}

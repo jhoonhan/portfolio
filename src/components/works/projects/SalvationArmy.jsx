@@ -40,7 +40,7 @@ const SalvationArmy = ({ refEl, pageControl, props }) => {
       backgroundStyle={backgroundStyle}
       props={props}
       noOverview={true}
-      video={false}
+      isVideo={false}
     />
   );
 };

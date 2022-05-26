@@ -19,7 +19,7 @@ const WorkContent = ({
   backgroundStyle,
   noOverview,
   props,
-  video,
+  isVideo,
 }) => {
   const refHasRendered = useRef(false);
 
@@ -120,7 +120,7 @@ const WorkContent = ({
                   pageControl={pageControl}
                   content={content}
                   noOverview={noOverview}
-                  video={video}
+                  isVideo={isVideo}
                 />
               </motion.div>
             )}
@@ -140,10 +140,12 @@ const WorkContent = ({
                 className="container"
               >
                 <Gallery
+                  props={props}
                   slideInfo={slideInfo}
                   pageControl={pageControl}
                   images={content?.images}
-                  props={props}
+                  videos={content?.videos}
+                  isVideo={isVideo}
                 />
               </motion.div>
             )}

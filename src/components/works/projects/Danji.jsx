@@ -47,7 +47,7 @@ const Danji = ({ refEl, pageControl, props }) => {
       backgroundStyle={backgroundStyle}
       props={props}
       noOverview={false}
-      video={false}
+      isVideo={false}
     />
   );
 };
