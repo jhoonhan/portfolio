@@ -8,6 +8,7 @@ import Cursor from "../Cursor";
 import SushiRepublic from "./projects/SushiRepublic";
 import Danji from "./projects/Danji";
 import SalvationArmy from "./projects/SalvationArmy";
+import ThisIsBullshit from "./projects/ThisIsBullshit";
 
 const Works = ({ refs, pageControl, props }) => {
   const { setCurPage } = pageControl;
@@ -23,7 +24,6 @@ const Works = ({ refs, pageControl, props }) => {
   }, [setCurPage, pageControl, props.match.path]);
 
   const render = () => {
-    // console.log(`works rendered`);
     return (
       <>
         <section
@@ -75,7 +75,7 @@ const Works = ({ refs, pageControl, props }) => {
           <Route
             path="/works/this-is-bullshit"
             render={(props) => (
-              <WorkContent
+              <ThisIsBullshit
                 refEl={refEl5}
                 pageControl={pageControl}
                 props={props}
