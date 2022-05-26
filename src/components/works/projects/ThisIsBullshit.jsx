@@ -1,8 +1,13 @@
-import landing from "../../../assests/image/projects/salvationArmy/landing.jpg";
+import landing from "../../../assests/image/projects/thisIsBullshit/landing.jpg";
 
-import slideImg0 from "../../../assests/image/projects/salvationArmy/desktop0.jpg";
-import slideImg1 from "../../../assests/image/projects/salvationArmy/desktop1.jpg";
-import slideImg2 from "../../../assests/image/projects/salvationArmy/desktop2.jpg";
+import slideImg0 from "../../../assests/image/projects/thisIsBullshit/desktop0.jpg";
+import slideImg1 from "../../../assests/image/projects/thisIsBullshit/desktop1.jpg";
+import slideImg2 from "../../../assests/image/projects/thisIsBullshit/desktop2.jpg";
+
+import video0 from "../../../assests/image/projects/thisIsBullshit/video0.mp4";
+import video1 from "../../../assests/image/projects/thisIsBullshit/video1.mp4";
+import video2 from "../../../assests/image/projects/thisIsBullshit/video2.mp4";
+import video3 from "../../../assests/image/projects/thisIsBullshit/video3.mp4";
 
 import React from "react";
 import { motion } from "framer-motion";
@@ -27,6 +32,7 @@ const SalvationArmy = ({ refEl, pageControl, props }) => {
         photo: [],
       },
     },
+    videos: [video0, video1, video2, video3],
   };
   const backgroundStyle = {
     background:
@@ -39,7 +45,8 @@ const SalvationArmy = ({ refEl, pageControl, props }) => {
       content={data}
       backgroundStyle={backgroundStyle}
       props={props}
-      noOverview={true}
+      noOverview={false}
+      video={true}
     />
   );
 };

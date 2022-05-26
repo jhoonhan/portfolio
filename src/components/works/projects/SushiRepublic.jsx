@@ -48,6 +48,8 @@ const SushiRepublic = ({ refEl, pageControl, props }) => {
       content={data}
       backgroundStyle={backgroundStyle}
       props={props}
+      noOverview={false}
+      video={false}
     />
   );
 };

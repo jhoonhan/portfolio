@@ -6,7 +6,14 @@ import useListenSwipe from "../../helpers/useListenSwipe";
 import DesktopSVG from "../../../assests/image/projects/DesktopSVG";
 import WorkPictureContainer from "../WorkPictureContainer";
 
-const Overview = ({ slideInfo, pageControl, content, noOverview, props }) => {
+const Overview = ({
+  slideInfo,
+  pageControl,
+  content,
+  noOverview,
+  props,
+  video,
+}) => {
   const { onTouchStart, onTouchMove, onTouchEnd, sticky } = useListenSwipe();
 
   const refIntersect = useRef(null);
@@ -73,12 +80,14 @@ const Overview = ({ slideInfo, pageControl, content, noOverview, props }) => {
           <span>{content?.name[0]}</span>
           <span>{content?.name[1]}</span>
         </motion.div>
+
         <motion.div
           className="works__subtitle"
           variants={isMobile ? animateMobile.item : animateBrowser.item}
         >
           <h2>{content?.description}</h2>
         </motion.div>
+
         <div className="works__info__detail">
           <motion.div
             className="grid--row--2 detail-item"
@@ -121,6 +130,32 @@ const Overview = ({ slideInfo, pageControl, content, noOverview, props }) => {
     );
   };
 
+  const renderOverviewVisual = () => {
+    if (noOverview && !video) {
+      return (
+        <DesktopSVG
+          img={content.images.overviewImages[0]}
+          customClass="overview"
+          type={video ? "video" : "image"}
+        />
+      );
+    }
+
+    if (!noOverview && !video) {
+      return <WorkPictureContainer images={content?.images} />;
+    }
+
+    if (!noOverview && video) {
+      return (
+        <DesktopSVG
+          video={content.videos[0]}
+          customClass="overview"
+          type={video ? "video" : "image"}
+        />
+      );
+    }
+  };
+
   return (
     <div
       ref={refIntersect}
@@ -136,14 +171,7 @@ const Overview = ({ slideInfo, pageControl, content, noOverview, props }) => {
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
     >
-      {noOverview ? (
-        <DesktopSVG
-          img={content.images.overviewImages[0]}
-          customClass="overview"
-        />
-      ) : (
-        <WorkPictureContainer images={content?.images} />
-      )}
+      {renderOverviewVisual()}
 
       {renderInfo()}
     </div>

@@ -114,11 +114,12 @@ const WorkContent = ({
                 className="container"
               >
                 <Overview
+                  props={props}
                   slideInfo={slideInfo}
                   pageControl={pageControl}
                   content={content}
                   noOverview={noOverview}
-                  props={props}
+                  video={true}
                 />
               </motion.div>
             )}

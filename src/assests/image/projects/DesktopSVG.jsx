@@ -1,6 +1,6 @@
 import React from "react";
 
-const DesktopSVG = ({ img, customClass }) => {
+const DesktopSVG = ({ img, video, type, customClass }) => {
   const st0 = {
     fill: "#CCCCCC",
   };
@@ -10,6 +10,16 @@ const DesktopSVG = ({ img, customClass }) => {
   const st2 = {
     fill: "url(#SVGID_1_)",
   };
+
+  const renderVisual = () => {
+    if (type === "image") {
+      return <img src={img} alt="overview" />;
+    }
+    if (type === "video") {
+      return <video src={video} />;
+    }
+  };
+
   return (
     <div className={`slide-img--desktop ${customClass}`}>
       <svg
@@ -66,9 +76,7 @@ const DesktopSVG = ({ img, customClass }) => {
           />
         </g>
       </svg>
-      <div className="masking">
-        <img src={img} alt="aaang" />
-      </div>
+      <div className="masking">{renderVisual()}</div>
     </div>
   );
 };
