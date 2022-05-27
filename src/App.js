@@ -12,6 +12,7 @@ import useListenSwipe from "./components/helpers/useListenSwipe";
 import "./scss/App.scss";
 import Contact from "./components/contact/Contact";
 import Cursor from "./components/Cursor";
+import usePrevious from "./components/helpers/usePrevious";
 
 let windowInnerWidth = 0;
 
@@ -41,8 +42,14 @@ const App = () => {
   });
 
   const [curPage, setCurPage] = useState(null);
+
   const [workPage, setWorkPage] = useState(null);
+  const [workPageChanged, setWorkPageChanged] = useState(false);
+  const prevWorkPage = usePrevious(workPage);
+
   const [workSubPage, setWorkSubPage] = useState("landing");
+  const prevWorkSubPage = usePrevious(workSubPage);
+
   const [activeSubPageStylePosition, setActiveSubPageStylePosition] = useState({
     transform: "translateY(0vh)",
   });
@@ -69,6 +76,19 @@ const App = () => {
       bottom: false,
     });
   }, [curPage, workPage, workSubPage]);
+
+  // useEffect(() => {
+  //   setWorkPageChanged(true);
+  // }, [workPage]);
+
+  useEffect(() => {
+    console.log(workPageChanged);
+  }, [workPageChanged]);
+
+  useEffect(() => {
+    if (workSubPage !== prevWorkSubPage) setWorkPageChanged(false);
+    if (workPage !== prevWorkPage) setWorkPageChanged(true);
+  }, [workPage, prevWorkPage, workSubPage, prevWorkSubPage]);
 
   const refMain = useRef(null);
   const refHome = useRef(null);
@@ -103,6 +123,7 @@ const App = () => {
     setCurPage,
     workPage,
     setWorkPage,
+    workPageChanged,
     workSubPage,
     setWorkSubPage,
     mobileShowNav,
@@ -123,6 +144,7 @@ const App = () => {
 
   const render = () => {
     // console.log(`app rendered`);
+    console.log(location.pathname.split("/")[2]);
     return (
       <div
         className="app"
@@ -137,9 +159,8 @@ const App = () => {
             style={curPage === "home" ? { opacity: 0 } : {}}
             className="overlay"
           ></div>
-          {/* <Switch> */}
           <AnimatePresence exitBeforeEnter>
-            <Switch location={location} key={location.pathname}>
+            <Switch location={location} key={location.pathname.split("/")[2]}>
               <Route
                 path="/"
                 exact

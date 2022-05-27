@@ -1,7 +1,7 @@
-import React, { useRef, useEffect } from "react";
-import { Route } from "react-router-dom";
+import React, { useRef, useEffect, useState } from "react";
+import { Route, Switch, useLocation } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
 
-import WorkContent from "./WorkContent";
 import WorkNav from "./WorkNav";
 import Cursor from "../Cursor";
 
@@ -11,7 +11,8 @@ import SalvationArmy from "./projects/SalvationArmy";
 import HaansCleaner from "./projects/HaansCleaner";
 import ThisIsBullshit from "./projects/ThisIsBullshit";
 
-const Works = ({ refs, pageControl, props }) => {
+const Works = ({ refs, pageControl, props, match }) => {
+  const location = useLocation();
   const { setCurPage } = pageControl;
 
   const refEl1 = useRef(null);
@@ -22,7 +23,7 @@ const Works = ({ refs, pageControl, props }) => {
 
   useEffect(() => {
     setCurPage(props.match.path.slice(1));
-  }, [setCurPage, pageControl, props.match.path]);
+  }, []);
 
   const render = () => {
     return (
@@ -33,57 +34,75 @@ const Works = ({ refs, pageControl, props }) => {
           // onMouseEnter={() => pageControl.setShowCursor(true)}
           // onMouseLeave={() => pageControl.setShowCursor(false)}
         >
-          <Route
-            path="/works/sushi-republic"
-            render={(props) => (
-              <SushiRepublic
-                refEl={refEl1}
-                pageControl={pageControl}
-                props={props}
+          <motion.div
+            className="work__transition-overlay"
+            style={{
+              backgroundColor: "#666",
+              // display: refHasRenderd && "none",
+            }}
+            initial={{ y: "0vh" }}
+            animate={{ y: "-100vh" }}
+            exit={{ y: "0vh" }}
+            transition={{ duration: 0.7 }}
+          />
+          <AnimatePresence exitBeforeEnter>
+            <Switch location={location} key={location.pathname.split("/")[3]}>
+              <Route
+                path={`${props.match.path}/sushi-republic`}
+                render={(props) => (
+                  <SushiRepublic
+                    refEl={refEl1}
+                    pageControl={pageControl}
+                    props={props}
+                  />
+                )}
               />
-            )}
-          />
 
-          <Route
-            path="/works/danji"
-            render={(props) => (
-              <Danji refEl={refEl2} pageControl={pageControl} props={props} />
-            )}
-          />
-
-          <Route
-            path="/works/salvation-army"
-            render={(props) => (
-              <SalvationArmy
-                refEl={refEl3}
-                pageControl={pageControl}
-                props={props}
+              <Route
+                path={`${props.match.path}/danji`}
+                render={(props) => (
+                  <Danji
+                    refEl={refEl2}
+                    pageControl={pageControl}
+                    props={props}
+                  />
+                )}
               />
-            )}
-          />
 
-          <Route
-            path="/works/haans-cleaner"
-            render={(props) => (
-              <HaansCleaner
-                refEl={refEl4}
-                pageControl={pageControl}
-                props={props}
+              <Route
+                path={`${props.match.path}/salvation-army`}
+                render={(props) => (
+                  <SalvationArmy
+                    refEl={refEl3}
+                    pageControl={pageControl}
+                    props={props}
+                  />
+                )}
               />
-            )}
-          />
 
-          <Route
-            path="/works/this-is-bullshit"
-            render={(props) => (
-              <ThisIsBullshit
-                refEl={refEl5}
-                pageControl={pageControl}
-                props={props}
+              <Route
+                path={`${props.match.path}/haans-cleaner`}
+                render={(props) => (
+                  <HaansCleaner
+                    refEl={refEl4}
+                    pageControl={pageControl}
+                    props={props}
+                  />
+                )}
               />
-            )}
-          />
-          {/* </AnimatePresence> */}
+
+              <Route
+                path={`${props.match.path}/this-is-bullshit`}
+                render={(props) => (
+                  <ThisIsBullshit
+                    refEl={refEl5}
+                    pageControl={pageControl}
+                    props={props}
+                  />
+                )}
+              />
+            </Switch>
+          </AnimatePresence>
         </section>
         <WorkNav pageControl={pageControl} />
       </>

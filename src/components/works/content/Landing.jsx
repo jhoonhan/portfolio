@@ -9,7 +9,6 @@ import useRandomTextAnimation from "../../helpers/useRandomTextAnimation";
 const Landing = ({ slideInfo, pageControl, content }) => {
   const { setWorkSubPage } = pageControl;
   const { hasFinished, title } = useRandomTextAnimation(content?.name, 500);
-  const hasRendered = useRef(false);
 
   const fontSize = () => {
     let height;
@@ -24,19 +23,8 @@ const Landing = ({ slideInfo, pageControl, content }) => {
   useVerticalNavigation(pageControl);
 
   useEffect(() => {
-    hasRendered.current = true;
-  }, []);
-
-  useEffect(() => {
     setWorkSubPage("landing");
   }, [setWorkSubPage]);
-
-  const refHasRenderd = useRef(false);
-
-  useEffect(() => {
-    console.log(refHasRenderd.current);
-    refHasRenderd.current = true;
-  }, [refHasRenderd]);
 
   //////
   const { onTouchStart, onTouchMove, onTouchEnd, sticky } = useListenSwipe();
@@ -71,14 +59,6 @@ const Landing = ({ slideInfo, pageControl, content }) => {
     // console.log(`landing rendered`);
     return (
       <>
-        <motion.div
-          className="work__transition-overlay"
-          style={{ backgroundColor: "#666" }}
-          initial={!refHasRenderd.current ? { y: "0vh" } : {}}
-          animate={refHasRenderd.current ? { y: "-100vh" } : {}}
-          exit={!refHasRenderd.current ? { y: "0vh" } : {}}
-          transition={{ duration: 0.7 }}
-        />
         <div
           className="work__content"
           style={
