@@ -4,6 +4,7 @@ import { isMobile } from "react-device-detect";
 import useListenSwipe from "../../helpers/useListenSwipe";
 
 import DesktopSVG from "../../../assests/image/projects/DesktopSVG";
+import MobileSVG from "../../../assests/image/projects/MobileSVG";
 import WorkPictureContainer from "../WorkPictureContainer";
 
 const Overview = ({
@@ -125,25 +126,25 @@ const Overview = ({
   };
 
   const renderOverviewVisual = () => {
-    if (overviewVisual.type === "image" && !isVideo) {
+    console.log(overviewVisual);
+    if (overviewVisual?.orientation === "trifold") {
+      return <WorkPictureContainer images={overviewVisual?.data} />;
+    }
+
+    if (overviewVisual?.orientation === "desktop") {
       return (
         <DesktopSVG
-          img={overviewVisual.data[0]}
+          data={overviewVisual.data[0]}
+          overviewVisual={overviewVisual}
           customClass="overview"
-          isVideo={false}
         />
       );
     }
-
-    if (!noOverview && !isVideo) {
-      return <WorkPictureContainer images={content?.overviewVisual.data} />;
-    }
-
-    if (!noOverview && isVideo) {
+    if (overviewVisual?.orientation === "mobile") {
       return (
-        <DesktopSVG
-          data={content?.overviewVisual.data[0]}
-          overviewVisual={content?.overviewVisual}
+        <MobileSVG
+          data={overviewVisual.data[0]}
+          overviewVisual={overviewVisual}
           customClass="overview"
         />
       );

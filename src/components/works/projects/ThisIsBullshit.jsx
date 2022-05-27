@@ -37,10 +37,10 @@ const ThisIsBullshit = ({ refEl, pageControl, props }) => {
       },
     },
     videos: {
-      desktop: { landing: video0, slideVideos: [video4, video1] },
-      mobile: {
-        landing: null,
-        slideVideos: [],
+      landing: null,
+      slideVideos: {
+        desktop: [video4, video1],
+        mobile: [],
       },
     },
     theme: "light",

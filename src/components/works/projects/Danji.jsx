@@ -30,7 +30,7 @@ const Danji = ({ refEl, pageControl, props }) => {
       data: [landing, overviewImg0, overviewImg1],
     },
     images: {
-      landing,
+      landing: landing,
       slideImages: {
         desktop: [slideImg0, slideImg1],
         mobile: [slideImg2, slideImg3, slideImg4],
@@ -38,10 +38,10 @@ const Danji = ({ refEl, pageControl, props }) => {
       },
     },
     videos: {
-      desktop: { landing: null, slideVideos: [] },
-      mobile: {
-        landing: null,
-        slideVideos: [],
+      landing: null,
+      slideVideos: {
+        desktop: [],
+        mobile: [],
       },
     },
   };

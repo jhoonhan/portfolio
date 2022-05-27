@@ -424,6 +424,8 @@
     position: absolute;
     // bottom: 0;
     height: 50vh;
+    aspect-ratio: 1 / 2;
+
     // margin-bottom: 9vh;
     box-sizing: border-box;
     z-index: 1;
@@ -445,18 +447,40 @@
     overflow: hidden;
 
     overflow: hidden;
-    & img {
+    & img,
+    video {
       position: absolute;
       // width: auto;
       left: 0.8vh;
       top: 0.8vh;
       width: auto;
-      aspect-ratio: 231 / 500;
+      aspect-ratio: 12 / 25;
 
       max-height: 48.5vh;
 
       margin-bottom: 0;
     }
+  }
+}
+.slide-img--mobile.overview {
+  margin-bottom: 0;
+  justify-self: center;
+  & .masking {
+    height: 80vh;
+    background-color: red;
+    & img,
+    video {
+      // display: none;
+      width: auto;
+      left: 1vh;
+      top: 0vh;
+      max-height: 79vh;
+      border: 1px solid red;
+      box-sizing: border-box;
+    }
+  }
+  & svg {
+    height: 80vh;
   }
 }
 

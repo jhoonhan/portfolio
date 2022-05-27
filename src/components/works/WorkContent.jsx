@@ -140,12 +140,9 @@ const WorkContent = ({
                 className="container"
               >
                 <Gallery
-                  props={props}
                   slideInfo={slideInfo}
                   pageControl={pageControl}
-                  images={content?.images}
-                  videos={content?.videos}
-                  isVideo={isVideo}
+                  content={content}
                 />
               </motion.div>
             )}

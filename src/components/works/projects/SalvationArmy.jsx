@@ -32,10 +32,10 @@ const SalvationArmy = ({ refEl, pageControl, props }) => {
       },
     },
     videos: {
-      desktop: { landing: null, slideVideos: [] },
-      mobile: {
-        landing: null,
-        slideVideos: [],
+      landing: null,
+      slideVideos: {
+        desktop: [],
+        mobile: [],
       },
     },
     theme: "dark",

@@ -33,10 +33,10 @@ const HaansCleaner = ({ refEl, pageControl, props }) => {
       },
     },
     videos: {
-      desktop: { landing: null, slideVideos: [] },
-      mobile: {
-        landing: video0,
-        slideVideos: [video1, video2, video3, video4],
+      landing: null,
+      slideVideos: {
+        desktop: [],
+        mobile: [video1, video2, video3, video4],
       },
     },
     theme: "light",

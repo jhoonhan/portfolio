@@ -12,10 +12,10 @@ const DesktopSVG = ({ data, overviewVisual, customClass }) => {
   };
 
   const renderVisual = () => {
-    if (overviewVisual.type === "image") {
+    if (overviewVisual?.type === "image") {
       return <img src={data} alt="overview" />;
     }
-    if (overviewVisual.type === "video") {
+    if (overviewVisual?.type === "video") {
       return <video src={data} autoPlay={true} muted loop />;
     }
   };

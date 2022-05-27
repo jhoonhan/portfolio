@@ -7,15 +7,9 @@ import useGalleryHoriScroll from "../useGalleryHoriScroll";
 import DesktopSVG from "../../../assests/image/projects/DesktopSVG";
 import MobileSVG from "../../../assests/image/projects/MobileSVG";
 
-const Gallery = ({
-  slideInfo,
-  pageControl,
-  images,
-  videos,
-  isVideo,
-  props,
-}) => {
+const Gallery = ({ slideInfo, pageControl, content }) => {
   const { onTouchStart, onTouchMove, onTouchEnd, sticky } = useListenSwipe();
+  const { images, videos, overviewVisual } = content;
 
   useEffect(() => {
     pageControl.setWorkSubPage("gallery");
@@ -29,7 +23,10 @@ const Gallery = ({
       <Slide
         type="component"
         data={
-          <DesktopSVG isVideo={isVideo} img={images?.slideImages.desktop[i]} />
+          <DesktopSVG
+            overviewVisual={overviewVisual}
+            data={images?.slideImages.desktop[i]}
+          />
         }
       />
     </React.Fragment>
@@ -39,33 +36,34 @@ const Gallery = ({
     <React.Fragment key={i}>
       <Slide
         type="component"
-        data={<MobileSVG img={images?.slideImages.mobile[i]} />}
+        data={
+          <MobileSVG
+            data={images?.slideImages.mobile[i]}
+            overviewVisual={overviewVisual}
+          />
+        }
       />
     </React.Fragment>
   ));
 
-  const renderSlidesDesktopVideo = videos?.slideVideos.map((video, i) => (
+  const renderSlidesDesktopVideo = videos?.slideVideos.desktop.map(
+    (video, i) => (
+      <React.Fragment key={i}>
+        <Slide
+          type="component"
+          data={<DesktopSVG overviewVisual={overviewVisual} data={video} />}
+        />
+      </React.Fragment>
+    )
+  );
+  const renderSlidesMobileVideo = videos?.slideVideos.mobile.map((video, i) => (
     <React.Fragment key={i}>
       <Slide
         type="component"
-        data={<DesktopSVG isVideo={isVideo} video={video} />}
+        data={<MobileSVG overviewVisual={overviewVisual} data={video} />}
       />
     </React.Fragment>
   ));
-
-  const renderSlides = () => {
-    if (isVideo) {
-      return renderSlidesDesktopVideo;
-    }
-    if (!isVideo) {
-      return (
-        <>
-          {renderSlidesDesktop}
-          {renderSlidesMobile}
-        </>
-      );
-    }
-  };
 
   const render = () => {
     return (
@@ -91,6 +89,7 @@ const Gallery = ({
           <div className="detail__img-container">
             {/* {renderSlides()} */}
             {renderSlidesDesktopVideo}
+            {renderSlidesMobileVideo}
             {renderSlidesDesktop}
             {renderSlidesMobile}
             {/* <Slide type="image" img={images?.slideImages[5]} />
