@@ -13,10 +13,10 @@ const SalvationArmy = ({ refEl, pageControl, props }) => {
     name: ["salvation", " army"],
     description:
       "A fast and easy bookeeping web application for a charitable organization.",
-    role: "Developer, Designer",
-    technology: "ReactJS, JavaScript, NodeJS, Express, MongoDB, HTML, CSS",
-    liveDemoURL: "https://google.com",
-    githubURL: "https://github.com/",
+    role: "Full-stack Developer, Web Designer",
+    technology: "React, JavaScript, NodeJS, Express, MongoDB, HTML5, CSS3",
+    liveDemoURL: "https://salvationarmy-kernersville.netlify.app/",
+    githubURL: "https://github.com/jhoonhan/salvationarmy-accounting",
     path: "salvation-army",
     overviewVisual: {
       type: "image",

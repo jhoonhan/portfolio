@@ -21,12 +21,6 @@ const WorkContent = ({
   props,
   isVideo,
 }) => {
-  const refHasRendered = useRef(false);
-
-  useEffect(() => {
-    refHasRendered.current = true;
-  }, [refHasRendered]);
-
   useEffect(() => {
     pageControl.setWorkPage(props.match.path.split("/")[2]);
   }, [props.match.path]);

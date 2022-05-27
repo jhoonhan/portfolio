@@ -88,10 +88,11 @@ const App = () => {
     curPage: ["home", "works", "about", "contact"],
     workPage: [
       "sushi-republic",
-      "danji",
-      "salvation-army",
-      "haans-cleaner",
       "this-is-bullshit",
+      "haans-cleaner",
+      "salvation-army",
+      "danji",
+      // "korean-life",
     ],
     workSubPage: ["landing", "overview", "gallery"],
   };

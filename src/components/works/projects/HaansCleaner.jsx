@@ -12,10 +12,9 @@ import WorkContent from "../WorkContent";
 const HaansCleaner = ({ refEl, pageControl, props }) => {
   const data = {
     name: ["Haans", " Cleaner"],
-    description:
-      "A fast and easy bookeeping web application for a charitable organization.",
-    role: "Developer, Designer",
-    technology: "JavaScript, NodeJS, Express, MongoDB, HTML, CSS",
+    description: "A mobile web application for the new way of dry cleaning.",
+    role: "Full-stack Developer, UI/UX Designer",
+    technology: "React, Google Maps API, NodeJS, Express, MongoDB, HTML5, CSS3",
     liveDemoURL: "https://google.com",
     githubURL: "https://github.com/",
     path: "haans-cleaner",
@@ -37,7 +36,7 @@ const HaansCleaner = ({ refEl, pageControl, props }) => {
       landing: null,
       slideVideos: {
         desktop: [],
-        mobile: [video0, video1, video2, video3, video4],
+        mobile: [video0, video1, video2, video3],
       },
     },
     theme: "light",
@@ -50,8 +49,10 @@ const HaansCleaner = ({ refEl, pageControl, props }) => {
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", "light");
+    document.documentElement.setAttribute("data-subtheme", "light-blue");
     return () => {
       document.documentElement.setAttribute("data-theme", "dark");
+      document.documentElement.setAttribute("data-subtheme", "dark");
       // pageControl.setShowCursor(false);
     };
   }, []);

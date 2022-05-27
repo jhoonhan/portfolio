@@ -9,6 +9,8 @@ import useRandomTextAnimation from "../../helpers/useRandomTextAnimation";
 const Landing = ({ slideInfo, pageControl, content }) => {
   const { setWorkSubPage } = pageControl;
   const { hasFinished, title } = useRandomTextAnimation(content?.name, 500);
+  const hasRendered = useRef(false);
+
   const fontSize = () => {
     let height;
     if (content?.name.join("").split("").length > 14) {
@@ -22,12 +24,17 @@ const Landing = ({ slideInfo, pageControl, content }) => {
   useVerticalNavigation(pageControl);
 
   useEffect(() => {
+    hasRendered.current = true;
+  }, []);
+
+  useEffect(() => {
     setWorkSubPage("landing");
   }, [setWorkSubPage]);
 
   const refHasRenderd = useRef(false);
 
   useEffect(() => {
+    console.log(refHasRenderd.current);
     refHasRenderd.current = true;
   }, [refHasRenderd]);
 
@@ -63,46 +70,56 @@ const Landing = ({ slideInfo, pageControl, content }) => {
   const render = () => {
     // console.log(`landing rendered`);
     return (
-      <div
-        className="work__content"
-        style={
-          isMobile
-            ? {
-                transform: `translateX(${-sticky.x}px) translateY(${-sticky.y}px)`,
-              }
-            : slideInfo.slideImgStyle
-        }
-        onTouchStart={onTouchStart}
-        onTouchMove={onTouchMove}
-        onTouchEnd={onTouchEnd}
-      >
-        <div className="work__landing">
-          <div
-            className="work__landing__img"
-            style={{
-              backgroundImage: `url(${content?.images.landing})`,
-              filter: hasFinished && "blur(2rem)",
-            }}
-          />
-          <div className="work__landing__overlay" />
-          <motion.div
-            className="work__landing__title-box"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            // exit={{ filter: "blur(2rem)" }}
-            // transition={
-            //   refHasRenderd.current
-            //     ? { duration: transition.default, delay: 0 }
-            //     : { duration: transition.default, delay: 0.5 }
-            // }
-            transition={{ delay: 0.5 }}
-          >
-            {/* <useRandomTextAnimation text={content?.name} />
-             */}
-            {renderTitle()}
-          </motion.div>
-        </div>
-      </div>
+      <>
+        <motion.div
+          className="work__transition-overlay"
+          style={{ backgroundColor: "#666" }}
+          initial={!refHasRenderd.current ? { y: "0vh" } : {}}
+          animate={refHasRenderd.current ? { y: "-100vh" } : {}}
+          exit={!refHasRenderd.current ? { y: "0vh" } : {}}
+          transition={{ duration: 0.7 }}
+        />
+        <div
+          className="work__content"
+          style={
+            isMobile
+              ? {
+                  transform: `translateX(${-sticky.x}px) translateY(${-sticky.y}px)`,
+                }
+              : slideInfo.slideImgStyle
+          }
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+        >
+          <div className="work__landing">
+            <div
+              className="work__landing__img"
+              style={{
+                backgroundImage: `url(${content?.images.landing})`,
+                filter: hasFinished && "blur(2rem)",
+              }}
+            />
+            <div className="work__landing__overlay" />
+            <motion.div
+              className="work__landing__title-box"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              // exit={{ filter: "blur(2rem)" }}
+              // transition={
+              //   refHasRenderd.current
+              //     ? { duration: transition.default, delay: 0 }
+              //     : { duration: transition.default, delay: 0.5 }
+              // }
+              transition={{ delay: 0.6 }}
+            >
+              {/* <useRandomTextAnimation text={content?.name} />
+               */}
+              {renderTitle()}
+            </motion.div>
+          </div>
+        </div>{" "}
+      </>
     );
   };
 

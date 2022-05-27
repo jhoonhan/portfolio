@@ -9,6 +9,7 @@ import { color } from "./helpers/config";
 const Header = ({ refs, pageControl }) => {
   const [activeHeight, setActiveHeight] = useState("0rem");
   const [expandWorkNav, setExpandWorkNav] = useState(false);
+  const [showSocialIcons, setShowSocialIcons] = useState(true);
 
   const { urls, curPage, workPage, setWorkPage, workSubPage } = pageControl;
 
@@ -29,17 +30,15 @@ const Header = ({ refs, pageControl }) => {
       setActiveHeight("0rem");
     }
     if (curPage === urls.curPage[1]) {
-      if (workPage === urls.workPage[0]) setActiveHeight("13.4rem");
-      if (workPage === urls.workPage[1]) setActiveHeight("16.8rem");
-      if (workPage === urls.workPage[2]) setActiveHeight("20.2rem");
-      if (workPage === urls.workPage[3]) setActiveHeight("23.6rem");
-      if (workPage === urls.workPage[4]) setActiveHeight("27rem");
+      urls.workPage.forEach((page, i) => {
+        if (workPage === page) setActiveHeight(`${10 + 3.4 * (i + 1)}rem`);
+      });
     }
     if (curPage === urls.curPage[2]) {
-      setActiveHeight("20rem");
+      setActiveHeight("20.1rem");
     }
     if (curPage === urls.curPage[3]) {
-      setActiveHeight("30rem");
+      setActiveHeight("30.1rem");
     }
     if (curPage !== urls.curPage[1]) {
       setExpandWorkNav(false);
@@ -50,7 +49,10 @@ const Header = ({ refs, pageControl }) => {
   }, [workPage, curPage, workSubPage]);
 
   useEffect(() => {
-    if (expandWorkNav) setActiveHeight("10rem");
+    if (expandWorkNav) {
+      setActiveHeight("10.1rem");
+      setShowSocialIcons(false);
+    }
   }, [expandWorkNav]);
 
   const renderMobileOverlay = () => {
@@ -82,13 +84,17 @@ const Header = ({ refs, pageControl }) => {
   };
 
   const condiNavContainerStyle = () => {
+    const defaultHeigth = "31.2rem";
+    const workExpandedHeight = `${
+      31.2 + 2 + (urls.workPage.length - 2) * 3.4
+    }rem`;
     let style = {};
     if (curPage === urls.curPage[1]) {
-      style.height = "43.2rem";
+      style.height = workExpandedHeight;
     } else if (expandWorkNav) {
-      style.height = "43.2rem";
+      style.height = workExpandedHeight;
     } else {
-      style.height = "31.2rem";
+      style.height = defaultHeigth;
     }
     if (isMobile && pageControl.mobileShowNav) {
       style.transform = "translateX(5vw)";
@@ -102,6 +108,19 @@ const Header = ({ refs, pageControl }) => {
     setExpandWorkNav(true);
   };
 
+  const renderWorkLinks = urls.workPage.map((page, i) => {
+    const pageName = page.split("-").join(" ");
+    return (
+      <li key={i}>
+        <Link
+          to={`/works/${page}/landing`}
+          className={workPage === urls.workPage[i] ? "active--text" : ""}
+        >
+          {pageName}
+        </Link>
+      </li>
+    );
+  });
   const renderNavLinks = () => {
     return (
       <>
@@ -133,46 +152,7 @@ const Header = ({ refs, pageControl }) => {
                 : {}
             }
           >
-            <li>
-              <Link
-                to="/works/sushi-republic/landing"
-                className={workPage === urls.workPage[0] ? "active--text" : ""}
-              >
-                Sushi Republic
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/works/danji/landing"
-                className={workPage === urls.workPage[1] ? "active--text" : ""}
-              >
-                Danji
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/works/salvation-army/landing"
-                className={workPage === urls.workPage[2] ? "active--text" : ""}
-              >
-                Salvation Army
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/works/haans-cleaner/landing"
-                className={workPage === urls.workPage[3] ? "active--text" : ""}
-              >
-                Haans Cleaner
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/works/this-is-bullshit/landing"
-                className={workPage === urls.workPage[4] ? "active--text" : ""}
-              >
-                This is Bullshit
-              </Link>
-            </li>
+            {renderWorkLinks}
           </ul>
         </div>
         <div className="nav__link about" ref={refNavAbout}>
@@ -196,6 +176,49 @@ const Header = ({ refs, pageControl }) => {
           </Link>
         </div>
       </>
+    );
+  };
+
+  const renderSocialIcons = () => {
+    return (
+      <div className="icons__container">
+        <a
+          href="https://github.com/jhoonhan"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          <svg viewBox="0 0 100 100" className="social-icons a--opacity">
+            <use href={`${icons}#github`}></use>
+          </svg>
+        </a>
+        <a
+          href="https://www.linkedin.com/in/joe-han-a45087121/"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          <svg viewBox="0 0 100 100" className="social-icons a--opacity">
+            <use href={`${icons}#linkedin`}></use>
+          </svg>
+        </a>
+        <a
+          href="https://www.instagram.com/jhoon.han/"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          <svg viewBox="0 0 100 100" className="social-icons a--opacity">
+            <use href={`${icons}#instagram`}></use>
+          </svg>
+        </a>
+        <a
+          href="https://github.com/jhoonhan"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          <svg viewBox="0 0 100 100" className="social-icons a--opacity">
+            <use href={`${icons}#cv`}></use>
+          </svg>
+        </a>
+      </div>
     );
   };
 
@@ -252,20 +275,7 @@ const Header = ({ refs, pageControl }) => {
             )}
           </AnimatePresence>
         </div>
-        <div className="icons__container">
-          <svg viewBox="0 0 100 100" className="social-icons a--opacity">
-            <use href={`${icons}#github`}></use>
-          </svg>
-          <svg viewBox="0 0 100 100" className="social-icons a--opacity">
-            <use href={`${icons}#linkedin`}></use>
-          </svg>
-          <svg viewBox="0 0 100 100" className="social-icons a--opacity">
-            <use href={`${icons}#instagram`}></use>
-          </svg>
-          <svg viewBox="0 0 100 100" className="social-icons a--opacity">
-            <use href={`${icons}#cv`}></use>
-          </svg>
-        </div>
+        {renderSocialIcons()}
       </header>
     );
   };

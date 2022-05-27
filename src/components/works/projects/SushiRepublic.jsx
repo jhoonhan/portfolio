@@ -18,10 +18,10 @@ const SushiRepublic = ({ refEl, pageControl, props }) => {
   const data = {
     name: ["sushi", " republic"],
     description: "A responsive website for a local fine Japanese restaurant.",
-    role: "developer, designer, photographer",
-    technology: "HTML5, CSS3, SASS, JQUERY",
-    liveDemoURL: "https://google.com",
-    githubURL: "https://github.com/",
+    role: "Web Developer, Graphic designer, photographer",
+    technology: "JQUERY, HTML5, CSS3, SASS",
+    liveDemoURL: "http://hahnsfinegoods.com/sushi-republic/index.html",
+    githubURL: "https://github.com/jhoonhan/sushi-republic",
     path: "sushi-republic",
     overviewVisual: {
       type: "image",
@@ -37,10 +37,10 @@ const SushiRepublic = ({ refEl, pageControl, props }) => {
       },
     },
     videos: {
-      desktop: { landing: null, slideVideos: [] },
-      mobile: {
-        landing: null,
-        slideVideos: [],
+      landing: null,
+      slideVideos: {
+        desktop: [],
+        mobile: [],
       },
     },
     theme: "dark",

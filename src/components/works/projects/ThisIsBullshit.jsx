@@ -16,11 +16,11 @@ const ThisIsBullshit = ({ refEl, pageControl, props }) => {
   const data = {
     name: ["This Is", " Bullshit"],
     description:
-      "A fast and easy bookeeping web application for a charitable organization.",
-    role: "Developer, Designer",
-    technology: "JavaScript, NodeJS, Express, MongoDB, HTML, CSS",
-    liveDemoURL: "https://google.com",
-    githubURL: "https://github.com/",
+      "An interactive & interdisciplinary artwork using web technology",
+    role: "Artist, Full-stack Developer",
+    technology: "JavaScript, NodeJS, Express, MongoDB, HTML5, CSS3",
+    liveDemoURL: "https://this-is-bullshit.netlify.app/",
+    githubURL: "https://github.com/jhoonhan/this-is-bullshit",
     path: "this-is-bullshit",
     overviewVisual: {
       type: "video",
@@ -53,8 +53,10 @@ const ThisIsBullshit = ({ refEl, pageControl, props }) => {
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", "light");
+    document.documentElement.setAttribute("data-subtheme", "red");
     return () => {
       document.documentElement.setAttribute("data-theme", "dark");
+      document.documentElement.setAttribute("data-subtheme", "dark");
       // pageControl.setShowCursor(false);
     };
   }, []);

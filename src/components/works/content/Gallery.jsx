@@ -9,7 +9,7 @@ import MobileSVG from "../../../assests/image/projects/MobileSVG";
 
 const Gallery = ({ slideInfo, pageControl, content }) => {
   const { onTouchStart, onTouchMove, onTouchEnd, sticky } = useListenSwipe();
-  const { images, videos, overviewVisual } = content;
+  const { images, videos } = content;
 
   useEffect(() => {
     pageControl.setWorkSubPage("gallery");

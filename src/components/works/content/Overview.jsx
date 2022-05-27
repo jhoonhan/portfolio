@@ -113,12 +113,30 @@ const Overview = ({
             style={{ marginTop: "1rem", gap: "2rem" }}
             variants={isMobile ? animateMobile.item : animateBrowser.item}
           >
-            <a href={content?.liveDemoURL} className="button">
-              Live Demo
-            </a>
-            <a href={content?.githubURL} className="button">
-              Github
-            </a>
+            {content?.liveDemoURL ? (
+              <a
+                href={content?.liveDemoURL}
+                className="button"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                Live Demo
+              </a>
+            ) : (
+              {}
+            )}
+            {content?.liveDemoURL ? (
+              <a
+                href={content?.githubURL}
+                className="button"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                Github
+              </a>
+            ) : (
+              {}
+            )}
           </motion.div>
         </div>
       </motion.div>
@@ -126,7 +144,6 @@ const Overview = ({
   };
 
   const renderOverviewVisual = () => {
-    console.log(overviewVisual);
     if (overviewVisual?.orientation === "trifold") {
       return <WorkPictureContainer images={overviewVisual?.data} />;
     }

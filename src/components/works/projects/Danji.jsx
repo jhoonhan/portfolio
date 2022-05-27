@@ -10,7 +10,7 @@ import slideImg4 from "../../../assests/image/projects/danji/mobile2.jpg";
 import slideImg5 from "../../../assests/image/projects/danji/img0.jpg";
 import slideImg6 from "../../../assests/image/projects/danji/img2.jpg";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import WorkContent from "../WorkContent";
 
@@ -19,10 +19,10 @@ const Danji = ({ refEl, pageControl, props }) => {
     name: ["danji"],
     description:
       "A staple Korean restaurant serving the Triad area since 2015.",
-    role: "Developer, Designer, Photographer",
-    technology: "HTML5, CSS3, SASS, JQUERY",
-    liveDemoURL: "https://google.com",
-    githubURL: "https://github.com/",
+    role: "Web Developer, Graphic Designer, Photographer",
+    technology: "JQUERY, HTML5, CSS3, SASS",
+    liveDemoURL: "http://hahnsfinegoods.com/danji/index.html",
+    githubURL: "https://github.com/jhoonhan/Danji",
     path: "danji",
     overviewVisual: {
       type: "image",
@@ -49,6 +49,7 @@ const Danji = ({ refEl, pageControl, props }) => {
     background:
       "linear-gradient(60deg, rgba(118,19,19,0.7) 0%,rgba(118,19,19,0.7) 33%,rgba(150, 50, 50, 0.7) 45%, rgba(220,115,45,0.7) 100%)",
   };
+
   return (
     <WorkContent
       refEl={refEl}

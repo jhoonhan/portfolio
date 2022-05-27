@@ -37,12 +37,10 @@
 }
 
 [data-theme="light"] {
-  --color-primary: red;
+  --color-primary: #ff4040;
   --color-font: black;
-  --color-active-font: red;
+  --color-active-font: black;
   --color-border: #666;
-
-  // --color-background: rgb(239, 239, 239);
 
   --background-mobile-nav: linear-gradient(
     180deg,
@@ -73,6 +71,16 @@
   );
 
   --default-border: 1px solid var(--color-border);
+}
+
+[data-subtheme="dark"] {
+  --color-primary: white;
+}
+[data-subtheme="light-blue"] {
+  --color-primary: #73d4ff;
+}
+[data-subtheme="red"] {
+  --color-primary: #ff4040;
 }
 
 // $color--font: black;
