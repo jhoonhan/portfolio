@@ -62,7 +62,7 @@ const WorkNav = ({ pageControl }) => {
     if (workPage === "danji") return "danji";
     if (workPage === "salvation-army") return "salvation army";
     if (workPage === "haans-cleaner") return "haans cleaner";
-    if (workPage === "this is bullshit") return "this is bullshit";
+    if (workPage === "this-is-bullshit") return "this is bullshit";
   };
 
   const activeClass = () => {

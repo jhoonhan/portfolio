@@ -9,6 +9,15 @@ import useRandomTextAnimation from "../../helpers/useRandomTextAnimation";
 const Landing = ({ slideInfo, pageControl, content }) => {
   const { setWorkSubPage } = pageControl;
   const { hasFinished, title } = useRandomTextAnimation(content?.name, 500);
+  const fontSize = () => {
+    let height;
+    if (content?.name.join("").split("").length > 14) {
+      height = 90 / content?.name.join("").split("").length;
+    } else {
+      height = 6.4;
+    }
+    return height;
+  };
 
   useVerticalNavigation(pageControl);
 
@@ -36,7 +45,11 @@ const Landing = ({ slideInfo, pageControl, content }) => {
       return (
         <h1
           key={i}
-          style={hasFinished ? { color: "white" } : { color: "#999" }}
+          style={{
+            fontSize: `${fontSize()}vw`,
+            height: `${fontSize()}vw`,
+            color: hasFinished ? "white" : "#999",
+          }}
         >
           {char}
         </h1>

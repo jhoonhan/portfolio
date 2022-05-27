@@ -49,7 +49,7 @@ const WorkPictureContainer = ({ images }) => {
           variants={animate.item}
         >
           <img
-            src={images?.overviewImages[2]}
+            src={images[2]}
             alt="img3"
             style={{
               transform: `translateX(${actImgPosition.img3.x}%) translateY(${actImgPosition.img3.y}%)`,
@@ -66,7 +66,7 @@ const WorkPictureContainer = ({ images }) => {
           variants={animate.item}
         >
           <img
-            src={images?.overviewImages[1]}
+            src={images[1]}
             alt="img2"
             style={{
               transform: `translateX(${actImgPosition.img2.x}%) translateY(${actImgPosition.img2.y}%)`,
@@ -83,7 +83,7 @@ const WorkPictureContainer = ({ images }) => {
           variants={animate.item}
         >
           <img
-            src={images?.overviewImages[0]}
+            src={images[0]}
             alt="img1"
             style={{
               transform: `translateX(${actImgPosition.img1.x}%) translateY(${actImgPosition.img1.y}%)`,

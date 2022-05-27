@@ -1,46 +1,42 @@
-import landing from "../../../assests/image/projects/thisIsBullshit/landing.jpg";
-
-import slideImg0 from "../../../assests/image/projects/thisIsBullshit/mobile0.jpg";
-import slideImg1 from "../../../assests/image/projects/thisIsBullshit/mobile1.jpg";
-
-import video0 from "../../../assests/image/projects/thisIsBullshit/video0.mp4";
-import video1 from "../../../assests/image/projects/thisIsBullshit/video1.mp4";
-import video2 from "../../../assests/image/projects/thisIsBullshit/video2.mp4";
-import video4 from "../../../assests/image/projects/thisIsBullshit/video4.mp4";
+import landing from "../../../assests/image/projects/haansCleaner/landing.jpg";
+import video0 from "../../../assests/image/projects/haansCleaner/video0-1.mp4";
+import video1 from "../../../assests/image/projects/haansCleaner/video1.mp4";
+import video2 from "../../../assests/image/projects/haansCleaner/video2.mp4";
+import video3 from "../../../assests/image/projects/haansCleaner/video3.mp4";
+import video4 from "../../../assests/image/projects/haansCleaner/video4.mp4";
 
 import React, { useEffect } from "react";
-import { motion } from "framer-motion";
 import WorkContent from "../WorkContent";
 
-const ThisIsBullshit = ({ refEl, pageControl, props }) => {
+const HaansCleaner = ({ refEl, pageControl, props }) => {
   const data = {
-    name: ["This Is", " Bullshit"],
+    name: ["Haans", " Cleaner"],
     description:
       "A fast and easy bookeeping web application for a charitable organization.",
     role: "Developer, Designer",
     technology: "JavaScript, NodeJS, Express, MongoDB, HTML, CSS",
     liveDemoURL: "https://google.com",
     githubURL: "https://github.com/",
-    path: "this-is-bullshit",
+    path: "haans-cleaner",
     overviewVisual: {
       type: "video",
-      orientation: "desktop",
+      orientation: "mobile",
       data: [video0],
     },
     images: {
       landing,
-      overviewImages: [slideImg0, slideImg1],
+      overviewImages: [],
       slideImages: {
         desktop: [],
-        mobile: [slideImg0, slideImg1],
+        mobile: [],
         photo: [],
       },
     },
     videos: {
-      desktop: { landing: video0, slideVideos: [video4, video1] },
+      desktop: { landing: null, slideVideos: [] },
       mobile: {
-        landing: null,
-        slideVideos: [],
+        landing: video0,
+        slideVideos: [video1, video2, video3, video4],
       },
     },
     theme: "light",
@@ -72,4 +68,4 @@ const ThisIsBullshit = ({ refEl, pageControl, props }) => {
   );
 };
 
-export default ThisIsBullshit;
+export default HaansCleaner;

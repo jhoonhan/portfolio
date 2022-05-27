@@ -15,15 +15,9 @@ const Overview = ({
   isVideo,
 }) => {
   const { onTouchStart, onTouchMove, onTouchEnd, sticky } = useListenSwipe();
+  const { overviewVisual } = content;
 
   const refIntersect = useRef(null);
-
-  useEffect(() => {
-    document.documentElement.setAttribute("data-theme", "light");
-    return () => {
-      document.documentElement.setAttribute("data-theme", "dark");
-    };
-  }, []);
 
   useEffect(() => {
     pageControl.setWorkSubPage("overview");
@@ -131,10 +125,10 @@ const Overview = ({
   };
 
   const renderOverviewVisual = () => {
-    if (noOverview && !isVideo) {
+    if (overviewVisual.type === "image" && !isVideo) {
       return (
         <DesktopSVG
-          img={content.images.overviewImages[0]}
+          img={overviewVisual.data[0]}
           customClass="overview"
           isVideo={false}
         />
@@ -142,15 +136,15 @@ const Overview = ({
     }
 
     if (!noOverview && !isVideo) {
-      return <WorkPictureContainer images={content?.images} />;
+      return <WorkPictureContainer images={content?.overviewVisual.data} />;
     }
 
     if (!noOverview && isVideo) {
       return (
         <DesktopSVG
-          video={content.videos.landing}
+          data={content?.overviewVisual.data[0]}
+          overviewVisual={content?.overviewVisual}
           customClass="overview"
-          isVideo={true}
         />
       );
     }

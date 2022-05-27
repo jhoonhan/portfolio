@@ -90,8 +90,8 @@ const App = () => {
       "sushi-republic",
       "danji",
       "salvation-army",
-      // "haans-cleaner",
-      // "this-is-bullshit",
+      "haans-cleaner",
+      "this-is-bullshit",
     ],
     workSubPage: ["landing", "overview", "gallery"],
   };

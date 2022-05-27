@@ -24,16 +24,26 @@ const Danji = ({ refEl, pageControl, props }) => {
     liveDemoURL: "https://google.com",
     githubURL: "https://github.com/",
     path: "danji",
+    overviewVisual: {
+      type: "image",
+      orientation: "trifold",
+      data: [landing, overviewImg0, overviewImg1],
+    },
     images: {
       landing,
-      overviewImages: [landing, overviewImg0, overviewImg1],
       slideImages: {
         desktop: [slideImg0, slideImg1],
         mobile: [slideImg2, slideImg3, slideImg4],
         photo: [slideImg5, slideImg6],
       },
     },
-    theme: "light",
+    videos: {
+      desktop: { landing: null, slideVideos: [] },
+      mobile: {
+        landing: null,
+        slideVideos: [],
+      },
+    },
   };
   const backgroundStyle = {
     background:

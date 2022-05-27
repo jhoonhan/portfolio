@@ -8,6 +8,7 @@ import Cursor from "../Cursor";
 import SushiRepublic from "./projects/SushiRepublic";
 import Danji from "./projects/Danji";
 import SalvationArmy from "./projects/SalvationArmy";
+import HaansCleaner from "./projects/HaansCleaner";
 import ThisIsBullshit from "./projects/ThisIsBullshit";
 
 const Works = ({ refs, pageControl, props }) => {
@@ -64,7 +65,7 @@ const Works = ({ refs, pageControl, props }) => {
           <Route
             path="/works/haans-cleaner"
             render={(props) => (
-              <WorkContent
+              <HaansCleaner
                 refEl={refEl4}
                 pageControl={pageControl}
                 props={props}

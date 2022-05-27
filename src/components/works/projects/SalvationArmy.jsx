@@ -18,15 +18,27 @@ const SalvationArmy = ({ refEl, pageControl, props }) => {
     liveDemoURL: "https://google.com",
     githubURL: "https://github.com/",
     path: "salvation-army",
+    overviewVisual: {
+      type: "image",
+      orientation: "desktop",
+      data: [slideImg0],
+    },
     images: {
       landing,
-      overviewImages: [slideImg0, slideImg1, slideImg2],
       slideImages: {
         desktop: [slideImg0, slideImg1, slideImg2],
         mobile: [],
         photo: [],
       },
     },
+    videos: {
+      desktop: { landing: null, slideVideos: [] },
+      mobile: {
+        landing: null,
+        slideVideos: [],
+      },
+    },
+    theme: "dark",
   };
   const backgroundStyle = {
     background:

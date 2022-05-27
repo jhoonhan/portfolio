@@ -33,7 +33,7 @@ const Header = ({ refs, pageControl }) => {
       if (workPage === urls.workPage[1]) setActiveHeight("16.8rem");
       if (workPage === urls.workPage[2]) setActiveHeight("20.2rem");
       if (workPage === urls.workPage[3]) setActiveHeight("23.6rem");
-      if (workPage === urls.workPage[4]) setActiveHeight("22.8rem");
+      if (workPage === urls.workPage[4]) setActiveHeight("27rem");
     }
     if (curPage === urls.curPage[2]) {
       setActiveHeight("20rem");

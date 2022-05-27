@@ -18,15 +18,7 @@ const Gallery = ({
   const { onTouchStart, onTouchMove, onTouchEnd, sticky } = useListenSwipe();
 
   useEffect(() => {
-    document.documentElement.setAttribute("data-theme", "light");
-    return () => {
-      document.documentElement.setAttribute("data-theme", "dark");
-    };
-  }, []);
-
-  useEffect(() => {
     pageControl.setWorkSubPage("gallery");
-    console.log(videos);
   }, []);
 
   const refCont = useRef(null);
@@ -97,8 +89,10 @@ const Gallery = ({
           // style={{ paddingLeft: "calc((100vw - 127.5vh)/2)" }}
         >
           <div className="detail__img-container">
-            {renderSlides()}
-
+            {/* {renderSlides()} */}
+            {renderSlidesDesktopVideo}
+            {renderSlidesDesktop}
+            {renderSlidesMobile}
             {/* <Slide type="image" img={images?.slideImages[5]} />
             <Slide type="image" img={images?.slideImages[6]} /> */}
           </div>

@@ -60,9 +60,9 @@ const About = ({ pageControl, props, refs }) => {
   const isIntersecting2 = useIntersectionObserve(refInfo, 0.5);
 
   useEffect(() => {
-    document.documentElement.setAttribute("data-theme", "light");
+    // document.documentElement.setAttribute("data-theme", "light");
     return () => {
-      document.documentElement.setAttribute("data-theme", "dark");
+      // document.documentElement.setAttribute("data-theme", "dark");
       pageControl.setShowCursor(false);
     };
   }, []);

@@ -1,6 +1,6 @@
 import React from "react";
 
-const DesktopSVG = ({ img, video, isVideo, customClass }) => {
+const DesktopSVG = ({ data, overviewVisual, customClass }) => {
   const st0 = {
     fill: "#CCCCCC",
   };
@@ -12,11 +12,11 @@ const DesktopSVG = ({ img, video, isVideo, customClass }) => {
   };
 
   const renderVisual = () => {
-    if (!isVideo) {
-      return <img src={img} alt="overview" />;
+    if (overviewVisual.type === "image") {
+      return <img src={data} alt="overview" />;
     }
-    if (isVideo) {
-      return <video src={video} autoPlay={true} muted loop />;
+    if (overviewVisual.type === "video") {
+      return <video src={data} autoPlay={true} muted loop />;
     }
   };
   return (

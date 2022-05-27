@@ -4,7 +4,16 @@
   --color-primary: white;
   --color-font: white;
   // --color-background: rgba(0, 0, 0, 1);
+  --background-mobile-nav: linear-gradient(
+    180deg,
+    rgba(96, 128, 176, 1) 0%,
+    rgba(158, 102, 97, 1) 40%,
+    rgba(158, 102, 97, 1) 60%,
+    rgba(35, 49, 73, 1) 100%
+  );
+
   --color-overlay: rgba(0, 0, 0, 0.9);
+  --color-overlay-30: rgba(0, 0, 0, 0.3);
   --color-overlay-50: rgba(0, 0, 0, 0.5);
   --color-disabled: rgba(255, 255, 255, 0.3);
 
@@ -27,34 +36,44 @@
   --default-border: 1px solid var(--color-font);
 }
 
-// [data-theme="light"] {
-//   --color-primary: red;
-//   --color-font: black;
-//   --color-active-font: red;
-//   --color-border: #666;
+[data-theme="light"] {
+  --color-primary: red;
+  --color-font: black;
+  --color-active-font: red;
+  --color-border: #666;
 
-//   --color-background: rgb(239, 239, 239);
-//   --color-overlay: rgba(239, 239, 239, 0.9);
-//   --color-disabled: white;
+  // --color-background: rgb(239, 239, 239);
 
-//   --gradient-primary-90: linear-gradient(
-//     90deg,
-//     var(--color-disabled) 0%,
-//     var(--color-primary) 100%
-//   );
-//   --gradient-primary-180: linear-gradient(
-//     180deg,
-//     var(--color-disabled) 0%,
-//     var(--color-primary) 100%
-//   );
-//   --gradient-primary-270: linear-gradient(
-//     270deg,
-//     var(--color-disabled) 0%,
-//     var(--color-primary) 100%
-//   );
+  --background-mobile-nav: linear-gradient(
+    180deg,
+    rgba(220, 220, 220, 1) 0%,
+    rgba(255, 255, 255, 1) 40%,
+    rgba(255, 255, 255, 1) 60%,
+    rgba(220, 220, 220, 1) 100%
+  );
+  --color-overlay: rgba(239, 239, 239, 0.9);
+  --color-overlay-30: rgba(239, 239, 239, 0.3);
+  --color-overlay-50: rgba(239, 239, 239, 0.5);
+  --color-disabled: white;
 
-//   --default-border: 1px solid var(--color-border);
-// }
+  --gradient-primary-90: linear-gradient(
+    90deg,
+    var(--color-disabled) 0%,
+    var(--color-primary) 100%
+  );
+  --gradient-primary-180: linear-gradient(
+    180deg,
+    var(--color-disabled) 0%,
+    var(--color-primary) 100%
+  );
+  --gradient-primary-270: linear-gradient(
+    270deg,
+    var(--color-disabled) 0%,
+    var(--color-primary) 100%
+  );
+
+  --default-border: 1px solid var(--color-border);
+}
 
 // $color--font: black;
 // $color--font: white;
