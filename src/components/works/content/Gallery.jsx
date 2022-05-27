@@ -22,12 +22,7 @@ const Gallery = ({ slideInfo, pageControl, content }) => {
     <React.Fragment key={i}>
       <Slide
         type="component"
-        data={
-          <DesktopSVG
-            overviewVisual={overviewVisual}
-            data={images?.slideImages.desktop[i]}
-          />
-        }
+        data={<DesktopSVG data={images?.slideImages.desktop[i]} type="image" />}
       />
     </React.Fragment>
   ));
@@ -36,12 +31,7 @@ const Gallery = ({ slideInfo, pageControl, content }) => {
     <React.Fragment key={i}>
       <Slide
         type="component"
-        data={
-          <MobileSVG
-            data={images?.slideImages.mobile[i]}
-            overviewVisual={overviewVisual}
-          />
-        }
+        data={<MobileSVG data={images?.slideImages.mobile[i]} type="image" />}
       />
     </React.Fragment>
   ));
@@ -51,17 +41,14 @@ const Gallery = ({ slideInfo, pageControl, content }) => {
       <React.Fragment key={i}>
         <Slide
           type="component"
-          data={<DesktopSVG overviewVisual={overviewVisual} data={video} />}
+          data={<DesktopSVG type="video" data={video} />}
         />
       </React.Fragment>
     )
   );
   const renderSlidesMobileVideo = videos?.slideVideos.mobile.map((video, i) => (
     <React.Fragment key={i}>
-      <Slide
-        type="component"
-        data={<MobileSVG overviewVisual={overviewVisual} data={video} />}
-      />
+      <Slide type="component" data={<MobileSVG type="video" data={video} />} />
     </React.Fragment>
   ));
 

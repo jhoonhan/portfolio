@@ -1,5 +1,6 @@
 import landing from "../../../assests/image/projects/haansCleaner/landing.jpg";
-import video0 from "../../../assests/image/projects/haansCleaner/video0-1.mp4";
+import video0 from "../../../assests/image/projects/haansCleaner/video0.mp4";
+import video01 from "../../../assests/image/projects/haansCleaner/video0-1.mp4";
 import video1 from "../../../assests/image/projects/haansCleaner/video1.mp4";
 import video2 from "../../../assests/image/projects/haansCleaner/video2.mp4";
 import video3 from "../../../assests/image/projects/haansCleaner/video3.mp4";
@@ -21,7 +22,7 @@ const HaansCleaner = ({ refEl, pageControl, props }) => {
     overviewVisual: {
       type: "video",
       orientation: "mobile",
-      data: [video0],
+      data: [video01],
     },
     images: {
       landing,
@@ -36,7 +37,7 @@ const HaansCleaner = ({ refEl, pageControl, props }) => {
       landing: null,
       slideVideos: {
         desktop: [],
-        mobile: [video1, video2, video3, video4],
+        mobile: [video0, video1, video2, video3, video4],
       },
     },
     theme: "light",

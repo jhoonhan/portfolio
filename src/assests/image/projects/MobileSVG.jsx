@@ -1,15 +1,15 @@
 import React from "react";
 
-const MobileSVG = ({ overviewVisual, data, customClass }) => {
+const MobileSVG = ({ type, data, customClass }) => {
   const st0 = {
     fill: "#1a1a1a",
   };
 
   const renderVisual = () => {
-    if (overviewVisual?.type === "image") {
+    if (type === "image") {
       return <img src={data} alt="mobile" />;
     }
-    if (overviewVisual?.type === "video") {
+    if (type === "video") {
       return <video src={data} autoPlay={true} muted loop />;
     }
   };
@@ -17,23 +17,16 @@ const MobileSVG = ({ overviewVisual, data, customClass }) => {
   const render = () => {
     return (
       <div className={`slide-img--mobile ${customClass}`}>
-        <svg
-          version="1.1"
-          id="Layer_1"
+        {/* <svg
+          id="phone"
           xmlns="http://www.w3.org/2000/svg"
-          x="0px"
-          y="0px"
-          viewBox="0 0 480 1000"
-          style={{ enableBackground: "new 0 0 480 1000" }}
+          viewBox="0 0 600 1200"
         >
           <path
-            style={st0}
-            d="M424.55,0h-48.94h-5.44H109.83H94.97H55.45C24.88,0,0,24.89,0,55.47v889.05C0,975.11,24.88,1000,55.45,1000
-	h168.58h15.39h1.15h15.39h168.58c30.58,0,55.45-24.89,55.45-55.47V55.47C480,24.89,455.12,0,424.55,0z M424.55,16.55
-	c21.49,0,38.91,17.43,38.91,38.92v889.05c0,21.5-17.42,38.92-38.91,38.92h-99.19h-69.39h-31.94h-57.67H55.45
-	c-21.49,0-38.91-17.43-38.91-38.92V55.47c0-21.5,17.42-38.92,38.91-38.92H424.55z"
+            d="M530.68,0H69.32C31.09,0,0,29.86,0,66.57V1133.43C0,1170.14,31.09,1200,69.32,1200H530.68c38.23,0,69.32-29.86,69.32-66.57V66.57C600,29.86,568.91,0,530.68,0ZM469.51,19.86h61.17c26.87,0,48.64,20.91,48.64,46.71V1133.43c0,25.8-21.77,46.71-48.64,46.71H69.32c-26.87,0-48.64-20.91-48.64-46.71V66.57c0-25.8,21.77-46.71,48.64-46.71H469.51Z"
+            style={{ fill: "#1a1a1a" }}
           />
-        </svg>
+        </svg> */}
         <div className="masking">{renderVisual()}</div>
       </div>
     );

@@ -410,8 +410,10 @@
 
 .slide-img--mobile {
   // position: relative;
-  // height: 75vh;
+  // top: 100px;
+  // height: 50vh;
   width: auto;
+  height: auto;
 
   display: flex;
   align-items: flex-end;
@@ -420,67 +422,42 @@
 
   box-sizing: border-box;
 
-  & svg {
-    position: absolute;
-    // bottom: 0;
-    height: 50vh;
-    aspect-ratio: 1 / 2;
-
-    // margin-bottom: 9vh;
-    box-sizing: border-box;
-    z-index: 1;
-  }
+  // background-color: red;
 
   & .masking {
-    position: relative;
-    // bottom: 34vh;
-    height: 50vh;
-    aspect-ratio: 12 / 25;
+    width: auto;
+    height: auto;
 
     display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
 
-    border-radius: 3vh;
     background-color: #1a1a1a;
     // background-color: red;
-    overflow: hidden;
 
-    overflow: hidden;
-    & img,
-    video {
-      position: absolute;
-      // width: auto;
-      left: 0.8vh;
-      top: 0.8vh;
-      width: auto;
-      aspect-ratio: 12 / 25;
+    border-radius: 3vh;
+  }
+  & img,
+  video {
+    height: 50vh;
+    width: auto;
+    aspect-ratio: 12 / 25;
 
-      max-height: 48.5vh;
+    display: block;
+    border-radius: 3vh;
+    border: 1vh solid #1a1a1a;
 
-      margin-bottom: 0;
-    }
+    margin-bottom: 0;
   }
 }
 .slide-img--mobile.overview {
   margin-bottom: 0;
   justify-self: center;
-  & .masking {
+  align-items: flex-end;
+  & img,
+  video {
     height: 80vh;
-    background-color: red;
-    & img,
-    video {
-      // display: none;
-      width: auto;
-      left: 1vh;
-      top: 0vh;
-      max-height: 79vh;
-      border: 1px solid red;
-      box-sizing: border-box;
-    }
-  }
-  & svg {
-    height: 80vh;
+    border: 1.2vh solid #1a1a1a;
   }
 }
 

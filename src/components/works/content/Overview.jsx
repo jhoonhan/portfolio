@@ -135,7 +135,7 @@ const Overview = ({
       return (
         <DesktopSVG
           data={overviewVisual.data[0]}
-          overviewVisual={overviewVisual}
+          type={overviewVisual?.type}
           customClass="overview"
         />
       );
@@ -144,7 +144,7 @@ const Overview = ({
       return (
         <MobileSVG
           data={overviewVisual.data[0]}
-          overviewVisual={overviewVisual}
+          type={overviewVisual?.type}
           customClass="overview"
         />
       );
