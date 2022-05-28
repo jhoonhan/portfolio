@@ -1,5 +1,7 @@
-import landing from "../../../assests/image/projects/danji/landing.jpg";
+import React from "react";
+import WorkContent from "../WorkContent";
 
+import landing from "../../../assests/image/projects/danji/landing.jpg";
 import overviewImg0 from "../../../assests/image/projects/danji/overview0.jpg";
 import overviewImg1 from "../../../assests/image/projects/danji/overview1.jpg";
 import slideImg0 from "../../../assests/image/projects/danji/desktop0.jpg";
@@ -9,10 +11,6 @@ import slideImg3 from "../../../assests/image/projects/danji/mobile0.jpg";
 import slideImg4 from "../../../assests/image/projects/danji/mobile2.jpg";
 import slideImg5 from "../../../assests/image/projects/danji/img0.jpg";
 import slideImg6 from "../../../assests/image/projects/danji/img2.jpg";
-
-import React, { useEffect } from "react";
-import { motion } from "framer-motion";
-import WorkContent from "../WorkContent";
 
 const Danji = ({ refEl, pageControl, props }) => {
   const data = {

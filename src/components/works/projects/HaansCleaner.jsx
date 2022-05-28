@@ -1,13 +1,12 @@
+import React, { useEffect } from "react";
+import WorkContent from "../WorkContent";
+
 import landing from "../../../assests/image/projects/haansCleaner/landing.jpg";
 import video0 from "../../../assests/image/projects/haansCleaner/video0.mp4";
 import video01 from "../../../assests/image/projects/haansCleaner/video0-1.mp4";
 import video1 from "../../../assests/image/projects/haansCleaner/video1.mp4";
 import video2 from "../../../assests/image/projects/haansCleaner/video2.mp4";
 import video3 from "../../../assests/image/projects/haansCleaner/video3.mp4";
-import video4 from "../../../assests/image/projects/haansCleaner/video4.mp4";
-
-import React, { useEffect } from "react";
-import WorkContent from "../WorkContent";
 
 const HaansCleaner = ({ refEl, pageControl, props }) => {
   const data = {

@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
-import { motion } from "framer-motion";
-import landing from "../../../assests/image/projects/sushiRepublic/landing.jpg";
 
+import landing from "../../../assests/image/projects/sushiRepublic/landing.jpg";
 import overviewImg0 from "../../../assests/image/projects/sushiRepublic/overview0.jpg";
 import overviewImg1 from "../../../assests/image/projects/sushiRepublic/overview1.jpg";
 import overviewImg2 from "../../../assests/image/projects/sushiRepublic/overview2.jpg";

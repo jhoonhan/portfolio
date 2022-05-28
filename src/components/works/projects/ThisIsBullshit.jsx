@@ -1,16 +1,12 @@
-import landing from "../../../assests/image/projects/thisIsBullshit/landing.jpg";
+import React, { useEffect } from "react";
+import WorkContent from "../WorkContent";
 
+import landing from "../../../assests/image/projects/thisIsBullshit/landing.jpg";
 import slideImg0 from "../../../assests/image/projects/thisIsBullshit/mobile0.jpg";
 import slideImg1 from "../../../assests/image/projects/thisIsBullshit/mobile1.jpg";
-
 import video0 from "../../../assests/image/projects/thisIsBullshit/video0.mp4";
 import video1 from "../../../assests/image/projects/thisIsBullshit/video1.mp4";
-import video2 from "../../../assests/image/projects/thisIsBullshit/video2.mp4";
 import video4 from "../../../assests/image/projects/thisIsBullshit/video4.mp4";
-
-import React, { useEffect } from "react";
-import { motion } from "framer-motion";
-import WorkContent from "../WorkContent";
 
 const ThisIsBullshit = ({ refEl, pageControl, props }) => {
   const data = {

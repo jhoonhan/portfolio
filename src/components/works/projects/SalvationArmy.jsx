@@ -1,12 +1,10 @@
-import landing from "../../../assests/image/projects/salvationArmy/landing.jpg";
+import React from "react";
+import WorkContent from "../WorkContent";
 
+import landing from "../../../assests/image/projects/salvationArmy/landing.jpg";
 import slideImg0 from "../../../assests/image/projects/salvationArmy/desktop0.jpg";
 import slideImg1 from "../../../assests/image/projects/salvationArmy/desktop1.jpg";
 import slideImg2 from "../../../assests/image/projects/salvationArmy/desktop2.jpg";
-
-import React from "react";
-import { motion } from "framer-motion";
-import WorkContent from "../WorkContent";
 
 const SalvationArmy = ({ refEl, pageControl, props }) => {
   const data = {
