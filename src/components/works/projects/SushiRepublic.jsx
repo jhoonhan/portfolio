@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import WorkContent from "../WorkContent";
 
 import landing from "../../../assests/image/projects/sushiRepublic/landing.jpg";
 import overviewImg0 from "../../../assests/image/projects/sushiRepublic/overview0.jpg";
@@ -11,7 +12,6 @@ import slideImg3 from "../../../assests/image/projects/sushiRepublic/mobile0.jpg
 import slideImg4 from "../../../assests/image/projects/sushiRepublic/mobile2.jpg";
 import slideImg5 from "../../../assests/image/projects/sushiRepublic/img0.jpg";
 import slideImg6 from "../../../assests/image/projects/sushiRepublic/img1.jpg";
-import WorkContent from "../WorkContent";
 
 const SushiRepublic = ({ refEl, pageControl, props }) => {
   const data = {
