@@ -85,13 +85,7 @@ const Landing = ({ slideInfo, pageControl, content }) => {
               className="work__landing__title-box"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              // exit={{ filter: "blur(2rem)" }}
-              // transition={
-              //   refHasRenderd.current
-              //     ? { duration: transition.default, delay: 0 }
-              //     : { duration: transition.default, delay: 0.5 }
-              // }
-              transition={{ delay: 0.6 }}
+              transition={{ delay: 0.5 }}
             >
               {/* <useRandomTextAnimation text={content?.name} />
                */}

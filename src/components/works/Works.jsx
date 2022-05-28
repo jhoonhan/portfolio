@@ -23,28 +23,22 @@ const Works = ({ refs, pageControl, props, match }) => {
 
   useEffect(() => {
     setCurPage(props.match.path.slice(1));
+    // document.body.style.backgroundColor = "black";
   }, []);
 
   const render = () => {
     return (
       <>
-        <section
+        <motion.section
           ref={refs.refWorks}
           className="works__container container"
           // onMouseEnter={() => pageControl.setShowCursor(true)}
           // onMouseLeave={() => pageControl.setShowCursor(false)}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5 }}
         >
-          <motion.div
-            className="work__transition-overlay"
-            style={{
-              backgroundColor: "#666",
-              // display: refHasRenderd && "none",
-            }}
-            initial={{ y: "0vh" }}
-            animate={{ y: "-100vh" }}
-            exit={{ y: "0vh" }}
-            transition={{ duration: 0.7 }}
-          />
           <AnimatePresence exitBeforeEnter>
             <Switch location={location} key={location.pathname.split("/")[3]}>
               <Route
@@ -103,7 +97,7 @@ const Works = ({ refs, pageControl, props, match }) => {
               />
             </Switch>
           </AnimatePresence>
-        </section>
+        </motion.section>
         <WorkNav pageControl={pageControl} />
       </>
     );

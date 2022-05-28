@@ -113,6 +113,7 @@ const Header = ({ refs, pageControl }) => {
     return (
       <li key={i}>
         <Link
+          onClick={() => pageControl.setMobileShowNav(false)}
           to={`/works/${page}/landing`}
           className={workPage === urls.workPage[i] ? "active--text" : ""}
         >
@@ -126,6 +127,7 @@ const Header = ({ refs, pageControl }) => {
       <>
         <div className="nav__link home" ref={refNavHome}>
           <Link
+            onClick={() => pageControl.setMobileShowNav(false)}
             className={`a--transition a--opacity ${
               curPage === urls.curPage[0] ? "active--text" : {}
             }`}
@@ -157,6 +159,7 @@ const Header = ({ refs, pageControl }) => {
         </div>
         <div className="nav__link about" ref={refNavAbout}>
           <Link
+            onClick={() => pageControl.setMobileShowNav(false)}
             to="/about"
             className={`a--transition a--opacity ${
               curPage === urls.curPage[2] ? "active--text" : {}
@@ -167,6 +170,7 @@ const Header = ({ refs, pageControl }) => {
         </div>
         <div className="nav__link contact" ref={refNavContact}>
           <Link
+            onClick={() => pageControl.setMobileShowNav(false)}
             to="/contact"
             className={`a--transition a--opacity ${
               curPage === urls.curPage[3] ? "active--text" : {}

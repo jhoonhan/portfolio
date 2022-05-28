@@ -75,6 +75,33 @@ a {
 
   box-sizing: border-box;
 }
+.transition-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100vw;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  // background: linear-gradient(
+  //   60deg,
+  //   rgba(96, 128, 176, 0.7) 0%,
+  //   rgba(158, 102, 97, 0.7) 40%,
+  //   rgba(35, 49, 73, 0.7) 100%
+  // );
+
+  background-color: rgba(200, 200, 200, 0.8);
+
+  // transition: opacity 0.3s;
+
+  // transform: translateY(100vh);
+
+  // z-index: 9;
+}
 .middle-line {
   display: grid;
   // grid-template-columns: auto 1fr;
@@ -256,11 +283,4 @@ a {
   100% {
     transform: translateY(0%);
   }
-}
-
-.test {
-  position: fixed;
-  top: 50px;
-  right: 50px;
-  z-index: 999;
 }

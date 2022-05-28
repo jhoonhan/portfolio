@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Route, Switch, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import { isMobile } from "react-device-detect";
 
 import Header from "./components/Header";
 import Landing from "./components/landing/Landing";
@@ -12,7 +13,6 @@ import useListenSwipe from "./components/helpers/useListenSwipe";
 import "./scss/App.scss";
 import Contact from "./components/contact/Contact";
 import Cursor from "./components/Cursor";
-import usePrevious from "./components/helpers/usePrevious";
 
 let windowInnerWidth = 0;
 
@@ -42,13 +42,8 @@ const App = () => {
   });
 
   const [curPage, setCurPage] = useState(null);
-
   const [workPage, setWorkPage] = useState(null);
-  const [workPageChanged, setWorkPageChanged] = useState(false);
-  const prevWorkPage = usePrevious(workPage);
-
   const [workSubPage, setWorkSubPage] = useState("landing");
-  const prevWorkSubPage = usePrevious(workSubPage);
 
   const [activeSubPageStylePosition, setActiveSubPageStylePosition] = useState({
     transform: "translateY(0vh)",
@@ -76,19 +71,6 @@ const App = () => {
       bottom: false,
     });
   }, [curPage, workPage, workSubPage]);
-
-  // useEffect(() => {
-  //   setWorkPageChanged(true);
-  // }, [workPage]);
-
-  useEffect(() => {
-    console.log(workPageChanged);
-  }, [workPageChanged]);
-
-  useEffect(() => {
-    if (workSubPage !== prevWorkSubPage) setWorkPageChanged(false);
-    if (workPage !== prevWorkPage) setWorkPageChanged(true);
-  }, [workPage, prevWorkPage, workSubPage, prevWorkSubPage]);
 
   const refMain = useRef(null);
   const refHome = useRef(null);
@@ -123,7 +105,6 @@ const App = () => {
     setCurPage,
     workPage,
     setWorkPage,
-    workPageChanged,
     workSubPage,
     setWorkSubPage,
     mobileShowNav,
@@ -142,9 +123,26 @@ const App = () => {
     },
   };
 
+  const transtionAnimation = () => {
+    if (isMobile) return null;
+    return (
+      <motion.div
+        className="transition-overlay"
+        initial={{ opacity: 1 }}
+        animate={{ opacity: 0 }}
+        exit={{ opacity: 1 }}
+        transition={{ duration: 0.7 }}
+      >
+        <h1 style={{ color: "white" }}>JOE HAN</h1>
+      </motion.div>
+    );
+  };
+
   const render = () => {
-    // console.log(`app rendered`);
-    console.log(location.pathname.split("/")[2]);
+    const transitionPageLocation = location.pathname
+      .split("/")
+      .slice(1, 3)
+      .join("/");
     return (
       <div
         className="app"
@@ -158,43 +156,66 @@ const App = () => {
           <div
             style={curPage === "home" ? { opacity: 0 } : {}}
             className="overlay"
-          ></div>
+          />
+
           <AnimatePresence exitBeforeEnter>
-            <Switch location={location} key={location.pathname.split("/")[2]}>
+            <Switch location={location} key={transitionPageLocation}>
               <Route
                 path="/"
                 exact
                 render={(props) => (
-                  <Landing
-                    pageControl={pageControl}
-                    curPage={curPage}
-                    refHome={refHome}
-                    props={props}
-                  />
+                  <>
+                    {transtionAnimation()}
+                    <Landing
+                      pageControl={pageControl}
+                      curPage={curPage}
+                      refHome={refHome}
+                      props={props}
+                    />
+                  </>
                 )}
               />
               <Route
                 path="/works"
                 render={(props) => (
-                  <Works refs={refs} pageControl={pageControl} props={props} />
+                  <>
+                    {transtionAnimation()}
+
+                    <Works
+                      refs={refs}
+                      pageControl={pageControl}
+                      props={props}
+                    />
+                  </>
                 )}
               />
               <Route
                 path="/about"
                 exact
                 render={(props) => (
-                  <About pageControl={pageControl} refs={refs} props={props} />
+                  <>
+                    {transtionAnimation()}
+
+                    <About
+                      pageControl={pageControl}
+                      refs={refs}
+                      props={props}
+                    />
+                  </>
                 )}
               />
               <Route
                 path="/contact"
                 exact
                 render={(props) => (
-                  <Contact
-                    pageControl={pageControl}
-                    refs={refs}
-                    props={props}
-                  />
+                  <>
+                    {transtionAnimation()}
+                    <Contact
+                      pageControl={pageControl}
+                      refs={refs}
+                      props={props}
+                    />
+                  </>
                 )}
               />
             </Switch>
