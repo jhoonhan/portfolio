@@ -170,6 +170,14 @@
   .slide-img--desktop.overview {
     max-height: 30vh;
   }
+
+  .slide-img--mobile.overview {
+    // max-height: 30vh;
+    margin: 0;
+    & .masking {
+      bottom: 0;
+    }
+  }
   .work__content.padded {
     padding: 2rem 2rem 0rem 2rem;
     // padding: 0;
