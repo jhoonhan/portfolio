@@ -3,8 +3,11 @@ import { motion } from "framer-motion";
 import LandingArt from "./LandingArt";
 import name2 from "../../assests/image/name2.svg";
 import MiddleLine from "../helpers/MiddleLine";
+import useTextAnimation from "./useTextAnimation";
 
 const Landing = ({ pageControl, refHome, props }) => {
+  const { hasFinished, title } = useTextAnimation("joehan", 500);
+
   useEffect(() => {
     pageControl.setCurPage("home");
   }, [props.match.path]);
@@ -28,9 +31,10 @@ const Landing = ({ pageControl, refHome, props }) => {
   const renderCenterInfo = () => {
     return (
       <div className="landing__center-info">
-        <svg viewBox="0 0 500 500" className="lname lname--center">
+        {/* <svg viewBox="0 0 500 500" className="lname lname--center">
           <use href={`${name2}#center`}></use>
-        </svg>
+        </svg> */}
+        {title}
       </div>
     );
   };
