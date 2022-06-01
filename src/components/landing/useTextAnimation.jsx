@@ -54,7 +54,7 @@ const useRandomTextAnimation = (text, delay) => {
         );
         res[i] = generated;
 
-        if (generated === char) {
+        if (res[i] === char) {
           styles[i] = true;
 
           setTitleStyle([...styles]);
@@ -65,9 +65,9 @@ const useRandomTextAnimation = (text, delay) => {
             styles[i] = false;
             setTitleStyle([...styles]);
             refInterval.current[i] = setInterval(fn, 50);
-          }, 10000);
+          }, 7000);
         }
-        if (generated !== char) {
+        if (res[i] !== char) {
           setTitle(res.join(""));
         }
       };

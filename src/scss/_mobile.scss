@@ -3,7 +3,9 @@
   body {
     // max-height: 100vh;
     // overflow: hidden;
+    // animation: color-change 10s infinite;
   }
+
   h2 {
     font-size: 1.6rem;
   }
@@ -93,6 +95,23 @@
   }
 
   // Landing
+  .landing__container {
+    animation: color-change 10s linear infinite;
+  }
+  @keyframes color-change {
+    0% {
+      background-color: palegreen;
+    }
+    33% {
+      background-color: palevioletred;
+    }
+    66% {
+      background-color: skyblue;
+    }
+    100% {
+      background-color: palegreen;
+    }
+  }
   .landing-art__container {
     display: none;
   }

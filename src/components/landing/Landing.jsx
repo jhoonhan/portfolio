@@ -7,7 +7,7 @@ import useTextAnimation from "./useTextAnimation";
 
 const Landing = ({ pageControl, refHome, props }) => {
   const { title, titleStyle } = useTextAnimation("joehan", 0);
-  const [artBlur, setArtBlur] = useState(0);
+  const [artOverlay, setArtOverlay] = useState(0);
 
   useEffect(() => {
     pageControl.setCurPage("home");
@@ -16,9 +16,9 @@ const Landing = ({ pageControl, refHome, props }) => {
   useEffect(() => {
     if (titleStyle.every((el) => el === true)) {
       console.log(`omg`);
-      setArtBlur(50);
+      setArtOverlay(0.7);
     } else {
-      setArtBlur(0);
+      setArtOverlay(0);
     }
   }, [titleStyle]);
 
@@ -40,11 +40,16 @@ const Landing = ({ pageControl, refHome, props }) => {
   };
 
   const renderCenterInfo = () => {
-    const titleStylized = title.split("").map((char, i) => {
+    const hardTitleFormat = title.slice(0, 3);
+    const hardTitleFormat2 = title.slice(3, 6);
+    const titleStylized = hardTitleFormat.split("").map((char, i) => {
       return (
         <h1
           key={i}
-          style={{ color: titleStyle[i] ? "white" : "#666" }}
+          style={{
+            color: titleStyle[i] ? "white" : "#666",
+            opacity: titleStyle[i] ? 1 : 0.5,
+          }}
           // className={titleStyle[i] ? "fadetext" : ""}
         >
           {char}
@@ -52,7 +57,27 @@ const Landing = ({ pageControl, refHome, props }) => {
       );
     });
 
-    return <div className="landing__center-info">{titleStylized}</div>;
+    const titleStylized2 = hardTitleFormat2.split("").map((char, i) => {
+      return (
+        <h1
+          key={i}
+          style={{
+            color: titleStyle[i + 3] ? "white" : "#666",
+            opacity: titleStyle[i + 3] ? 1 : 0.5,
+          }}
+          // className={titleStyle[i] ? "fadetext" : ""}
+        >
+          {char}
+        </h1>
+      );
+    });
+
+    return (
+      <div className="landing__center-info">
+        <div className="landing__center-name">{titleStylized}</div>
+        <div className="landing__center-name">{titleStylized2}</div>
+      </div>
+    );
   };
   const render = () => {
     return (
@@ -62,7 +87,7 @@ const Landing = ({ pageControl, refHome, props }) => {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
       >
-        <LandingArt curPage={pageControl.curPage} blur={artBlur} />
+        <LandingArt curPage={pageControl.curPage} artOverlay={artOverlay} />
         <div ref={refHome} className="landing__info container">
           {renderCenterInfo()}
 

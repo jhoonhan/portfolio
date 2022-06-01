@@ -1,7 +1,8 @@
 import React, { useRef, useState, useEffect } from "react";
 import name2 from "../../assests/image/name2.svg";
+import { isMobile } from "react-device-detect";
 
-const LandingArt = ({ curPage, blur }) => {
+const LandingArt = ({ curPage, artOverlay }) => {
   const refSection = useRef(null);
   const refCursor = useRef(null);
   const refFirstName = useRef(null);
@@ -57,6 +58,7 @@ const LandingArt = ({ curPage, blur }) => {
   }, [curPage]);
 
   const changeColor = (e) => {
+    if (isMobile) return;
     const tps = 60;
     const intensity = 1.2;
     if (!waitMouseMove) {
@@ -125,6 +127,7 @@ const LandingArt = ({ curPage, blur }) => {
         // onMouseLeave={() => console.log(`left aaang`)}
         className="landing-art__container container"
       >
+        <div className="landing-art__overlay" style={{ opacity: artOverlay }} />
         {/* <div ref={refCursor} className="cursor"></div> */}
         <div className="lname-container">
           <svg
