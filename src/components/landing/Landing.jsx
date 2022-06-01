@@ -15,7 +15,6 @@ const Landing = ({ pageControl, refHome, props }) => {
 
   useEffect(() => {
     if (titleStyle.every((el) => el === true)) {
-      console.log(`omg`);
       setArtOverlay(0.7);
     } else {
       setArtOverlay(0);

@@ -54,6 +54,7 @@
   },
   "devDependencies": {
     "node-sass": "^7.0.1",
+    "nth-check": ">=2.0.1",
     "webpack": "^5.70.0"
   }
 }
