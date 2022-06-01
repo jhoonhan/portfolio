@@ -16,20 +16,28 @@ const useRandomTextAnimation = (text, delay) => {
   };
 
   const [title, setTitle] = useState(initialRandomText);
+  const [titleStyle, setTitleStyle] = useState(Array(textLength).fill(false));
   // const threshold = () => {
   //   if (textLength >= 7) return 100;
   //   if (textLength < 7) return 400;
   // };
 
+  const refMasterTimer = useRef(null);
   const refInterval = useRef([]);
+  const refTimeout = useRef([]);
 
   useEffect(() => {
-    refInterval.current = [];
-    setTimeout(makeid, delay);
+    refInterval.current = [...Array(textLength)];
+    refTimeout.current = [...Array(textLength)];
+    refMasterTimer.current = setTimeout(makeid, delay);
 
     return () => {
+      clearTimeout(refMasterTimer.current);
       refInterval.current.forEach((interval) => {
         clearInterval(interval);
+      });
+      refTimeout.current.forEach((timeout) => {
+        clearTimeout(timeout);
       });
     };
   }, []);
@@ -37,7 +45,7 @@ const useRandomTextAnimation = (text, delay) => {
   const makeid = () => {
     const chars = text.split("");
     let res = title.split("");
-    const characters = "abcdefghijklmnopqrstuvwxyz";
+    const styles = [...titleStyle];
 
     chars.forEach((char, i) => {
       const fn = () => {
@@ -46,46 +54,28 @@ const useRandomTextAnimation = (text, delay) => {
         );
         res[i] = generated;
 
-        if (res[i] === char) {
-          clearInterval(refInterval.current[i]);
-          setTitle(res.join(""));
+        if (generated === char) {
+          styles[i] = true;
 
-          setTimeout(() => {
-            console.log(`resume!`);
-            refInterval.current[i] = setInterval(fn, 100);
+          setTitleStyle([...styles]);
+          setTitle(res.join(""));
+          clearInterval(refInterval.current[i]);
+
+          refTimeout.current[i] = setTimeout(() => {
+            styles[i] = false;
+            setTitleStyle([...styles]);
+            refInterval.current[i] = setInterval(fn, 50);
           }, 10000);
         }
-        if (res[i] !== char) {
+        if (generated !== char) {
           setTitle(res.join(""));
         }
       };
-      refInterval.current[i] = setInterval(fn, 100);
-
-      // if (res[i] === char) {
-      //   console.log(`killing`);
-      //   // clearInterval(refInterval.current);
-      //   let fn;
-      //   fn = setInterval(() => {
-      //     console.log(`aaaang`);
-      //   }, 300);
-      //   // fn();
-      //   setTimeout(() => {
-      //     console.log(`cleared interval`);
-      //     clearInterval(fn);
-      //   }, 10000);
-      // }
-
-      // res[i] = generated;
+      refInterval.current[i] = setInterval(fn, 50);
     });
-
-    // if (res.join("") === text.join("")) {
-    //   clearInterval(refInterval.current);
-    //   setHasFinished(true);
-    // }
   };
 
-  // return <>{override ? text.join("") : title}</>;
-  return { title };
+  return { title, titleStyle };
 };
 
 export default useRandomTextAnimation;

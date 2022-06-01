@@ -37,15 +37,32 @@
   color: white;
   position: relative;
 
-  width: 30vh;
-  height: 30vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: 0.3 ease-in-out;
+  // width: 30vh;
+  width: auto;
+  display: grid;
+  // grid-template-columns: 1fr 1fr 1fr;
+  grid-auto-columns: 1fr;
+  grid-auto-flow: column;
+  justify-items: center;
+  // align-items: center;
+  // mix-blend-mode: hard-light;
+
   z-index: 5;
 
-  &:hover {
-    mix-blend-mode: overlay;
+  // &:hover {
+  // }
+
+  & h1 {
+    color: #666;
+    font-size: calc(min(10vh, 10vw));
+    height: calc(min(10vh, 10vw));
+    aspect-ratio: 1 / 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+
+    transition: 1s ease-in-out;
   }
 }

@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import name2 from "../../assests/image/name2.svg";
 
-const LandingArt = ({ curPage }) => {
+const LandingArt = ({ curPage, blur }) => {
   const refSection = useRef(null);
   const refCursor = useRef(null);
   const refFirstName = useRef(null);

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import LandingArt from "./LandingArt";
 import name2 from "../../assests/image/name2.svg";
@@ -6,11 +6,21 @@ import MiddleLine from "../helpers/MiddleLine";
 import useTextAnimation from "./useTextAnimation";
 
 const Landing = ({ pageControl, refHome, props }) => {
-  const { hasFinished, title } = useTextAnimation("joehan", 500);
+  const { title, titleStyle } = useTextAnimation("joehan", 0);
+  const [artBlur, setArtBlur] = useState(0);
 
   useEffect(() => {
     pageControl.setCurPage("home");
   }, [props.match.path]);
+
+  useEffect(() => {
+    if (titleStyle.every((el) => el === true)) {
+      console.log(`omg`);
+      setArtBlur(50);
+    } else {
+      setArtBlur(0);
+    }
+  }, [titleStyle]);
 
   const renderFooter = () => {
     return (
@@ -28,15 +38,21 @@ const Landing = ({ pageControl, refHome, props }) => {
       </div>
     );
   };
+
   const renderCenterInfo = () => {
-    return (
-      <div className="landing__center-info">
-        {/* <svg viewBox="0 0 500 500" className="lname lname--center">
-          <use href={`${name2}#center`}></use>
-        </svg> */}
-        {title}
-      </div>
-    );
+    const titleStylized = title.split("").map((char, i) => {
+      return (
+        <h1
+          key={i}
+          style={{ color: titleStyle[i] ? "white" : "#666" }}
+          // className={titleStyle[i] ? "fadetext" : ""}
+        >
+          {char}
+        </h1>
+      );
+    });
+
+    return <div className="landing__center-info">{titleStylized}</div>;
   };
   const render = () => {
     return (
@@ -46,7 +62,7 @@ const Landing = ({ pageControl, refHome, props }) => {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
       >
-        <LandingArt curPage={pageControl.curPage} />
+        <LandingArt curPage={pageControl.curPage} blur={artBlur} />
         <div ref={refHome} className="landing__info container">
           {renderCenterInfo()}
 
