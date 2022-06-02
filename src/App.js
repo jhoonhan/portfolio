@@ -127,17 +127,16 @@ const App = () => {
 
   const transtionAnimation = () => {
     if (isMobile) return null;
-    return (
-      <motion.div
-        className="transition-overlay"
-        initial={{ opacity: 1 }}
-        animate={{ opacity: 0 }}
-        exit={{ opacity: 1 }}
-        transition={{ duration: 0.7 }}
-      >
-        {/* <h1 style={{ color: "white" }}></h1> */}
-      </motion.div>
-    );
+    return null;
+    // <motion.div
+    //   className="transition-overlay"
+    //   initial={{ y: "0vh" }}
+    //   animate={{ y: "100vh" }}
+    //   exit={{ y: "0vh" }}
+    //   transition={{ duration: 0.7 }}
+    // >
+    //   {/* <h1 style={{ color: "white" }}></h1> */}
+    // </motion.div>
   };
 
   const render = () => {

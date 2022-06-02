@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { transition } from "../helpers/config";
+
 import LandingArt from "./LandingArt";
 import name2 from "../../assests/image/name2.svg";
 import MiddleLine from "../helpers/MiddleLine";
@@ -78,15 +80,40 @@ const Landing = ({ pageControl, refHome, props }) => {
       </div>
     );
   };
+
+  const animate = {
+    container: {
+      hidden: { opacity: 0 },
+      show: {
+        opacity: 1,
+        transition: {
+          duration: 0.5,
+        },
+      },
+    },
+    item: {
+      hidden: { opacity: 0 },
+      show: {
+        opacity: 1,
+        transition: { duration: 5, dealy: 1 },
+      },
+    },
+  };
+
   const render = () => {
     return (
       <motion.section
         className="landing__container"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
+        variants={animate.container}
+        initial="hidden"
+        animate="show"
+        exit="hidden"
       >
-        <LandingArt curPage={pageControl.curPage} artOverlay={artOverlay} />
+        <LandingArt
+          curPage={pageControl.curPage}
+          artOverlay={artOverlay}
+          animate={animate}
+        />
         <div ref={refHome} className="landing__info container">
           {renderCenterInfo()}
 
