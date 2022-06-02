@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import WorkContent from "../WorkContent";
 import usePreloader from "../../helpers/usePreloader";
 
@@ -55,30 +55,50 @@ const SushiRepublic = ({ pageControl, props }) => {
   //   backgroundColor: "rgba(120, 20, 20, 1)",
   // };
 
-  const images = usePreloader([
-    landing,
-    overviewImg0,
-    overviewImg1,
-    overviewImg2,
-  ]);
-
-  const preload = () => {};
+  const [fetched, setFetched] = useState(false);
+  const [preloaded, setPreloaded] = useState([]);
+  const imagesToPreload = [landing, overviewImg0, overviewImg1, overviewImg2];
 
   useEffect(() => {
-    console.log(images);
-  }, [images]);
+    // const imageList = [];
+    imagesToPreload.forEach((src) => {
+      const img = new Image();
+      img.onload = () => {
+        //   imageList.push(img);
+        setPreloaded((arr) => [...arr, img]);
+      };
+      img.src = src;
+    });
+  }, []);
 
-  return (
-    <WorkContent
-      refEl={refEl}
-      pageControl={pageControl}
-      content={data}
-      backgroundStyle={backgroundStyle}
-      props={props}
-      noOverview={false}
-      isVideo={false}
-    />
-  );
+  useEffect(() => {
+    if (preloaded.length === imagesToPreload.length) {
+      setFetched(true);
+    }
+  }, [preloaded]);
+
+  const render = () => {
+    if (!fetched)
+      return (
+        <div>
+          <h1>LOADING</h1>
+        </div>
+      );
+
+    return (
+      <WorkContent
+        refEl={refEl}
+        pageControl={pageControl}
+        content={data}
+        backgroundStyle={backgroundStyle}
+        props={props}
+        noOverview={false}
+        isVideo={false}
+      />
+    );
+  };
+
+  return render();
 };
 
 export default SushiRepublic;
