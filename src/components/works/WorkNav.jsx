@@ -131,7 +131,7 @@ const WorkNav = ({ pageControl }) => {
               // }
               style={activeSpan(urls.workSubPage[0])}
             >
-              {workPage.split("-").join(" ")}
+              {workPage?.split("-").join(" ")}
             </span>
           </Link>
           <Link
