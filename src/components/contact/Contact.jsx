@@ -60,20 +60,46 @@ const Contact = ({ pageControl, props, refs }) => {
             <p>hanj1112@outlook.com</p>
 
             <div className="flex--row" style={{ gap: "1.5rem" }}>
-              <svg viewBox="0 0 100 100" className="social-icons">
-                <use href={`${icons}#github`} />
-              </svg>
-              <svg viewBox="0 0 100 100" className="social-icons">
-                <use href={`${icons}#linkedin`} />
-              </svg>
-
-              <svg viewBox="0 0 100 100" className="social-icons">
-                <use href={`${icons}#instagram`} />
-              </svg>
-
-              <svg viewBox="0 0 100 100" className="social-icons">
-                <use href={`${icons}#cv`} />
-              </svg>
+              <a
+                className="a--opacity"
+                href="https://github.com/jhoonhan"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                <svg viewBox="0 0 100 100" className="social-icons">
+                  <use href={`${icons}#github`} />
+                </svg>
+              </a>
+              <a
+                className="a--opacity"
+                href="https://www.linkedin.com/in/joe-han-a45087121/"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                <svg viewBox="0 0 100 100" className="social-icons">
+                  <use href={`${icons}#linkedin`} />
+                </svg>
+              </a>
+              <a
+                className="a--opacity"
+                href="https://www.instagram.com/jhoon.han/"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                <svg viewBox="0 0 100 100" className="social-icons">
+                  <use href={`${icons}#instagram`} />
+                </svg>
+              </a>
+              <a
+                className="a--opacity"
+                href="https://github.com/jhoonhan"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                <svg viewBox="0 0 100 100" className="social-icons">
+                  <use href={`${icons}#cv`} />
+                </svg>
+              </a>
             </div>
           </motion.div>
         </div>

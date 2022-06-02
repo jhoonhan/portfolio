@@ -199,11 +199,10 @@ const About = ({ pageControl, props, refs }) => {
                 visual art.
               </h2>
               <p className="el">
-                Being creative with visual aesthetic and motion design for
-                websites is what I've been fascinated with for the past few
-                years. Exploring interdisciplinary art making practice, I have
-                been learning how to develop in JavaScript, and exploring how it
-                can be merged with my previous experience as a visual artist.
+                Developing creative interactive websites is what I've been
+                fascinated with for the past few years. I have been learning how
+                to develop in React and JavaScript, and exploring how it can be
+                merged with my previous experience as a visual artist.
               </p>
             </div>
 
@@ -227,33 +226,6 @@ const About = ({ pageControl, props, refs }) => {
                 <p>- 5 years experience in Web Design</p>
                 <p>- 5 years experience in Graphic Design</p>
                 <p>- 1 year in Front-end Web Development</p>
-              </div>
-
-              <div
-                className="flex--row el"
-                style={{
-                  gap: "3rem",
-                  alignSelf: "center",
-                  borderTop: "1px solid #ccc",
-                  marginTop: "3rem",
-                  paddingTop: "2rem",
-                  paddingBottom: "3rem",
-                }}
-              >
-                <svg viewBox="0 0 100 100" className="social-icons ">
-                  <use href={`${icons}#github`} />
-                </svg>
-                <svg viewBox="0 0 100 100" className="social-icons ">
-                  <use href={`${icons}#linkedin`} />
-                </svg>
-
-                <svg viewBox="0 0 100 100" className="social-icons ">
-                  <use href={`${icons}#instagram`} />
-                </svg>
-
-                <svg viewBox="0 0 100 100" className="social-icons ">
-                  <use href={`${icons}#cv`} />
-                </svg>
               </div>
             </div>
           </motion.div>

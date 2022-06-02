@@ -8,7 +8,7 @@ import MiddleLine from "../helpers/MiddleLine";
 import useTextAnimation from "./useTextAnimation";
 
 const Landing = ({ pageControl, refHome, props }) => {
-  const { title, titleStyle } = useTextAnimation("joehan", 0);
+  const { title, titleStyle } = useTextAnimation("joehan", 1000);
   const [artOverlay, setArtOverlay] = useState(0);
 
   useEffect(() => {
@@ -73,47 +73,33 @@ const Landing = ({ pageControl, refHome, props }) => {
       );
     });
 
-    return (
-      <div className="landing__center-info">
-        <div className="landing__center-name">{titleStylized}</div>
-        <div className="landing__center-name">{titleStylized2}</div>
-      </div>
-    );
-  };
+    const render = () => {
+      return (
+        <motion.div
+          className="landing__center-info"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 2, delay: 1 }}
+        >
+          <div className="landing__center-name">{titleStylized}</div>
+          <div className="landing__center-name">{titleStylized2}</div>
+        </motion.div>
+      );
+    };
 
-  const animate = {
-    container: {
-      hidden: { opacity: 0 },
-      show: {
-        opacity: 1,
-        transition: {
-          duration: 0.5,
-        },
-      },
-    },
-    item: {
-      hidden: { opacity: 0 },
-      show: {
-        opacity: 1,
-        transition: { duration: 5, dealy: 1 },
-      },
-    },
+    return render();
   };
 
   const render = () => {
     return (
       <motion.section
         className="landing__container"
-        variants={animate.container}
-        initial="hidden"
-        animate="show"
-        exit="hidden"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.5 }}
       >
-        <LandingArt
-          curPage={pageControl.curPage}
-          artOverlay={artOverlay}
-          animate={animate}
-        />
+        <LandingArt curPage={pageControl.curPage} artOverlay={artOverlay} />
         <div ref={refHome} className="landing__info container">
           {renderCenterInfo()}
 

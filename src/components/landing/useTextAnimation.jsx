@@ -17,10 +17,6 @@ const useRandomTextAnimation = (text, delay) => {
 
   const [title, setTitle] = useState(initialRandomText);
   const [titleStyle, setTitleStyle] = useState(Array(textLength).fill(false));
-  // const threshold = () => {
-  //   if (textLength >= 7) return 100;
-  //   if (textLength < 7) return 400;
-  // };
 
   const refMasterTimer = useRef(null);
   const refInterval = useRef([]);

@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import name2 from "../../assests/image/name2.svg";
 import { isMobile } from "react-device-detect";
 
-const LandingArt = ({ curPage, artOverlay, animate }) => {
+const LandingArt = ({ curPage, artOverlay }) => {
   const refSection = useRef(null);
   const refCursor = useRef(null);
   const refFirstName = useRef(null);
@@ -127,7 +127,9 @@ const LandingArt = ({ curPage, artOverlay, animate }) => {
         ref={refSection}
         // onMouseLeave={() => console.log(`left aaang`)}
         className="landing-art__container container"
-        variants={animate.item}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 4, delay: 2 }}
       >
         <div className="landing-art__overlay" style={{ opacity: artOverlay }} />
         {/* <div ref={refCursor} className="cursor"></div> */}
