@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import WorkContent from "../WorkContent";
 
 import landing from "../../../assests/image/projects/sushiRepublic/landing.jpg";
@@ -13,7 +13,9 @@ import slideImg4 from "../../../assests/image/projects/sushiRepublic/mobile2.jpg
 import slideImg5 from "../../../assests/image/projects/sushiRepublic/img0.jpg";
 import slideImg6 from "../../../assests/image/projects/sushiRepublic/img1.jpg";
 
-const SushiRepublic = ({ refEl, pageControl, props }) => {
+const SushiRepublic = ({ pageControl, props }) => {
+  const refEl = useRef(null);
+
   const data = {
     name: ["sushi", " republic"],
     description: "A responsive website for a local fine Japanese restaurant.",

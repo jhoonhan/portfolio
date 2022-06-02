@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import WorkContent from "../WorkContent";
 
 import landing from "../../../assests/image/projects/haansCleaner/landing.jpg";
@@ -8,7 +8,9 @@ import video1 from "../../../assests/image/projects/haansCleaner/video1.mp4";
 import video2 from "../../../assests/image/projects/haansCleaner/video2.mp4";
 import video3 from "../../../assests/image/projects/haansCleaner/video3.mp4";
 
-const HaansCleaner = ({ refEl, pageControl, props }) => {
+const HaansCleaner = ({ pageControl, props }) => {
+  const refEl = useRef(null);
+
   const data = {
     name: ["Haans", " Cleaner"],
     description: "A mobile web application for the new way of dry cleaning.",

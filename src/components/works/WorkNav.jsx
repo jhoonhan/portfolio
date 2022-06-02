@@ -57,14 +57,6 @@ const WorkNav = ({ pageControl }) => {
     // if (workSubPage === "slides") setWorkNavWidth("85%");
   }, [workSubPage]);
 
-  const condWorkPage = () => {
-    if (workPage === "sushi-republic") return "sushi republic";
-    if (workPage === "danji") return "danji";
-    if (workPage === "salvation-army") return "salvation army";
-    if (workPage === "haans-cleaner") return "haans cleaner";
-    if (workPage === "this-is-bullshit") return "this is bullshit";
-  };
-
   const activeClass = () => {
     if (curPage === urls.curPage[1]) {
       return "active-box";
@@ -139,7 +131,7 @@ const WorkNav = ({ pageControl }) => {
               // }
               style={activeSpan(urls.workSubPage[0])}
             >
-              {condWorkPage()}
+              {workPage.split("-").join(" ")}
             </span>
           </Link>
           <Link

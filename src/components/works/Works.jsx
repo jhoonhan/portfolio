@@ -10,16 +10,12 @@ import Danji from "./projects/Danji";
 import SalvationArmy from "./projects/SalvationArmy";
 import HaansCleaner from "./projects/HaansCleaner";
 import ThisIsBullshit from "./projects/ThisIsBullshit";
+import KoreanLife from "./projects/KoreanLife";
+import LittleTokyo from "./projects/LittleTokyo";
 
 const Works = ({ refs, pageControl, props, match }) => {
   const location = useLocation();
-  const { urls, setCurPage } = pageControl;
-
-  const refEl1 = useRef(null);
-  const refEl2 = useRef(null);
-  const refEl3 = useRef(null);
-  const refEl4 = useRef(null);
-  const refEl5 = useRef(null);
+  const { setCurPage } = pageControl;
 
   useEffect(() => {
     setCurPage(props.match.path.slice(1));
@@ -44,81 +40,49 @@ const Works = ({ refs, pageControl, props, match }) => {
               <Route
                 path={`${props.match.path}/sushi-republic`}
                 render={(props) => (
-                  <SushiRepublic
-                    refEl={refEl1}
-                    pageControl={pageControl}
-                    props={props}
-                  />
+                  <SushiRepublic pageControl={pageControl} props={props} />
                 )}
               />
               <Route
                 path={`${props.match.path}/danji`}
                 render={(props) => (
-                  <Danji
-                    refEl={refEl2}
-                    pageControl={pageControl}
-                    props={props}
-                  />
+                  <Danji pageControl={pageControl} props={props} />
                 )}
               />
               <Route
                 path={`${props.match.path}/salvation-army`}
                 render={(props) => (
-                  <SalvationArmy
-                    refEl={refEl3}
-                    pageControl={pageControl}
-                    props={props}
-                  />
+                  <SalvationArmy pageControl={pageControl} props={props} />
                 )}
               />
               <Route
                 path={`${props.match.path}/haans-cleaner`}
                 render={(props) => (
-                  <HaansCleaner
-                    refEl={refEl4}
-                    pageControl={pageControl}
-                    props={props}
-                  />
+                  <HaansCleaner pageControl={pageControl} props={props} />
                 )}
               />
               <Route
                 path={`${props.match.path}/this-is-bullshit`}
                 render={(props) => (
-                  <ThisIsBullshit
-                    refEl={refEl5}
-                    pageControl={pageControl}
-                    props={props}
-                  />
+                  <ThisIsBullshit pageControl={pageControl} props={props} />
                 )}
               />
               <Route
                 path={`${props.match.path}/korean-life`}
                 render={(props) => (
-                  <ThisIsBullshit
-                    refEl={refEl5}
-                    pageControl={pageControl}
-                    props={props}
-                  />
+                  <KoreanLife pageControl={pageControl} props={props} />
                 )}
               />
               <Route
                 path={`${props.match.path}/little-tokyo`}
                 render={(props) => (
-                  <ThisIsBullshit
-                    refEl={refEl5}
-                    pageControl={pageControl}
-                    props={props}
-                  />
+                  <LittleTokyo pageControl={pageControl} props={props} />
                 )}
               />
               <Route
                 path={`${props.match.path}/jk-aerostart`}
                 render={(props) => (
-                  <ThisIsBullshit
-                    refEl={refEl5}
-                    pageControl={pageControl}
-                    props={props}
-                  />
+                  <ThisIsBullshit pageControl={pageControl} props={props} />
                 )}
               />
             </Switch>

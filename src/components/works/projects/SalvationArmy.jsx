@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import WorkContent from "../WorkContent";
 
 import landing from "../../../assests/image/projects/salvationArmy/landing.jpg";
@@ -6,7 +6,9 @@ import slideImg0 from "../../../assests/image/projects/salvationArmy/desktop0.jp
 import slideImg1 from "../../../assests/image/projects/salvationArmy/desktop1.jpg";
 import slideImg2 from "../../../assests/image/projects/salvationArmy/desktop2.jpg";
 
-const SalvationArmy = ({ refEl, pageControl, props }) => {
+const SalvationArmy = ({ pageControl, props }) => {
+  const refEl = useRef(null);
+
   const data = {
     name: ["salvation", " army"],
     description:

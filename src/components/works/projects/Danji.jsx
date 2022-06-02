@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import WorkContent from "../WorkContent";
 
 import landing from "../../../assests/image/projects/danji/landing.jpg";
@@ -12,7 +12,9 @@ import slideImg4 from "../../../assests/image/projects/danji/mobile2.jpg";
 import slideImg5 from "../../../assests/image/projects/danji/img0.jpg";
 import slideImg6 from "../../../assests/image/projects/danji/img2.jpg";
 
-const Danji = ({ refEl, pageControl, props }) => {
+const Danji = ({ pageControl, props }) => {
+  const refEl = useRef(null);
+
   const data = {
     name: ["danji"],
     description:
