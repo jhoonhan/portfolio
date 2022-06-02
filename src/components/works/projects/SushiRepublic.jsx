@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import WorkContent from "../WorkContent";
+import usePreloader from "../../helpers/usePreloader";
 
 import landing from "../../../assests/image/projects/sushiRepublic/landing.jpg";
 import overviewImg0 from "../../../assests/image/projects/sushiRepublic/overview0.jpg";
@@ -53,6 +54,19 @@ const SushiRepublic = ({ pageControl, props }) => {
   // const backgroundStyle = {
   //   backgroundColor: "rgba(120, 20, 20, 1)",
   // };
+
+  const images = usePreloader([
+    landing,
+    overviewImg0,
+    overviewImg1,
+    overviewImg2,
+  ]);
+
+  const preload = () => {};
+
+  useEffect(() => {
+    console.log(images);
+  }, [images]);
 
   return (
     <WorkContent
