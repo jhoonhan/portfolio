@@ -90,13 +90,13 @@ const App = () => {
     curPage: ["home", "works", "about", "contact"],
     workPage: [
       "sushi-republic",
-      "this-is-bullshit",
       "haans-cleaner",
+      "this-is-bullshit",
       "salvation-army",
       "korean-life",
       "danji",
-      "little-tokyo",
       "jk-aerostart",
+      "little-tokyo",
     ],
     workSubPage: ["landing", "overview", "gallery"],
   };

@@ -1,38 +1,31 @@
 import React, { useEffect, useRef } from "react";
 import WorkContent from "../WorkContent";
 
-import landing from "../../../assests/image/projects/littleTokyo/desktop0.jpg";
-import desktop0 from "../../../assests/image/projects/littleTokyo/desktop0.jpg";
-import desktop1 from "../../../assests/image/projects/littleTokyo/desktop1.jpg";
-import desktop2 from "../../../assests/image/projects/littleTokyo/desktop2.jpg";
-import photo0 from "../../../assests/image/projects/littleTokyo/photo0.jpg";
-import photo1 from "../../../assests/image/projects/littleTokyo/photo1.jpg";
-import photo2 from "../../../assests/image/projects/littleTokyo/photo2.jpg";
+import landing from "../../../assests/image/projects/jkAerostart/landing.jpg";
+import videoD0 from "../../../assests/image/projects/jkAerostart/videoD0.mp4";
+import videoM0 from "../../../assests/image/projects/jkAerostart/videoM0.mp4";
+import videoM1 from "../../../assests/image/projects/jkAerostart/videoM1.mp4";
 
-const LittleTokyo = ({ pageControl, props }) => {
+const JkAerostart = ({ pageControl, props }) => {
   const refEl = useRef(null);
 
   const data = {
-    name: ["Little", " Tokyo"],
-    description:
-      "A static website for a local Japanese restaurant built in 2012",
-    role: "Web Designer, Graphic Designer, Photographer",
+    name: ["JK", " Aerostart"],
+    description: "A simple static website for an aerospace parts company",
+    role: "Web Designer, Graphic Designer",
     technology: "HTML, CSS",
     liveDemoURL: "http://littletokyonc.com/",
-    githubURL: "https://github.com/jhoonhan/this-is-bullshit",
-    path: "little-tokyo",
+    githubURL: "https://github.com/jhoonhan/jk-aerostart",
+    path: "jk-aerostart",
     overviewVisual: {
-      // type: "image",
-      // orientation: "trifold",
-      // data: [photo0, photo1, photo2],
-      type: "image",
+      type: "video",
       orientation: "desktop",
-      data: [desktop1],
+      data: [videoD0],
     },
     images: {
       landing,
       slideImages: {
-        desktop: [desktop0, desktop1, desktop2, photo2, photo1, photo0],
+        desktop: [],
         mobile: [],
         photo: [],
       },
@@ -40,14 +33,14 @@ const LittleTokyo = ({ pageControl, props }) => {
     videos: {
       landing: null,
       slideVideos: {
-        desktop: [],
-        mobile: [],
+        desktop: [videoD0],
+        mobile: [videoM0, videoM1],
       },
     },
     theme: "light",
   };
   const backgroundStyle = {
-    background: "rgba(30, 30, 30, 1)",
+    background: "rgba(40, 30, 80, 1)",
   };
 
   useEffect(() => {
@@ -73,4 +66,4 @@ const LittleTokyo = ({ pageControl, props }) => {
   );
 };
 
-export default LittleTokyo;
+export default JkAerostart;

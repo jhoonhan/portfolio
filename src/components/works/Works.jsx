@@ -12,6 +12,7 @@ import HaansCleaner from "./projects/HaansCleaner";
 import ThisIsBullshit from "./projects/ThisIsBullshit";
 import KoreanLife from "./projects/KoreanLife";
 import LittleTokyo from "./projects/LittleTokyo";
+import JkAerostart from "./projects/JkAerostart";
 
 const Works = ({ refs, pageControl, props, match }) => {
   const location = useLocation();
@@ -82,7 +83,7 @@ const Works = ({ refs, pageControl, props, match }) => {
               <Route
                 path={`${props.match.path}/jk-aerostart`}
                 render={(props) => (
-                  <ThisIsBullshit pageControl={pageControl} props={props} />
+                  <JkAerostart pageControl={pageControl} props={props} />
                 )}
               />
             </Switch>
