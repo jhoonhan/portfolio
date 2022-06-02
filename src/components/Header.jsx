@@ -6,7 +6,7 @@ import icons from "../assests/image/icons.svg";
 import { transition } from "./helpers/config";
 import { color } from "./helpers/config";
 
-const Header = ({ refs, pageControl }) => {
+const Header = ({ pageControl }) => {
   const [activeHeight, setActiveHeight] = useState("0rem");
   const [expandWorkNav, setExpandWorkNav] = useState(false);
   const [showSocialIcons, setShowSocialIcons] = useState(true);
@@ -104,10 +104,6 @@ const Header = ({ refs, pageControl }) => {
     return style;
   };
 
-  const handleWorkClick = () => {
-    setExpandWorkNav(true);
-  };
-
   const renderWorkLinks = urls.workPage.map((page, i) => {
     const pageName = page.split("-").join(" ");
     return (
@@ -139,7 +135,7 @@ const Header = ({ refs, pageControl }) => {
         </div>
         <div className="nav__link works" ref={refNavWorks}>
           <span
-            onClick={handleWorkClick}
+            onClick={() => setExpandWorkNav(true)}
             className={`a--transition a--opacity ${
               curPage === urls.curPage[1] ? "active--text" : {}
             }`}

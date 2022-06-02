@@ -93,8 +93,10 @@ const App = () => {
       "this-is-bullshit",
       "haans-cleaner",
       "salvation-army",
+      "korean-life",
       "danji",
-      // "korean-life",
+      "little-tokyo",
+      "jk-aerostart",
     ],
     workSubPage: ["landing", "overview", "gallery"],
   };
@@ -133,7 +135,7 @@ const App = () => {
         exit={{ opacity: 1 }}
         transition={{ duration: 0.7 }}
       >
-        <h1 style={{ color: "white" }}>JOE HAN</h1>
+        {/* <h1 style={{ color: "white" }}></h1> */}
       </motion.div>
     );
   };
@@ -150,7 +152,7 @@ const App = () => {
         onTouchMove={onTouchMove}
         onTouchEnd={onTouchEnd}
       >
-        <Header refs={refs} pageControl={pageControl} />
+        <Header refs={refs} urls={urls} pageControl={pageControl} />
         <Cursor show={showCursor} />
         <main ref={refMain} className="wrapper__main">
           <div

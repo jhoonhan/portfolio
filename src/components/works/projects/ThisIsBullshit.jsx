@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import WorkContent from "../WorkContent";
 
 import landing from "../../../assests/image/projects/thisIsBullshit/landing.jpg";
@@ -8,7 +8,7 @@ import video0 from "../../../assests/image/projects/thisIsBullshit/video0.mp4";
 import video1 from "../../../assests/image/projects/thisIsBullshit/video1.mp4";
 import video4 from "../../../assests/image/projects/thisIsBullshit/video4.mp4";
 
-const ThisIsBullshit = ({ refEl, pageControl, props }) => {
+const ThisIsBullshit = ({ pageControl, props }) => {
   const data = {
     name: ["This Is", " Bullshit"],
     description:
@@ -46,6 +46,8 @@ const ThisIsBullshit = ({ refEl, pageControl, props }) => {
     //   "linear-gradient(60deg, rgba(204,204,204,1) 0%,rgba(250,242,242,1) 23%, rgba(255,255,255,1) 100%)",
     background: "rgba(240, 240, 240, 1)",
   };
+
+  const refEl = useRef(null);
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", "light");

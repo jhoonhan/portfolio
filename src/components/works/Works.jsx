@@ -13,7 +13,7 @@ import ThisIsBullshit from "./projects/ThisIsBullshit";
 
 const Works = ({ refs, pageControl, props, match }) => {
   const location = useLocation();
-  const { setCurPage } = pageControl;
+  const { urls, setCurPage } = pageControl;
 
   const refEl1 = useRef(null);
   const refEl2 = useRef(null);
@@ -51,7 +51,6 @@ const Works = ({ refs, pageControl, props, match }) => {
                   />
                 )}
               />
-
               <Route
                 path={`${props.match.path}/danji`}
                 render={(props) => (
@@ -62,7 +61,6 @@ const Works = ({ refs, pageControl, props, match }) => {
                   />
                 )}
               />
-
               <Route
                 path={`${props.match.path}/salvation-army`}
                 render={(props) => (
@@ -73,7 +71,6 @@ const Works = ({ refs, pageControl, props, match }) => {
                   />
                 )}
               />
-
               <Route
                 path={`${props.match.path}/haans-cleaner`}
                 render={(props) => (
@@ -84,9 +81,38 @@ const Works = ({ refs, pageControl, props, match }) => {
                   />
                 )}
               />
-
               <Route
                 path={`${props.match.path}/this-is-bullshit`}
+                render={(props) => (
+                  <ThisIsBullshit
+                    refEl={refEl5}
+                    pageControl={pageControl}
+                    props={props}
+                  />
+                )}
+              />
+              <Route
+                path={`${props.match.path}/korean-life`}
+                render={(props) => (
+                  <ThisIsBullshit
+                    refEl={refEl5}
+                    pageControl={pageControl}
+                    props={props}
+                  />
+                )}
+              />
+              <Route
+                path={`${props.match.path}/little-tokyo`}
+                render={(props) => (
+                  <ThisIsBullshit
+                    refEl={refEl5}
+                    pageControl={pageControl}
+                    props={props}
+                  />
+                )}
+              />
+              <Route
+                path={`${props.match.path}/jk-aerostart`}
                 render={(props) => (
                   <ThisIsBullshit
                     refEl={refEl5}
