@@ -54,9 +54,9 @@ const usePreloader = (dataList) => {
     let timeoutId;
     setLoadingProgress(Math.round((loaded.length / dataList?.length) * 100));
     if (loaded.length >= dataList?.length) {
-      timeoutId = setTimeout(() => {
-        setLoading(false);
-      }, 200);
+      // timeoutId = setTimeout(() => {
+      setLoading(false);
+      // }, 0);
     }
     return () => {
       clearTimeout(timeoutId);

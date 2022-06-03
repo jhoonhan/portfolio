@@ -25,7 +25,7 @@
     overflow: hidden;
   }
   .detail-item__title {
-    margin-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
   }
   // Header //
   .header__container {
@@ -166,33 +166,49 @@
     padding-top: 0;
     // padding-top: calc(100% - 4rem);
     // align-items: center;
-    & span {
-      font-size: 5rem;
+    & .work-title {
+      & span {
+        font-size: 5rem;
+        border-right: none;
+        padding-right: 0;
+      }
+      & span:nth-child(2) {
+        position: relative;
+        margin-top: 0;
+        top: 3rem;
+        opacity: 0.7;
+      }
     }
-    & span:nth-child(2) {
-      position: relative;
-      margin-top: 0;
-      top: 3rem;
-      opacity: 0.7;
+    & .work-number {
+      display: none;
     }
   }
 
   .work__content--overview {
+    max-height: 100vh;
     grid-template-columns: 1fr;
     // grid-template-rows: minmax(auto, calc(45vh - 8rem)) auto;
-    grid-template-rows: 1fr auto;
+    grid-template-rows: 45vh auto;
     align-items: center;
-    gap: 2rem;
+    gap: 8vh;
+
+    padding: 2rem 2rem 15vh 2rem;
+    box-sizing: border-box;
+
+    overflow-y: scroll;
   }
   .slide-img--desktop.overview {
     max-height: 30vh;
   }
 
   .slide-img--mobile.overview {
-    max-height: 30vh;
+    // max-height: 30vh;
+    height: 100%;
     margin: 0;
-    & .masking {
-      bottom: 0;
+    padding-top: 5vh;
+    & img,
+    video {
+      height: 100%;
     }
   }
   .work__content.padded {
@@ -201,17 +217,25 @@
     // padding-bottom: 0rem;
     box-sizing: border-box;
   }
+  .work__content.padded.overview {
+    padding: 0rem;
+    // padding: 0;
+    // padding-bottom: 0rem;
+    box-sizing: border-box;
+  }
   .works__info-container {
     height: 100%;
     grid-template-rows: 1fr auto minmax(min-content, max-content);
-    row-gap: 3rem;
+    row-gap: 3vh;
     & .works__info__detail {
       margin-bottom: 0rem;
+      margin-top: 5vh;
+      row-gap: 2vh;
 
       & .detail-item {
         &:last-child {
           // background-color: red;
-          padding-bottom: 8rem;
+          padding-bottom: 0;
         }
       }
     }
@@ -260,13 +284,8 @@
       width: 100%;
       height: auto;
 
-      & img {
-        top: 0vh;
-        left: 0vh;
-        width: 100%;
-      }
-
-      & video {
+      & img,
+      video {
         top: 0vh;
         left: 0vh;
         width: 100%;
@@ -277,10 +296,11 @@
     height: auto;
     margin-bottom: 0;
     & svg {
-      height: 40vh;
+      height: 45vh;
     }
-    & img {
-      max-height: 38.5vh;
+    & img,
+    video {
+      max-height: 45vh;
       // left: 0.7vh;
       margin: 0;
     }

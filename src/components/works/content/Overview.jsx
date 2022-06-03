@@ -14,6 +14,9 @@ const Overview = ({ slideInfo, pageControl, data }) => {
   const { loading, Loading } = usePreloader(pageData.overview.loadData);
 
   const refIntersect = useRef(null);
+  const projectIndex = String(
+    pageControl.urls.workPage.indexOf(data.path) + 1
+  ).padStart(2, "0");
 
   useEffect(() => {
     pageControl.setWorkSubPage("overview");
@@ -65,9 +68,24 @@ const Overview = ({ slideInfo, pageControl, data }) => {
           variants={isMobile ? animateMobile.item : animateBrowser.item}
           // style={data?.name.length > 1 ? { justifyContent: "flex-start" } : ""}
         >
-          <span>
-            {data?.name[0]} {data?.name[1]}
-          </span>
+          <div className="work-title">
+            <span>
+              {data?.name[0]} {data?.name[1]}
+            </span>
+          </div>
+          <div className="work-number">
+            <span
+              style={{
+                fontSize:
+                  data?.name.length > 1
+                    ? "calc(min(7vh, 7vw))"
+                    : "calc(min(5vh, 5vw))",
+                fontWeight: data?.name.length > 1 ? 400 : 500,
+              }}
+            >
+              {projectIndex}
+            </span>
+          </div>
           {/* <span>{data?.name[1]}</span> */}
         </motion.div>
 
@@ -167,11 +185,12 @@ const Overview = ({ slideInfo, pageControl, data }) => {
     const Content = (
       <div
         ref={refIntersect}
-        className="work__content padded"
+        className="work__content padded overview"
         style={
           isMobile
             ? {
-                transform: `translateX(${-sticky.x}px) translateY(${-sticky.y}px)`,
+                // transform: `translateX(${-sticky.x}px) translateY(${-sticky.y}px)`,
+                transform: `translateX(${-sticky.x}px)`,
               }
             : slideInfo.slideImgStyle
         }

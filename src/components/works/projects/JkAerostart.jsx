@@ -14,7 +14,7 @@ const JkAerostart = ({ pageControl, props }) => {
 
   const data = {
     name: ["JK", " Aerostart"],
-    description: "A simple static website for an aerospace parts company",
+    description: "A simple static website for an aircraft part export company",
     role: "Web Designer, Graphic Designer",
     technology: "HTML, CSS",
     liveDemoURL: "http://littletokyonc.com/",

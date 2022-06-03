@@ -10,7 +10,7 @@ const MobileSVG = ({ type, data, customClass }) => {
       return <img src={data} alt="mobile" />;
     }
     if (type === "video") {
-      return <video src={data} autoPlay={true} muted loop />;
+      return <video src={data} autoPlay={true} muted loop playsInline />;
     }
   };
 
