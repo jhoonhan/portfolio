@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import { transition } from "../helpers/config";
 import icons from "../../assests/image/icons.svg";
+import cv from "../../assests/files/cv.pdf";
 
 const Contact = ({ pageControl, props, refs }) => {
   useEffect(() => {
@@ -92,7 +93,7 @@ const Contact = ({ pageControl, props, refs }) => {
               </a>
               <a
                 className="a--opacity"
-                href="https://github.com/jhoonhan"
+                href={cv}
                 target="_blank"
                 rel="noreferrer noopener"
               >

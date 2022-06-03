@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import icons from "../assests/image/icons.svg";
 import { transition } from "./helpers/config";
 import { color } from "./helpers/config";
+import cv from "../assests/files/cv.pdf";
 
 const Header = ({ pageControl }) => {
   const [activeHeight, setActiveHeight] = useState("0rem");
@@ -209,11 +210,7 @@ const Header = ({ pageControl }) => {
             <use href={`${icons}#instagram`}></use>
           </svg>
         </a>
-        <a
-          href="https://github.com/jhoonhan"
-          target="_blank"
-          rel="noreferrer noopener"
-        >
+        <a href={cv} target="_blank" rel="noreferrer noopener">
           <svg viewBox="0 0 100 100" className="social-icons a--opacity">
             <use href={`${icons}#cv`}></use>
           </svg>
