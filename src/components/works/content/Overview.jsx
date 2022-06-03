@@ -7,14 +7,7 @@ import DesktopSVG from "../../../assests/image/projects/DesktopSVG";
 import MobileSVG from "../../../assests/image/projects/MobileSVG";
 import WorkPictureContainer from "../WorkPictureContainer";
 
-const Overview = ({
-  slideInfo,
-  pageControl,
-  data,
-  noOverview,
-  props,
-  isVideo,
-}) => {
+const Overview = ({ slideInfo, pageControl, data }) => {
   const { onTouchStart, onTouchMove, onTouchEnd, sticky } = useListenSwipe();
   const { pageData } = data;
 
@@ -22,7 +15,7 @@ const Overview = ({
 
   useEffect(() => {
     pageControl.setWorkSubPage("overview");
-  }, [props.match.path]);
+  }, []);
 
   const animateBrowser = {
     container: {

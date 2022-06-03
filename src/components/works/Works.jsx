@@ -1,7 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import { Route, Switch, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
-import usePreloader2 from "../helpers/usePreloader2";
 
 import WorkNav from "./WorkNav";
 import Cursor from "../Cursor";

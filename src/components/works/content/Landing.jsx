@@ -5,11 +5,13 @@ import useListenSwipe from "../../helpers/useListenSwipe";
 import useVerticalNavigation from "./useVerticalNavigation";
 import { transition } from "../../helpers/config";
 import useRandomTextAnimation from "../../helpers/useRandomTextAnimation";
+import usePreloader from "../../helpers/usePreloader";
 
 const Landing = ({ slideInfo, pageControl, data }) => {
   const { setWorkSubPage } = pageControl;
   const { hasFinished, title } = useRandomTextAnimation(data?.name, 500);
   const { pageData } = data;
+  const { loading, Loading } = usePreloader([pageData.landing]);
 
   const fontSize = () => {
     let height;
@@ -57,7 +59,12 @@ const Landing = ({ slideInfo, pageControl, data }) => {
   //////////
 
   const render = () => {
-    // console.log(`landing rendered`);
+    // if (loading) {
+    //   return <Loading loadingProgress={loadingProgress} />;
+    // }
+    if (loading) {
+      return Loading;
+    }
     return (
       <>
         <div

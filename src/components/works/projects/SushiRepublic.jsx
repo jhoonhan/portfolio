@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import WorkContent from "../WorkContent";
-import usePreloader2 from "../../helpers/usePreloader2";
 
 import landing from "../../../assests/image/projects/sushiRepublic/landing.jpg";
 import overviewImg0 from "../../../assests/image/projects/sushiRepublic/overview0.jpg";
@@ -11,8 +10,6 @@ import slideImg1 from "../../../assests/image/projects/sushiRepublic/desktop2.jp
 import slideImg2 from "../../../assests/image/projects/sushiRepublic/mobile1.jpg";
 import slideImg3 from "../../../assests/image/projects/sushiRepublic/mobile0.jpg";
 import slideImg4 from "../../../assests/image/projects/sushiRepublic/mobile2.jpg";
-import slideImg5 from "../../../assests/image/projects/sushiRepublic/img0.jpg";
-import slideImg6 from "../../../assests/image/projects/sushiRepublic/img1.jpg";
 
 const SushiRepublic = ({ pageControl, props }) => {
   const refEl = useRef(null);

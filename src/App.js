@@ -77,6 +77,7 @@ const App = () => {
   const refWorks = useRef(null);
   const refAbout = useRef(null);
   const refContact = useRef(null);
+  const refLoading = useRef(null);
 
   const refs = {
     refMain,
@@ -105,6 +106,7 @@ const App = () => {
     urls,
     curPage,
     setCurPage,
+
     workPage,
     setWorkPage,
     workSubPage,

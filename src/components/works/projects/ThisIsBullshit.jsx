@@ -45,8 +45,6 @@ const ThisIsBullshit = ({ pageControl, props }) => {
     theme: "light",
   };
   const backgroundStyle = {
-    // background:
-    //   "linear-gradient(60deg, rgba(204,204,204,1) 0%,rgba(250,242,242,1) 23%, rgba(255,255,255,1) 100%)",
     background: "rgba(240, 240, 240, 1)",
   };
 

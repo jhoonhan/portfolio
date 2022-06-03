@@ -1,50 +1,46 @@
 import { useEffect, useState } from "react";
+import Loading from "./Loading";
 
-const usePreloader = (imgList, persistedImgs, setPersistedImgs) => {
-  const [fetched, setFetched] = useState(false);
-  const [preloadedImgs, setPreloadedImgs] = useState({});
-  const [counter, setCounter] = useState(0);
-  const [progress, setProgress] = useState(0);
+const usePreloader = (imgList) => {
+  const [loaded, setLoaded] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [loadingProgress, setLoadingProgress] = useState(0);
 
   useEffect(() => {
-    // console.log(imgList);
-    if (persistedImgs) {
-      setFetched(true);
-    }
-    return () => {
-      setFetched(false);
+    if (!imgList) return;
+    setLoading(true);
+    const loadImage = (img) => {
+      return new Promise((res, rej) => {
+        const loadingImg = new Image();
+        loadingImg.src = img;
+
+        loadingImg.onload = () => res(img);
+
+        loadingImg.onerror = (err) => rej(err);
+      });
     };
+
+    imgList.forEach(async (img, i) => {
+      const res = await loadImage(img);
+      if (res) {
+        setLoaded((arr) => [...arr, res]);
+      }
+    });
   }, []);
 
   useEffect(() => {
-    if (!imgList) return;
-    imgList.forEach((imgObj, i) => {
-      const img = new Image();
-      img.src = imgObj.src;
-
-      img.onload = () => {
-        setPreloadedImgs((prevState) => ({ ...prevState, [imgObj.name]: img }));
-      };
-    });
-  }, [imgList, setPersistedImgs]);
-
-  useEffect(() => {
-    setCounter(counter + 1);
-  }, [preloadedImgs]);
-
-  useEffect(() => {
-    if (!imgList) return;
-
-    if (counter > 0) {
-      setProgress(Math.round(((counter - 1) / imgList.length) * 100));
+    setLoadingProgress(Math.round((loaded.length / imgList?.length) * 100));
+    if (loaded.length === imgList?.length) {
+      setTimeout(() => {
+        setLoading(false);
+      }, 1000);
     }
-    if (counter - 1 === imgList.length) {
-      setPersistedImgs(preloadedImgs);
-      setFetched(true);
-    }
-  }, [imgList, counter]);
+  }, [loaded]);
 
-  return { fetched, progress };
+  const Loading = <div className="loading">{loadingProgress}</div>;
+
+  return { loading, Loading };
+  // const progress = Math.round((loaded.length / imgList?.length) * 100);
 };
 
 export default usePreloader;
