@@ -11,6 +11,9 @@ import imgP2 from "../../../assests/image/projects/littleTokyo/photo2.jpg";
 
 const LittleTokyo = ({ pageControl, props }) => {
   const refEl = useRef(null);
+  const backgroundStyle = {
+    background: "rgba(30, 30, 30, 1)",
+  };
 
   const data = {
     name: ["Little", " Tokyo"],
@@ -43,21 +46,8 @@ const LittleTokyo = ({ pageControl, props }) => {
         },
       },
     },
-    theme: "light",
+    theme: { color: "dark", background: backgroundStyle },
   };
-  const backgroundStyle = {
-    background: "rgba(30, 30, 30, 1)",
-  };
-
-  useEffect(() => {
-    document.documentElement.setAttribute("data-theme", "dark");
-    // document.documentElement.setAttribute("data-subtheme", "green");
-    return () => {
-      // document.documentElement.setAttribute("data-theme", "dark");
-      document.documentElement.setAttribute("data-subtheme", "dark");
-      // pageControl.setShowCursor(false);
-    };
-  }, []);
 
   return (
     <WorkContent

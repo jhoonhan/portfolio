@@ -1,17 +1,26 @@
 import React, { useEffect, useState, useRef } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { isMobile } from "react-device-detect";
 import useListenSwipe from "../../helpers/useListenSwipe";
 import useVerticalNavigation from "./useVerticalNavigation";
 import { transition } from "../../helpers/config";
 import useRandomTextAnimation from "../../helpers/useRandomTextAnimation";
 import usePreloader from "../../helpers/usePreloader";
+import usePrevious from "../../helpers/usePrevious";
 
 const Landing = ({ slideInfo, pageControl, data }) => {
+  const { pageData, theme: dataTheme } = data;
   const { setWorkSubPage } = pageControl;
-  const { hasFinished, title } = useRandomTextAnimation(data?.name, 500);
-  const { pageData } = data;
-  const { loading, Loading } = usePreloader([pageData.landing]);
+  const { theme: gTheme, prevTheme: gPrevTheme } = pageControl;
+  const themes = { theme: gTheme, prevTheme: gPrevTheme };
+
+  const { loading, Loading } = usePreloader([pageData.landing], themes);
+  const { hasFinished, title } = useRandomTextAnimation(
+    data?.name,
+    500,
+    loading
+  );
+  useVerticalNavigation(pageControl);
 
   const fontSize = () => {
     let height;
@@ -23,7 +32,12 @@ const Landing = ({ slideInfo, pageControl, data }) => {
     return height;
   };
 
-  useVerticalNavigation(pageControl);
+  useEffect(() => {
+    pageControl.setTheme({
+      color: dataTheme.color,
+      subColor: dataTheme.subColor,
+    });
+  }, []);
 
   useEffect(() => {
     setWorkSubPage("landing");
@@ -59,48 +73,47 @@ const Landing = ({ slideInfo, pageControl, data }) => {
   //////////
 
   const render = () => {
-    // if (loading) {
-    //   return <Loading loadingProgress={loadingProgress} />;
-    // }
-    // if (loading) {
-    //   return Loading;
-    // }
-    return (
-      <>
-        <div
-          className="work__content"
-          style={
-            isMobile
-              ? {
-                  transform: `translateX(${-sticky.x}px) translateY(${-sticky.y}px)`,
-                }
-              : slideInfo.slideImgStyle
-          }
-          onTouchStart={onTouchStart}
-          onTouchMove={onTouchMove}
-          onTouchEnd={onTouchEnd}
-        >
-          <div className="work__landing">
-            <div
-              className="work__landing__img"
-              style={{
-                backgroundImage: `url(${pageData?.landing})`,
-                filter: hasFinished && "blur(2rem)",
-              }}
-            />
-            <div className="work__landing__overlay" />
-            <motion.div
-              className="work__landing__title-box"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5 }}
-            >
-              {renderTitle()}
-            </motion.div>
-          </div>
+    const Content = (
+      <motion.div
+        className="work__content"
+        style={
+          isMobile
+            ? {
+                transform: `translateX(${-sticky.x}px) translateY(${-sticky.y}px)`,
+              }
+            : slideInfo.slideImgStyle
+        }
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
+        key="workLandingContent"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <div className="work__landing">
+          <div
+            className="work__landing__img"
+            style={{
+              backgroundImage: `url(${pageData?.landing})`,
+              filter: hasFinished && "blur(2rem)",
+            }}
+          />
+          <div className="work__landing__overlay" />
+          <motion.div
+            className="work__landing__title-box"
+            key="workLandingTitle"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+          >
+            {renderTitle()}
+          </motion.div>
         </div>
-      </>
+      </motion.div>
     );
+    return <AnimatePresence>{loading ? Loading : Content}</AnimatePresence>;
   };
 
   return render();

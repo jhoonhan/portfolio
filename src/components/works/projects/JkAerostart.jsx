@@ -8,6 +8,9 @@ import vidM1 from "../../../assests/image/projects/jkAerostart/videoM1.mp4";
 
 const JkAerostart = ({ pageControl, props }) => {
   const refEl = useRef(null);
+  const backgroundStyle = {
+    background: "rgba(40, 30, 80, 1)",
+  };
 
   const data = {
     name: ["JK", " Aerostart"],
@@ -39,21 +42,8 @@ const JkAerostart = ({ pageControl, props }) => {
         },
       },
     },
-    theme: "light",
+    theme: { color: "dark", background: backgroundStyle },
   };
-  const backgroundStyle = {
-    background: "rgba(40, 30, 80, 1)",
-  };
-
-  useEffect(() => {
-    document.documentElement.setAttribute("data-theme", "dark");
-    // document.documentElement.setAttribute("data-subtheme", "green");
-    return () => {
-      // document.documentElement.setAttribute("data-theme", "dark");
-      document.documentElement.setAttribute("data-subtheme", "dark");
-      // pageControl.setShowCursor(false);
-    };
-  }, []);
 
   return (
     <WorkContent

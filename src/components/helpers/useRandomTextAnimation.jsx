@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 
-const useRandomTextAnimation = (text, delay) => {
+const useRandomTextAnimation = (text, delay, loading) => {
   const textLength = text.join("").split("").length;
   const characters = "abcdefghijklmnopqrstuvwxyz";
 
@@ -25,12 +25,14 @@ const useRandomTextAnimation = (text, delay) => {
   const refInterval = useRef(null);
 
   useEffect(() => {
-    setTimeout(makeid, delay);
+    if (!loading) {
+      setTimeout(makeid, delay);
+    }
 
     return () => {
       clearInterval(refInterval.current);
     };
-  }, []);
+  }, [loading]);
 
   const makeid = () => {
     const chars = text.join("").split("");

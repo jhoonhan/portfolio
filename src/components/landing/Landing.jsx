@@ -13,7 +13,8 @@ const Landing = ({ pageControl, refHome, props }) => {
 
   useEffect(() => {
     pageControl.setCurPage("home");
-  }, [props.match.path]);
+    pageControl.setTheme({ color: "dark" });
+  }, []);
 
   useEffect(() => {
     if (titleStyle.every((el) => el === true)) {

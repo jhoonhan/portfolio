@@ -13,6 +13,10 @@ import slideImg4 from "../../../assests/image/projects/sushiRepublic/mobile2.jpg
 
 const SushiRepublic = ({ pageControl, props }) => {
   const refEl = useRef(null);
+  const backgroundStyle = {
+    background:
+      "linear-gradient(60deg, rgba(25,25,25, 0.7) 0%, rgba(25,35,35, 0.7) 33%, rgba(50, 50, 50, 0.7) 45%, rgba(150, 37, 37, 0.7) 100%  )",
+  };
 
   const data = {
     name: ["sushi", " republic"],
@@ -44,11 +48,10 @@ const SushiRepublic = ({ pageControl, props }) => {
         },
       },
     },
-    theme: "dark",
-  };
-  const backgroundStyle = {
-    background:
-      "linear-gradient(60deg, rgba(25,25,25, 0.7) 0%, rgba(25,35,35, 0.7) 33%, rgba(50, 50, 50, 0.7) 45%, rgba(150, 37, 37, 0.7) 100%  )",
+    theme: {
+      color: "dark",
+      background: backgroundStyle,
+    },
   };
 
   const render = () => {

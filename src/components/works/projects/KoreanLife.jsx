@@ -11,6 +11,9 @@ import imgM2 from "../../../assests/image/projects/koreanLife/mobile2.jpg";
 
 const KoreanLife = ({ pageControl, props }) => {
   const refEl = useRef(null);
+  const backgroundStyle = {
+    background: "rgba(240, 240, 240, 1)",
+  };
 
   const data = {
     name: ["Korean", " Life"],
@@ -42,23 +45,8 @@ const KoreanLife = ({ pageControl, props }) => {
         },
       },
     },
-    theme: "light",
+    theme: { color: "light", subColor: "green", background: backgroundStyle },
   };
-  const backgroundStyle = {
-    // background:
-    //   "linear-gradient(60deg, rgba(204,204,204,1) 0%,rgba(250,242,242,1) 23%, rgba(255,255,255,1) 100%)",
-    background: "rgba(240, 240, 240, 1)",
-  };
-
-  useEffect(() => {
-    document.documentElement.setAttribute("data-theme", "light");
-    document.documentElement.setAttribute("data-subtheme", "green");
-    return () => {
-      document.documentElement.setAttribute("data-theme", "dark");
-      document.documentElement.setAttribute("data-subtheme", "dark");
-      // pageControl.setShowCursor(false);
-    };
-  }, []);
 
   return (
     <WorkContent

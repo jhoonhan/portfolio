@@ -10,6 +10,9 @@ import video3 from "../../../assests/image/projects/haansCleaner/video3.mp4";
 
 const HaansCleaner = ({ pageControl, props }) => {
   const refEl = useRef(null);
+  const backgroundStyle = {
+    background: "rgba(240, 240, 240, 1)",
+  };
 
   const data = {
     name: ["Haans", " Cleaner"],
@@ -41,21 +44,12 @@ const HaansCleaner = ({ pageControl, props }) => {
         },
       },
     },
-    theme: "light",
+    theme: {
+      color: "light",
+      subColor: "light-blue",
+      background: backgroundStyle,
+    },
   };
-  const backgroundStyle = {
-    background: "rgba(240, 240, 240, 1)",
-  };
-
-  useEffect(() => {
-    document.documentElement.setAttribute("data-theme", "light");
-    document.documentElement.setAttribute("data-subtheme", "light-blue");
-    return () => {
-      document.documentElement.setAttribute("data-theme", "dark");
-      document.documentElement.setAttribute("data-subtheme", "dark");
-      // pageControl.setShowCursor(false);
-    };
-  }, []);
 
   return (
     <WorkContent

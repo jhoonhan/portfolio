@@ -14,6 +14,10 @@ import slideImg6 from "../../../assests/image/projects/danji/img2.jpg";
 
 const Danji = ({ pageControl, props }) => {
   const refEl = useRef(null);
+  const backgroundStyle = {
+    background:
+      "linear-gradient(60deg, rgba(118,19,19,0.7) 0%,rgba(118,19,19,0.7) 33%,rgba(150, 50, 50, 0.7) 45%, rgba(220,115,45,0.7) 100%)",
+  };
 
   const data = {
     name: ["danji"],
@@ -46,10 +50,10 @@ const Danji = ({ pageControl, props }) => {
         },
       },
     },
-  };
-  const backgroundStyle = {
-    background:
-      "linear-gradient(60deg, rgba(118,19,19,0.7) 0%,rgba(118,19,19,0.7) 33%,rgba(150, 50, 50, 0.7) 45%, rgba(220,115,45,0.7) 100%)",
+    theme: {
+      color: "dark",
+      background: backgroundStyle,
+    },
   };
 
   return (

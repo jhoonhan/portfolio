@@ -10,6 +10,9 @@ import vidD4 from "../../../assests/image/projects/thisIsBullshit/vidD4.mp4";
 
 const ThisIsBullshit = ({ pageControl, props }) => {
   const refEl = useRef(null);
+  const backgroundStyle = {
+    background: "rgba(240, 240, 240, 1)",
+  };
 
   const data = {
     name: ["This Is", " Bullshit"],
@@ -42,21 +45,8 @@ const ThisIsBullshit = ({ pageControl, props }) => {
         },
       },
     },
-    theme: "light",
+    theme: { color: "light", subColor: "red", background: backgroundStyle },
   };
-  const backgroundStyle = {
-    background: "rgba(240, 240, 240, 1)",
-  };
-
-  useEffect(() => {
-    document.documentElement.setAttribute("data-theme", "light");
-    document.documentElement.setAttribute("data-subtheme", "red");
-    return () => {
-      document.documentElement.setAttribute("data-theme", "dark");
-      document.documentElement.setAttribute("data-subtheme", "dark");
-      // pageControl.setShowCursor(false);
-    };
-  }, []);
 
   return (
     <WorkContent

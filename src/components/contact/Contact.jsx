@@ -7,7 +7,8 @@ import cv from "../../assests/files/cv.pdf";
 const Contact = ({ pageControl, props, refs }) => {
   useEffect(() => {
     pageControl.setCurPage(props.match.path.slice(1));
-  }, [props.match.path]);
+    pageControl.setTheme({ color: "dark" });
+  }, []);
 
   const animate = {
     container: {

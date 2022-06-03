@@ -13,6 +13,7 @@ import useListenSwipe from "./components/helpers/useListenSwipe";
 import "./scss/App.scss";
 import Contact from "./components/contact/Contact";
 import Cursor from "./components/Cursor";
+import usePreloader from "./components/helpers/usePreloader";
 
 let windowInnerWidth = 0;
 
@@ -54,6 +55,7 @@ const App = () => {
 
   const [showCursor, setShowCursor] = useState(false);
 
+  // Touch action control
   const {
     onTouchStart,
     onTouchMove,
@@ -72,12 +74,21 @@ const App = () => {
     });
   }, [curPage, workPage, workSubPage]);
 
+  // Theme control
+  const [theme, setTheme] = useState("dark");
+  const [prevTheme, setPrevTheme] = useState("dark");
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme.color);
+    document.documentElement.setAttribute("data-subtheme", theme.subColor);
+    setPrevTheme(theme);
+  }, [theme]);
+
+  // Refs
   const refMain = useRef(null);
   const refHome = useRef(null);
   const refWorks = useRef(null);
   const refAbout = useRef(null);
   const refContact = useRef(null);
-  const refLoading = useRef(null);
 
   const refs = {
     refMain,
@@ -87,6 +98,7 @@ const App = () => {
     refContact,
   };
 
+  // URLS
   const urls = {
     curPage: ["home", "works", "about", "contact"],
     workPage: [
@@ -106,7 +118,10 @@ const App = () => {
     urls,
     curPage,
     setCurPage,
-
+    theme,
+    setTheme,
+    prevTheme,
+    setPrevTheme,
     workPage,
     setWorkPage,
     workSubPage,
@@ -141,6 +156,117 @@ const App = () => {
     // </motion.div>
   };
 
+  // transition control
+  // const [testFetched, setTestFetched] = useState(false);
+
+  // useEffect(() => {
+  //   let timeoutId;
+  //   timeoutId = setTimeout(() => {
+  //     setTestFetched(true);
+  //   }, 1000);
+
+  //   return () => {
+  //     clearTimeout(timeoutId);
+  //   };
+  // }, []);
+
+  // const mofo = () => {
+  //   const transitionPageLocation = location.pathname
+  //     .split("/")
+  //     .slice(1, 3)
+  //     .join("/");
+  //   const content = (
+  //     <>
+  //       <Header refs={refs} urls={urls} pageControl={pageControl} />
+  //       <Cursor show={showCursor} />
+  //       <main ref={refMain} className="wrapper__main">
+  //         <div
+  //           style={curPage === "home" ? { opacity: 0 } : {}}
+  //           className="overlay"
+  //         />
+
+  //         <AnimatePresence exitBeforeEnter>
+  //           <Switch location={location} key={transitionPageLocation}>
+  //             <Route
+  //               path="/"
+  //               exact
+  //               render={(props) => (
+  //                 <>
+  //                   {transtionAnimation()}
+  //                   <Landing
+  //                     pageControl={pageControl}
+  //                     curPage={curPage}
+  //                     refHome={refHome}
+  //                     props={props}
+  //                   />
+  //                 </>
+  //               )}
+  //             />
+  //             <Route
+  //               path="/works"
+  //               render={(props) => (
+  //                 <>
+  //                   {transtionAnimation()}
+
+  //                   <Works
+  //                     refs={refs}
+  //                     pageControl={pageControl}
+  //                     props={props}
+  //                   />
+  //                 </>
+  //               )}
+  //             />
+  //             <Route
+  //               path="/about"
+  //               exact
+  //               render={(props) => (
+  //                 <>
+  //                   {transtionAnimation()}
+
+  //                   <About
+  //                     pageControl={pageControl}
+  //                     refs={refs}
+  //                     props={props}
+  //                   />
+  //                 </>
+  //               )}
+  //             />
+  //             <Route
+  //               path="/contact"
+  //               exact
+  //               render={(props) => (
+  //                 <>
+  //                   {transtionAnimation()}
+  //                   <Contact
+  //                     pageControl={pageControl}
+  //                     refs={refs}
+  //                     props={props}
+  //                   />
+  //                 </>
+  //               )}
+  //             />
+  //           </Switch>
+  //         </AnimatePresence>
+  //       </main>
+  //     </>
+  //   );
+  //   const loading = (
+  //     <div className="loading">
+  //       <h1>aaang</h1>
+  //     </div>
+  //   );
+  //   return (
+  //     <div
+  //       className="app"
+  //       onTouchStart={onTouchStart}
+  //       onTouchMove={onTouchMove}
+  //       onTouchEnd={onTouchEnd}
+  //     >
+  //       {testFetched ? content : loading}
+  //     </div>
+  //   );
+  // };
+
   const render = () => {
     const transitionPageLocation = location.pathname
       .split("/")
@@ -153,6 +279,7 @@ const App = () => {
         onTouchMove={onTouchMove}
         onTouchEnd={onTouchEnd}
       >
+        {/* {mofo()} */}
         <Header refs={refs} urls={urls} pageControl={pageControl} />
         <Cursor show={showCursor} />
         <main ref={refMain} className="wrapper__main">

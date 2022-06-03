@@ -8,6 +8,10 @@ import imgD2 from "../../../assests/image/projects/salvationArmy/desktop2.jpg";
 
 const SalvationArmy = ({ pageControl, props }) => {
   const refEl = useRef(null);
+  const backgroundStyle = {
+    background:
+      "linear-gradient(60deg, rgba(2,0,36,0.7) 0%,rgba(2,0,36,0.7) 23%, rgba(118,19,19,0.7) 100%)",
+  };
 
   const data = {
     name: ["salvation", " army"],
@@ -40,12 +44,9 @@ const SalvationArmy = ({ pageControl, props }) => {
         },
       },
     },
-    theme: "dark",
+    theme: { color: "dark", background: backgroundStyle },
   };
-  const backgroundStyle = {
-    background:
-      "linear-gradient(60deg, rgba(2,0,36,0.7) 0%,rgba(2,0,36,0.7) 23%, rgba(118,19,19,0.7) 100%)",
-  };
+
   return (
     <WorkContent
       refEl={refEl}
