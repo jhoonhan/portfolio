@@ -2,12 +2,12 @@ import React, { useEffect, useRef } from "react";
 import WorkContent from "../WorkContent";
 
 import landing from "../../../assests/image/projects/koreanLife/landing.jpg";
-import slideImg0 from "../../../assests/image/projects/koreanLife/desktop0.png";
-import slideImg1 from "../../../assests/image/projects/koreanLife/desktop1.jpg";
-import slideImg2 from "../../../assests/image/projects/koreanLife/desktop2.jpg";
-import slideImg3 from "../../../assests/image/projects/koreanLife/mobile0.png";
-import slideImg4 from "../../../assests/image/projects/koreanLife/mobile1.jpg";
-import slideImg5 from "../../../assests/image/projects/koreanLife/mobile2.jpg";
+import imgD0 from "../../../assests/image/projects/koreanLife/desktop0.png";
+import imgD1 from "../../../assests/image/projects/koreanLife/desktop1.jpg";
+import imgD2 from "../../../assests/image/projects/koreanLife/desktop2.jpg";
+import imgM0 from "../../../assests/image/projects/koreanLife/mobile0.png";
+import imgM1 from "../../../assests/image/projects/koreanLife/mobile1.jpg";
+import imgM2 from "../../../assests/image/projects/koreanLife/mobile2.jpg";
 
 const KoreanLife = ({ pageControl, props }) => {
   const refEl = useRef(null);
@@ -20,24 +20,26 @@ const KoreanLife = ({ pageControl, props }) => {
     liveDemoURL: "https://this-is-bullshit.netlify.app/",
     githubURL: "https://github.com/jhoonhan/this-is-bullshit",
     path: "korean-life",
-    overviewVisual: {
-      type: "image",
-      orientation: "desktop",
-      data: [slideImg2],
-    },
-    images: {
+
+    pageData: {
       landing,
-      slideImages: {
-        desktop: [slideImg0, slideImg1, slideImg2],
-        mobile: [slideImg3, slideImg4, slideImg5],
-        photo: [],
+      overview: {
+        loadData: [imgD2],
+        type: "image",
+        orientation: "desktop",
+        data: [imgD2],
       },
-    },
-    videos: {
-      landing: null,
-      slideVideos: {
-        desktop: [],
-        mobile: [],
+      gallery: {
+        loadData: [imgD0, imgD1, imgD2, imgM0, imgM1, imgM2],
+        images: {
+          desktop: [imgD0, imgD1, imgD2],
+          mobile: [imgM0, imgM1, imgM2],
+          photo: [],
+        },
+        videos: {
+          desktop: [],
+          mobile: [],
+        },
       },
     },
     theme: "light",
@@ -62,7 +64,7 @@ const KoreanLife = ({ pageControl, props }) => {
     <WorkContent
       refEl={refEl}
       pageControl={pageControl}
-      content={data}
+      data={data}
       backgroundStyle={backgroundStyle}
       props={props}
       noOverview={false}

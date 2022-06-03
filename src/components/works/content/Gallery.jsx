@@ -9,7 +9,7 @@ import MobileSVG from "../../../assests/image/projects/MobileSVG";
 
 const Gallery = ({ slideInfo, pageControl, data }) => {
   const { onTouchStart, onTouchMove, onTouchEnd, sticky } = useListenSwipe();
-  const { images, videos } = data;
+  const { pageData } = data;
 
   useEffect(() => {
     pageControl.setWorkSubPage("gallery");
@@ -18,39 +18,38 @@ const Gallery = ({ slideInfo, pageControl, data }) => {
   const refCont = useRef(null);
   const refSlides = useGalleryHoriScroll(pageControl);
 
-  const renderSlidesDesktop = images?.slideImages.desktop.map((img, i) => (
+  const renderSlidesDesktop = pageData?.gallery.images.desktop.map((img, i) => (
     <React.Fragment key={i}>
-      <Slide
-        type="component"
-        data={<DesktopSVG data={images?.slideImages.desktop[i]} type="image" />}
-      />
+      <Slide type="component" data={<DesktopSVG data={img} type="image" />} />
     </React.Fragment>
   ));
 
-  const renderSlidesMobile = images?.slideImages.mobile.map((img, i) => (
+  const renderSlidesMobile = pageData?.gallery.images.mobile.map((img, i) => (
     <React.Fragment key={i}>
-      <Slide
-        type="component"
-        data={<MobileSVG data={images?.slideImages.mobile[i]} type="image" />}
-      />
+      <Slide type="component" data={<MobileSVG data={img} type="image" />} />
     </React.Fragment>
   ));
 
-  const renderSlidesDesktopVideo = videos?.slideVideos.desktop.map(
+  const renderSlidesDesktopVideo = pageData?.gallery.videos.desktop.map(
     (video, i) => (
       <React.Fragment key={i}>
         <Slide
           type="component"
-          data={<DesktopSVG type="video" data={video} />}
+          data={<DesktopSVG data={video} type="video" />}
         />
       </React.Fragment>
     )
   );
-  const renderSlidesMobileVideo = videos?.slideVideos.mobile.map((video, i) => (
-    <React.Fragment key={i}>
-      <Slide type="component" data={<MobileSVG type="video" data={video} />} />
-    </React.Fragment>
-  ));
+  const renderSlidesMobileVideo = pageData?.gallery.videos.mobile.map(
+    (video, i) => (
+      <React.Fragment key={i}>
+        <Slide
+          type="component"
+          data={<MobileSVG data={video} type="video" />}
+        />
+      </React.Fragment>
+    )
+  );
 
   const render = () => {
     return (

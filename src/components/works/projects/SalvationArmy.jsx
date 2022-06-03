@@ -2,9 +2,9 @@ import React, { useEffect, useRef } from "react";
 import WorkContent from "../WorkContent";
 
 import landing from "../../../assests/image/projects/salvationArmy/landing.jpg";
-import slideImg0 from "../../../assests/image/projects/salvationArmy/desktop0.jpg";
-import slideImg1 from "../../../assests/image/projects/salvationArmy/desktop1.jpg";
-import slideImg2 from "../../../assests/image/projects/salvationArmy/desktop2.jpg";
+import imgD0 from "../../../assests/image/projects/salvationArmy/desktop0.jpg";
+import imgD1 from "../../../assests/image/projects/salvationArmy/desktop1.jpg";
+import imgD2 from "../../../assests/image/projects/salvationArmy/desktop2.jpg";
 
 const SalvationArmy = ({ pageControl, props }) => {
   const refEl = useRef(null);
@@ -18,24 +18,26 @@ const SalvationArmy = ({ pageControl, props }) => {
     liveDemoURL: "https://salvationarmy-kernersville.netlify.app/",
     githubURL: "https://github.com/jhoonhan/salvationarmy-accounting",
     path: "salvation-army",
-    overviewVisual: {
-      type: "image",
-      orientation: "desktop",
-      data: [slideImg0],
-    },
-    images: {
+
+    pageData: {
       landing,
-      slideImages: {
-        desktop: [slideImg0, slideImg1, slideImg2],
-        mobile: [],
-        photo: [],
+      overview: {
+        loadData: [imgD0],
+        type: "image",
+        orientation: "desktop",
+        data: [imgD0],
       },
-    },
-    videos: {
-      landing: null,
-      slideVideos: {
-        desktop: [],
-        mobile: [],
+      gallery: {
+        loadData: [imgD0, imgD1, imgD2],
+        images: {
+          desktop: [imgD0, imgD1, imgD2],
+          mobile: [],
+          photo: [],
+        },
+        videos: {
+          desktop: [],
+          mobile: [],
+        },
       },
     },
     theme: "dark",
@@ -48,7 +50,7 @@ const SalvationArmy = ({ pageControl, props }) => {
     <WorkContent
       refEl={refEl}
       pageControl={pageControl}
-      content={data}
+      data={data}
       backgroundStyle={backgroundStyle}
       props={props}
       noOverview={true}

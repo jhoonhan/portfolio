@@ -25,38 +25,21 @@ const SushiRepublic = ({ pageControl, props }) => {
     liveDemoURL: "http://hahnsfinegoods.com/sushi-republic/index.html",
     githubURL: "https://github.com/jhoonhan/sushi-republic",
     path: "sushi-republic",
-    overviewVisual: {
-      type: "image",
-      orientation: "trifold",
-      data: [overviewImg0, overviewImg1, overviewImg2],
-    },
-    images: {
-      landing: landing,
-      slideImages: {
-        desktop: [slideImg0, slideImg1],
-        mobile: [slideImg2, slideImg3, slideImg4],
-        photo: [slideImg5, slideImg6],
-      },
-    },
-    videos: {
-      landing: null,
-      slideVideos: {
-        desktop: [],
-        mobile: [],
-      },
-    },
+
     pageData: {
-      landing: landing,
+      landing,
       overview: {
+        loadData: [overviewImg0, overviewImg1, overviewImg2],
         type: "image",
         orientation: "trifold",
         data: [overviewImg0, overviewImg1, overviewImg2],
       },
       gallery: {
+        loadData: [slideImg0, slideImg1, slideImg2, slideImg3, slideImg4],
         images: {
           desktop: [slideImg0, slideImg1],
           mobile: [slideImg2, slideImg3, slideImg4],
-          photo: [slideImg5, slideImg6],
+          photo: [],
         },
         videos: {
           desktop: [],

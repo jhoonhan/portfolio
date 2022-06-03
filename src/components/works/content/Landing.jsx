@@ -9,6 +9,7 @@ import useRandomTextAnimation from "../../helpers/useRandomTextAnimation";
 const Landing = ({ slideInfo, pageControl, data }) => {
   const { setWorkSubPage } = pageControl;
   const { hasFinished, title } = useRandomTextAnimation(data?.name, 500);
+  const { pageData } = data;
 
   const fontSize = () => {
     let height;
@@ -76,8 +77,7 @@ const Landing = ({ slideInfo, pageControl, data }) => {
             <div
               className="work__landing__img"
               style={{
-                backgroundImage: `url(${data.images.landing})`,
-                // backgroundImage: `url(${data?.images.landing})`,
+                backgroundImage: `url(${pageData?.landing})`,
                 filter: hasFinished && "blur(2rem)",
               }}
             />

@@ -24,24 +24,26 @@ const Danji = ({ pageControl, props }) => {
     liveDemoURL: "http://hahnsfinegoods.com/danji/index.html",
     githubURL: "https://github.com/jhoonhan/Danji",
     path: "danji",
-    overviewVisual: {
-      type: "image",
-      orientation: "trifold",
-      data: [landing, overviewImg0, overviewImg1],
-    },
-    images: {
-      landing: landing,
-      slideImages: {
-        desktop: [slideImg0, slideImg1],
-        mobile: [slideImg2, slideImg3, slideImg4],
-        photo: [slideImg5, slideImg6],
+
+    pageData: {
+      landing,
+      overview: {
+        loadData: [landing, overviewImg0, overviewImg1],
+        type: "image",
+        orientation: "trifold",
+        data: [landing, overviewImg0, overviewImg1],
       },
-    },
-    videos: {
-      landing: null,
-      slideVideos: {
-        desktop: [],
-        mobile: [],
+      gallery: {
+        loadData: [slideImg0, slideImg1, slideImg2, slideImg3, slideImg4],
+        images: {
+          desktop: [slideImg0, slideImg1],
+          mobile: [slideImg2, slideImg3, slideImg4],
+          photo: [],
+        },
+        videos: {
+          desktop: [],
+          mobile: [],
+        },
       },
     },
   };
@@ -54,7 +56,7 @@ const Danji = ({ pageControl, props }) => {
     <WorkContent
       refEl={refEl}
       pageControl={pageControl}
-      content={data}
+      data={data}
       backgroundStyle={backgroundStyle}
       props={props}
       noOverview={false}

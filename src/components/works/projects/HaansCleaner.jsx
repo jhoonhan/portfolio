@@ -19,32 +19,31 @@ const HaansCleaner = ({ pageControl, props }) => {
     liveDemoURL: "https://google.com",
     githubURL: "https://github.com/",
     path: "haans-cleaner",
-    overviewVisual: {
-      type: "video",
-      orientation: "mobile",
-      data: [video01],
-    },
-    images: {
+
+    pageData: {
       landing,
-      overviewImages: [],
-      slideImages: {
-        desktop: [],
-        mobile: [],
-        photo: [],
+      overview: {
+        loadData: [video01],
+        type: "video",
+        orientation: "mobile",
+        data: [video01],
       },
-    },
-    videos: {
-      landing: null,
-      slideVideos: {
-        desktop: [],
-        mobile: [video0, video1, video2, video3],
+      gallery: {
+        loadData: [video0, video1, video2, video3],
+        images: {
+          desktop: [],
+          mobile: [],
+          photo: [],
+        },
+        videos: {
+          desktop: [],
+          mobile: [video0, video1, video2, video3],
+        },
       },
     },
     theme: "light",
   };
   const backgroundStyle = {
-    // background:
-    //   "linear-gradient(60deg, rgba(204,204,204,1) 0%,rgba(250,242,242,1) 23%, rgba(255,255,255,1) 100%)",
     background: "rgba(240, 240, 240, 1)",
   };
 
@@ -62,7 +61,7 @@ const HaansCleaner = ({ pageControl, props }) => {
     <WorkContent
       refEl={refEl}
       pageControl={pageControl}
-      content={data}
+      data={data}
       backgroundStyle={backgroundStyle}
       props={props}
       noOverview={false}

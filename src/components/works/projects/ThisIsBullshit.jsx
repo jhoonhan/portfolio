@@ -2,11 +2,11 @@ import React, { useEffect, useRef } from "react";
 import WorkContent from "../WorkContent";
 
 import landing from "../../../assests/image/projects/thisIsBullshit/landing.jpg";
-import slideImg0 from "../../../assests/image/projects/thisIsBullshit/mobile0.jpg";
-import slideImg1 from "../../../assests/image/projects/thisIsBullshit/mobile1.jpg";
-import video0 from "../../../assests/image/projects/thisIsBullshit/video0.mp4";
-import video1 from "../../../assests/image/projects/thisIsBullshit/video1.mp4";
-import video4 from "../../../assests/image/projects/thisIsBullshit/video4.mp4";
+import imgM0 from "../../../assests/image/projects/thisIsBullshit/mobile0.jpg";
+import imgM1 from "../../../assests/image/projects/thisIsBullshit/mobile1.jpg";
+import vidD0 from "../../../assests/image/projects/thisIsBullshit/vidD0.mp4";
+import vidD1 from "../../../assests/image/projects/thisIsBullshit/vidD1.mp4";
+import vidD4 from "../../../assests/image/projects/thisIsBullshit/vidD4.mp4";
 
 const ThisIsBullshit = ({ pageControl, props }) => {
   const refEl = useRef(null);
@@ -20,25 +20,26 @@ const ThisIsBullshit = ({ pageControl, props }) => {
     liveDemoURL: "https://this-is-bullshit.netlify.app/",
     githubURL: "https://github.com/jhoonhan/this-is-bullshit",
     path: "this-is-bullshit",
-    overviewVisual: {
-      type: "video",
-      orientation: "desktop",
-      data: [video0],
-    },
-    images: {
+
+    pageData: {
       landing,
-      overviewImages: [slideImg0, slideImg1],
-      slideImages: {
-        desktop: [],
-        mobile: [slideImg0, slideImg1],
-        photo: [],
+      overview: {
+        loadData: [vidD0],
+        type: "video",
+        orientation: "desktop",
+        data: [vidD0],
       },
-    },
-    videos: {
-      landing: null,
-      slideVideos: {
-        desktop: [video4, video1],
-        mobile: [],
+      gallery: {
+        loadData: [imgM0, imgM1, vidD0, vidD1, vidD4],
+        images: {
+          desktop: [],
+          mobile: [imgM0, imgM1],
+          photo: [],
+        },
+        videos: {
+          desktop: [vidD4, vidD1],
+          mobile: [],
+        },
       },
     },
     theme: "light",
@@ -63,7 +64,7 @@ const ThisIsBullshit = ({ pageControl, props }) => {
     <WorkContent
       refEl={refEl}
       pageControl={pageControl}
-      content={data}
+      data={data}
       backgroundStyle={backgroundStyle}
       props={props}
       noOverview={false}

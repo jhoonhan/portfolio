@@ -2,12 +2,12 @@ import React, { useEffect, useRef } from "react";
 import WorkContent from "../WorkContent";
 
 import landing from "../../../assests/image/projects/littleTokyo/desktop0.jpg";
-import desktop0 from "../../../assests/image/projects/littleTokyo/desktop0.jpg";
-import desktop1 from "../../../assests/image/projects/littleTokyo/desktop1.jpg";
-import desktop2 from "../../../assests/image/projects/littleTokyo/desktop2.jpg";
-import photo0 from "../../../assests/image/projects/littleTokyo/photo0.jpg";
-import photo1 from "../../../assests/image/projects/littleTokyo/photo1.jpg";
-import photo2 from "../../../assests/image/projects/littleTokyo/photo2.jpg";
+import imgD0 from "../../../assests/image/projects/littleTokyo/desktop0.jpg";
+import imgD1 from "../../../assests/image/projects/littleTokyo/desktop1.jpg";
+import imgD2 from "../../../assests/image/projects/littleTokyo/desktop2.jpg";
+import imgP0 from "../../../assests/image/projects/littleTokyo/photo0.jpg";
+import imgP1 from "../../../assests/image/projects/littleTokyo/photo1.jpg";
+import imgP2 from "../../../assests/image/projects/littleTokyo/photo2.jpg";
 
 const LittleTokyo = ({ pageControl, props }) => {
   const refEl = useRef(null);
@@ -21,27 +21,26 @@ const LittleTokyo = ({ pageControl, props }) => {
     liveDemoURL: "http://littletokyonc.com/",
     githubURL: "https://github.com/jhoonhan/this-is-bullshit",
     path: "little-tokyo",
-    overviewVisual: {
-      // type: "image",
-      // orientation: "trifold",
-      // data: [photo0, photo1, photo2],
-      type: "image",
-      orientation: "desktop",
-      data: [desktop1],
-    },
-    images: {
+
+    pageData: {
       landing,
-      slideImages: {
-        desktop: [desktop0, desktop1, desktop2, photo2, photo1, photo0],
-        mobile: [],
-        photo: [],
+      overview: {
+        loadData: [imgD1],
+        type: "image",
+        orientation: "desktop",
+        data: [imgD1],
       },
-    },
-    videos: {
-      landing: null,
-      slideVideos: {
-        desktop: [],
-        mobile: [],
+      gallery: {
+        loadData: [imgD0, imgD1, imgD2, imgP0, imgP1, imgP2],
+        images: {
+          desktop: [imgD0, imgD1, imgD2, imgP0, imgP1, imgP2],
+          mobile: [],
+          photo: [],
+        },
+        videos: {
+          desktop: [],
+          mobile: [],
+        },
       },
     },
     theme: "light",
@@ -64,7 +63,7 @@ const LittleTokyo = ({ pageControl, props }) => {
     <WorkContent
       refEl={refEl}
       pageControl={pageControl}
-      content={data}
+      data={data}
       backgroundStyle={backgroundStyle}
       props={props}
       noOverview={false}

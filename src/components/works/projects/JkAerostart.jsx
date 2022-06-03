@@ -2,9 +2,9 @@ import React, { useEffect, useRef } from "react";
 import WorkContent from "../WorkContent";
 
 import landing from "../../../assests/image/projects/jkAerostart/landing.jpg";
-import videoD0 from "../../../assests/image/projects/jkAerostart/videoD0.mp4";
-import videoM0 from "../../../assests/image/projects/jkAerostart/videoM0.mp4";
-import videoM1 from "../../../assests/image/projects/jkAerostart/videoM1.mp4";
+import vidD0 from "../../../assests/image/projects/jkAerostart/videoD0.mp4";
+import vidM0 from "../../../assests/image/projects/jkAerostart/videoM0.mp4";
+import vidM1 from "../../../assests/image/projects/jkAerostart/videoM1.mp4";
 
 const JkAerostart = ({ pageControl, props }) => {
   const refEl = useRef(null);
@@ -17,24 +17,26 @@ const JkAerostart = ({ pageControl, props }) => {
     liveDemoURL: "http://littletokyonc.com/",
     githubURL: "https://github.com/jhoonhan/jk-aerostart",
     path: "jk-aerostart",
-    overviewVisual: {
-      type: "video",
-      orientation: "desktop",
-      data: [videoD0],
-    },
-    images: {
+
+    pageData: {
       landing,
-      slideImages: {
-        desktop: [],
-        mobile: [],
-        photo: [],
+      overview: {
+        loadData: [vidD0],
+        type: "video",
+        orientation: "desktop",
+        data: [vidD0],
       },
-    },
-    videos: {
-      landing: null,
-      slideVideos: {
-        desktop: [videoD0],
-        mobile: [videoM0, videoM1],
+      gallery: {
+        loadData: [vidD0, vidM0, vidM1],
+        images: {
+          desktop: [],
+          mobile: [],
+          photo: [],
+        },
+        videos: {
+          desktop: [vidD0],
+          mobile: [vidM0, vidM1],
+        },
       },
     },
     theme: "light",
@@ -57,7 +59,7 @@ const JkAerostart = ({ pageControl, props }) => {
     <WorkContent
       refEl={refEl}
       pageControl={pageControl}
-      content={data}
+      data={data}
       backgroundStyle={backgroundStyle}
       props={props}
       noOverview={false}

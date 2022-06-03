@@ -16,7 +16,7 @@ const Overview = ({
   isVideo,
 }) => {
   const { onTouchStart, onTouchMove, onTouchEnd, sticky } = useListenSwipe();
-  const { overviewVisual } = data;
+  const { pageData } = data;
 
   const refIntersect = useRef(null);
 
@@ -142,24 +142,24 @@ const Overview = ({
   };
 
   const renderOverviewVisual = () => {
-    if (overviewVisual?.orientation === "trifold") {
-      return <WorkPictureContainer images={overviewVisual?.data} />;
+    if (pageData?.overview.orientation === "trifold") {
+      return <WorkPictureContainer images={pageData?.overview.data} />;
     }
 
-    if (overviewVisual?.orientation === "desktop") {
+    if (pageData?.overview.orientation === "desktop") {
       return (
         <DesktopSVG
-          data={overviewVisual.data[0]}
-          type={overviewVisual?.type}
+          data={pageData?.overview.data[0]}
+          type={pageData?.overview.type}
           customClass="overview"
         />
       );
     }
-    if (overviewVisual?.orientation === "mobile") {
+    if (pageData?.overview.orientation === "mobile") {
       return (
         <MobileSVG
-          data={overviewVisual.data[0]}
-          type={overviewVisual?.type}
+          data={pageData?.overview.data[0]}
+          type={pageData?.overview.type}
           customClass="overview"
         />
       );
