@@ -56,9 +56,8 @@ const Gallery = ({ slideInfo, pageControl, data }) => {
   );
 
   const render = () => {
-    return (
+    const Content = (
       <AnimatePresence>
-        {loading && Loading}
         <div
           ref={refCont}
           className="work__content"
@@ -89,7 +88,7 @@ const Gallery = ({ slideInfo, pageControl, data }) => {
       </AnimatePresence>
     );
 
-    // return <AnimatePresence>{loading ? Loading : Content}</AnimatePresence>;
+    return <AnimatePresence>{loading ? Loading : Content}</AnimatePresence>;
   };
 
   return render();

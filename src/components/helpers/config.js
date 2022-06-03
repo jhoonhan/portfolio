@@ -1,5 +1,6 @@
 export const transition = {
   default: 0.5,
+  medium: 0.7,
   fast: 0.3,
   slow: 1,
 };

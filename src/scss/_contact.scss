@@ -38,9 +38,8 @@
 
   & .contact__title {
     font-size: calc(min(20vw, 20vh));
-    margin-left: -1.5rem;
-
     mix-blend-mode: difference;
+    margin-left: -1.5rem;
   }
 
   & .contact__subtitle {

@@ -160,7 +160,7 @@ const About = ({ pageControl, props, refs }) => {
       show: {
         opacity: 1,
         transition: {
-          // duration: 1,
+          duration: transition.medium,
           staggerChildren: 0.3,
         },
       },
@@ -254,7 +254,7 @@ const About = ({ pageControl, props, refs }) => {
             <div className="flex--column el" style={{ gap: "0.5rem" }}>
               <h2 style={{ paddingBottom: "1rem" }}>Expreience</h2>
               <p>- 5 years experience in Web Design</p>
-              <p>- 5 years experience in Graphic Design</p>
+              <p>- 7 years experience in Graphic Design</p>
               <p>- 1 year in Front-end Web Development</p>
             </div>
           </div>
@@ -278,7 +278,7 @@ const About = ({ pageControl, props, refs }) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        transition={{ duration: 1 }}
+        transition={{ duration: transition.medium }}
       >
         <AnimatePresence exitBeforeEnter>
           {loading ? Loading : Content}

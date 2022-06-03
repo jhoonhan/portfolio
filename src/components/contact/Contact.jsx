@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import { transition } from "../helpers/config";
+import useRandomTextAnimation from "../helpers/useRandomTextAnimation";
 import icons from "../../assests/image/icons.svg";
 import cv from "../../assests/files/cv.pdf";
 
@@ -10,14 +11,15 @@ const Contact = ({ pageControl, props, refs }) => {
     pageControl.setTheme({ color: "dark" });
   }, []);
 
+  const { hasFinished, title } = useRandomTextAnimation("Yeah", 500, false);
+
   const animate = {
     container: {
       hidden: { opacity: 0 },
       show: {
         opacity: 1,
         transition: {
-          // type: "spring",
-          duration: 1,
+          duration: transition.medium,
           staggerChildren: 0.7,
         },
       },
@@ -26,7 +28,7 @@ const Contact = ({ pageControl, props, refs }) => {
       hidden: { opacity: 0 },
       show: {
         opacity: 1,
-        transition: { duration: transition.slow, type: "spring", dealy: 0.5 },
+        transition: { duration: transition.medium, type: "spring", dealy: 0.5 },
       },
     },
   };
@@ -40,7 +42,6 @@ const Contact = ({ pageControl, props, refs }) => {
         initial="hidden"
         animate="show"
         exit="hidden"
-        transition={{ duration: 1 }}
       >
         <div className="contact__text-wrapper">
           <div className="flex--column">

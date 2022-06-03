@@ -37,7 +37,7 @@ const usePreloader = (dataList) => {
     dataList.forEach(async (data, i) => {
       // console.log(data.slice(-3));
       const fileType = data.slice(-3);
-      if (fileType === "jpg" || fileType === "png") {
+      if (fileType !== "mp4") {
         const res = await loadImage(data);
         if (res) {
           setLoaded((arr) => [...arr, res]);
@@ -53,7 +53,7 @@ const usePreloader = (dataList) => {
   useEffect(() => {
     let timeoutId;
     setLoadingProgress(Math.round((loaded.length / dataList?.length) * 100));
-    if (loaded.length === dataList?.length) {
+    if (loaded.length >= dataList?.length) {
       timeoutId = setTimeout(() => {
         setLoading(false);
       }, 200);

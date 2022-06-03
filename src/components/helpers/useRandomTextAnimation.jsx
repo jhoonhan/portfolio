@@ -1,7 +1,18 @@
 import React, { useEffect, useState, useRef } from "react";
 
 const useRandomTextAnimation = (text, delay, loading) => {
-  const textLength = text.join("").split("").length;
+  const [textLength, setTextLength] = useState(0);
+  // const textLength = text.join("").split("").length;
+
+  useEffect(() => {
+    if (Array.isArray(text)) {
+      setTextLength(text.join("").split("").length);
+    }
+    if (!Array.isArray(text)) {
+      setTextLength(text.split("").length);
+    }
+  }, [text]);
+
   const characters = "abcdefghijklmnopqrstuvwxyz";
 
   const initialRandomText = () => {
@@ -35,7 +46,16 @@ const useRandomTextAnimation = (text, delay, loading) => {
   }, [loading]);
 
   const makeid = () => {
-    const chars = text.join("").split("");
+    let chars;
+    let inputText;
+    if (Array.isArray(text)) {
+      chars = text.join("").split("");
+      inputText = text.join("");
+    }
+    if (!Array.isArray(text)) {
+      chars = text.split("");
+      inputText = text;
+    }
     let res = title.split("");
 
     refInterval.current = setInterval(() => {
@@ -62,7 +82,7 @@ const useRandomTextAnimation = (text, delay, loading) => {
       });
       setTitle(res.join(""));
 
-      if (res.join("") === text.join("")) {
+      if (res.join("") === inputText) {
         clearInterval(refInterval.current);
         setHasFinished(true);
       }
