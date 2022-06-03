@@ -62,9 +62,9 @@ const Landing = ({ slideInfo, pageControl, data }) => {
     // if (loading) {
     //   return <Loading loadingProgress={loadingProgress} />;
     // }
-    if (loading) {
-      return Loading;
-    }
+    // if (loading) {
+    //   return Loading;
+    // }
     return (
       <>
         <div
