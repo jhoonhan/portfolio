@@ -189,7 +189,7 @@
   }
 
   .slide-img--mobile.overview {
-    // max-height: 30vh;
+    max-height: 30vh;
     margin: 0;
     & .masking {
       bottom: 0;
@@ -279,12 +279,10 @@
     & svg {
       height: 40vh;
     }
-    & .masking {
-      height: 40vh;
-      & img {
-        max-height: 38.5vh;
-        left: 0.7vh;
-      }
+    & img {
+      max-height: 38.5vh;
+      // left: 0.7vh;
+      margin: 0;
     }
   }
   .work__detail-container {
@@ -328,7 +326,8 @@
     background-size: auto 110%;
   }
   // About
-  .about__container {
+
+  .about__conatiner__content {
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr;
     overflow-y: scroll;

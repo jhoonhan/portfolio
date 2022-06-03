@@ -16,7 +16,8 @@ const Contact = ({ pageControl, props, refs }) => {
       show: {
         opacity: 1,
         transition: {
-          type: "spring",
+          // type: "spring",
+          duration: 1,
           staggerChildren: 0.7,
         },
       },
@@ -39,6 +40,7 @@ const Contact = ({ pageControl, props, refs }) => {
         initial="hidden"
         animate="show"
         exit="hidden"
+        transition={{ duration: 1 }}
       >
         <div className="contact__text-wrapper">
           <div className="flex--column">

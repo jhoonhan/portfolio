@@ -1,5 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import { isMobile } from "react-device-detect";
+import { AnimatePresence } from "framer-motion";
+
 import useListenSwipe from "../../helpers/useListenSwipe";
 import usePreloader from "../../helpers/usePreloader";
 
@@ -7,7 +9,6 @@ import Slide from "../Slide";
 import useGalleryHoriScroll from "../useGalleryHoriScroll";
 import DesktopSVG from "../../helpers/DesktopSVG";
 import MobileSVG from "../../helpers/MobileSVG";
-import { AnimatePresence } from "framer-motion";
 
 const Gallery = ({ slideInfo, pageControl, data }) => {
   const { onTouchStart, onTouchMove, onTouchEnd, sticky } = useListenSwipe();

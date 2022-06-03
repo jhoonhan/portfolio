@@ -29,6 +29,11 @@ const AboutSlide = ({ imgs, style, setActiveSlide, slideNumber }) => {
       onMouseOver={setActiveSlide}
       style={style}
       variants={animate}
+      key={slideNumber}
+      // initial={{ opacity: 0 }}
+      // animate={{ opacity: 1 }}
+      // exit={{ opacity: 0 }}
+      // transition={{ duration: 3 }}
     >
       <>{slide}</>
     </motion.div>
