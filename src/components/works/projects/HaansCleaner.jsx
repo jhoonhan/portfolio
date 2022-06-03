@@ -51,6 +51,10 @@ const HaansCleaner = ({ pageControl, props }) => {
     },
   };
 
+  useEffect(() => {
+    pageControl.setTheme({ color: "white", subColor: "light-blue" });
+  }, []);
+
   return (
     <WorkContent
       refEl={refEl}

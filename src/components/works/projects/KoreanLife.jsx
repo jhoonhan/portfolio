@@ -48,6 +48,10 @@ const KoreanLife = ({ pageControl, props }) => {
     theme: { color: "white", subColor: "green", background: backgroundStyle },
   };
 
+  useEffect(() => {
+    pageControl.setTheme({ color: "white", subColor: "green" });
+  }, []);
+
   return (
     <WorkContent
       refEl={refEl}

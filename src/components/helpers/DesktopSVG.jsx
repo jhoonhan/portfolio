@@ -16,7 +16,15 @@ const DesktopSVG = ({ data, type, customClass }) => {
       return <img src={data} alt="overview" />;
     }
     if (type === "video") {
-      return <video src={data} autoPlay={true} muted loop />;
+      return (
+        <video
+          src={data}
+          autoPlay={true}
+          onCanPlay={() => console.log(`aaang canplay!`)}
+          muted
+          loop
+        />
+      );
     }
   };
   return (

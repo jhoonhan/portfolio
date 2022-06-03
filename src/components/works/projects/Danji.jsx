@@ -56,6 +56,10 @@ const Danji = ({ pageControl, props }) => {
     },
   };
 
+  useEffect(() => {
+    pageControl.setTheme({ color: "black", subColor: "white" });
+  }, []);
+
   return (
     <WorkContent
       refEl={refEl}

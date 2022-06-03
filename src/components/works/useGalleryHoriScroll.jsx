@@ -21,6 +21,8 @@ const useGalleryHoriScroll = (pageControl) => {
     };
 
     const fn = (e) => {
+      console.log(`firied`);
+
       const child = el.children[0].getBoundingClientRect();
 
       if (

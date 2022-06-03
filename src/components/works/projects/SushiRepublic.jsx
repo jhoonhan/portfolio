@@ -54,6 +54,10 @@ const SushiRepublic = ({ pageControl, props }) => {
     },
   };
 
+  useEffect(() => {
+    pageControl.setTheme({ color: "black", subColor: "white" });
+  }, []);
+
   const render = () => {
     return (
       <WorkContent

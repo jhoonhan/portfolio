@@ -49,6 +49,10 @@ const LittleTokyo = ({ pageControl, props }) => {
     theme: { color: "black", background: backgroundStyle },
   };
 
+  useEffect(() => {
+    pageControl.setTheme({ color: "black", subColor: "white" });
+  }, []);
+
   return (
     <WorkContent
       refEl={refEl}

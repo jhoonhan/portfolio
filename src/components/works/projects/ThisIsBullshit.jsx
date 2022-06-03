@@ -48,6 +48,10 @@ const ThisIsBullshit = ({ pageControl, props }) => {
     theme: { color: "white", subColor: "red", background: backgroundStyle },
   };
 
+  useEffect(() => {
+    pageControl.setTheme({ color: "white", subColor: "red" });
+  }, []);
+
   return (
     <WorkContent
       refEl={refEl}

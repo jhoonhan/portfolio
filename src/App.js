@@ -75,8 +75,11 @@ const App = () => {
   }, [curPage, workPage, workSubPage]);
 
   // Theme control
-  const [theme, setTheme] = useState("dark");
-  const [prevTheme, setPrevTheme] = useState("dark");
+  const [theme, setTheme] = useState({ color: "black", subColor: "white" });
+  const [prevTheme, setPrevTheme] = useState({
+    color: "black",
+    subColor: "white",
+  });
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme.color);
     document.documentElement.setAttribute("data-subtheme", theme.subColor);

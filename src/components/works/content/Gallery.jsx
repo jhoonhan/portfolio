@@ -55,40 +55,40 @@ const Gallery = ({ slideInfo, pageControl, data }) => {
   );
 
   const render = () => {
-    const Content = (
-      <div
-        ref={refCont}
-        className="work__content"
-        style={
-          isMobile
-            ? {
-                transform: `translateX(${-sticky.x}px)`,
-              }
-            : slideInfo.slideImgStyle
-        }
-        onTouchStart={onTouchStart}
-        onTouchMove={onTouchMove}
-        onTouchEnd={onTouchEnd}
-      >
+    return (
+      <AnimatePresence>
+        {loading && Loading}
         <div
-          ref={refSlides}
-          className="work__detail-container"
-          // style={{ paddingLeft: "calc((100vw - 127.5vh)/2)" }}
+          ref={refCont}
+          className="work__content"
+          style={
+            isMobile
+              ? {
+                  transform: `translateX(${-sticky.x}px)`,
+                }
+              : slideInfo.slideImgStyle
+          }
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
         >
-          <div className="detail__img-container">
-            {/* {renderSlides()} */}
-            {renderSlidesDesktopVideo}
-            {renderSlidesMobileVideo}
-            {renderSlidesDesktop}
-            {renderSlidesMobile}
-            {/* <Slide type="image" img={images?.slideImages[5]} />
-            <Slide type="image" img={images?.slideImages[6]} /> */}
+          <div
+            ref={refSlides}
+            className="work__detail-container"
+            style={{ opacity: loading && 0 }}
+          >
+            <div className="detail__img-container">
+              {renderSlidesDesktopVideo}
+              {renderSlidesMobileVideo}
+              {renderSlidesDesktop}
+              {renderSlidesMobile}
+            </div>
           </div>
         </div>
-      </div>
+      </AnimatePresence>
     );
 
-    return <AnimatePresence>{loading ? Loading : Content}</AnimatePresence>;
+    // return <AnimatePresence>{loading ? Loading : Content}</AnimatePresence>;
   };
 
   return render();
