@@ -4,8 +4,8 @@ import useListenSwipe from "../../helpers/useListenSwipe";
 
 import Slide from "../Slide";
 import useGalleryHoriScroll from "../useGalleryHoriScroll";
-import DesktopSVG from "../../../assests/image/projects/DesktopSVG";
-import MobileSVG from "../../../assests/image/projects/MobileSVG";
+import DesktopSVG from "../../helpers/DesktopSVG";
+import MobileSVG from "../../helpers/MobileSVG";
 
 const Gallery = ({ slideInfo, pageControl, data }) => {
   const { onTouchStart, onTouchMove, onTouchEnd, sticky } = useListenSwipe();

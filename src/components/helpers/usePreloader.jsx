@@ -33,7 +33,7 @@ const usePreloader = (imgList) => {
     if (loaded.length === imgList?.length) {
       setTimeout(() => {
         setLoading(false);
-      }, 1000);
+      }, 3000);
     }
   }, [loaded]);
 

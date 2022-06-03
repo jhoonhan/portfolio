@@ -3,8 +3,8 @@ import { motion } from "framer-motion";
 import { isMobile } from "react-device-detect";
 import useListenSwipe from "../../helpers/useListenSwipe";
 
-import DesktopSVG from "../../../assests/image/projects/DesktopSVG";
-import MobileSVG from "../../../assests/image/projects/MobileSVG";
+import DesktopSVG from "../../helpers/DesktopSVG";
+import MobileSVG from "../../helpers/MobileSVG";
 import WorkPictureContainer from "../WorkPictureContainer";
 
 const Overview = ({ slideInfo, pageControl, data }) => {

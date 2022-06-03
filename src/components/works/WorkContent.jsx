@@ -7,7 +7,7 @@ import { transition } from "../helpers/config";
 import WorkPictureContainer from "./WorkPictureContainer";
 import Gallery from "./content/Gallery";
 import useSlideStyle from "./useSlideStyle";
-import DesktopSVG from "../../assests/image/projects/DesktopSVG";
+import DesktopSVG from "../helpers/DesktopSVG";
 import useIntersectionObserve from "../helpers/useIntersectionObserve";
 import Landing from "./content/Landing";
 import Overview from "./content/Overview";

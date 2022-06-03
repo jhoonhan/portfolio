@@ -27,7 +27,8 @@ const MobileSVG = ({ type, data, customClass }) => {
             style={{ fill: "#1a1a1a" }}
           />
         </svg> */}
-        <div className="masking">{renderVisual()}</div>
+        {/* <div className="masking"></div> */}
+        {renderVisual()}
       </div>
     );
   };
