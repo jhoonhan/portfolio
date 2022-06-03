@@ -177,9 +177,7 @@
     }
   }
 
-  .work__content {
-    width: 100vw;
-
+  .work__content--overview {
     grid-template-columns: 1fr;
     // grid-template-rows: minmax(auto, calc(45vh - 8rem)) auto;
     grid-template-rows: 1fr auto;

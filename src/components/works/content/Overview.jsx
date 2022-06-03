@@ -162,6 +162,31 @@ const Overview = ({ slideInfo, pageControl, data }) => {
   };
 
   const render = () => {
+    // return (
+    //   <AnimatePresence>
+    //     {loading && Loading}
+    //     <div
+    //       ref={refIntersect}
+    //       className="work__content padded overview"
+    //       style={
+    //         isMobile
+    //           ? {
+    //               transform: `translateX(${-sticky.x}px) translateY(${-sticky.y}px)`,
+    //             }
+    //           : slideInfo.slideImgStyle
+    //       }
+    //       onTouchStart={onTouchStart}
+    //       onTouchMove={onTouchMove}
+    //       onTouchEnd={onTouchEnd}
+    //     >
+    //       <div className="work__content--overview">
+    //         {renderOverviewVisual()}
+
+    //         {renderInfo()}
+    //       </div>
+    //     </div>
+    //   </AnimatePresence>
+    // );
     const Content = (
       <div
         ref={refIntersect}
@@ -177,9 +202,10 @@ const Overview = ({ slideInfo, pageControl, data }) => {
         onTouchMove={onTouchMove}
         onTouchEnd={onTouchEnd}
       >
-        {renderOverviewVisual()}
-
-        {renderInfo()}
+        <div className="work__content--overview">
+          {renderOverviewVisual()}
+          {renderInfo()}
+        </div>
       </div>
     );
 

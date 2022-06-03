@@ -164,8 +164,8 @@ a {
     // background-color: black;
 
     & span {
-      color: white;
-      font-size: 5rem;
+      color: var(--color-font);
+      font-size: 3rem;
       mix-blend-mode: difference;
     }
   }
