@@ -1,10 +1,24 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { isBrowser, isMobile } from "react-device-detect";
 import throttle from "../helpers/throttle";
 
-const useGalleryHoriScroll = (pageControl) => {
+const useGalleryHoriScroll = (pageControl, loading) => {
+  const [trigger, setTrigger] = useState(null);
   const elRef = useRef();
+
+  // trigger reattaches the ref to the condtionally rerendered comp in the parent comp
   useEffect(() => {
+    if (!elRef.current) {
+      setTrigger(loading);
+    }
+    if (elRef.current) {
+      setTrigger(elRef);
+    }
+  }, [loading]);
+  //
+
+  useEffect(() => {
+    if (!trigger) return;
     if (pageControl.workSubPage !== "gallery" || isMobile) return;
     const el = elRef.current;
     if (!el) return;
@@ -21,8 +35,6 @@ const useGalleryHoriScroll = (pageControl) => {
     };
 
     const fn = (e) => {
-      console.log(`firied`);
-
       const child = el.children[0].getBoundingClientRect();
 
       if (
@@ -53,7 +65,8 @@ const useGalleryHoriScroll = (pageControl) => {
     return () => {
       el.removeEventListener("wheel", fn);
     };
-  }, [pageControl.workSubPage]);
+  }, [pageControl.workSubPage, trigger]);
+
   return elRef;
 };
 

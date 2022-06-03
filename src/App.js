@@ -7,6 +7,7 @@ import Header from "./components/Header";
 import Landing from "./components/landing/Landing";
 import Works from "./components/works/Works";
 import About from "./components/about/About";
+import NotFound from "./components/NotFound";
 
 import useListenSwipe from "./components/helpers/useListenSwipe";
 
@@ -103,7 +104,7 @@ const App = () => {
 
   // URLS
   const urls = {
-    curPage: ["home", "works", "about", "contact"],
+    curPage: ["home", "works", "about", "contact", "notfound"],
     workPage: [
       "sushi-republic",
       "haans-cleaner",
@@ -285,10 +286,10 @@ const App = () => {
         <Header refs={refs} urls={urls} pageControl={pageControl} />
         <Cursor show={showCursor} />
         <main ref={refMain} className="wrapper__main">
-          <div
+          {/* <div
             style={curPage === "home" ? { opacity: 0 } : {}}
             className="overlay"
-          />
+          /> */}
 
           <AnimatePresence exitBeforeEnter>
             <Switch location={location} key={transitionPageLocation}>
@@ -350,6 +351,7 @@ const App = () => {
                   </>
                 )}
               />
+              <Route render={() => <NotFound pageControl={pageControl} />} />
             </Switch>
           </AnimatePresence>
         </main>

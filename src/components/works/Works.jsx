@@ -13,6 +13,7 @@ import ThisIsBullshit from "./projects/ThisIsBullshit";
 import KoreanLife from "./projects/KoreanLife";
 import LittleTokyo from "./projects/LittleTokyo";
 import JkAerostart from "./projects/JkAerostart";
+import NotFound from "../NotFound";
 
 const Works = ({ refs, pageControl, props, match }) => {
   const location = useLocation();
@@ -86,6 +87,7 @@ const Works = ({ refs, pageControl, props, match }) => {
                   <JkAerostart pageControl={pageControl} props={props} />
                 )}
               />
+              <Route render={() => <NotFound pageControl={pageControl} />} />
             </Switch>
           </AnimatePresence>
         </motion.section>

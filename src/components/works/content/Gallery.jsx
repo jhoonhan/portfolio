@@ -20,7 +20,7 @@ const Gallery = ({ slideInfo, pageControl, data }) => {
   }, []);
 
   const refCont = useRef(null);
-  const refSlides = useGalleryHoriScroll(pageControl);
+  const refSlides = useGalleryHoriScroll(pageControl, loading);
 
   const renderSlidesDesktop = pageData?.gallery.images.desktop.map((img, i) => (
     <React.Fragment key={i}>
@@ -89,6 +89,7 @@ const Gallery = ({ slideInfo, pageControl, data }) => {
     );
 
     return <AnimatePresence>{loading ? Loading : Content}</AnimatePresence>;
+    // return <AnimatePresence>{Content}</AnimatePresence>;
   };
 
   return render();

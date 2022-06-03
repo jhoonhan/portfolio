@@ -63,10 +63,12 @@ const Overview = ({ slideInfo, pageControl, data }) => {
         <motion.div
           className="works__title"
           variants={isMobile ? animateMobile.item : animateBrowser.item}
-          style={data?.name.length > 1 ? { justifyContent: "flex-start" } : ""}
+          // style={data?.name.length > 1 ? { justifyContent: "flex-start" } : ""}
         >
-          <span>{data?.name[0]}</span>
-          <span>{data?.name[1]}</span>
+          <span>
+            {data?.name[0]} {data?.name[1]}
+          </span>
+          {/* <span>{data?.name[1]}</span> */}
         </motion.div>
 
         <motion.div
@@ -162,31 +164,6 @@ const Overview = ({ slideInfo, pageControl, data }) => {
   };
 
   const render = () => {
-    // return (
-    //   <AnimatePresence>
-    //     {loading && Loading}
-    //     <div
-    //       ref={refIntersect}
-    //       className="work__content padded overview"
-    //       style={
-    //         isMobile
-    //           ? {
-    //               transform: `translateX(${-sticky.x}px) translateY(${-sticky.y}px)`,
-    //             }
-    //           : slideInfo.slideImgStyle
-    //       }
-    //       onTouchStart={onTouchStart}
-    //       onTouchMove={onTouchMove}
-    //       onTouchEnd={onTouchEnd}
-    //     >
-    //       <div className="work__content--overview">
-    //         {renderOverviewVisual()}
-
-    //         {renderInfo()}
-    //       </div>
-    //     </div>
-    //   </AnimatePresence>
-    // );
     const Content = (
       <div
         ref={refIntersect}

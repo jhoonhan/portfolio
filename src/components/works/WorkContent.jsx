@@ -11,6 +11,7 @@ import DesktopSVG from "../helpers/DesktopSVG";
 import useIntersectionObserve from "../helpers/useIntersectionObserve";
 import Landing from "./content/Landing";
 import Overview from "./content/Overview";
+import NotFound from "../NotFound";
 
 const WorkContent = ({
   refEl,
@@ -141,6 +142,7 @@ const WorkContent = ({
             </motion.div>
           )}
         />
+
         {/* </AnimatePresence> */}
       </div>
     );

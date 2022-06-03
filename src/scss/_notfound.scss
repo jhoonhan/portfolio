@@ -1,0 +1,21 @@
+.notfound__container {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: calc(min(10vh, 10vw));
+
+  background-color: red;
+
+  & h1 {
+    font-size: 30vw;
+    letter-spacing: -5vw;
+  }
+
+  & h3 {
+    font-size: 3rem;
+  }
+}

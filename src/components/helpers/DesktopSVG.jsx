@@ -20,7 +20,7 @@ const DesktopSVG = ({ data, type, customClass }) => {
         <video
           src={data}
           autoPlay={true}
-          onCanPlay={() => console.log(`aaang canplay!`)}
+          // onCanPlay={() => console.log(`aaang canplay!`)}
           muted
           loop
         />
