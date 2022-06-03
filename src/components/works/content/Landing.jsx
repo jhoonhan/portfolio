@@ -6,14 +6,14 @@ import useVerticalNavigation from "./useVerticalNavigation";
 import { transition } from "../../helpers/config";
 import useRandomTextAnimation from "../../helpers/useRandomTextAnimation";
 
-const Landing = ({ slideInfo, pageControl, content }) => {
+const Landing = ({ slideInfo, pageControl, data }) => {
   const { setWorkSubPage } = pageControl;
-  const { hasFinished, title } = useRandomTextAnimation(content?.name, 500);
+  const { hasFinished, title } = useRandomTextAnimation(data?.name, 500);
 
   const fontSize = () => {
     let height;
-    if (content?.name.join("").split("").length > 14) {
-      height = 90 / content?.name.join("").split("").length;
+    if (data?.name.join("").split("").length > 14) {
+      height = 90 / data?.name.join("").split("").length;
     } else {
       height = 6.4;
     }
@@ -21,6 +21,10 @@ const Landing = ({ slideInfo, pageControl, content }) => {
   };
 
   useVerticalNavigation(pageControl);
+
+  useEffect(() => {
+    console.log(data?.images.landing.src);
+  }, []);
 
   useEffect(() => {
     setWorkSubPage("landing");
@@ -76,7 +80,8 @@ const Landing = ({ slideInfo, pageControl, content }) => {
             <div
               className="work__landing__img"
               style={{
-                backgroundImage: `url(${content?.images.landing})`,
+                backgroundImage: `url(${data.images.landing.src})`,
+                // backgroundImage: `url(${data?.images.landing})`,
                 filter: hasFinished && "blur(2rem)",
               }}
             />
@@ -87,12 +92,10 @@ const Landing = ({ slideInfo, pageControl, content }) => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
             >
-              {/* <useRandomTextAnimation text={content?.name} />
-               */}
               {renderTitle()}
             </motion.div>
           </div>
-        </div>{" "}
+        </div>
       </>
     );
   };

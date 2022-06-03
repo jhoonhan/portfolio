@@ -15,7 +15,7 @@ import Overview from "./content/Overview";
 const WorkContent = ({
   refEl,
   pageControl,
-  content,
+  data,
   backgroundStyle,
   noOverview,
   props,
@@ -74,7 +74,7 @@ const WorkContent = ({
         {/* <div ref={refEl} className="work__container"> */}
         {/* {renderContent()} */}
         <Route
-          path={`/${pageControl.curPage}/${content.path}/landing`}
+          path={`/${pageControl.curPage}/${data.path}/landing`}
           exact
           render={(props) => (
             <motion.div
@@ -88,7 +88,7 @@ const WorkContent = ({
               <Landing
                 slideInfo={slideInfo}
                 pageControl={pageControl}
-                content={content}
+                data={data}
                 props={props}
               />
             </motion.div>
@@ -96,7 +96,7 @@ const WorkContent = ({
         />
 
         <Route
-          path={`/works/${content.path}/overview`}
+          path={`/works/${data.path}/overview`}
           exact
           render={(props) => (
             <motion.div
@@ -112,7 +112,7 @@ const WorkContent = ({
                 props={props}
                 slideInfo={slideInfo}
                 pageControl={pageControl}
-                content={content}
+                data={data}
                 noOverview={noOverview}
                 isVideo={isVideo}
               />
@@ -121,7 +121,7 @@ const WorkContent = ({
         />
 
         <Route
-          path={`/works/${content.path}/gallery`}
+          path={`/works/${data.path}/gallery`}
           exact
           render={(props) => (
             <motion.div
@@ -136,7 +136,7 @@ const WorkContent = ({
               <Gallery
                 slideInfo={slideInfo}
                 pageControl={pageControl}
-                content={content}
+                data={data}
               />
             </motion.div>
           )}

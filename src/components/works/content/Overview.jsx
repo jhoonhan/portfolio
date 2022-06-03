@@ -10,13 +10,13 @@ import WorkPictureContainer from "../WorkPictureContainer";
 const Overview = ({
   slideInfo,
   pageControl,
-  content,
+  data,
   noOverview,
   props,
   isVideo,
 }) => {
   const { onTouchStart, onTouchMove, onTouchEnd, sticky } = useListenSwipe();
-  const { overviewVisual } = content;
+  const { overviewVisual } = data;
 
   const refIntersect = useRef(null);
 
@@ -68,19 +68,17 @@ const Overview = ({
         <motion.div
           className="works__title"
           variants={isMobile ? animateMobile.item : animateBrowser.item}
-          style={
-            content?.name.length > 1 ? { justifyContent: "flex-start" } : ""
-          }
+          style={data?.name.length > 1 ? { justifyContent: "flex-start" } : ""}
         >
-          <span>{content?.name[0]}</span>
-          <span>{content?.name[1]}</span>
+          <span>{data?.name[0]}</span>
+          <span>{data?.name[1]}</span>
         </motion.div>
 
         <motion.div
           className="works__subtitle"
           variants={isMobile ? animateMobile.item : animateBrowser.item}
         >
-          <h2>{content?.description}</h2>
+          <h2>{data?.description}</h2>
         </motion.div>
 
         <div className="works__info__detail">
@@ -93,7 +91,7 @@ const Overview = ({
               <div></div>
             </div>
 
-            <p>{content?.role}</p>
+            <p>{data?.role}</p>
           </motion.div>
 
           <motion.div
@@ -105,7 +103,7 @@ const Overview = ({
               <div></div>
             </div>
 
-            <p>{content?.technology}</p>
+            <p>{data?.technology}</p>
           </motion.div>
 
           <motion.div
@@ -113,9 +111,9 @@ const Overview = ({
             style={{ marginTop: "1rem", gap: "2rem" }}
             variants={isMobile ? animateMobile.item : animateBrowser.item}
           >
-            {content?.liveDemoURL ? (
+            {data?.liveDemoURL ? (
               <a
-                href={content?.liveDemoURL}
+                href={data?.liveDemoURL}
                 className="button"
                 target="_blank"
                 rel="noreferrer noopener"
@@ -125,9 +123,9 @@ const Overview = ({
             ) : (
               {}
             )}
-            {content?.liveDemoURL ? (
+            {data?.liveDemoURL ? (
               <a
-                href={content?.githubURL}
+                href={data?.githubURL}
                 className="button"
                 target="_blank"
                 rel="noreferrer noopener"

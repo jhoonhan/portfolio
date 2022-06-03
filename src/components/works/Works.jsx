@@ -16,13 +16,16 @@ import JkAerostart from "./projects/JkAerostart";
 
 const Works = ({ refs, pageControl, props, match }) => {
   const location = useLocation();
+  const [persistedImgs, setPersistedImgs] = useState(null);
   const { setCurPage } = pageControl;
 
   useEffect(() => {
     setCurPage(props.match.path.slice(1));
-    console.log(`aaang`);
-    // document.body.style.backgroundColor = "black";
   }, []);
+
+  useEffect(() => {
+    // console.log(persistedImgs);
+  }, [persistedImgs]);
 
   const render = () => {
     return (
@@ -42,7 +45,11 @@ const Works = ({ refs, pageControl, props, match }) => {
               <Route
                 path={`${props.match.path}/sushi-republic`}
                 render={(props) => (
-                  <SushiRepublic pageControl={pageControl} props={props} />
+                  <SushiRepublic
+                    pageControl={pageControl}
+                    props={props}
+                    preload={{ persistedImgs, setPersistedImgs }}
+                  />
                 )}
               />
               <Route

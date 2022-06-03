@@ -28,12 +28,21 @@ const imagesToPreload = [
   { src: slideImg6, name: "slideImg6" },
 ];
 
-const SushiRepublic = ({ pageControl, props }) => {
-  const { fetched, preloadedImgs, progress } = usePreloader(imagesToPreload);
+const SushiRepublic = ({ pageControl, props, preload }) => {
+  const { persistedImgs, setPersistedImgs } = preload;
+  const { fetched, progress } = usePreloader(
+    persistedImgs ? null : imagesToPreload,
+    persistedImgs,
+    setPersistedImgs
+  );
 
-  useEffect(() => {
-    console.log(preloadedImgs);
-  }, [preloadedImgs]);
+  // useEffect(() => {
+  //   console.log(persistedImgs?.landing);
+  // }, [persistedImgs]);
+
+  // useEffect(() => {
+  //   setPersistedImgs(preloadedImgs);
+  // }, [preloadedImgs]);
 
   const refEl = useRef(null);
 
@@ -49,21 +58,21 @@ const SushiRepublic = ({ pageControl, props }) => {
       type: "image",
       orientation: "trifold",
       data: [
-        preloadedImgs.overviewImg0,
-        preloadedImgs.overviewImg1,
-        preloadedImgs.overviewImg2,
+        persistedImgs?.overviewImg0,
+        persistedImgs?.overviewImg1,
+        persistedImgs?.overviewImg2,
       ],
     },
     images: {
-      landing: preloadedImgs.landing,
+      landing: persistedImgs?.landing,
       slideImages: {
-        desktop: [preloadedImgs.slideImg0, preloadedImgs.slideImg1],
+        desktop: [persistedImgs?.slideImg0, persistedImgs?.slideImg1],
         mobile: [
-          preloadedImgs.slideImg2,
-          preloadedImgs.slideImg3,
-          preloadedImgs.slideImg4,
+          persistedImgs?.slideImg2,
+          persistedImgs?.slideImg3,
+          persistedImgs?.slideImg4,
         ],
-        photo: [preloadedImgs.slideImg5, preloadedImgs.slideImg6],
+        photo: [persistedImgs?.slideImg5, persistedImgs?.slideImg6],
       },
     },
     videos: {
@@ -92,7 +101,7 @@ const SushiRepublic = ({ pageControl, props }) => {
       <WorkContent
         refEl={refEl}
         pageControl={pageControl}
-        content={data}
+        data={data}
         backgroundStyle={backgroundStyle}
         props={props}
         noOverview={false}

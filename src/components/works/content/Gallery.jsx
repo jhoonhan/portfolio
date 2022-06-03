@@ -7,9 +7,9 @@ import useGalleryHoriScroll from "../useGalleryHoriScroll";
 import DesktopSVG from "../../../assests/image/projects/DesktopSVG";
 import MobileSVG from "../../../assests/image/projects/MobileSVG";
 
-const Gallery = ({ slideInfo, pageControl, content }) => {
+const Gallery = ({ slideInfo, pageControl, data }) => {
   const { onTouchStart, onTouchMove, onTouchEnd, sticky } = useListenSwipe();
-  const { images, videos } = content;
+  const { images, videos } = data;
 
   useEffect(() => {
     pageControl.setWorkSubPage("gallery");
