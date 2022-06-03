@@ -20,6 +20,7 @@ const Works = ({ refs, pageControl, props, match }) => {
 
   useEffect(() => {
     setCurPage(props.match.path.slice(1));
+    console.log(`aaang`);
     // document.body.style.backgroundColor = "black";
   }, []);
 

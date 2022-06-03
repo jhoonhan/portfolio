@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useMemo } from "react";
+import { animate, motion } from "framer-motion";
 import WorkContent from "../WorkContent";
 import usePreloader from "../../helpers/usePreloader";
 
@@ -13,8 +14,27 @@ import slideImg3 from "../../../assests/image/projects/sushiRepublic/mobile0.jpg
 import slideImg4 from "../../../assests/image/projects/sushiRepublic/mobile2.jpg";
 import slideImg5 from "../../../assests/image/projects/sushiRepublic/img0.jpg";
 import slideImg6 from "../../../assests/image/projects/sushiRepublic/img1.jpg";
+const imagesToPreload = [
+  { src: landing, name: "landing" },
+  { src: overviewImg0, name: "overviewImg0" },
+  { src: overviewImg1, name: "overviewImg1" },
+  { src: overviewImg2, name: "overviewImg2" },
+  { src: slideImg0, name: "slideImg0" },
+  { src: slideImg1, name: "slideImg1" },
+  { src: slideImg2, name: "slideImg2" },
+  { src: slideImg3, name: "slideImg3" },
+  { src: slideImg4, name: "slideImg4" },
+  { src: slideImg5, name: "slideImg5" },
+  { src: slideImg6, name: "slideImg6" },
+];
 
 const SushiRepublic = ({ pageControl, props }) => {
+  const { fetched, preloadedImgs, progress } = usePreloader(imagesToPreload);
+
+  useEffect(() => {
+    console.log(preloadedImgs);
+  }, [preloadedImgs]);
+
   const refEl = useRef(null);
 
   const data = {
@@ -28,14 +48,22 @@ const SushiRepublic = ({ pageControl, props }) => {
     overviewVisual: {
       type: "image",
       orientation: "trifold",
-      data: [overviewImg0, overviewImg1, overviewImg2],
+      data: [
+        preloadedImgs.overviewImg0,
+        preloadedImgs.overviewImg1,
+        preloadedImgs.overviewImg2,
+      ],
     },
     images: {
-      landing,
+      landing: preloadedImgs.landing,
       slideImages: {
-        desktop: [slideImg0, slideImg1],
-        mobile: [slideImg2, slideImg3, slideImg4],
-        photo: [slideImg5, slideImg6],
+        desktop: [preloadedImgs.slideImg0, preloadedImgs.slideImg1],
+        mobile: [
+          preloadedImgs.slideImg2,
+          preloadedImgs.slideImg3,
+          preloadedImgs.slideImg4,
+        ],
+        photo: [preloadedImgs.slideImg5, preloadedImgs.slideImg6],
       },
     },
     videos: {
@@ -51,37 +79,12 @@ const SushiRepublic = ({ pageControl, props }) => {
     background:
       "linear-gradient(60deg, rgba(25,25,25, 0.7) 0%, rgba(25,35,35, 0.7) 33%, rgba(50, 50, 50, 0.7) 45%, rgba(150, 37, 37, 0.7) 100%  )",
   };
-  // const backgroundStyle = {
-  //   backgroundColor: "rgba(120, 20, 20, 1)",
-  // };
-
-  const [fetched, setFetched] = useState(false);
-  const [preloaded, setPreloaded] = useState([]);
-  const imagesToPreload = [landing, overviewImg0, overviewImg1, overviewImg2];
-
-  useEffect(() => {
-    // const imageList = [];
-    imagesToPreload.forEach((src) => {
-      const img = new Image();
-      img.onload = () => {
-        //   imageList.push(img);
-        setPreloaded((arr) => [...arr, img]);
-      };
-      img.src = src;
-    });
-  }, []);
-
-  useEffect(() => {
-    if (preloaded.length === imagesToPreload.length) {
-      setFetched(true);
-    }
-  }, [preloaded]);
 
   const render = () => {
     if (!fetched)
       return (
         <div>
-          <h1>LOADING</h1>
+          <h1>{progress}%</h1>
         </div>
       );
 
