@@ -22,6 +22,9 @@ const Works = ({ refs, pageControl, props, match }) => {
 
   useEffect(() => {
     setCurPage(props.match.path.slice(1));
+    return () => {
+      pageControl.setShowCursor(false);
+    };
   }, []);
 
   const render = () => {
@@ -30,8 +33,8 @@ const Works = ({ refs, pageControl, props, match }) => {
         <motion.section
           ref={refs.refWorks}
           className="works__container container"
-          // onMouseEnter={() => pageControl.setShowCursor(true)}
-          // onMouseLeave={() => pageControl.setShowCursor(false)}
+          onMouseEnter={() => pageControl.setShowCursor(true)}
+          onMouseLeave={() => pageControl.setShowCursor(false)}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
