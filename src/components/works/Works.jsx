@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import { Route, Switch, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
+import usePreloader2 from "../helpers/usePreloader2";
 
 import WorkNav from "./WorkNav";
 import Cursor from "../Cursor";
@@ -16,16 +17,12 @@ import JkAerostart from "./projects/JkAerostart";
 
 const Works = ({ refs, pageControl, props, match }) => {
   const location = useLocation();
-  const [persistedImgs, setPersistedImgs] = useState(null);
+
   const { setCurPage } = pageControl;
 
   useEffect(() => {
     setCurPage(props.match.path.slice(1));
   }, []);
-
-  useEffect(() => {
-    // console.log(persistedImgs);
-  }, [persistedImgs]);
 
   const render = () => {
     return (
@@ -45,11 +42,7 @@ const Works = ({ refs, pageControl, props, match }) => {
               <Route
                 path={`${props.match.path}/sushi-republic`}
                 render={(props) => (
-                  <SushiRepublic
-                    pageControl={pageControl}
-                    props={props}
-                    preload={{ persistedImgs, setPersistedImgs }}
-                  />
+                  <SushiRepublic pageControl={pageControl} props={props} />
                 )}
               />
               <Route

@@ -1,5 +1,4 @@
-import React, { useEffect, useRef, useState, useMemo } from "react";
-import { animate, motion } from "framer-motion";
+import React, { useEffect, useRef, useState } from "react";
 import WorkContent from "../WorkContent";
 import usePreloader2 from "../../helpers/usePreloader2";
 
@@ -14,27 +13,8 @@ import slideImg3 from "../../../assests/image/projects/sushiRepublic/mobile0.jpg
 import slideImg4 from "../../../assests/image/projects/sushiRepublic/mobile2.jpg";
 import slideImg5 from "../../../assests/image/projects/sushiRepublic/img0.jpg";
 import slideImg6 from "../../../assests/image/projects/sushiRepublic/img1.jpg";
-const imagesToPreload = [
-  { src: landing, name: "landing" },
-  { src: overviewImg0, name: "overviewImg0" },
-  { src: overviewImg1, name: "overviewImg1" },
-  { src: overviewImg2, name: "overviewImg2" },
-  { src: slideImg0, name: "slideImg0" },
-  { src: slideImg1, name: "slideImg1" },
-  { src: slideImg2, name: "slideImg2" },
-  { src: slideImg3, name: "slideImg3" },
-  { src: slideImg4, name: "slideImg4" },
-  { src: slideImg5, name: "slideImg5" },
-  { src: slideImg6, name: "slideImg6" },
-];
 
-const SushiRepublic = ({ pageControl, props, preload }) => {
-  const { fetched, pro } = usePreloader2(imagesToPreload);
-
-  useEffect(() => {
-    console.log(pro);
-  }, [pro]);
-
+const SushiRepublic = ({ pageControl, props }) => {
   const refEl = useRef(null);
 
   const data = {
@@ -65,6 +45,25 @@ const SushiRepublic = ({ pageControl, props, preload }) => {
         mobile: [],
       },
     },
+    pageData: {
+      landing: landing,
+      overview: {
+        type: "image",
+        orientation: "trifold",
+        data: [overviewImg0, overviewImg1, overviewImg2],
+      },
+      gallery: {
+        images: {
+          desktop: [slideImg0, slideImg1],
+          mobile: [slideImg2, slideImg3, slideImg4],
+          photo: [slideImg5, slideImg6],
+        },
+        videos: {
+          desktop: [],
+          mobile: [],
+        },
+      },
+    },
     theme: "dark",
   };
   const backgroundStyle = {
@@ -73,13 +72,6 @@ const SushiRepublic = ({ pageControl, props, preload }) => {
   };
 
   const render = () => {
-    if (!fetched) {
-      return (
-        <div>
-          <h1>{pro}%</h1>
-        </div>
-      );
-    }
     return (
       <WorkContent
         refEl={refEl}
