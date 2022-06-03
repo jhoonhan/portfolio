@@ -51,7 +51,7 @@ const Danji = ({ pageControl, props }) => {
       },
     },
     theme: {
-      color: "dark",
+      color: "black",
       background: backgroundStyle,
     },
   };

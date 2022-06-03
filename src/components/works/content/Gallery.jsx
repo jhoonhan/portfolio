@@ -1,15 +1,18 @@
 import React, { useRef, useEffect, useState } from "react";
 import { isMobile } from "react-device-detect";
 import useListenSwipe from "../../helpers/useListenSwipe";
+import usePreloader from "../../helpers/usePreloader";
 
 import Slide from "../Slide";
 import useGalleryHoriScroll from "../useGalleryHoriScroll";
 import DesktopSVG from "../../helpers/DesktopSVG";
 import MobileSVG from "../../helpers/MobileSVG";
+import { AnimatePresence } from "framer-motion";
 
 const Gallery = ({ slideInfo, pageControl, data }) => {
   const { onTouchStart, onTouchMove, onTouchEnd, sticky } = useListenSwipe();
   const { pageData } = data;
+  const { loading, Loading } = usePreloader(pageData.gallery.loadData);
 
   useEffect(() => {
     pageControl.setWorkSubPage("gallery");
@@ -52,7 +55,7 @@ const Gallery = ({ slideInfo, pageControl, data }) => {
   );
 
   const render = () => {
-    return (
+    const Content = (
       <div
         ref={refCont}
         className="work__content"
@@ -84,6 +87,8 @@ const Gallery = ({ slideInfo, pageControl, data }) => {
         </div>
       </div>
     );
+
+    return <AnimatePresence>{loading ? Loading : Content}</AnimatePresence>;
   };
 
   return render();

@@ -1,32 +1,41 @@
 import { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
-import styled, { css, keyframes } from "styled-components";
 
-const usePreloader = (imgList, themes) => {
+const usePreloader = (imgList) => {
   const [loaded, setLoaded] = useState([]);
   const [loading, setLoading] = useState(true);
   const [loadingProgress, setLoadingProgress] = useState(0);
-  const { theme, prevTheme } = themes;
+  // const { theme, prevTheme } = themes;
 
-  const [backgrounds, setBackgrounds] = useState({
-    from: "dark",
-    to: "dark",
-  });
+  // const [backgrounds, setBackgrounds] = useState({
+  //   from: "dark",
+  //   to: "dark",
+  // });
 
-  // const refPrevColor = useRef(null);
+  // const [bg1, setbg1] = useState(prevTheme.color);
+  // useEffect(() => {
+  //   let timeoutId;
+  //   timeoutId = setTimeout(() => {
+  //     setbg1(backgrounds.to);
+  //   }, 1000);
+  //   return () => {
+  //     clearInterval(timeoutId);
+  //   };
+  // }, [backgrounds]);
+
+  // useEffect(() => {
+  //   setBackgrounds({
+  //     from: prevTheme.color,
+  //     to: theme.color,
+  //   });
+  // }, [theme]);
+
+  // useEffect(() => {
+  //   console.log(backgrounds);
+  // }, [backgrounds]);
 
   useEffect(() => {
-    setBackgrounds({
-      from: prevTheme.color,
-      to: theme.color,
-    });
-  }, [theme]);
-
-  useEffect(() => {
-    console.log(backgrounds);
-  }, [backgrounds]);
-
-  useEffect(() => {
+    console.log(imgList);
     if (!imgList) return;
     setLoading(true);
     const loadImage = (img) => {
@@ -54,9 +63,8 @@ const usePreloader = (imgList, themes) => {
     if (loaded.length === imgList?.length) {
       timeoutId = setTimeout(() => {
         setLoading(false);
-      }, 3000);
+      }, 1000);
     }
-
     return () => {
       clearTimeout(timeoutId);
     };
@@ -75,12 +83,9 @@ const usePreloader = (imgList, themes) => {
       transition={{ duration: 0.5 }}
     >
       {/* {dafuck} */}
-      <AnimatedDiv
-        className="loading__animated-div"
-        style={{ background: "black" }}
-      >
-        <span>{loadingProgress}</span>
-      </AnimatedDiv>
+      <div className="loading__animated-div" style={{ background: "#666" }}>
+        <span>{loadingProgress}%</span>
+      </div>
     </motion.div>
   );
   // const Loading = { dafuck };
@@ -90,15 +95,3 @@ const usePreloader = (imgList, themes) => {
 };
 
 export default usePreloader;
-
-const animation = keyframes`
-  from {
-    background: red;
-  }
-  to {
-    background: black;
-  }`;
-
-const AnimatedDiv = styled.div`
-  animation: ${animation} 3s;
-`;

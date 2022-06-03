@@ -6,15 +6,14 @@ import useVerticalNavigation from "./useVerticalNavigation";
 import { transition } from "../../helpers/config";
 import useRandomTextAnimation from "../../helpers/useRandomTextAnimation";
 import usePreloader from "../../helpers/usePreloader";
-import usePrevious from "../../helpers/usePrevious";
 
 const Landing = ({ slideInfo, pageControl, data }) => {
   const { pageData, theme: dataTheme } = data;
   const { setWorkSubPage } = pageControl;
-  const { theme: gTheme, prevTheme: gPrevTheme } = pageControl;
-  const themes = { theme: gTheme, prevTheme: gPrevTheme };
+  // const { theme: gTheme, prevTheme: gPrevTheme } = pageControl;
+  // const themes = { theme: gTheme, prevTheme: gPrevTheme };
 
-  const { loading, Loading } = usePreloader([pageData.landing], themes);
+  const { loading, Loading } = usePreloader([pageData.landing]);
   const { hasFinished, title } = useRandomTextAnimation(
     data?.name,
     500,

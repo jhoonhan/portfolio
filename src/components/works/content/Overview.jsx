@@ -1,7 +1,8 @@
 import React, { useRef, useEffect } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { isMobile } from "react-device-detect";
 import useListenSwipe from "../../helpers/useListenSwipe";
+import usePreloader from "../../helpers/usePreloader";
 
 import DesktopSVG from "../../helpers/DesktopSVG";
 import MobileSVG from "../../helpers/MobileSVG";
@@ -10,6 +11,7 @@ import WorkPictureContainer from "../WorkPictureContainer";
 const Overview = ({ slideInfo, pageControl, data }) => {
   const { onTouchStart, onTouchMove, onTouchEnd, sticky } = useListenSwipe();
   const { pageData } = data;
+  const { loading, Loading } = usePreloader(pageData.overview.loadData);
 
   const refIntersect = useRef(null);
 
@@ -159,26 +161,32 @@ const Overview = ({ slideInfo, pageControl, data }) => {
     }
   };
 
-  return (
-    <div
-      ref={refIntersect}
-      className="work__content padded"
-      style={
-        isMobile
-          ? {
-              transform: `translateX(${-sticky.x}px) translateY(${-sticky.y}px)`,
-            }
-          : slideInfo.slideImgStyle
-      }
-      onTouchStart={onTouchStart}
-      onTouchMove={onTouchMove}
-      onTouchEnd={onTouchEnd}
-    >
-      {renderOverviewVisual()}
+  const render = () => {
+    const Content = (
+      <div
+        ref={refIntersect}
+        className="work__content padded"
+        style={
+          isMobile
+            ? {
+                transform: `translateX(${-sticky.x}px) translateY(${-sticky.y}px)`,
+              }
+            : slideInfo.slideImgStyle
+        }
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
+      >
+        {renderOverviewVisual()}
 
-      {renderInfo()}
-    </div>
-  );
+        {renderInfo()}
+      </div>
+    );
+
+    return <AnimatePresence>{loading ? Loading : Content}</AnimatePresence>;
+  };
+
+  return render();
 };
 
 export default Overview;

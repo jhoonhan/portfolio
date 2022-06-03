@@ -49,7 +49,7 @@ const SushiRepublic = ({ pageControl, props }) => {
       },
     },
     theme: {
-      color: "dark",
+      color: "black",
       background: backgroundStyle,
     },
   };

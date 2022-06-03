@@ -45,7 +45,7 @@ const HaansCleaner = ({ pageControl, props }) => {
       },
     },
     theme: {
-      color: "light",
+      color: "white",
       subColor: "light-blue",
       background: backgroundStyle,
     },

@@ -143,10 +143,8 @@ a {
   top: 0;
   left: 0;
 
-  width: 50vw;
+  width: 100vw;
   height: 100vh;
-
-  display: flex;
 
   // background-color: red;
   // background: red;
@@ -157,12 +155,17 @@ a {
   & .loading__animated-div {
     width: 100%;
     height: 100%;
-    transition: opacity 1s ease-in-out;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    // transition: 1s ease-in-out;
     background-color: black;
 
     & span {
       color: white;
-      font-size: 20rem;
+      font-size: 5rem;
       mix-blend-mode: difference;
     }
   }

@@ -45,7 +45,7 @@ const KoreanLife = ({ pageControl, props }) => {
         },
       },
     },
-    theme: { color: "light", subColor: "green", background: backgroundStyle },
+    theme: { color: "white", subColor: "green", background: backgroundStyle },
   };
 
   return (

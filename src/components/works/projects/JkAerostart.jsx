@@ -42,7 +42,7 @@ const JkAerostart = ({ pageControl, props }) => {
         },
       },
     },
-    theme: { color: "dark", background: backgroundStyle },
+    theme: { color: "black", background: backgroundStyle },
   };
 
   return (

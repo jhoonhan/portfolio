@@ -45,7 +45,7 @@ const ThisIsBullshit = ({ pageControl, props }) => {
         },
       },
     },
-    theme: { color: "light", subColor: "red", background: backgroundStyle },
+    theme: { color: "white", subColor: "red", background: backgroundStyle },
   };
 
   return (

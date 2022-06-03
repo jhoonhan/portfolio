@@ -279,7 +279,6 @@ const App = () => {
         onTouchMove={onTouchMove}
         onTouchEnd={onTouchEnd}
       >
-        {/* {mofo()} */}
         <Header refs={refs} urls={urls} pageControl={pageControl} />
         <Cursor show={showCursor} />
         <main ref={refMain} className="wrapper__main">
