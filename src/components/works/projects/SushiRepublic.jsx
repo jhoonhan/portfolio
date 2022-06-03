@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState, useMemo } from "react";
 import { animate, motion } from "framer-motion";
 import WorkContent from "../WorkContent";
-import usePreloader from "../../helpers/usePreloader";
+import usePreloader2 from "../../helpers/usePreloader2";
 
 import landing from "../../../assests/image/projects/sushiRepublic/landing.jpg";
 import overviewImg0 from "../../../assests/image/projects/sushiRepublic/overview0.jpg";
@@ -29,20 +29,11 @@ const imagesToPreload = [
 ];
 
 const SushiRepublic = ({ pageControl, props, preload }) => {
-  const { persistedImgs, setPersistedImgs } = preload;
-  const { fetched, progress } = usePreloader(
-    persistedImgs ? null : imagesToPreload,
-    persistedImgs,
-    setPersistedImgs
-  );
+  const { fetched, pro } = usePreloader2(imagesToPreload);
 
-  // useEffect(() => {
-  //   console.log(persistedImgs?.landing);
-  // }, [persistedImgs]);
-
-  // useEffect(() => {
-  //   setPersistedImgs(preloadedImgs);
-  // }, [preloadedImgs]);
+  useEffect(() => {
+    console.log(pro);
+  }, [pro]);
 
   const refEl = useRef(null);
 
@@ -57,22 +48,14 @@ const SushiRepublic = ({ pageControl, props, preload }) => {
     overviewVisual: {
       type: "image",
       orientation: "trifold",
-      data: [
-        persistedImgs?.overviewImg0,
-        persistedImgs?.overviewImg1,
-        persistedImgs?.overviewImg2,
-      ],
+      data: [overviewImg0, overviewImg1, overviewImg2],
     },
     images: {
-      landing: persistedImgs?.landing,
+      landing: landing,
       slideImages: {
-        desktop: [persistedImgs?.slideImg0, persistedImgs?.slideImg1],
-        mobile: [
-          persistedImgs?.slideImg2,
-          persistedImgs?.slideImg3,
-          persistedImgs?.slideImg4,
-        ],
-        photo: [persistedImgs?.slideImg5, persistedImgs?.slideImg6],
+        desktop: [slideImg0, slideImg1],
+        mobile: [slideImg2, slideImg3, slideImg4],
+        photo: [slideImg5, slideImg6],
       },
     },
     videos: {
@@ -90,13 +73,13 @@ const SushiRepublic = ({ pageControl, props, preload }) => {
   };
 
   const render = () => {
-    if (!fetched)
+    if (!fetched) {
       return (
         <div>
-          <h1>{progress}%</h1>
+          <h1>{pro}%</h1>
         </div>
       );
-
+    }
     return (
       <WorkContent
         refEl={refEl}

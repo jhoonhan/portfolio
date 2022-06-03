@@ -23,10 +23,6 @@ const Landing = ({ slideInfo, pageControl, data }) => {
   useVerticalNavigation(pageControl);
 
   useEffect(() => {
-    console.log(data?.images.landing.src);
-  }, []);
-
-  useEffect(() => {
     setWorkSubPage("landing");
   }, [setWorkSubPage]);
 
@@ -80,7 +76,7 @@ const Landing = ({ slideInfo, pageControl, data }) => {
             <div
               className="work__landing__img"
               style={{
-                backgroundImage: `url(${data.images.landing.src})`,
+                backgroundImage: `url(${data.images.landing})`,
                 // backgroundImage: `url(${data?.images.landing})`,
                 filter: hasFinished && "blur(2rem)",
               }}
