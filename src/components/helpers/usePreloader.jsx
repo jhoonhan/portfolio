@@ -52,16 +52,23 @@ const usePreloader = (dataList) => {
 
   useEffect(() => {
     let timeoutId;
-    setLoadingProgress(Math.round((loaded.length / dataList?.length) * 100));
+    setLoadingProgress(
+      Math.round(((loaded.length + 1) / dataList?.length) * 100)
+    );
     if (loaded.length >= dataList?.length) {
       // timeoutId = setTimeout(() => {
       setLoading(false);
-      // }, 0);
+      // }, 100);
     }
     return () => {
       clearTimeout(timeoutId);
     };
   }, [loaded]);
+
+  const renderProgress = () => {
+    if (loadingProgress <= 100) return <span>{loadingProgress}%</span>;
+    if (loadingProgress > 100) return <span>100%</span>;
+  };
 
   const Loading = (
     <motion.div
@@ -70,21 +77,13 @@ const usePreloader = (dataList) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      // initial={{ y: "100vh" }}
-      // animate={{ y: "0vh" }}
-      // exit={{ y: "100vh" }}
       transition={{ duration: 0.5 }}
     >
-      {/* {dafuck} */}
-      <div className="loading__animated-div">
-        <span>{loadingProgress}%</span>
-      </div>
+      <div className="loading__animated-div">{renderProgress()}</div>
     </motion.div>
   );
-  // const Loading = { dafuck };
 
   return { loading, Loading };
-  // const progress = Math.round((loaded.length / dataList?.length) * 100);
 };
 
 export default usePreloader;
