@@ -22,7 +22,7 @@ const LittleTokyo = ({ pageControl, props }) => {
     role: "Web Designer, Graphic Designer, Photographer",
     technology: "HTML, CSS",
     liveDemoURL: "http://littletokyonc.com/",
-    githubURL: "https://github.com/jhoonhan/this-is-bullshit",
+    githubURL: null,
     path: "little-tokyo",
 
     pageData: {

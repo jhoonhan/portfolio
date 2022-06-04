@@ -3,7 +3,6 @@ import { Route, Switch, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 
 import WorkNav from "./WorkNav";
-import Cursor from "../Cursor";
 
 import SushiRepublic from "./projects/SushiRepublic";
 import Danji from "./projects/Danji";

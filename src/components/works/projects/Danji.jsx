@@ -9,8 +9,6 @@ import slideImg1 from "../../../assests/image/projects/danji/desktop1.jpg";
 import slideImg2 from "../../../assests/image/projects/danji/mobile1.jpg";
 import slideImg3 from "../../../assests/image/projects/danji/mobile0.jpg";
 import slideImg4 from "../../../assests/image/projects/danji/mobile2.jpg";
-import slideImg5 from "../../../assests/image/projects/danji/img0.jpg";
-import slideImg6 from "../../../assests/image/projects/danji/img2.jpg";
 
 const Danji = ({ pageControl, props }) => {
   const refEl = useRef(null);

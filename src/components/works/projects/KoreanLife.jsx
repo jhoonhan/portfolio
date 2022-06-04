@@ -20,8 +20,8 @@ const KoreanLife = ({ pageControl, props }) => {
     description: "A local news media focusing on Koreans in the Triangle Area.",
     role: "Web Designer, Graphic Designer, Art Director",
     technology: "Wordpress, PHP, HTML5, CSS3",
-    liveDemoURL: "https://this-is-bullshit.netlify.app/",
-    githubURL: "https://github.com/jhoonhan/this-is-bullshit",
+    liveDemoURL: "http://koreanlifenews.com/",
+    githubURL: null,
     path: "korean-life",
 
     pageData: {

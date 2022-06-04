@@ -61,14 +61,15 @@
 
   & .name {
     display: grid;
-    grid-auto-columns: min(1fr);
+    // grid-auto-columns: min(1fr);
+    grid-auto-columns: calc(min(10vh, 10vw));
     grid-auto-flow: column;
     justify-items: center;
     align-items: center;
     & h1 {
       color: #666;
       font-size: calc(min(10vh, 10vw));
-      height: calc(min(10vh, 10vw));
+      width: 100%;
       aspect-ratio: 1 / 1;
 
       display: flex;

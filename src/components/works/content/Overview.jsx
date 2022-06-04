@@ -122,11 +122,11 @@ const Overview = ({ slideInfo, pageControl, data }) => {
           </motion.div>
 
           <motion.div
-            className="grid--column--2 detail-item"
+            className="grid--column--auto detail-item"
             style={{ marginTop: "1rem", gap: "2rem" }}
             variants={isMobile ? animateMobile.item : animateBrowser.item}
           >
-            {data?.liveDemoURL ? (
+            {data?.liveDemoURL && (
               <a
                 href={data?.liveDemoURL}
                 className="button"
@@ -135,10 +135,8 @@ const Overview = ({ slideInfo, pageControl, data }) => {
               >
                 Live Demo
               </a>
-            ) : (
-              {}
             )}
-            {data?.liveDemoURL ? (
+            {data?.githubURL && (
               <a
                 href={data?.githubURL}
                 className="button"
@@ -147,8 +145,6 @@ const Overview = ({ slideInfo, pageControl, data }) => {
               >
                 Github
               </a>
-            ) : (
-              {}
             )}
           </motion.div>
         </div>
