@@ -54,7 +54,7 @@ const App = () => {
   const [slideScroll, setSlideScroll] = useState(0);
   const [mobileShowNav, setMobileShowNav] = useState(false);
 
-  const [showCursor, setShowCursor] = useState(false);
+  const [cursor, setCursor] = useState({ show: false, type: "scroll" });
 
   // Touch action control
   const {
@@ -138,8 +138,8 @@ const App = () => {
     setWorkNavWidth,
     slideScroll,
     setSlideScroll,
-    showCursor,
-    setShowCursor,
+    cursor,
+    setCursor,
     touch: {
       action: touchAction,
       sticky: stickySlide,
@@ -160,117 +160,6 @@ const App = () => {
     // </motion.div>
   };
 
-  // transition control
-  // const [testFetched, setTestFetched] = useState(false);
-
-  // useEffect(() => {
-  //   let timeoutId;
-  //   timeoutId = setTimeout(() => {
-  //     setTestFetched(true);
-  //   }, 1000);
-
-  //   return () => {
-  //     clearTimeout(timeoutId);
-  //   };
-  // }, []);
-
-  // const mofo = () => {
-  //   const transitionPageLocation = location.pathname
-  //     .split("/")
-  //     .slice(1, 3)
-  //     .join("/");
-  //   const content = (
-  //     <>
-  //       <Header refs={refs} urls={urls} pageControl={pageControl} />
-  //       <Cursor show={showCursor} />
-  //       <main ref={refMain} className="wrapper__main">
-  //         <div
-  //           style={curPage === "home" ? { opacity: 0 } : {}}
-  //           className="overlay"
-  //         />
-
-  //         <AnimatePresence exitBeforeEnter>
-  //           <Switch location={location} key={transitionPageLocation}>
-  //             <Route
-  //               path="/"
-  //               exact
-  //               render={(props) => (
-  //                 <>
-  //                   {transtionAnimation()}
-  //                   <Landing
-  //                     pageControl={pageControl}
-  //                     curPage={curPage}
-  //                     refHome={refHome}
-  //                     props={props}
-  //                   />
-  //                 </>
-  //               )}
-  //             />
-  //             <Route
-  //               path="/works"
-  //               render={(props) => (
-  //                 <>
-  //                   {transtionAnimation()}
-
-  //                   <Works
-  //                     refs={refs}
-  //                     pageControl={pageControl}
-  //                     props={props}
-  //                   />
-  //                 </>
-  //               )}
-  //             />
-  //             <Route
-  //               path="/about"
-  //               exact
-  //               render={(props) => (
-  //                 <>
-  //                   {transtionAnimation()}
-
-  //                   <About
-  //                     pageControl={pageControl}
-  //                     refs={refs}
-  //                     props={props}
-  //                   />
-  //                 </>
-  //               )}
-  //             />
-  //             <Route
-  //               path="/contact"
-  //               exact
-  //               render={(props) => (
-  //                 <>
-  //                   {transtionAnimation()}
-  //                   <Contact
-  //                     pageControl={pageControl}
-  //                     refs={refs}
-  //                     props={props}
-  //                   />
-  //                 </>
-  //               )}
-  //             />
-  //           </Switch>
-  //         </AnimatePresence>
-  //       </main>
-  //     </>
-  //   );
-  //   const loading = (
-  //     <div className="loading">
-  //       <h1>aaang</h1>
-  //     </div>
-  //   );
-  //   return (
-  //     <div
-  //       className="app"
-  //       onTouchStart={onTouchStart}
-  //       onTouchMove={onTouchMove}
-  //       onTouchEnd={onTouchEnd}
-  //     >
-  //       {testFetched ? content : loading}
-  //     </div>
-  //   );
-  // };
-
   const render = () => {
     const transitionPageLocation = location.pathname
       .split("/")
@@ -284,7 +173,7 @@ const App = () => {
         onTouchEnd={onTouchEnd}
       >
         <Header refs={refs} urls={urls} pageControl={pageControl} />
-        <Cursor show={showCursor} />
+        <Cursor cursor={cursor} />
         <main ref={refMain} className="wrapper__main">
           {/* <div
             style={curPage === "home" ? { opacity: 0 } : {}}

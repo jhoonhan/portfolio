@@ -158,7 +158,12 @@ const Overview = ({ slideInfo, pageControl, data }) => {
 
   const renderOverviewVisual = () => {
     if (pageData?.overview.orientation === "trifold") {
-      return <WorkPictureContainer images={pageData?.overview.data} />;
+      return (
+        <WorkPictureContainer
+          images={pageData?.overview.data}
+          pageControl={pageControl}
+        />
+      );
     }
 
     if (pageData?.overview.orientation === "desktop") {

@@ -4,14 +4,12 @@ import { Switch, Route } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { transition } from "../helpers/config";
 
-import WorkPictureContainer from "./WorkPictureContainer";
 import Gallery from "./content/Gallery";
 import useSlideStyle from "./useSlideStyle";
 import DesktopSVG from "../helpers/DesktopSVG";
 import useIntersectionObserve from "../helpers/useIntersectionObserve";
 import Landing from "./content/Landing";
 import Overview from "./content/Overview";
-import NotFound from "../NotFound";
 
 const WorkContent = ({
   refEl,

@@ -93,7 +93,7 @@ const About = ({ pageControl, props, refs }) => {
   useEffect(() => {
     pageControl.setTheme({ color: "dark" });
     return () => {
-      pageControl.setShowCursor(false);
+      pageControl.setCursor({ show: false });
     };
   }, []);
 
@@ -269,8 +269,10 @@ const About = ({ pageControl, props, refs }) => {
       <motion.section
         ref={refs.refAbout}
         className="about__container container"
-        onMouseEnter={() => pageControl.setShowCursor(true)}
-        onMouseLeave={() => pageControl.setShowCursor(false)}
+        onMouseEnter={() =>
+          pageControl.setCursor({ show: true, type: "scroll" })
+        }
+        onMouseLeave={() => pageControl.setCursor({ show: false, type: null })}
         // variants={animate.container}
         // initial="hidden"
         // animate="show"

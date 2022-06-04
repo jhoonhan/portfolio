@@ -14,6 +14,11 @@ const Landing = ({ pageControl, refHome, props }) => {
   useEffect(() => {
     pageControl.setCurPage("home");
     pageControl.setTheme({ color: "dark" });
+    pageControl.setCursor({ show: true, type: "move" });
+
+    return () => {
+      pageControl.setCursor({ show: false });
+    };
   }, []);
 
   useEffect(() => {
@@ -47,7 +52,7 @@ const Landing = ({ pageControl, refHome, props }) => {
     const titleStylized = hardTitleFormat.split("").map((char, i) => {
       return (
         <h1
-          key={i}
+          key={`titleStylized${i}`}
           style={{
             color: titleStyle[i] ? "white" : "#666",
             opacity: titleStyle[i] ? 1 : 0.5,
@@ -62,7 +67,7 @@ const Landing = ({ pageControl, refHome, props }) => {
     const titleStylized2 = hardTitleFormat2.split("").map((char, i) => {
       return (
         <h1
-          key={i}
+          key={`titleStylized2${i}`}
           style={{
             color: titleStyle[i + 3] ? "white" : "#666",
             opacity: titleStyle[i + 3] ? 1 : 0.5,
@@ -78,12 +83,18 @@ const Landing = ({ pageControl, refHome, props }) => {
       return (
         <motion.div
           className="landing__center-info"
+          key="landing"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 2, delay: 1 }}
         >
-          <div className="landing__center-name">{titleStylized}</div>
-          <div className="landing__center-name">{titleStylized2}</div>
+          <div className="landing__center-name">
+            <div className="name">{titleStylized}</div>
+            <div className="name">{titleStylized2}</div>
+          </div>
+          {/* <div className="landing__center-subtitle">
+            <h2>I make beautiful things</h2>
+          </div> */}
         </motion.div>
       );
     };
@@ -95,6 +106,7 @@ const Landing = ({ pageControl, refHome, props }) => {
     return (
       <motion.section
         className="landing__container"
+        key="landing__container"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
