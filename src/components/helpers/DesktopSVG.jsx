@@ -21,7 +21,7 @@ const DesktopSVG = ({ data, type, customClass }) => {
           src={data}
           autoPlay={true}
           // onCanPlay={() => console.log(`aaang canplay!`)}
-          playsInline
+          playsInline={true}
           muted
           loop
         />
