@@ -116,6 +116,7 @@ const LandingArt = ({ curPage, artOverlay, allMatch }) => {
 
       setWaitNameMove(true);
       setTimeout(() => {
+        // console.log(`aaang`);
         setWaitNameMove(false);
       }, 1000 / tps);
     }

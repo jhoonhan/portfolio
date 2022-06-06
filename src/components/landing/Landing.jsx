@@ -7,7 +7,7 @@ import name2 from "../../assests/image/name2.svg";
 import MiddleLine from "../helpers/MiddleLine";
 import useTextAnimation from "./useTextAnimation";
 
-const textShadow = "0 0 calc(min(5vh, 5vw)) #efefef";
+const textShadow = "0 0 calc(min(10vh, 10vw)) rgba(255,255,255,0.7)";
 
 const Landing = ({ pageControl, refHome, props }) => {
   const { title, titleStyle } = useTextAnimation("joehan", 1000);
