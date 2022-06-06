@@ -19,8 +19,8 @@ const HaansCleaner = ({ pageControl, props }) => {
     description: "A mobile web application for the new way of dry cleaning.",
     role: "Full-stack Developer, UI/UX Designer",
     technology: "React, Google Maps API, NodeJS, Express, MongoDB, HTML5, CSS3",
-    liveDemoURL: "https://google.com",
-    githubURL: "https://github.com/",
+    liveDemoURL: "https://haans-cleaner.netlify.app/",
+    githubURL: "https://github.com/jhoonhan/haans-cleaner",
     path: "haans-cleaner",
 
     pageData: {
