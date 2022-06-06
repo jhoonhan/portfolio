@@ -7,9 +7,12 @@ import name2 from "../../assests/image/name2.svg";
 import MiddleLine from "../helpers/MiddleLine";
 import useTextAnimation from "./useTextAnimation";
 
+const textShadow = "0 0 calc(min(5vh, 5vw)) #efefef";
+
 const Landing = ({ pageControl, refHome, props }) => {
   const { title, titleStyle } = useTextAnimation("joehan", 1000);
   const [artOverlay, setArtOverlay] = useState(0);
+  const [allMatch, setAllMatch] = useState(false);
 
   useEffect(() => {
     pageControl.setCurPage("home");
@@ -24,8 +27,10 @@ const Landing = ({ pageControl, refHome, props }) => {
   useEffect(() => {
     if (titleStyle.every((el) => el === true)) {
       setArtOverlay(0.7);
+      setAllMatch(true);
     } else {
       setArtOverlay(0);
+      setAllMatch(false);
     }
   }, [titleStyle]);
 
@@ -56,6 +61,7 @@ const Landing = ({ pageControl, refHome, props }) => {
           style={{
             color: titleStyle[i] ? "white" : "#666",
             opacity: titleStyle[i] ? 1 : 0.5,
+            textShadow: allMatch ? textShadow : "none",
           }}
           // className={titleStyle[i] ? "fadetext" : ""}
         >
@@ -71,6 +77,7 @@ const Landing = ({ pageControl, refHome, props }) => {
           style={{
             color: titleStyle[i + 3] ? "white" : "#666",
             opacity: titleStyle[i + 3] ? 1 : 0.5,
+            textShadow: allMatch ? textShadow : "none",
           }}
           // className={titleStyle[i] ? "fadetext" : ""}
         >
@@ -112,7 +119,11 @@ const Landing = ({ pageControl, refHome, props }) => {
         exit={{ opacity: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <LandingArt curPage={pageControl.curPage} artOverlay={artOverlay} />
+        <LandingArt
+          curPage={pageControl.curPage}
+          artOverlay={artOverlay}
+          allMatch={allMatch}
+        />
         <div ref={refHome} className="landing__info container">
           {renderCenterInfo()}
 

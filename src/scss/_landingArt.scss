@@ -7,6 +7,17 @@
 
   // transition: 0.3s ease-in-out;
 }
+.landing-art__overlay-intro {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+
+  background-color: black;
+
+  z-index: 4;
+}
 .landing-art__overlay {
   position: absolute;
   left: 0;
@@ -71,6 +82,5 @@
 .lname--last {
   width: 70vw;
   mix-blend-mode: difference;
-  // opacity: 0.7;
   right: 0;
 }
