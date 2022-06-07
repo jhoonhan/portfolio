@@ -60,11 +60,17 @@ const useGalleryHoriScroll = (pageControl, loading) => {
     };
     const changeWorkNav = (e) => {
       const child = el.children[0].getBoundingClientRect();
-      const s = el.scrollLeft + e.deltaY * 7;
+      let s;
+      if (e.deltaY < 0) {
+        s = el.scrollLeft + -100 * 7;
+      }
+      if (e.deltaY >= 0) {
+        s = el.scrollLeft + 100 * 7;
+      }
+      // const s = el.scrollLeft + e.deltaY * 7;
       const w = child.width;
       const vw = window.innerWidth;
       const x = s / (w - vw + 700);
-      console.log(`${s} / (${w} - ${vw} + 700)`);
 
       const amount = 0.5 * x * 100;
 
