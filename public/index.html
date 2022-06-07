@@ -11,18 +11,15 @@
     <link rel="manifest" href="/site.webmanifest" />
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
     <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="msapplication-config" content="/browserconfig.xml" />
     <meta name="theme-color" content="#ffffff" />
-
-    <meta
-      name="description"
-      content="Web devloper with strong passion in creativity and originality."
-    />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -32,10 +29,32 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>Joe Han | Web Developer</title>
 
-    <meta name="msapplication-config" content="/browserconfig.xml" />
+    <!-- SEO -->
+    <meta
+      name="description"
+      content="Web devloper with strong passion in creativity and visual aesthetic."
+    />
+    <meta name="keywords" content="web developer, frontend developer" />
+    <meta name="author" content="Joe Han" />
+    <title>Joe Han | Web Developer</title>
+    <!---->
+
+    <!--  -->
+    <meta property="og:title" content="Joe Han | Interactive Web Developer" />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:description"
+      content="Developing beautiful interactive websites."
+    />
+    <meta
+      property="og:image"
+      content="%PUBLIC_URL%/static/media/socialImage.png"
+    />
+    <meta property="og:url" content="http://joehan.io" />
+    <meta name="twitter:card" content="summary_large_image" />
   </head>
+  <!--  -->
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
