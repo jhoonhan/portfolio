@@ -27,6 +27,7 @@ const useGalleryHoriScroll = (pageControl, loading) => {
 
     const onWheel = (e) => {
       e.preventDefault();
+      changeWorkNav(e);
       if (e.deltaY > 0) {
         el.scroll({
           left: el.scrollLeft + 100 * 7,
@@ -84,11 +85,11 @@ const useGalleryHoriScroll = (pageControl, loading) => {
 
     const throttled = throttle(onWheel, 2);
     el.addEventListener("wheel", checkMovePage, false);
-    el.addEventListener("wheel", changeWorkNav, false);
+    // el.addEventListener("wheel", changeWorkNav, false);
     el.addEventListener("wheel", throttled, false);
     return () => {
       el.removeEventListener("wheel", checkMovePage);
-      el.removeEventListener("wheel", changeWorkNav);
+      // el.removeEventListener("wheel", changeWorkNav);
       el.removeEventListener("wheel", throttled);
     };
   }, [pageControl.workSubPage, trigger]);
