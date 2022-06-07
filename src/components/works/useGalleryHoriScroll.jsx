@@ -18,6 +18,7 @@ const useGalleryHoriScroll = (pageControl, loading) => {
   //
 
   useEffect(() => {
+    // return;
     if (!trigger) return;
     if (pageControl.workSubPage !== "gallery" || isMobile) return;
     const el = elRef.current;
@@ -26,23 +27,33 @@ const useGalleryHoriScroll = (pageControl, loading) => {
 
     const onWheel = (e) => {
       e.preventDefault();
-
       if (e.deltaY === 0) return;
-      el.scroll({
-        left: el.scrollLeft + e.deltaY * 7,
-        behavior: "smooth",
-      });
+      if (e.deltaY > 0) {
+        el.scroll({
+          left: el.scrollLeft + 10 * 7,
+          behavior: "smooth",
+        });
+      }
+
+      if (e.deltaY < 0) {
+        el.scroll({
+          left: el.scrollLeft + -10 * 7,
+          behavior: "smooth",
+        });
+      }
     };
 
     const fn = (e) => {
       const child = el.children[0].getBoundingClientRect();
+      // e.stopPropagation();
 
-      if (
-        el.scrollLeft > 0 &&
-        Math.floor(window.innerWidth) <= Math.round(child.right) - 10
-      ) {
-        e.stopPropagation();
-      }
+      // if (
+      //   el.scrollLeft > 0 &&
+      //   Math.floor(window.innerWidth) <= Math.round(child.right) - 10
+      // ) {
+      //   console.log(el.scrollLeft);
+      //   e.stopPropagation();
+      // }
 
       const s = el.scrollLeft + e.deltaY * 7;
       const w = child.width;
@@ -61,9 +72,10 @@ const useGalleryHoriScroll = (pageControl, loading) => {
       onWheel(e);
     };
 
-    el.addEventListener("wheel", fn);
+    const throttled = throttle(fn, 1);
+    el.addEventListener("wheel", throttled);
     return () => {
-      el.removeEventListener("wheel", fn);
+      el.removeEventListener("wheel", throttled);
     };
   }, [pageControl.workSubPage, trigger]);
 

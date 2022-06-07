@@ -74,12 +74,12 @@
 
   overflow-x: scroll;
 
-  scrollbar-width: none;
+  // scrollbar-width: none;
   // scroll-behavior: smooth;
 
   &::-webkit-scrollbar {
     // width: 0px;
-    display: none;
+    // display: none;
   }
 }
 .detail__slide {
