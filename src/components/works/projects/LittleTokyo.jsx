@@ -11,8 +11,12 @@ import imgP2 from "../../../assests/image/projects/littleTokyo/photo2.jpg";
 
 const LittleTokyo = ({ pageControl, props }) => {
   const refEl = useRef(null);
-  const backgroundStyle = {
+  const backgroundStyle2 = {
     background: "rgba(30, 30, 30, 1)",
+  };
+  const backgroundStyle = {
+    background:
+      "linear-gradient(60deg, rgba(20,20,20, 1) 0%, rgba(50, 50, 50, 0.7) 50%, rgba(150, 0, 0, 0.7) 100%  )",
   };
 
   const data = {

@@ -8,8 +8,12 @@ import vidM1 from "../../../assests/image/projects/jkAerostart/videoM1.mp4";
 
 const JkAerostart = ({ pageControl, props }) => {
   const refEl = useRef(null);
-  const backgroundStyle = {
+  const backgroundStyle2 = {
     background: "rgba(40, 30, 80, 1)",
+  };
+  const backgroundStyle = {
+    background:
+      "linear-gradient(60deg, rgba(10, 5, 40, 1) 0%, rgba(60, 45, 110, 1) 100%)",
   };
 
   const data = {

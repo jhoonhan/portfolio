@@ -11,8 +11,12 @@ import imgM2 from "../../../assests/image/projects/koreanLife/mobile2.jpg";
 
 const KoreanLife = ({ pageControl, props }) => {
   const refEl = useRef(null);
-  const backgroundStyle = {
+  const backgroundStyle2 = {
     background: "rgba(240, 240, 240, 1)",
+  };
+  const backgroundStyle = {
+    background:
+      "linear-gradient(60deg, rgba(221, 239, 216, 1) 0%, rgba(240, 240, 240, 1) 100%)",
   };
 
   const data = {
