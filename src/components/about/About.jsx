@@ -226,13 +226,13 @@ const About = ({ pageControl, props, refs }) => {
             <span className="title el">Hello,</span>
             <h2 className="el">
               I'm a maker with unquenchable passion in web development and
-              visual art.
+              design.
             </h2>
             <p className="el">
-              Developing creative interactive websites is what I've been
-              fascinated with for the past few years. I have been learning how
-              to develop in React and JavaScript, and exploring how it can be
-              merged with my previous experience as a visual artist.
+              Transforming my creativity, knowledge, and passion for beauty into
+              a website has been my passion for over 10 years. I have been
+              helping various clients to establish their presence online through
+              my exceptional skills in web-development and design.
             </p>
           </div>
 
@@ -246,9 +246,9 @@ const About = ({ pageControl, props, refs }) => {
           >
             <div className="flex--column el" style={{ gap: "0.5rem" }}>
               <h2 style={{ paddingBottom: "1rem" }}>Skills</h2>
-              <p>React, JavaScript, HTML5, CSS3, Sass</p>
+              <p>React, JavaScript, Redux, HTML5, CSS3, Sass</p>
               <p>Node.js, MongoDB, Express</p>
-              <p>Adobe Photoshop, Illustrator, Premiere Pro, XD</p>
+              <p>Adobe XD, Photoshop, Illustrator, Premiere Pro, InDesign</p>
             </div>
 
             <div className="flex--column el" style={{ gap: "0.5rem" }}>
