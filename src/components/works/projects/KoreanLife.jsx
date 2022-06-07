@@ -17,9 +17,10 @@ const KoreanLife = ({ pageControl, props }) => {
 
   const data = {
     name: ["Korean", " Life"],
-    description: "A local news media focusing on Koreans in the Triangle Area.",
+    description:
+      "A local news media focusing on Koreans in the Triangle Area, NC.",
     role: "Web Designer, Graphic Designer, Art Director",
-    technology: "Wordpress, PHP, HTML5, CSS3",
+    technology: "Wordpress, PHP, HTML5, CSS3, SASS",
     liveDemoURL: "http://koreanlifenews.com/",
     githubURL: null,
     path: "korean-life",

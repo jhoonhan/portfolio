@@ -20,7 +20,8 @@ const SushiRepublic = ({ pageControl, props }) => {
 
   const data = {
     name: ["sushi", " republic"],
-    description: "A responsive website for a local fine Japanese restaurant.",
+    description:
+      "A responsive website for a local Japanese restaurant in Greensboro, NC.",
     role: "Web Developer, Graphic designer, photographer",
     technology: "JQUERY, HTML5, CSS3, SASS",
     liveDemoURL: "http://hahnsfinegoods.com/sushi-republic/index.html",

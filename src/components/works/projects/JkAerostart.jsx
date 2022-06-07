@@ -14,9 +14,10 @@ const JkAerostart = ({ pageControl, props }) => {
 
   const data = {
     name: ["JK", " Aerostart"],
-    description: "A simple static website for an aircraft part export company",
+    description:
+      "A responsive static website for an aircraft parts export company.",
     role: "Web Designer, Graphic Designer",
-    technology: "HTML, CSS",
+    technology: "JavaScript, HTML5, CSS3, SASS",
     liveDemoURL: "https://jkaerostart.netlify.app/",
     githubURL: "https://github.com/jhoonhan/jk-aerostart",
     path: "jk-aerostart",

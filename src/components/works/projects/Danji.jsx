@@ -20,7 +20,7 @@ const Danji = ({ pageControl, props }) => {
   const data = {
     name: ["danji"],
     description:
-      "A staple Korean restaurant serving the Triad area since 2015.",
+      "A resposive website for a local Korean restaurant in the Triad area, NC.",
     role: "Web Developer, Graphic Designer, Photographer",
     technology: "JQUERY, HTML5, CSS3, SASS",
     liveDemoURL: "http://hahnsfinegoods.com/danji/index.html",

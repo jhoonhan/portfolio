@@ -18,7 +18,8 @@ const SalvationArmy = ({ pageControl, props }) => {
     description:
       "A fast and easy bookeeping web application for a charitable organization.",
     role: "Full-stack Developer, Web Designer",
-    technology: "React, JavaScript, NodeJS, Express, MongoDB, HTML5, CSS3",
+    technology:
+      "React, Redux, JavaScript, NodeJS, Express, MongoDB, HTML5, CSS3",
     liveDemoURL: "https://salvationarmy-kernersville.netlify.app/",
     githubURL: "https://github.com/jhoonhan/salvationarmy-accounting",
     path: "salvation-army",
