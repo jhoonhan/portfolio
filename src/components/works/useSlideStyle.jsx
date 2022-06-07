@@ -27,22 +27,15 @@ const useSlideStyle = (pageControl, refEl) => {
       }, 500);
     };
     const refWorkContainer = refEl.current;
-    const throttled = throttle(fn, 1);
-    refWorkContainer.addEventListener("wheel", throttled, false);
+    // const throttled = throttle(fn, 1);
+    refWorkContainer.addEventListener("wheel", fn, false);
 
     return () => {
-      refWorkContainer.removeEventListener("wheel", throttled);
+      refWorkContainer.removeEventListener("wheel", fn);
     };
   }, [slide, workSubPage]);
 
   useEffect(() => {
-    // if (0 - slide > 0) {
-    //   setSlideImgStyle({ left: `${0 - slide}vw` });
-    // }
-
-    // if (0 - slide <= 0) {
-    //   setSlideImgStyle({ right: `${0 - slide}vw` });
-    // }
     setSlideImgStyle({
       transform: `translateX(${0 - slide}vw)`,
     });
@@ -50,6 +43,8 @@ const useSlideStyle = (pageControl, refEl) => {
   }, [slide]);
 
   useEffect(() => {
+    // console.log(slide);
+
     if (slide === -5) {
       if (workSubPage === "overview")
         history.push(`/works/${pageControl.workPage}/landing`);
