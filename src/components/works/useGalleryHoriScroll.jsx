@@ -4,7 +4,6 @@ import throttle from "../helpers/throttle";
 
 const useGalleryHoriScroll = (pageControl, loading) => {
   const [trigger, setTrigger] = useState(null);
-  const [test, setTest] = useState(0);
   const elRef = useRef();
 
   // trigger reattaches the ref to the condtionally rerendered comp in the parent comp
@@ -44,14 +43,6 @@ const useGalleryHoriScroll = (pageControl, loading) => {
     };
 
     const checkMovePage = (e) => {
-      const position =
-        e.currentTarget.children[0].getBoundingClientRect().right;
-      const element = e.currentTarget.scrollLeft;
-      // console.log(child.x);
-      // console.log(position);
-      // e.stopPropagation();
-      console.log(e.currentTarget.scrollLeft, el.scrollLeft);
-
       // if (
       //   el.scrollLeft > 0 &&
       //   Math.floor(window.innerWidth) <= Math.round(child.right) - 10
@@ -73,6 +64,7 @@ const useGalleryHoriScroll = (pageControl, loading) => {
       const w = child.width;
       const vw = window.innerWidth;
       const x = s / (w - vw + 700);
+      console.log(`${s} / (${w} - ${vw} + 700)`);
 
       const amount = 0.5 * x * 100;
 
