@@ -55,6 +55,7 @@ const useGalleryHoriScroll = (pageControl, loading) => {
       // }
       // if (child.x <= 0) {
       // }
+      //
       if (e.currentTarget.scrollLeft > 0) {
         e.stopPropagation();
       }
