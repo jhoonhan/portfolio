@@ -1,9 +1,26 @@
-import React, { useState } from "react";
-
-const PageContext = React.createContext();
+import { useState } from "react";
 
 const useContextValues = (touch) => {
-  // URLS
+  // Page Context
+  const [curPage, setCurPage] = useState(null);
+  const [workPage, setWorkPage] = useState(null);
+  const [workSubPage, setWorkSubPage] = useState("landing");
+  // Theme Context
+  const [theme, setTheme] = useState({ color: "black", subColor: "white" });
+  const [prevTheme, setPrevTheme] = useState({
+    color: "black",
+    subColor: "white",
+  });
+  // Style Context
+  const [activeSubPageStylePosition, setActiveSubPageStylePosition] = useState({
+    transform: "translateY(0vh)",
+  });
+  const [workNavWidth, setWorkNavWidth] = useState(0);
+  const [slideScroll, setSlideScroll] = useState(0);
+  const [cursor, setCursor] = useState({ show: false, type: "scroll" });
+
+  ////
+  ////
   const urlContextValue = {
     curPage: ["home", "works", "about", "contact", "notfound"],
     workPage: [
@@ -18,10 +35,6 @@ const useContextValues = (touch) => {
     ],
     workSubPage: ["landing", "overview", "gallery"],
   };
-  // Page Context
-  const [curPage, setCurPage] = useState(null);
-  const [workPage, setWorkPage] = useState(null);
-  const [workSubPage, setWorkSubPage] = useState("landing");
   const pageContextValue = {
     curPage,
     setCurPage,
@@ -30,25 +43,12 @@ const useContextValues = (touch) => {
     workSubPage,
     setWorkSubPage,
   };
-  // Theme Context
-  const [theme, setTheme] = useState({ color: "black", subColor: "white" });
-  const [prevTheme, setPrevTheme] = useState({
-    color: "black",
-    subColor: "white",
-  });
   const themeContextValue = {
     theme,
     setTheme,
     prevTheme,
     setPrevTheme,
   };
-  // Style Context
-  const [activeSubPageStylePosition, setActiveSubPageStylePosition] = useState({
-    transform: "translateY(0vh)",
-  });
-  const [workNavWidth, setWorkNavWidth] = useState(0);
-  const [slideScroll, setSlideScroll] = useState(0);
-  const [cursor, setCursor] = useState({ show: false, type: "scroll" });
   const styleContextValue = {
     activeSubPageStylePosition,
     setActiveSubPageStylePosition,
@@ -59,10 +59,9 @@ const useContextValues = (touch) => {
     cursor,
     setCursor,
   };
-
-  // Mobile Context
   const [mobileShowNav, setMobileShowNav] = useState(false);
 
+  /////////////
   const contextValues = {
     urls: { ...urlContextValue },
     page: { ...pageContextValue },
@@ -73,8 +72,8 @@ const useContextValues = (touch) => {
     },
     style: { ...styleContextValue },
     touch: {
-      action: touch.touchAction,
-      sticky: touch.stickySlide,
+      action: touch.action,
+      sticky: touch.sticky,
     },
   };
 

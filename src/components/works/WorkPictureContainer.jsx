@@ -2,8 +2,8 @@ import React, { useState, useContext, useRef } from "react";
 import { motion } from "framer-motion";
 import { PageContext } from "../../App";
 
-import usePictureContainerStyle from "./usePictureContainerStyle";
-import usePictureContainerPosition from "./usePictureContainerPosition";
+import usePictureContainerStyle from "./hooks/usePictureContainerStyle";
+import usePictureContainerPosition from "./hooks/usePictureContainerPosition";
 
 const WorkPictureContainer = ({ images }) => {
   const { style } = useContext(PageContext);

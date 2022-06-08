@@ -8,10 +8,6 @@ import { Link } from "react-router-dom";
 const WorkNav = () => {
   const { urls, page, style, mobile, touch } = useContext(PageContext);
 
-  useEffect(() => {
-    console.log(page.curPage, urls.curPage[1]);
-  }, [page]);
-
   const swipeFn = {
     fnRight: () => {
       if (page.workSubPage === urls.workSubPage[0]) return;

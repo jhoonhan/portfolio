@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from "react";
-import history from "../../history";
-import { PageContext } from "../../App";
+import history from "../../../history";
+import { PageContext } from "../../../App";
 
 const useSlideStyle = (refEl) => {
   const { page } = useContext(PageContext);

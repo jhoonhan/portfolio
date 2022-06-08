@@ -6,7 +6,7 @@ import { transition } from "../helpers/config";
 import { PageContext } from "../../App";
 
 import Gallery from "./content/Gallery";
-import useSlideStyle from "./useSlideStyle";
+import useSlideStyle from "./hooks/useSlideStyle";
 import DesktopSVG from "../helpers/DesktopSVG";
 import useIntersectionObserve from "../helpers/useIntersectionObserve";
 import Landing from "./content/Landing";

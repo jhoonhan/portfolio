@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { isMobile } from "react-device-detect";
 import { PageContext } from "../../../App";
 import useListenSwipe from "../../helpers/useListenSwipe";
-import useVerticalNavigation from "./useVerticalNavigation";
+import useVerticalNavigation from "../hooks/useVerticalNavigation";
 import { transition } from "../../helpers/config";
 import useRandomTextAnimation from "../../helpers/useRandomTextAnimation";
 import usePreloader from "../../helpers/usePreloader";

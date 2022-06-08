@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, useContext } from "react";
 import { isBrowser, isMobile } from "react-device-detect";
-import { PageContext } from "../../App";
-import throttle from "../helpers/throttle";
+import { PageContext } from "../../../App";
+import throttle from "../../helpers/throttle";
 
 const useGalleryHoriScroll = (loading) => {
   const { page, style } = useContext(PageContext);

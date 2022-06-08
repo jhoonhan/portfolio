@@ -7,7 +7,7 @@ import useListenSwipe from "../../helpers/useListenSwipe";
 import usePreloader from "../../helpers/usePreloader";
 
 import Slide from "../Slide";
-import useGalleryHoriScroll from "../useGalleryHoriScroll";
+import useGalleryHoriScroll from "../hooks/useGalleryHoriScroll";
 import DesktopSVG from "../../helpers/DesktopSVG";
 import MobileSVG from "../../helpers/MobileSVG";
 
