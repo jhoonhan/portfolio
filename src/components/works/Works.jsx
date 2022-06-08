@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import { Route, Switch, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -15,7 +15,7 @@ import LittleTokyo from "./projects/LittleTokyo";
 import JkAerostart from "./projects/JkAerostart";
 import NotFound from "../NotFound";
 
-const Works = ({ refs, props, match }) => {
+const Works = ({ refs, props }) => {
   const location = useLocation();
 
   const { page, style } = useContext(PageContext);

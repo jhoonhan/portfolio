@@ -38,7 +38,7 @@ const usePictureContainerPosition = (actImg) => {
         ...actImgPosition,
         img3: { x: position.x, y: position.y },
       });
-  }, [position]);
+  }, [actImg, position]);
 
   return { actImgPosition, onMouseMoveImg };
 };

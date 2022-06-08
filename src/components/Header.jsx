@@ -107,13 +107,13 @@ const Header = () => {
     return style;
   };
 
-  const renderWorkLinks = urls.workPage.map((page, i) => {
-    const pageName = page.split("-").join(" ");
+  const renderWorkLinks = urls.workPage.map((pageEl, i) => {
+    const pageName = pageEl.split("-").join(" ");
     return (
       <li key={i}>
         <Link
           onClick={() => mobile.setMobileShowNav(false)}
-          to={`/works/${page}/landing`}
+          to={`/works/${pageEl}/landing`}
           className={page.workPage === urls.workPage[i] ? "active--text" : ""}
         >
           {pageName}
