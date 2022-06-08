@@ -1,8 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useContext } from "react";
 import { isBrowser, isMobile } from "react-device-detect";
+import { PageContext } from "../../App";
 import throttle from "../helpers/throttle";
 
-const useGalleryHoriScroll = (pageControl, loading) => {
+const useGalleryHoriScroll = (loading) => {
+  const { page, style } = useContext(PageContext);
+
   const [trigger, setTrigger] = useState(null);
   const elRef = useRef();
 
@@ -20,7 +23,7 @@ const useGalleryHoriScroll = (pageControl, loading) => {
   useEffect(() => {
     // return;
     if (!trigger) return;
-    if (pageControl.workSubPage !== "gallery" || isMobile) return;
+    if (page.workSubPage !== "gallery" || isMobile) return;
     const el = elRef.current;
     if (!el) return;
     el.scrollTo({ left: 0 });
@@ -77,10 +80,10 @@ const useGalleryHoriScroll = (pageControl, loading) => {
       const amount = 0.5 * x * 100;
 
       if (s <= 0) {
-        pageControl.setWorkNavWidth(`${50}%`);
+        style.setWorkNavWidth(`${50}%`);
       }
       if (s > 0) {
-        pageControl.setWorkNavWidth(`${50 + amount}%`);
+        style.setWorkNavWidth(`${50 + amount}%`);
       }
     };
 
@@ -93,7 +96,7 @@ const useGalleryHoriScroll = (pageControl, loading) => {
       // el.removeEventListener("wheel", changeWorkNav);
       el.removeEventListener("wheel", throttled);
     };
-  }, [pageControl.workSubPage, trigger]);
+  }, [page.workSubPage, trigger]);
 
   return elRef;
 };

@@ -1,25 +1,29 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useContext } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { isMobile } from "react-device-detect";
 import useListenSwipe from "../../helpers/useListenSwipe";
 import usePreloader from "../../helpers/usePreloader";
+import { PageContext } from "../../../App";
 
 import DesktopSVG from "../../helpers/DesktopSVG";
 import MobileSVG from "../../helpers/MobileSVG";
 import WorkPictureContainer from "../WorkPictureContainer";
 
-const Overview = ({ slideInfo, pageControl, data }) => {
+const Overview = ({ slideInfo, data }) => {
+  const { urls, page } = useContext(PageContext);
+
   const { onTouchStart, onTouchMove, onTouchEnd, sticky } = useListenSwipe();
   const { pageData } = data;
   const { loading, Loading } = usePreloader(pageData.overview.loadData);
 
   const refIntersect = useRef(null);
-  const projectIndex = String(
-    pageControl.urls.workPage.indexOf(data.path) + 1
-  ).padStart(2, "0");
+  const projectIndex = String(urls.workPage.indexOf(data.path) + 1).padStart(
+    2,
+    "0"
+  );
 
   useEffect(() => {
-    pageControl.setWorkSubPage("overview");
+    page.setWorkSubPage("overview");
   }, []);
 
   const animateBrowser = {
@@ -154,12 +158,7 @@ const Overview = ({ slideInfo, pageControl, data }) => {
 
   const renderOverviewVisual = () => {
     if (pageData?.overview.orientation === "trifold") {
-      return (
-        <WorkPictureContainer
-          images={pageData?.overview.data}
-          pageControl={pageControl}
-        />
-      );
+      return <WorkPictureContainer images={pageData?.overview.data} />;
     }
 
     if (pageData?.overview.orientation === "desktop") {

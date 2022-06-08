@@ -1,8 +1,9 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Switch, Route } from "react-router-dom";
 
 import { motion, AnimatePresence } from "framer-motion";
 import { transition } from "../helpers/config";
+import { PageContext } from "../../App";
 
 import Gallery from "./content/Gallery";
 import useSlideStyle from "./useSlideStyle";
@@ -13,18 +14,19 @@ import Overview from "./content/Overview";
 
 const WorkContent = ({
   refEl,
-  pageControl,
   data,
   backgroundStyle,
   noOverview,
   props,
   isVideo,
 }) => {
+  const { page } = useContext(PageContext);
+
   useEffect(() => {
-    pageControl.setWorkPage(props.match.path.split("/")[2]);
+    page.setWorkPage(props.match.path.split("/")[2]);
   }, [props.match.path]);
 
-  const slideInfo = useSlideStyle(pageControl, refEl);
+  const slideInfo = useSlideStyle(refEl);
   const [slideAnimationStyle, setSlideAnimationStyle] = useState({
     initial: { opacity: 0 },
     animate: { opacity: 1 },
@@ -58,7 +60,7 @@ const WorkContent = ({
         transition: { duration: transition.default },
       });
     }
-  }, [pageControl.workSubPage]);
+  }, [page.workSubPage]);
 
   const render = () => {
     // console.log(`workContent rendered`);
@@ -73,7 +75,7 @@ const WorkContent = ({
         {/* <div ref={refEl} className="work__container"> */}
         {/* {renderContent()} */}
         <Route
-          path={`/${pageControl.curPage}/${data.path}/landing`}
+          path={`/${page.curPage}/${data.path}/landing`}
           exact
           render={(props) => (
             <motion.div
@@ -84,12 +86,7 @@ const WorkContent = ({
               transition={slideAnimationStyle.transition}
               className="container"
             >
-              <Landing
-                slideInfo={slideInfo}
-                pageControl={pageControl}
-                data={data}
-                props={props}
-              />
+              <Landing slideInfo={slideInfo} data={data} props={props} />
             </motion.div>
           )}
         />
@@ -110,7 +107,6 @@ const WorkContent = ({
               <Overview
                 props={props}
                 slideInfo={slideInfo}
-                pageControl={pageControl}
                 data={data}
                 noOverview={noOverview}
                 isVideo={isVideo}
@@ -132,11 +128,7 @@ const WorkContent = ({
               transition={slideAnimationStyle.transition}
               className="container"
             >
-              <Gallery
-                slideInfo={slideInfo}
-                pageControl={pageControl}
-                data={data}
-              />
+              <Gallery slideInfo={slideInfo} data={data} />
             </motion.div>
           )}
         />

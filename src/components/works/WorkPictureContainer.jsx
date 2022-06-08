@@ -1,10 +1,13 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useContext, useRef } from "react";
 import { motion } from "framer-motion";
+import { PageContext } from "../../App";
 
 import usePictureContainerStyle from "./usePictureContainerStyle";
 import usePictureContainerPosition from "./usePictureContainerPosition";
 
-const WorkPictureContainer = ({ images, pageControl }) => {
+const WorkPictureContainer = ({ images }) => {
+  const { style } = useContext(PageContext);
+
   const [actImg, setActImg] = useState("img1");
   const { conditionalStyle } = usePictureContainerStyle(actImg);
   const { actImgPosition, onMouseMoveImg } =
@@ -34,10 +37,10 @@ const WorkPictureContainer = ({ images, pageControl }) => {
   const render = () => {
     return (
       <motion.div
-        onMouseEnter={() => pageControl.setCursor({ show: true, type: "move" })}
+        onMouseEnter={() => style.setCursor({ show: true, type: "move" })}
         onMouseLeave={() => {
           setActImg("img1");
-          pageControl.setCursor({ show: true, type: "scroll" });
+          style.setCursor({ show: true, type: "scroll" });
         }}
         className="works__picture-container"
         variants={animate.container}

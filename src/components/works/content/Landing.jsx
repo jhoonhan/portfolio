@@ -1,17 +1,16 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useContext, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { isMobile } from "react-device-detect";
+import { PageContext } from "../../../App";
 import useListenSwipe from "../../helpers/useListenSwipe";
 import useVerticalNavigation from "./useVerticalNavigation";
 import { transition } from "../../helpers/config";
 import useRandomTextAnimation from "../../helpers/useRandomTextAnimation";
 import usePreloader from "../../helpers/usePreloader";
 
-const Landing = ({ slideInfo, pageControl, data }) => {
+const Landing = ({ slideInfo, data }) => {
+  const { page, theme } = useContext(PageContext);
   const { pageData, theme: dataTheme } = data;
-  const { setWorkSubPage } = pageControl;
-  // const { theme: gTheme, prevTheme: gPrevTheme } = pageControl;
-  // const themes = { theme: gTheme, prevTheme: gPrevTheme };
 
   const { loading, Loading } = usePreloader([pageData.landing]);
   const { hasFinished, title } = useRandomTextAnimation(
@@ -19,7 +18,7 @@ const Landing = ({ slideInfo, pageControl, data }) => {
     500,
     loading
   );
-  useVerticalNavigation(pageControl);
+  useVerticalNavigation();
 
   const fontSize = () => {
     let height;
@@ -32,15 +31,15 @@ const Landing = ({ slideInfo, pageControl, data }) => {
   };
 
   useEffect(() => {
-    pageControl.setTheme({
+    theme.setTheme({
       color: dataTheme.color,
       subColor: dataTheme.subColor,
     });
   }, []);
 
   useEffect(() => {
-    setWorkSubPage("landing");
-  }, [setWorkSubPage]);
+    page.setWorkSubPage("landing");
+  }, [page.setWorkSubPage]);
 
   //////
   const { onTouchStart, onTouchMove, onTouchEnd, sticky } = useListenSwipe();

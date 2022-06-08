@@ -1,9 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
+import { PageContext } from "../App";
 
-const NotFound = ({ pageControl }) => {
+const NotFound = () => {
+  const { page, theme } = useContext(PageContext);
   useEffect(() => {
-    pageControl.setCurPage("notfound");
-    pageControl.setTheme({ color: "dark" });
+    page.setCurPage("notfound");
+    theme.setTheme({ color: "dark" });
   }, []);
   return (
     <div className="notfound__container">

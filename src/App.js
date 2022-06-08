@@ -167,7 +167,6 @@ const App = () => {
       mobileShowNav,
       setMobileShowNav,
     },
-
     style: {
       activeSubPageStylePosition,
       setActiveSubPageStylePosition,

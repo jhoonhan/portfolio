@@ -1,8 +1,9 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useContext } from "react";
 import { Route, Switch, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 
 import WorkNav from "./WorkNav";
+import { PageContext } from "../../App";
 
 import SushiRepublic from "./projects/SushiRepublic";
 import Danji from "./projects/Danji";
@@ -17,13 +18,13 @@ import NotFound from "../NotFound";
 const Works = ({ refs, pageControl, props, match }) => {
   const location = useLocation();
 
-  const { setCurPage } = pageControl;
+  const { page, style } = useContext(PageContext);
 
   useEffect(() => {
-    setCurPage(props.match.path.slice(1));
-    pageControl.setCursor({ show: true, type: "scroll" });
+    page.setCurPage(props.match.path.slice(1));
+    style.setCursor({ show: true, type: "scroll" });
     return () => {
-      pageControl.setCursor({ show: false });
+      style.setCursor({ show: false });
     };
   }, []);
 
@@ -42,53 +43,37 @@ const Works = ({ refs, pageControl, props, match }) => {
             <Switch location={location} key={location.pathname.split("/")[3]}>
               <Route
                 path={`${props.match.path}/sushi-republic`}
-                render={(props) => (
-                  <SushiRepublic pageControl={pageControl} props={props} />
-                )}
+                render={(props) => <SushiRepublic props={props} />}
               />
               <Route
                 path={`${props.match.path}/danji`}
-                render={(props) => (
-                  <Danji pageControl={pageControl} props={props} />
-                )}
+                render={(props) => <Danji props={props} />}
               />
               <Route
                 path={`${props.match.path}/salvation-army`}
-                render={(props) => (
-                  <SalvationArmy pageControl={pageControl} props={props} />
-                )}
+                render={(props) => <SalvationArmy props={props} />}
               />
               <Route
                 path={`${props.match.path}/haans-cleaner`}
-                render={(props) => (
-                  <HaansCleaner pageControl={pageControl} props={props} />
-                )}
+                render={(props) => <HaansCleaner props={props} />}
               />
               <Route
                 path={`${props.match.path}/this-is-bullshit`}
-                render={(props) => (
-                  <ThisIsBullshit pageControl={pageControl} props={props} />
-                )}
+                render={(props) => <ThisIsBullshit props={props} />}
               />
               <Route
                 path={`${props.match.path}/korean-life`}
-                render={(props) => (
-                  <KoreanLife pageControl={pageControl} props={props} />
-                )}
+                render={(props) => <KoreanLife props={props} />}
               />
               <Route
                 path={`${props.match.path}/little-tokyo`}
-                render={(props) => (
-                  <LittleTokyo pageControl={pageControl} props={props} />
-                )}
+                render={(props) => <LittleTokyo props={props} />}
               />
               <Route
                 path={`${props.match.path}/jk-aerostart`}
-                render={(props) => (
-                  <JkAerostart pageControl={pageControl} props={props} />
-                )}
+                render={(props) => <JkAerostart props={props} />}
               />
-              <Route render={() => <NotFound pageControl={pageControl} />} />
+              <Route render={() => <NotFound />} />
             </Switch>
           </AnimatePresence>
         </motion.section>

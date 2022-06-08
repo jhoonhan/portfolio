@@ -1,11 +1,12 @@
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import history from "../../../history";
+import { PageContext } from "../../../App";
 
-const useVerticalNavigation = (pageControl) => {
-  const { urls, workPage, touch } = pageControl;
+const useVerticalNavigation = () => {
+  const { urls, page, touch } = useContext(PageContext);
 
   useEffect(() => {
-    const currentI = urls.workPage.indexOf(workPage);
+    const currentI = urls.workPage.indexOf(page.workPage);
     if (touch.action.top && urls.workPage[currentI + 1]) {
       history.push(
         `/works/${urls.workPage[currentI + 1]}/${urls.workSubPage[0]}`

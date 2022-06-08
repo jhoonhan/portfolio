@@ -1,6 +1,7 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useContext } from "react";
 import { isMobile } from "react-device-detect";
 import { AnimatePresence } from "framer-motion";
+import { PageContext } from "../../../App";
 
 import useListenSwipe from "../../helpers/useListenSwipe";
 import usePreloader from "../../helpers/usePreloader";
@@ -10,17 +11,18 @@ import useGalleryHoriScroll from "../useGalleryHoriScroll";
 import DesktopSVG from "../../helpers/DesktopSVG";
 import MobileSVG from "../../helpers/MobileSVG";
 
-const Gallery = ({ slideInfo, pageControl, data }) => {
+const Gallery = ({ slideInfo, data }) => {
+  const { page } = useContext(PageContext);
   const { onTouchStart, onTouchMove, onTouchEnd, sticky } = useListenSwipe();
   const { pageData } = data;
   const { loading, Loading } = usePreloader(pageData.gallery.loadData);
 
   useEffect(() => {
-    pageControl.setWorkSubPage("gallery");
+    page.setWorkSubPage("gallery");
   }, []);
 
   const refCont = useRef(null);
-  const refSlides = useGalleryHoriScroll(pageControl, loading);
+  const refSlides = useGalleryHoriScroll(loading);
 
   const renderSlidesDesktop = pageData?.gallery.images.desktop.map((img, i) => (
     <React.Fragment key={i}>

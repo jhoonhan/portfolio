@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const WorkNav = ({ pageControl }) => {
   // const {
-  //   // urls,
+  //   urls,
   //   curPage,
   //   workPage,
   //   workSubPage,
@@ -15,15 +15,14 @@ const WorkNav = ({ pageControl }) => {
   //   setWorkNavWidth,
   //   mobileShowNav,
   //   setmobileShowNav,
-  //   touch,
+  //   // touch,
   // } = pageControl;
 
   const { urls, page, style, mobile, touch } = useContext(PageContext);
 
   useEffect(() => {
-    console.log(page);
-    console.log(pageControl);
-  }, []);
+    console.log(page.curPage);
+  }, [page]);
 
   const swipeFn = {
     fnRight: () => {
@@ -91,7 +90,7 @@ const WorkNav = ({ pageControl }) => {
       history.push(`/works/${page.workPage}/${urls.workSubPage[0 + 1]}`);
     if (page.workSubPage === urls.workSubPage[1])
       history.push(`/works/${page.workPage}/${urls.workSubPage[1 + 1]}`);
-    // if (workSubPage === urls.workSubPage[2] && workPage < 5) setWorkPage(workPage + 1);
+    // if (page.workSubPage === urls.workSubPage[2] && workPage < 5) setWorkPage(workPage + 1);
   };
 
   const activeContainer = () => {
@@ -134,7 +133,7 @@ const WorkNav = ({ pageControl }) => {
               style={activeSpan(urls.workSubPage[0])}
             >
               {console.log(page?.workPage?.split("-").join(" "))}
-              {page?.workPage}
+              {/* {page?.workPage} */}
             </span>
           </Link>
           <Link

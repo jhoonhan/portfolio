@@ -1,15 +1,15 @@
-import { useEffect, useState } from "react";
-import throttle from "../helpers/throttle";
+import { useEffect, useState, useContext } from "react";
 import history from "../../history";
+import { PageContext } from "../../App";
 
-const useSlideStyle = (pageControl, refEl) => {
-  const { workPage, setWorkPage, workSubPage, setWorkSubPage } = pageControl;
+const useSlideStyle = (refEl) => {
+  const { page } = useContext(PageContext);
+
   const [slide, setSlide] = useState(0);
   const [slideImgStyle, setSlideImgStyle] = useState({});
   const [slideDirection, setSlideDirection] = useState("up");
 
   useEffect(() => {
-    // if (workSubPage === "slides") return;
     let timeoutId = null;
     const fn = (e) => {
       e.preventDefault();
@@ -33,7 +33,7 @@ const useSlideStyle = (pageControl, refEl) => {
     return () => {
       refWorkContainer.removeEventListener("wheel", fn);
     };
-  }, [slide, workSubPage]);
+  }, [slide, page.workSubPage]);
 
   useEffect(() => {
     setSlideImgStyle({
@@ -46,17 +46,17 @@ const useSlideStyle = (pageControl, refEl) => {
     // console.log(slide);
 
     if (slide === -5) {
-      if (workSubPage === "overview")
-        history.push(`/works/${pageControl.workPage}/landing`);
-      if (workSubPage === "gallery")
-        history.push(`/works/${pageControl.workPage}/overview`);
+      if (page.workSubPage === "overview")
+        history.push(`/works/${page.workPage}/landing`);
+      if (page.workSubPage === "gallery")
+        history.push(`/works/${page.workPage}/overview`);
       setSlideDirection("up");
     }
     if (slide === 5) {
-      if (workSubPage === "landing")
-        history.push(`/works/${pageControl.workPage}/overview`);
-      if (workSubPage === "overview")
-        history.push(`/works/${pageControl.workPage}/gallery`);
+      if (page.workSubPage === "landing")
+        history.push(`/works/${page.workPage}/overview`);
+      if (page.workSubPage === "overview")
+        history.push(`/works/${page.workPage}/gallery`);
       setSlideDirection("down");
       // if (workSubPage === "gallery" && workPage < 5) setWorkPage(workPage + 1);
     }
