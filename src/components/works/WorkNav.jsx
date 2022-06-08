@@ -9,7 +9,7 @@ const WorkNav = () => {
   const { urls, page, style, mobile, touch } = useContext(PageContext);
 
   useEffect(() => {
-    console.log(page.curPage);
+    console.log(page.curPage, urls.curPage[1]);
   }, [page]);
 
   const swipeFn = {
@@ -58,18 +58,18 @@ const WorkNav = () => {
       return "";
     }
   };
-  const active = (page) => {
+  const active = (pageEl) => {
     let style = {};
     if (page.curPage === urls.curPage[1]) style.transform = "translateX(0vw)";
-    if (page.workSubPage === page) style.opacity = "1";
+    if (page.workSubPage === pageEl) style.opacity = "1";
     style.width = "auto";
     return style;
   };
 
-  const activeSpan = (page) => {
+  const activeSpan = (pageEl) => {
     if (!isMobile) return;
     if (!mobile.mobileShowNav) return { opacity: 0 };
-    if (page.workSubPage === page && mobile.mobileShowNav)
+    if (page.workSubPage === pageEl && mobile.mobileShowNav)
       return { opacity: 1 };
   };
 
@@ -120,8 +120,7 @@ const WorkNav = () => {
               className="a--opacity--m"
               style={activeSpan(urls.workSubPage[0])}
             >
-              {/* {console.log(page?.workPage?.split("-").join(" "))} */}
-              {/* {page?.workPage} */}
+              {page?.workPage?.split("-").join(" ")}
             </span>
           </Link>
           <Link

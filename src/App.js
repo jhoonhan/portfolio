@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useContext } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Route, Switch, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { isMobile } from "react-device-detect";
@@ -103,24 +103,21 @@ const App = () => {
     refContact,
   };
 
-  // URLS
-  const urls = {
-    curPage: ["home", "works", "about", "contact", "notfound"],
-    workPage: [
-      "sushi-republic",
-      "haans-cleaner",
-      "this-is-bullshit",
-      "salvation-army",
-      "korean-life",
-      "jk-aerostart",
-      "danji",
-      "little-tokyo",
-    ],
-    workSubPage: ["landing", "overview", "gallery"],
-  };
-
   const contextValues = {
-    urls,
+    urls: {
+      curPage: ["home", "works", "about", "contact", "notfound"],
+      workPage: [
+        "sushi-republic",
+        "haans-cleaner",
+        "this-is-bullshit",
+        "salvation-army",
+        "korean-life",
+        "jk-aerostart",
+        "danji",
+        "little-tokyo",
+      ],
+      workSubPage: ["landing", "overview", "gallery"],
+    },
     page: {
       curPage,
       setCurPage,
@@ -155,6 +152,10 @@ const App = () => {
     },
   };
 
+  useEffect(() => {
+    console.log(contextValues.page.curPage);
+  }, [contextValues.page.curPage]);
+
   const transtionAnimation = () => {
     if (isMobile) return null;
     return null;
@@ -182,7 +183,7 @@ const App = () => {
           onTouchMove={onTouchMove}
           onTouchEnd={onTouchEnd}
         >
-          <Header refs={refs} urls={urls} />
+          <Header />
           <Cursor cursor={cursor} />
           <main ref={refMain} className="wrapper__main">
             {/* <div

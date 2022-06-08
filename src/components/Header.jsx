@@ -25,15 +25,16 @@ const Header = () => {
   const activeStyle = { color: color.primary, opacity: 1 };
 
   // const activeSubPageStyle = { opacity: 1 };
-  const activeSubPageStyle = { color: color.primary, opacity: 1 };
+  // const activeSubPageStyle = { color: color.primary, opacity: 1 };
 
   useEffect(() => {
     if (page.curPage === urls.curPage[0]) {
       setActiveHeight("0rem");
     }
     if (page.curPage === urls.curPage[1]) {
-      urls.workPage.forEach((page, i) => {
-        if (page.workPage === page) setActiveHeight(`${10 + 3.4 * (i + 1)}rem`);
+      urls.workPage.forEach((pageEl, i) => {
+        if (page.workPage === pageEl)
+          setActiveHeight(`${10 + 3.4 * (i + 1)}rem`);
       });
     }
     if (page.curPage === urls.curPage[2]) {
