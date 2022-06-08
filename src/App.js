@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useContext } from "react";
 import { Route, Switch, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { isMobile } from "react-device-detect";
@@ -14,9 +14,10 @@ import useListenSwipe from "./components/helpers/useListenSwipe";
 import "./scss/App.scss";
 import Contact from "./components/contact/Contact";
 import Cursor from "./components/Cursor";
-import usePreloader from "./components/helpers/usePreloader";
 
 let windowInnerWidth = 0;
+
+export const PageContext = React.createContext();
 
 const App = () => {
   const location = useLocation();
@@ -146,6 +147,43 @@ const App = () => {
     },
   };
 
+  const contextValues = {
+    urls,
+    page: {
+      curPage,
+      setCurPage,
+      workPage,
+      setWorkPage,
+      workSubPage,
+      setWorkSubPage,
+    },
+    theme: {
+      theme,
+      setTheme,
+      prevTheme,
+      setPrevTheme,
+    },
+    mobile: {
+      mobileShowNav,
+      setMobileShowNav,
+    },
+
+    style: {
+      activeSubPageStylePosition,
+      setActiveSubPageStylePosition,
+      workNavWidth,
+      setWorkNavWidth,
+      slideScroll,
+      setSlideScroll,
+      cursor,
+      setCursor,
+    },
+    touch: {
+      action: touchAction,
+      sticky: stickySlide,
+    },
+  };
+
   const transtionAnimation = () => {
     if (isMobile) return null;
     return null;
@@ -166,85 +204,87 @@ const App = () => {
       .slice(1, 3)
       .join("/");
     return (
-      <div
-        className="app"
-        onTouchStart={onTouchStart}
-        onTouchMove={onTouchMove}
-        onTouchEnd={onTouchEnd}
-      >
-        <Header refs={refs} urls={urls} pageControl={pageControl} />
-        <Cursor cursor={cursor} />
-        <main ref={refMain} className="wrapper__main">
-          {/* <div
+      <PageContext.Provider value={contextValues}>
+        <div
+          className="app"
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+        >
+          <Header refs={refs} urls={urls} pageControl={pageControl} />
+          <Cursor cursor={cursor} />
+          <main ref={refMain} className="wrapper__main">
+            {/* <div
             style={curPage === "home" ? { opacity: 0 } : {}}
             className="overlay"
           /> */}
 
-          <AnimatePresence exitBeforeEnter>
-            <Switch location={location} key={transitionPageLocation}>
-              <Route
-                path="/"
-                exact
-                render={(props) => (
-                  <>
-                    {transtionAnimation()}
-                    <Landing
-                      pageControl={pageControl}
-                      curPage={curPage}
-                      refHome={refHome}
-                      props={props}
-                    />
-                  </>
-                )}
-              />
-              <Route
-                path="/works"
-                render={(props) => (
-                  <>
-                    {transtionAnimation()}
+            <AnimatePresence exitBeforeEnter>
+              <Switch location={location} key={transitionPageLocation}>
+                <Route
+                  path="/"
+                  exact
+                  render={(props) => (
+                    <>
+                      {transtionAnimation()}
+                      <Landing
+                        pageControl={pageControl}
+                        curPage={curPage}
+                        refHome={refHome}
+                        props={props}
+                      />
+                    </>
+                  )}
+                />
+                <Route
+                  path="/works"
+                  render={(props) => (
+                    <>
+                      {transtionAnimation()}
 
-                    <Works
-                      refs={refs}
-                      pageControl={pageControl}
-                      props={props}
-                    />
-                  </>
-                )}
-              />
-              <Route
-                path="/about"
-                exact
-                render={(props) => (
-                  <>
-                    {transtionAnimation()}
+                      <Works
+                        refs={refs}
+                        pageControl={pageControl}
+                        props={props}
+                      />
+                    </>
+                  )}
+                />
+                <Route
+                  path="/about"
+                  exact
+                  render={(props) => (
+                    <>
+                      {transtionAnimation()}
 
-                    <About
-                      pageControl={pageControl}
-                      refs={refs}
-                      props={props}
-                    />
-                  </>
-                )}
-              />
-              <Route
-                path="/contact"
-                exact
-                render={(props) => (
-                  <>
-                    {transtionAnimation()}
-                    <Contact
-                      pageControl={pageControl}
-                      refs={refs}
-                      props={props}
-                    />
-                  </>
-                )}
-              />
-              <Route render={() => <NotFound pageControl={pageControl} />} />
-            </Switch>
-          </AnimatePresence>
-        </main>
-      </div>
+                      <About
+                        pageControl={pageControl}
+                        refs={refs}
+                        props={props}
+                      />
+                    </>
+                  )}
+                />
+                <Route
+                  path="/contact"
+                  exact
+                  render={(props) => (
+                    <>
+                      {transtionAnimation()}
+                      <Contact
+                        pageControl={pageControl}
+                        refs={refs}
+                        props={props}
+                      />
+                    </>
+                  )}
+                />
+                <Route render={() => <NotFound pageControl={pageControl} />} />
+              </Switch>
+            </AnimatePresence>
+          </main>
+        </div>
+      </PageContext.Provider>
     );
   };
   return render();
