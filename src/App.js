@@ -53,9 +53,9 @@ const App = () => {
   });
   const [workNavWidth, setWorkNavWidth] = useState(0);
   const [slideScroll, setSlideScroll] = useState(0);
-  const [mobileShowNav, setMobileShowNav] = useState(false);
-
   const [cursor, setCursor] = useState({ show: false, type: "scroll" });
+
+  const [mobileShowNav, setMobileShowNav] = useState(false);
 
   // Touch action control
   const {
