@@ -1,12 +1,15 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useContext } from "react";
 import WorkContent from "../WorkContent";
+import { PageContext } from "../../../App";
 
 import landing from "../../../assests/image/projects/salvationArmy/landing.jpg";
 import imgD0 from "../../../assests/image/projects/salvationArmy/desktop0.jpg";
 import imgD1 from "../../../assests/image/projects/salvationArmy/desktop1.jpg";
 import imgD2 from "../../../assests/image/projects/salvationArmy/desktop2.jpg";
 
-const SalvationArmy = ({ pageControl, props }) => {
+const SalvationArmy = ({ props }) => {
+  const { theme } = useContext(PageContext);
+
   const refEl = useRef(null);
   const backgroundStyle = {
     background:
@@ -49,13 +52,12 @@ const SalvationArmy = ({ pageControl, props }) => {
   };
 
   useEffect(() => {
-    pageControl.setTheme({ color: "black", subColor: "white" });
+    theme.setTheme({ color: "black", subColor: "white" });
   }, []);
 
   return (
     <WorkContent
       refEl={refEl}
-      pageControl={pageControl}
       data={data}
       backgroundStyle={backgroundStyle}
       props={props}

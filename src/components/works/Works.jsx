@@ -15,7 +15,7 @@ import LittleTokyo from "./projects/LittleTokyo";
 import JkAerostart from "./projects/JkAerostart";
 import NotFound from "../NotFound";
 
-const Works = ({ refs, pageControl, props, match }) => {
+const Works = ({ refs, props, match }) => {
   const location = useLocation();
 
   const { page, style } = useContext(PageContext);
@@ -77,7 +77,7 @@ const Works = ({ refs, pageControl, props, match }) => {
             </Switch>
           </AnimatePresence>
         </motion.section>
-        <WorkNav pageControl={pageControl} />
+        <WorkNav />
       </>
     );
   };

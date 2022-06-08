@@ -1,18 +1,19 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useContext } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { isBrowser, isMobile } from "react-device-detect";
+import { PageContext } from "../App";
 import { Link } from "react-router-dom";
 import icons from "../assests/image/icons.svg";
 import { transition } from "./helpers/config";
 import { color } from "./helpers/config";
 import cv from "../assests/files/cv.pdf";
 
-const Header = ({ pageControl }) => {
+const Header = () => {
+  const { urls, page, mobile } = useContext(PageContext);
+
   const [activeHeight, setActiveHeight] = useState("0rem");
   const [expandWorkNav, setExpandWorkNav] = useState(false);
   const [showSocialIcons, setShowSocialIcons] = useState(true);
-
-  const { urls, curPage, workPage, setWorkPage, workSubPage } = pageControl;
 
   const refNav = useRef(null);
   const refNavHome = useRef(null);
@@ -27,27 +28,27 @@ const Header = ({ pageControl }) => {
   const activeSubPageStyle = { color: color.primary, opacity: 1 };
 
   useEffect(() => {
-    if (curPage === urls.curPage[0]) {
+    if (page.curPage === urls.curPage[0]) {
       setActiveHeight("0rem");
     }
-    if (curPage === urls.curPage[1]) {
+    if (page.curPage === urls.curPage[1]) {
       urls.workPage.forEach((page, i) => {
-        if (workPage === page) setActiveHeight(`${10 + 3.4 * (i + 1)}rem`);
+        if (page.workPage === page) setActiveHeight(`${10 + 3.4 * (i + 1)}rem`);
       });
     }
-    if (curPage === urls.curPage[2]) {
+    if (page.curPage === urls.curPage[2]) {
       setActiveHeight("20.1rem");
     }
-    if (curPage === urls.curPage[3]) {
+    if (page.curPage === urls.curPage[3]) {
       setActiveHeight("30.1rem");
     }
-    if (curPage !== urls.curPage[1]) {
+    if (page.curPage !== urls.curPage[1]) {
       setExpandWorkNav(false);
-      setWorkPage(null);
+      page.setWorkPage(null);
     }
 
-    pageControl.setMobileShowNav(false);
-  }, [workPage, curPage, workSubPage]);
+    mobile.setMobileShowNav(false);
+  }, [page.workPage, page.curPage, page.workSubPage]);
 
   useEffect(() => {
     if (expandWorkNav) {
@@ -60,7 +61,7 @@ const Header = ({ pageControl }) => {
     return (
       <motion.div
         className="m--nav__overlay"
-        onClick={() => pageControl.setMobileShowNav(!pageControl.mobileShowNav)}
+        onClick={() => mobile.setMobileShowNav(!mobile.mobileShowNav)}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -90,14 +91,14 @@ const Header = ({ pageControl }) => {
       31.2 + 2 + (urls.workPage.length - 2) * 3.4
     }rem`;
     let style = {};
-    if (curPage === urls.curPage[1]) {
+    if (page.curPage === urls.curPage[1]) {
       style.height = workExpandedHeight;
     } else if (expandWorkNav) {
       style.height = workExpandedHeight;
     } else {
       style.height = defaultHeigth;
     }
-    if (isMobile && pageControl.mobileShowNav) {
+    if (isMobile && mobile.mobileShowNav) {
       style.transform = "translateX(5vw)";
     } else {
       style.transform = "translateX(0vw)";
@@ -110,9 +111,9 @@ const Header = ({ pageControl }) => {
     return (
       <li key={i}>
         <Link
-          onClick={() => pageControl.setMobileShowNav(false)}
+          onClick={() => mobile.setMobileShowNav(false)}
           to={`/works/${page}/landing`}
-          className={workPage === urls.workPage[i] ? "active--text" : ""}
+          className={page.workPage === urls.workPage[i] ? "active--text" : ""}
         >
           {pageName}
         </Link>
@@ -124,11 +125,11 @@ const Header = ({ pageControl }) => {
       <>
         <div className="nav__link home" ref={refNavHome}>
           <Link
-            onClick={() => pageControl.setMobileShowNav(false)}
+            onClick={() => mobile.setMobileShowNav(false)}
             className={`a--transition a--opacity ${
-              curPage === urls.curPage[0] ? "active--text" : {}
+              page.curPage === urls.curPage[0] ? "active--text" : {}
             }`}
-            style={curPage === urls.curPage[0] ? activeStyle : {}}
+            style={page.curPage === urls.curPage[0] ? activeStyle : {}}
             to="/"
           >
             home
@@ -138,7 +139,7 @@ const Header = ({ pageControl }) => {
           <span
             onClick={() => setExpandWorkNav(true)}
             className={`a--transition a--opacity ${
-              curPage === urls.curPage[1] ? "active--text" : {}
+              page.curPage === urls.curPage[1] ? "active--text" : {}
             }`}
           >
             works
@@ -146,7 +147,7 @@ const Header = ({ pageControl }) => {
           <ul
             className="nav__sublinks"
             style={
-              curPage !== urls.curPage[1] && !expandWorkNav
+              page.curPage !== urls.curPage[1] && !expandWorkNav
                 ? { maxHeight: "0", opacity: 0 }
                 : {}
             }
@@ -156,10 +157,10 @@ const Header = ({ pageControl }) => {
         </div>
         <div className="nav__link about" ref={refNavAbout}>
           <Link
-            onClick={() => pageControl.setMobileShowNav(false)}
+            onClick={() => mobile.setMobileShowNav(false)}
             to="/about"
             className={`a--transition a--opacity ${
-              curPage === urls.curPage[2] ? "active--text" : {}
+              page.curPage === urls.curPage[2] ? "active--text" : {}
             }`}
           >
             about
@@ -167,10 +168,10 @@ const Header = ({ pageControl }) => {
         </div>
         <div className="nav__link contact" ref={refNavContact}>
           <Link
-            onClick={() => pageControl.setMobileShowNav(false)}
+            onClick={() => mobile.setMobileShowNav(false)}
             to="/contact"
             className={`a--transition a--opacity ${
-              curPage === urls.curPage[3] ? "active--text" : {}
+              page.curPage === urls.curPage[3] ? "active--text" : {}
             }`}
           >
             contact
@@ -223,22 +224,18 @@ const Header = ({ pageControl }) => {
     return (
       <header className="header__container">
         <AnimatePresence>
-          {isMobile && pageControl.mobileShowNav ? renderMobileOverlay() : ""}
+          {isMobile && mobile.mobileShowNav ? renderMobileOverlay() : ""}
         </AnimatePresence>
         <div
           className="m--nav__toggle"
-          onClick={() =>
-            pageControl.setMobileShowNav(!pageControl.mobileShowNav)
-          }
+          onClick={() => mobile.setMobileShowNav(!mobile.mobileShowNav)}
         >
-          {pageControl.mobileShowNav ? "X" : "O"}
+          {mobile.mobileShowNav ? "X" : "O"}
         </div>
         <div className="nav__container" style={condiNavContainerStyle()}>
           <div
             className="scroll-status__container"
-            onClick={() =>
-              pageControl.setMobileShowNav(!pageControl.mobileShowNav)
-            }
+            onClick={() => mobile.setMobileShowNav(!mobile.mobileShowNav)}
           >
             <div className="scroll-status--disabled"></div>
             <div
@@ -253,7 +250,7 @@ const Header = ({ pageControl }) => {
             </div>
           </div>
           <AnimatePresence>
-            {isMobile && pageControl.mobileShowNav && (
+            {isMobile && mobile.mobileShowNav && (
               <motion.nav
                 className="nav"
                 ref={refNav}

@@ -1,5 +1,6 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useContext } from "react";
 import WorkContent from "../WorkContent";
+import { PageContext } from "../../../App";
 
 import landing from "../../../assests/image/projects/littleTokyo/desktop0.jpg";
 import imgD0 from "../../../assests/image/projects/littleTokyo/desktop0.jpg";
@@ -9,7 +10,9 @@ import imgP0 from "../../../assests/image/projects/littleTokyo/photo0.jpg";
 import imgP1 from "../../../assests/image/projects/littleTokyo/photo1.jpg";
 import imgP2 from "../../../assests/image/projects/littleTokyo/photo2.jpg";
 
-const LittleTokyo = ({ pageControl, props }) => {
+const LittleTokyo = ({ props }) => {
+  const { theme } = useContext(PageContext);
+
   const refEl = useRef(null);
   const backgroundStyle2 = {
     background: "rgba(30, 30, 30, 1)",
@@ -54,13 +57,12 @@ const LittleTokyo = ({ pageControl, props }) => {
   };
 
   useEffect(() => {
-    pageControl.setTheme({ color: "black", subColor: "white" });
+    theme.setTheme({ color: "black", subColor: "white" });
   }, []);
 
   return (
     <WorkContent
       refEl={refEl}
-      pageControl={pageControl}
       data={data}
       backgroundStyle={backgroundStyle}
       props={props}

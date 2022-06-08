@@ -1,14 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { motion } from "framer-motion";
 import { transition } from "../helpers/config";
+import { PageContext } from "../../App";
 import useRandomTextAnimation from "../helpers/useRandomTextAnimation";
 import icons from "../../assests/image/icons.svg";
 import cv from "../../assests/files/cv.pdf";
 
-const Contact = ({ pageControl, props, refs }) => {
+const Contact = ({ props, refs }) => {
+  const { page, theme } = useContext(PageContext);
+
   useEffect(() => {
-    pageControl.setCurPage(props.match.path.slice(1));
-    pageControl.setTheme({ color: "dark" });
+    page.setCurPage(props.match.path.slice(1));
+    theme.setTheme({ color: "dark" });
   }, []);
 
   const { hasFinished, title } = useRandomTextAnimation("Yeah", 500, false);

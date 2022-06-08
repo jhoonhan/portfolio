@@ -3,14 +3,12 @@ import { motion } from "framer-motion";
 import name2 from "../../assests/image/name2.svg";
 import { isMobile } from "react-device-detect";
 
-const LandingArt = ({ curPage, artOverlay, allMatch }) => {
+const LandingArt = ({ curPage, allMatch }) => {
   const refSection = useRef(null);
-  const refCursor = useRef(null);
   const refFirstName = useRef(null);
   const refLastName = useRef(null);
 
   const [waitMouseMove, setWaitMouseMove] = useState(false);
-  const [waitCursorMove, setWaitCursorMove] = useState(false);
   const [waitNameMove, setWaitNameMove] = useState(false);
 
   const [windowSize, setWindowSize] = useState({

@@ -1,12 +1,15 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useContext } from "react";
 import WorkContent from "../WorkContent";
+import { PageContext } from "../../../App";
 
 import landing from "../../../assests/image/projects/jkAerostart/landing.jpg";
 import vidD0 from "../../../assests/image/projects/jkAerostart/videoD0.mp4";
 import vidM0 from "../../../assests/image/projects/jkAerostart/videoM0.mp4";
 import vidM1 from "../../../assests/image/projects/jkAerostart/videoM1.mp4";
 
-const JkAerostart = ({ pageControl, props }) => {
+const JkAerostart = ({ props }) => {
+  const { theme } = useContext(PageContext);
+
   const refEl = useRef(null);
   const backgroundStyle2 = {
     background: "rgba(40, 30, 80, 1)",
@@ -51,12 +54,11 @@ const JkAerostart = ({ pageControl, props }) => {
   };
 
   useEffect(() => {
-    pageControl.setTheme({ color: "black", subColor: "white" });
+    theme.setTheme({ color: "black", subColor: "white" });
   }, []);
   return (
     <WorkContent
       refEl={refEl}
-      pageControl={pageControl}
       data={data}
       backgroundStyle={backgroundStyle}
       props={props}

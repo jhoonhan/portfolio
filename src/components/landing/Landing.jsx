@@ -1,26 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { motion } from "framer-motion";
 import { transition } from "../helpers/config";
+import { PageContext } from "../../App";
 
 import LandingArt from "./LandingArt";
-import name2 from "../../assests/image/name2.svg";
 import MiddleLine from "../helpers/MiddleLine";
 import useTextAnimation from "./useTextAnimation";
 
 const textShadow = "0 0 calc(min(10vh, 10vw)) rgba(255,255,255,0.7)";
 
-const Landing = ({ pageControl, refHome, props }) => {
+const Landing = ({ refHome }) => {
+  const { page, style, theme } = useContext(PageContext);
+
   const { title, titleStyle } = useTextAnimation("joehan", 1000);
   const [artOverlay, setArtOverlay] = useState(0);
   const [allMatch, setAllMatch] = useState(false);
 
   useEffect(() => {
-    pageControl.setCurPage("home");
-    pageControl.setTheme({ color: "dark" });
-    pageControl.setCursor({ show: true, type: "move" });
+    page.setCurPage("home");
+    theme.setTheme({ color: "dark" });
+    style.setCursor({ show: true, type: "move" });
 
     return () => {
-      pageControl.setCursor({ show: false });
+      style.setCursor({ show: false });
     };
   }, []);
 
@@ -39,9 +41,7 @@ const Landing = ({ pageControl, refHome, props }) => {
       <div
         className="landing__footer"
         style={
-          pageControl.curPage !== "home"
-            ? { transform: "translateX(100vw)" }
-            : {}
+          page.curPage !== "home" ? { transform: "translateX(100vw)" } : {}
         }
       >
         <MiddleLine orientation="horizontal" />
@@ -120,7 +120,7 @@ const Landing = ({ pageControl, refHome, props }) => {
         transition={{ duration: 0.5 }}
       >
         <LandingArt
-          curPage={pageControl.curPage}
+          curPage={page.curPage}
           artOverlay={artOverlay}
           allMatch={allMatch}
         />

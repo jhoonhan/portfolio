@@ -1,8 +1,7 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useContext } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import AboutImg from "./AboutImg";
-import icons from "../../assests/image/icons.svg";
 import { transition } from "../helpers/config";
+import { PageContext } from "../../App";
 
 import ah0 from "../../assests/image/about/ah0.jpg";
 import ah1 from "../../assests/image/about/ah1.jpg";
@@ -36,7 +35,6 @@ import pv5 from "../../assests/image/about/pv5.jpg";
 import useIntersectionObserve from "../helpers/useIntersectionObserve";
 import usePreloader from "../helpers/usePreloader";
 import AboutSlide from "./AboutSlide";
-import Cursor from "../Cursor";
 
 const imageList = [
   ah0,
@@ -69,7 +67,9 @@ const imageList = [
   pv5,
 ];
 
-const About = ({ pageControl, props, refs }) => {
+const About = ({ props, refs }) => {
+  const { page, style, theme } = useContext(PageContext);
+
   const [activeSlide, setActiveSlide] = useState(-1);
   const [activeSlideStyle, setActiveSlideStyle] = useState({
     slide0: { width: "100%" },
@@ -91,14 +91,14 @@ const About = ({ pageControl, props, refs }) => {
   const { loading, Loading } = usePreloader(imageList);
 
   useEffect(() => {
-    pageControl.setTheme({ color: "dark" });
+    theme.setTheme({ color: "dark" });
     return () => {
-      pageControl.setCursor({ show: false });
+      style.setCursor({ show: false });
     };
   }, []);
 
   useEffect(() => {
-    pageControl.setCurPage(props.match.path.slice(1));
+    page.setCurPage(props.match.path.slice(1));
   }, [props.match.path]);
 
   useEffect(() => {
@@ -269,10 +269,8 @@ const About = ({ pageControl, props, refs }) => {
       <motion.section
         ref={refs.refAbout}
         className="about__container container"
-        onMouseEnter={() =>
-          pageControl.setCursor({ show: true, type: "scroll" })
-        }
-        onMouseLeave={() => pageControl.setCursor({ show: false, type: null })}
+        onMouseEnter={() => style.setCursor({ show: true, type: "scroll" })}
+        onMouseLeave={() => style.setCursor({ show: false, type: null })}
         // variants={animate.container}
         // initial="hidden"
         // animate="show"

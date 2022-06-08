@@ -1,5 +1,6 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useContext } from "react";
 import WorkContent from "../WorkContent";
+import { PageContext } from "../../../App";
 
 import landing from "../../../assests/image/projects/haansCleaner/landing.jpg";
 import video0 from "../../../assests/image/projects/haansCleaner/video0.mp4";
@@ -8,7 +9,9 @@ import video1 from "../../../assests/image/projects/haansCleaner/video1.mp4";
 import video2 from "../../../assests/image/projects/haansCleaner/video2.mp4";
 import video3 from "../../../assests/image/projects/haansCleaner/video3.mp4";
 
-const HaansCleaner = ({ pageControl, props }) => {
+const HaansCleaner = ({ props }) => {
+  const { theme } = useContext(PageContext);
+
   const refEl = useRef(null);
   const backgroundStyle = {
     background: "rgba(240, 240, 240, 1)",
@@ -54,13 +57,12 @@ const HaansCleaner = ({ pageControl, props }) => {
   };
 
   useEffect(() => {
-    pageControl.setTheme({ color: "white", subColor: "light-blue" });
+    theme.setTheme({ color: "white", subColor: "light-blue" });
   }, []);
 
   return (
     <WorkContent
       refEl={refEl}
-      pageControl={pageControl}
       data={data}
       backgroundStyle={backgroundStyle}
       props={props}

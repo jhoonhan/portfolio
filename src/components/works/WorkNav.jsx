@@ -5,19 +5,7 @@ import { PageContext } from "../../App";
 import history from "../../history";
 import { Link } from "react-router-dom";
 
-const WorkNav = ({ pageControl }) => {
-  // const {
-  //   urls,
-  //   curPage,
-  //   workPage,
-  //   workSubPage,
-  //   workNavWidth,
-  //   setWorkNavWidth,
-  //   mobileShowNav,
-  //   setmobileShowNav,
-  //   // touch,
-  // } = pageControl;
-
+const WorkNav = () => {
   const { urls, page, style, mobile, touch } = useContext(PageContext);
 
   useEffect(() => {
@@ -132,7 +120,7 @@ const WorkNav = ({ pageControl }) => {
               className="a--opacity--m"
               style={activeSpan(urls.workSubPage[0])}
             >
-              {console.log(page?.workPage?.split("-").join(" "))}
+              {/* {console.log(page?.workPage?.split("-").join(" "))} */}
               {/* {page?.workPage} */}
             </span>
           </Link>

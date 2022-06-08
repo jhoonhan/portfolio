@@ -1,5 +1,6 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useContext } from "react";
 import WorkContent from "../WorkContent";
+import { PageContext } from "../../../App";
 
 import landing from "../../../assests/image/projects/thisIsBullshit/landing.jpg";
 import imgM0 from "../../../assests/image/projects/thisIsBullshit/mobile0.jpg";
@@ -8,7 +9,9 @@ import vidD0 from "../../../assests/image/projects/thisIsBullshit/vidD0.mp4";
 import vidD1 from "../../../assests/image/projects/thisIsBullshit/vidD1.mp4";
 import vidD4 from "../../../assests/image/projects/thisIsBullshit/vidD4.mp4";
 
-const ThisIsBullshit = ({ pageControl, props }) => {
+const ThisIsBullshit = ({ props }) => {
+  const { theme } = useContext(PageContext);
+
   const refEl = useRef(null);
   const backgroundStyle = {
     background: "rgba(240, 240, 240, 1)",
@@ -49,13 +52,12 @@ const ThisIsBullshit = ({ pageControl, props }) => {
   };
 
   useEffect(() => {
-    pageControl.setTheme({ color: "white", subColor: "red" });
+    theme.setTheme({ color: "white", subColor: "red" });
   }, []);
 
   return (
     <WorkContent
       refEl={refEl}
-      pageControl={pageControl}
       data={data}
       backgroundStyle={backgroundStyle}
       props={props}

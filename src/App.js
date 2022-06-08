@@ -119,34 +119,6 @@ const App = () => {
     workSubPage: ["landing", "overview", "gallery"],
   };
 
-  const pageControl = {
-    urls,
-    curPage,
-    setCurPage,
-    theme,
-    setTheme,
-    prevTheme,
-    setPrevTheme,
-    workPage,
-    setWorkPage,
-    workSubPage,
-    setWorkSubPage,
-    mobileShowNav,
-    setMobileShowNav,
-    activeSubPageStylePosition,
-    setActiveSubPageStylePosition,
-    workNavWidth,
-    setWorkNavWidth,
-    slideScroll,
-    setSlideScroll,
-    cursor,
-    setCursor,
-    touch: {
-      action: touchAction,
-      sticky: stickySlide,
-    },
-  };
-
   const contextValues = {
     urls,
     page: {
@@ -210,7 +182,7 @@ const App = () => {
           onTouchMove={onTouchMove}
           onTouchEnd={onTouchEnd}
         >
-          <Header refs={refs} urls={urls} pageControl={pageControl} />
+          <Header refs={refs} urls={urls} />
           <Cursor cursor={cursor} />
           <main ref={refMain} className="wrapper__main">
             {/* <div
@@ -227,7 +199,6 @@ const App = () => {
                     <>
                       {transtionAnimation()}
                       <Landing
-                        pageControl={pageControl}
                         curPage={curPage}
                         refHome={refHome}
                         props={props}
@@ -241,11 +212,7 @@ const App = () => {
                     <>
                       {transtionAnimation()}
 
-                      <Works
-                        refs={refs}
-                        pageControl={pageControl}
-                        props={props}
-                      />
+                      <Works refs={refs} props={props} />
                     </>
                   )}
                 />
@@ -256,11 +223,7 @@ const App = () => {
                     <>
                       {transtionAnimation()}
 
-                      <About
-                        pageControl={pageControl}
-                        refs={refs}
-                        props={props}
-                      />
+                      <About refs={refs} props={props} />
                     </>
                   )}
                 />
@@ -270,15 +233,11 @@ const App = () => {
                   render={(props) => (
                     <>
                       {transtionAnimation()}
-                      <Contact
-                        pageControl={pageControl}
-                        refs={refs}
-                        props={props}
-                      />
+                      <Contact refs={refs} props={props} />
                     </>
                   )}
                 />
-                <Route render={() => <NotFound pageControl={pageControl} />} />
+                <Route render={() => <NotFound />} />
               </Switch>
             </AnimatePresence>
           </main>

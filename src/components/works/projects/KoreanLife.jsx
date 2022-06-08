@@ -1,5 +1,6 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useContext } from "react";
 import WorkContent from "../WorkContent";
+import { PageContext } from "../../../App";
 
 import landing from "../../../assests/image/projects/koreanLife/landing.jpg";
 import imgD0 from "../../../assests/image/projects/koreanLife/desktop0.png";
@@ -9,7 +10,9 @@ import imgM0 from "../../../assests/image/projects/koreanLife/mobile0.png";
 import imgM1 from "../../../assests/image/projects/koreanLife/mobile1.jpg";
 import imgM2 from "../../../assests/image/projects/koreanLife/mobile2.jpg";
 
-const KoreanLife = ({ pageControl, props }) => {
+const KoreanLife = ({ props }) => {
+  const { theme } = useContext(PageContext);
+
   const refEl = useRef(null);
   const backgroundStyle2 = {
     background: "rgba(240, 240, 240, 1)",
@@ -54,13 +57,12 @@ const KoreanLife = ({ pageControl, props }) => {
   };
 
   useEffect(() => {
-    pageControl.setTheme({ color: "white", subColor: "green" });
+    theme.setTheme({ color: "white", subColor: "green" });
   }, []);
 
   return (
     <WorkContent
       refEl={refEl}
-      pageControl={pageControl}
       data={data}
       backgroundStyle={backgroundStyle}
       props={props}

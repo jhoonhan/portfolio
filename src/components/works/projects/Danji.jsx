@@ -1,5 +1,6 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useContext } from "react";
 import WorkContent from "../WorkContent";
+import { PageContext } from "../../../App";
 
 import landing from "../../../assests/image/projects/danji/landing.jpg";
 import overviewImg0 from "../../../assests/image/projects/danji/overview0.jpg";
@@ -10,7 +11,9 @@ import slideImg2 from "../../../assests/image/projects/danji/mobile1.jpg";
 import slideImg3 from "../../../assests/image/projects/danji/mobile0.jpg";
 import slideImg4 from "../../../assests/image/projects/danji/mobile2.jpg";
 
-const Danji = ({ pageControl, props }) => {
+const Danji = ({ props }) => {
+  const { theme } = useContext(PageContext);
+
   const refEl = useRef(null);
   const backgroundStyle = {
     background:
@@ -55,13 +58,12 @@ const Danji = ({ pageControl, props }) => {
   };
 
   useEffect(() => {
-    pageControl.setTheme({ color: "black", subColor: "white" });
+    theme.setTheme({ color: "black", subColor: "white" });
   }, []);
 
   return (
     <WorkContent
       refEl={refEl}
-      pageControl={pageControl}
       data={data}
       backgroundStyle={backgroundStyle}
       props={props}
