@@ -24,12 +24,12 @@ const useContextValues = (touch) => {
   const urlContextValue = {
     curPage: ["home", "works", "about", "contact", "notfound"],
     workPage: [
-      "sushi-republic",
       "haans-cleaner",
-      "this-is-bullshit",
       "salvation-army",
-      "korean-life",
+      "this-is-bullshit",
+      "sushi-republic",
       "jk-aerostart",
+      "korean-life",
       "danji",
       "little-tokyo",
     ],
