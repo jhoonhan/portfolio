@@ -41,8 +41,6 @@ const useGalleryHoriScroll = (loading) => {
       e.preventDefault();
 
       const result = e.deltaY - Math.floor(e.deltaY) !== 0;
-      console.log(result);
-      console.log(e.deltaY);
       if (!scrollingRef.current && !result) {
         clearTimeout(timeRef.current);
         scrollingRef.current = true;
