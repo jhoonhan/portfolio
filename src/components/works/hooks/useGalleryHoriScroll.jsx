@@ -40,7 +40,10 @@ const useGalleryHoriScroll = (loading) => {
     const onWheel = (e) => {
       e.preventDefault();
 
-      if (!scrollingRef.current && e.deltaY % 10 === 0) {
+      const result = e.deltaY - Math.floor(e.deltaY) !== 0;
+      console.log(result);
+      console.log(e.deltaY);
+      if (!scrollingRef.current && !result) {
         clearTimeout(timeRef.current);
         scrollingRef.current = true;
         el.scroll({
@@ -52,7 +55,7 @@ const useGalleryHoriScroll = (loading) => {
         }, 500);
       }
 
-      if (e.deltaY % 10 !== 0) {
+      if (result) {
         clearTimeout(timeRef.current);
         if (e.currentTarget.scrollLeft > 0) {
           scrollingRef.current = true;
