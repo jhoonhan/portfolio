@@ -263,8 +263,8 @@ a {
 
 .cursor--follow {
   position: fixed;
-  margin-top: 1rem;
-  margin-left: 1rem;
+  margin-top: 2rem;
+  margin-left: 2rem;
 
   display: flex;
   flex-direction: column;
@@ -277,7 +277,7 @@ a {
   // transform: translateX(0) translateY(0);
   transition: opacity 0.3s ease-in-out 0s, transform 0.3s linear;
 
-  z-index: 6;
+  z-index: 10;
 }
 .cursor__container {
   display: flex;

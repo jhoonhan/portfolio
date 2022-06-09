@@ -22,7 +22,7 @@ const Gallery = ({ slideInfo, data }) => {
   }, []);
 
   const refCont = useRef(null);
-  const refSlides = useGalleryHoriScroll(loading);
+  const { elRef: refSlides } = useGalleryHoriScroll(loading);
 
   const renderSlidesDesktop = pageData?.gallery.images.desktop.map((img, i) => (
     <React.Fragment key={i}>
