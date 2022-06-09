@@ -69,7 +69,7 @@ const useGalleryHoriScroll = (loading) => {
     };
 
     const checkMovePage = (e) => {
-      if (e.currentTarget.scrollLeft > 0 && scrollingRef.current) {
+      if (e.currentTarget.scrollLeft > 0) {
         // stops page change
         e.stopPropagation();
       }
