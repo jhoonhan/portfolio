@@ -85,7 +85,6 @@ const DesktopSVG = ({ data, type, customClass }) => {
         </g>
       </svg> */}
       <div className="masking">{renderVisual()}</div>
-
       <svg
         id="computer"
         xmlns="http://www.w3.org/2000/svg"

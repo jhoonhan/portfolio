@@ -198,9 +198,6 @@
 
     overflow-y: scroll;
   }
-  .slide-img--desktop.overview {
-    max-height: 30vh;
-  }
 
   .slide-img--mobile.overview {
     // max-height: 30vh;
@@ -226,6 +223,7 @@
   }
   .works__info-container {
     height: 100%;
+    max-width: none;
     grid-template-rows: 1fr auto minmax(min-content, max-content);
     row-gap: 3vh;
     & .works__info__detail {
@@ -272,15 +270,15 @@
     width: 100%;
     height: auto;
     // background-color: red;
-    align-items: flex-start;
+    align-items: center;
 
     & svg {
-      position: relative;
-      width: 100%;
+      // position: relative;
+      width: 30%;
       height: auto;
     }
     & .masking {
-      position: absolute;
+      // position: absolute;
       top: 0vh;
       width: 100%;
       height: auto;
@@ -293,6 +291,14 @@
       }
     }
   }
+  .slide-img--desktop.overview {
+    max-height: 70vh;
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    max-width: none;
+    align-self: flex-end;
+  }
+
   .slide-img--mobile {
     height: auto;
     margin-bottom: 0;
