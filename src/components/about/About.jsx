@@ -253,9 +253,9 @@ const About = ({ props, refs }) => {
 
             <div className="flex--column el" style={{ gap: "0.5rem" }}>
               <h2 style={{ paddingBottom: "1rem" }}>Experience</h2>
-              <p>- 5 years experience in Web Design</p>
+              <p>- 5 years experience in HTML5, CSS3, JavaScript</p>
               <p>- 7 years experience in Graphic Design</p>
-              <p>- 1 year in Full-stack Web Development</p>
+              <p>- 1 year in MERN stack web development</p>
             </div>
           </div>
         </motion.div>
