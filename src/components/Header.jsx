@@ -221,6 +221,50 @@ const Header = () => {
     );
   };
 
+  const renderScrollStatus = () => {
+    return (
+      <div
+        className="scroll-status__container"
+        onClick={() => mobile.setMobileShowNav(!mobile.mobileShowNav)}
+      >
+        <div className="scroll-status--disabled"></div>
+        <div
+          className="scroll-status--active"
+          style={{ maxHeight: `${activeHeight}` }}
+        ></div>
+        <div
+          style={{ transform: `translateY(${activeHeight})` }}
+          className="scroll-status--boxes"
+        >
+          <span></span>
+        </div>
+      </div>
+    );
+  };
+  const renderNav = () => {
+    if (isMobile && mobile.mobileShowNav) {
+      return (
+        <motion.nav
+          className="nav"
+          ref={refNav}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: transition.default }}
+        >
+          {renderNavLinks()}
+        </motion.nav>
+      );
+    }
+    if (isBrowser) {
+      return (
+        <nav className="nav" ref={refNav}>
+          {renderNavLinks()}
+        </nav>
+      );
+    }
+  };
+
   const render = () => {
     return (
       <header className="header__container">
@@ -233,43 +277,11 @@ const Header = () => {
         >
           {mobile.mobileShowNav ? "X" : "O"}
         </div>
-        <div className="nav__container" style={condiNavContainerStyle()}>
-          <div
-            className="scroll-status__container"
-            onClick={() => mobile.setMobileShowNav(!mobile.mobileShowNav)}
-          >
-            <div className="scroll-status--disabled"></div>
-            <div
-              className="scroll-status--active"
-              style={{ maxHeight: `${activeHeight}` }}
-            ></div>
-            <div
-              style={{ transform: `translateY(${activeHeight})` }}
-              className="scroll-status--boxes"
-            >
-              <span></span>
-            </div>
-          </div>
-          <AnimatePresence>
-            {isMobile && mobile.mobileShowNav && (
-              <motion.nav
-                className="nav"
-                ref={refNav}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: transition.default }}
-              >
-                {renderNavLinks()}
-              </motion.nav>
-            )}
-            {isBrowser && (
-              <nav className="nav" ref={refNav}>
-                {renderNavLinks()}
-              </nav>
-            )}
-          </AnimatePresence>
-        </div>
+        {/* <div className="nav__container" style={condiNavContainerStyle()}> */}
+        {/* {renderScrollStatus()} */}
+        {/* <AnimatePresence>{renderNav()}</AnimatePresence> */}
+        {/* </div> */}
+        {/* <div className="nav__container--ada">aaang</div> */}
         {renderSocialIcons()}
       </header>
     );
