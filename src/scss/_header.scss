@@ -16,23 +16,22 @@
   gap: 2vh;
 
   padding-left: 3vw;
-  padding-right: 3vw;
+  // padding-right: 3vw;
 
   z-index: 10;
   // background-color: red;
-  background: linear-gradient(
-    90deg,
-    rgba(0, 0, 0, 0.9) 0%,
-    rgba(0, 0, 0, 0.7) 50%,
-    rgba(0, 0, 0, 0) 100%
-  );
+  // background: linear-gradient(
+  //   90deg,
+  //   rgba(0, 0, 0, 0.9) 0%,
+  //   rgba(0, 0, 0, 0.7) 50%,
+  //   rgba(0, 0, 0, 0) 100%
+  // );
 }
 
 //
 .nav__container {
   width: auto;
   height: auto;
-
   display: flex;
   gap: 1rem;
 
@@ -44,7 +43,33 @@
 .nav__container--ada {
   width: 100vw;
   height: 100vh;
-  background-color: red;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+
+  & ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+
+    margin-left: 2vw;
+
+    & li {
+      list-style: none;
+    }
+  }
+
+  & a {
+    font-size: 10rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1rem;
+
+    &:focus {
+      color: red;
+    }
+  }
 }
 
 .nav {

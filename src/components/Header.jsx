@@ -265,6 +265,27 @@ const Header = () => {
     }
   };
 
+  const renderADANav = () => {
+    return (
+      <nav className="nav__container--ada">
+        <ul>
+          <li>
+            <a href="#">home</a>
+          </li>
+          <li>
+            <a href="#">works</a>
+          </li>
+          <li>
+            <a href="#">about</a>
+          </li>
+          <li>
+            <a href="#">contact</a>
+          </li>
+        </ul>
+      </nav>
+    );
+  };
+
   const render = () => {
     return (
       <header className="header__container">
@@ -277,11 +298,11 @@ const Header = () => {
         >
           {mobile.mobileShowNav ? "X" : "O"}
         </div>
-        {/* <div className="nav__container" style={condiNavContainerStyle()}> */}
-        {/* {renderScrollStatus()} */}
-        {/* <AnimatePresence>{renderNav()}</AnimatePresence> */}
-        {/* </div> */}
-        {/* <div className="nav__container--ada">aaang</div> */}
+        <div className="nav__container" style={condiNavContainerStyle()}>
+          {renderScrollStatus()}
+          <AnimatePresence>{renderNav()}</AnimatePresence>
+        </div>
+        {/* {renderADANav()} */}
         {renderSocialIcons()}
       </header>
     );
