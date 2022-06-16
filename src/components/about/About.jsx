@@ -255,7 +255,7 @@ const About = ({ props, refs }) => {
               <h2 style={{ paddingBottom: "1rem" }}>Experience</h2>
               <p>- 5 years experience in Web Design</p>
               <p>- 7 years experience in Graphic Design</p>
-              <p>- 1 year in Front-end Web Development</p>
+              <p>- 1 year in Full-stack Web Development</p>
             </div>
           </div>
         </motion.div>
