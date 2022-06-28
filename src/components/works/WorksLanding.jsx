@@ -15,6 +15,8 @@ const WorksLanding = () => {
     });
     return cards;
   };
+  const tx = 100;
+  const ty = 60;
 
   const render = () => {
     return (
@@ -25,7 +27,9 @@ const WorksLanding = () => {
           <div
             className="works__landing__card"
             style={{
-              transform: "translate3d(0, 0, 0px) rotate(0deg)",
+              transform: `translate3d(${tx * 0}px, ${
+                ty * 0
+              }px, 0px) rotate(0deg)`,
               zIndex: 10,
             }}
           >
@@ -34,7 +38,9 @@ const WorksLanding = () => {
           <div
             className="works__landing__card"
             style={{
-              transform: "translate3d(100px, 0, 0px) rotate(0deg)",
+              transform: `translate3d(${tx * 1}px, ${
+                ty * 1
+              }px, 0px) rotate(0deg)`,
               zIndex: 10,
             }}
           >
@@ -43,7 +49,9 @@ const WorksLanding = () => {
           <div
             className="works__landing__card"
             style={{
-              transform: "translate3d(200px, 0, 0px) rotate(0deg)",
+              transform: `translate3d(${tx * 2}px, ${
+                ty * 2
+              }px, 0px) rotate(0deg)`,
               zIndex: 10,
             }}
           >
@@ -52,7 +60,9 @@ const WorksLanding = () => {
           <div
             className="works__landing__card"
             style={{
-              transform: "translate3d(300px, 0px, 0px) rotate(0deg)",
+              transform: `translate3d(${tx * 3}px, ${
+                ty * 3
+              }px, 0px) rotate(0deg)`,
               zIndex: 10,
             }}
           >
@@ -61,7 +71,9 @@ const WorksLanding = () => {
           <div
             className="works__landing__card"
             style={{
-              transform: "translate3d(400px, 0, 0) rotate(0deg)",
+              transform: `translate3d(${tx * 4}px, ${
+                ty * 4
+              }px, 0) rotate(0deg)`,
               zIndex: 20,
             }}
           >
@@ -70,7 +82,9 @@ const WorksLanding = () => {
           <div
             className="works__landing__card"
             style={{
-              transform: "translate3d(500px, -120px, 0px) rotate(0deg)",
+              transform: `translate3d(${tx * 5}px, ${
+                ty * 5
+              }px, 0px) rotate(0deg)`,
               zIndex: 30,
             }}
           >
@@ -79,7 +93,9 @@ const WorksLanding = () => {
           <div
             className="works__landing__card"
             style={{
-              transform: "translate3d(600px, -240px, 0px) rotate(0deg)",
+              transform: `translate3d(${tx * 6}px, ${
+                ty * 6
+              }px, 0px) rotate(0deg)`,
               zIndex: 40,
             }}
           >
@@ -88,7 +104,9 @@ const WorksLanding = () => {
           <div
             className="works__landing__card"
             style={{
-              transform: "translate3d(700px, -360px, 0px) rotate(0deg)",
+              transform: `translate3d(${tx * 7}px, ${
+                ty * 1
+              }px, 0px) rotate(0deg)`,
               zIndex: 50,
             }}
           >
@@ -97,7 +115,9 @@ const WorksLanding = () => {
           <div
             className="works__landing__card"
             style={{
-              transform: "translate3d(800px, -480px, 0px) rotate(0deg)",
+              transform: `translate3d(${tx * 8}px, ${
+                ty * 0
+              }px, 0px) rotate(0deg)`,
               zIndex: 40,
             }}
           >
@@ -106,7 +126,9 @@ const WorksLanding = () => {
           <div
             className="works__landing__card"
             style={{
-              transform: "translate3d(700px, -600px, 0px) rotate(0deg)",
+              transform: `translate3d(${tx * 7}px, ${
+                ty * -1
+              }px, 0px) rotate(0deg)`,
               zIndex: 30,
             }}
           >
@@ -115,7 +137,9 @@ const WorksLanding = () => {
           <div
             className="works__landing__card"
             style={{
-              transform: "translate3d(600px, -720px, 0px) rotate(0deg)",
+              transform: `translate3d(${tx * 6}px, ${
+                ty * -2
+              }px, 0px) rotate(0deg)`,
               zIndex: 30,
             }}
           >
@@ -124,7 +148,9 @@ const WorksLanding = () => {
           <div
             className="works__landing__card"
             style={{
-              transform: "translate3d(500px, -840px, 0px) rotate(0deg)",
+              transform: `translate3d(${tx * 5}px, ${
+                ty * -3
+              }px, 0px) rotate(0deg)`,
               zIndex: 30,
             }}
           >
@@ -133,7 +159,9 @@ const WorksLanding = () => {
           <div
             className="works__landing__card"
             style={{
-              transform: "translate3d(400px, -960px, 0px) rotate(0deg)",
+              transform: `translate3d(${tx * 4}px, ${
+                ty * -4
+              }px, 0px) rotate(0deg)`,
               zIndex: 30,
             }}
           >
@@ -142,7 +170,9 @@ const WorksLanding = () => {
           <div
             className="works__landing__card"
             style={{
-              transform: "translate3d(300px, -840px, 0px) rotate(0deg)",
+              transform: `translate3d(${tx * -3}px, ${
+                ty * -3
+              }px, 0px) rotate(0deg)`,
               zIndex: 30,
             }}
           >
@@ -151,7 +181,9 @@ const WorksLanding = () => {
           <div
             className="works__landing__card"
             style={{
-              transform: "translate3d(200px, -720px, 0px) rotate(0deg)",
+              transform: `translate3d(${tx * -2}px, ${
+                ty * -2
+              }px, 0px) rotate(0deg)`,
               zIndex: 30,
             }}
           >
@@ -160,7 +192,9 @@ const WorksLanding = () => {
           <div
             className="works__landing__card"
             style={{
-              transform: "translate3d(100px, -600px, 0px) rotate(0deg)",
+              transform: `translate3d(${tx * -1}px, ${
+                ty * -1
+              }px, 0px) rotate(0deg)`,
               zIndex: 30,
             }}
           >
