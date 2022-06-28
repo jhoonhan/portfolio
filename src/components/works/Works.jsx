@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import WorkNav from "./WorkNav";
 import { PageContext } from "../../App";
 
+import WorksLanding from "./WorksLanding";
 import SushiRepublic from "./projects/SushiRepublic";
 import Danji from "./projects/Danji";
 import SalvationArmy from "./projects/SalvationArmy";
@@ -42,6 +43,10 @@ const Works = ({ refs, props }) => {
           <AnimatePresence exitBeforeEnter>
             <Switch location={location} key={location.pathname.split("/")[3]}>
               <Route
+                path={`${props.match.path}/landing`}
+                render={(props) => <WorksLanding props={props} />}
+              />
+              <Route
                 path={`${props.match.path}/sushi-republic`}
                 render={(props) => <SushiRepublic props={props} />}
               />
@@ -78,7 +83,6 @@ const Works = ({ refs, props }) => {
           </AnimatePresence>
         </motion.section>
         <WorkNav />
-        <div>aaaang</div>
       </>
     );
   };

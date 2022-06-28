@@ -1,0 +1,50 @@
+.works__landing {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: blue;
+}
+
+.works__landing__preview {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-image: url("../assests/image/projects/haansCleaner/landing.jpg");
+}
+
+.works__landing__selector {
+  position: fixed;
+  top: 0;
+  right: 0;
+
+  width: 30vw;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+
+  background-color: rgba(0, 0, 255, 0.5);
+
+  box-sizing: border-box;
+}
+
+.works__landing__card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 8rem;
+  min-height: 6rem;
+
+  border: 1px solid red;
+  box-sizing: border-box;
+
+  background-color: #666;
+}

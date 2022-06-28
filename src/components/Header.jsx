@@ -137,14 +137,23 @@ const Header = () => {
           </Link>
         </div>
         <div className="nav__link works" ref={refNavWorks}>
-          <span
+          {/* <span
             onClick={() => setExpandWorkNav(true)}
             className={`a--transition a--opacity ${
               page.curPage === urls.curPage[1] ? "active--text" : {}
             }`}
           >
             works
-          </span>
+          </span> */}
+          <Link
+            onClick={() => setExpandWorkNav(true)}
+            to="/works/landing"
+            className={`a--transition a--opacity ${
+              page.curPage === urls.curPage[1] ? "active--text" : {}
+            }`}
+          >
+            works
+          </Link>
           <ul
             className="nav__sublinks"
             style={
@@ -263,27 +272,6 @@ const Header = () => {
         </nav>
       );
     }
-  };
-
-  const renderADANav = () => {
-    return (
-      <nav className="nav__container--ada">
-        <ul>
-          <li>
-            <a href="#">home</a>
-          </li>
-          <li>
-            <a href="#">works</a>
-          </li>
-          <li>
-            <a href="#">about</a>
-          </li>
-          <li>
-            <a href="#">contact</a>
-          </li>
-        </ul>
-      </nav>
-    );
   };
 
   const render = () => {
