@@ -57,7 +57,13 @@
   border: 1px solid red;
   box-sizing: border-box;
 
-  transform: translateX(50px);
-
   background-color: #666;
+
+  transition: transform 0.3s ease;
+
+  &.active {
+    z-index: 117;
+    background-color: red;
+    transform: translateX(-50px);
+  }
 }
