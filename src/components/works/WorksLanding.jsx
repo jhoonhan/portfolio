@@ -1,25 +1,49 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect, useRef } from "react";
 
 import { PageContext } from "../../App";
 
 const WorksLanding = () => {
   const { urls } = useContext(PageContext);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [windowHeight, setWindowHeight] = useState(window.innerHeight);
+  const [rotation, setRotation] = useState(0);
 
-  const renderWorkCards = () => {
-    const cards = urls.workPage.map((work, i) => {
-      return (
-        <div className="works__landing__card" key={i}>
-          work
-        </div>
-      );
-    });
-    return cards;
+  const refCardContainer = useRef(null);
+
+  const resizeViewport = () => {
+    console.log(`resizing`);
+    setWindowWidth(window.innerWidth);
+    setWindowHeight(window.innerHeight);
   };
+  const changeRotation = (e) => {
+    console.log(e);
+    console.log(rotation);
+    if (e.deltaY > 0) setRotation(rotation + 1);
+    if (e.deltaY <= 0) setRotation(rotation - 1);
+  };
+
+  useEffect(() => {
+    console.log(rotation);
+  }, [rotation]);
+
+  useEffect(() => {
+    const cardContainer = refCardContainer.current;
+    window.addEventListener("resize", resizeViewport);
+    cardContainer.addEventListener("wheel", changeRotation);
+
+    return () => {
+      window.removeEventListener("resize", resizeViewport);
+      cardContainer.removeEventListener("wheel", changeRotation);
+    };
+  }, []);
 
   const renderCards = () => {
     const works = [1, 2, 3, 4, 5, 6, 7, 8, 9, 8, 7, 6, 5, 4, 3, 2];
-    const radius = 300;
-    const cardDimension = { width: 100, height: 100 };
+    const radius = windowHeight / 1.5;
+    const cardDimension = {
+      width: windowHeight / 3.5,
+      height: windowHeight / 3.5,
+    };
     const containerDimension = {
       width: `${radius * 2 + cardDimension.width}px`,
       height: `${radius * 2 + cardDimension.height}px`,
@@ -63,14 +87,15 @@ const WorksLanding = () => {
             height: `${cardDimension.height}px`,
           }}
         >
-          work1
+          {`work${i + 1}`}
         </div>
       );
     });
     return (
       <div
+        ref={refCardContainer}
         className="works__landing__card-container"
-        style={containerDimension}
+        style={{ ...containerDimension, transform: `rotate(${rotation}deg)` }}
       >
         {cards}
       </div>

@@ -22,7 +22,7 @@
   top: 0;
   right: 0;
 
-  width: 70vw;
+  width: 30vw;
   height: 100%;
 
   display: flex;
@@ -33,6 +33,17 @@
   background-color: rgba(0, 0, 255, 0.5);
 
   box-sizing: border-box;
+}
+
+.works__landing__card-container {
+  position: absolute;
+  left: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  // border: 1px solid red;
 }
 
 .works__landing__card {
@@ -47,14 +58,4 @@
   transform: translateX(50px);
 
   background-color: #666;
-}
-
-.works__landing__card-container {
-  position: relative;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  border: 1px solid red;
 }
