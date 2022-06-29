@@ -16,24 +16,21 @@ const WorksLanding = () => {
     setWindowHeight(window.innerHeight);
   };
   const changeRotation = (e) => {
-    console.log(e);
     console.log(rotation);
-    if (e.deltaY > 0) setRotation(rotation + 1);
-    if (e.deltaY <= 0) setRotation(rotation - 1);
+    const degree = 11.25;
+    if (e.deltaY > 0) setRotation(rotation + degree);
+    if (e.deltaY <= 0) setRotation(rotation - degree);
   };
 
   useEffect(() => {
-    console.log(rotation);
+    // console.log(rotation);
   }, [rotation]);
 
   useEffect(() => {
-    const cardContainer = refCardContainer.current;
     window.addEventListener("resize", resizeViewport);
-    cardContainer.addEventListener("wheel", changeRotation);
 
     return () => {
       window.removeEventListener("resize", resizeViewport);
-      cardContainer.removeEventListener("wheel", changeRotation);
     };
   }, []);
 
@@ -94,6 +91,7 @@ const WorksLanding = () => {
     return (
       <div
         ref={refCardContainer}
+        onWheel={changeRotation}
         className="works__landing__card-container"
         style={{ ...containerDimension, transform: `rotate(${rotation}deg)` }}
       >
