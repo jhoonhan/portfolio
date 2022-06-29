@@ -65,7 +65,9 @@ const WorksLanding = () => {
       setActiveCard(null);
     } else {
       degrees.forEach((deg, i) => {
-        if (deg === rotation % 360) setActiveCard(i);
+        if (rotation < 0 && deg === 0) setActiveCard(i);
+        if (rotation >= 0 && deg === rotation % 360) setActiveCard(i);
+        if (rotation < 0 && deg === 360 + (rotation % 360)) setActiveCard(i);
       });
     }
   }, [rotation]);
