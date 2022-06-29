@@ -28,7 +28,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
 
   background-color: rgba(0, 0, 255, 0.5);
 
@@ -41,11 +41,21 @@
   justify-content: center;
   align-items: center;
 
-  width: 18rem;
-  min-height: 12rem;
+  width: 10rem;
+  min-height: 10rem;
 
   border: 1px solid red;
   box-sizing: border-box;
 
+  transform: translateX(50px);
+
   background-color: #666;
+}
+
+.works__landing__card-container {
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
