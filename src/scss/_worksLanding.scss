@@ -51,15 +51,22 @@
 .works__landing__card {
   position: absolute;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
 
   border: 1px solid red;
   box-sizing: border-box;
 
+  padding: 3rem;
+
   background-color: #666;
 
   transition: transform 0.3s ease;
+
+  & h2 {
+    text-transform: uppercase;
+    font-weight: 500;
+  }
 
   &.active {
     z-index: 117;

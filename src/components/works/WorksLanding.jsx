@@ -93,7 +93,7 @@ const WorksLanding = () => {
             height: `${cardDimension.height}px`,
           }}
         >
-          {`work${i + 1}`}
+          <h2>{`work${i + 1}`}</h2>
         </div>
       );
     });
@@ -110,6 +110,7 @@ const WorksLanding = () => {
   };
 
   const render = () => {
+    console.log(urls.workPage);
     return (
       <div className="works__landing">
         <div className="works__landing__preview">aaang1</div>
