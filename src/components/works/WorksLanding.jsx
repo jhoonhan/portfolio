@@ -43,7 +43,6 @@ const WorksLanding = () => {
   const rotationDegree = 11.25;
 
   const resizeViewport = () => {
-    console.log(`resizing`);
     setWindowWidth(window.innerWidth);
     setWindowHeight(window.innerHeight);
   };
