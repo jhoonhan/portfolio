@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
+import throttle from "../helpers/throttle";
 
 import { PageContext } from "../../App";
 
@@ -48,8 +49,15 @@ const WorksLanding = () => {
     setWindowHeight(window.innerHeight);
   };
   const changeRotation = (e) => {
-    if (e.deltaY > 0) setRotation(rotation + rotationDegree);
-    if (e.deltaY <= 0) setRotation(rotation - rotationDegree);
+    const fn = () => {
+      if (e.deltaY > 0) setRotation(rotation + rotationDegree);
+      if (e.deltaY <= 0) setRotation(rotation - rotationDegree);
+    };
+    fn();
+    const fn2 = () => {
+      console.log(`test throttle`);
+    };
+    throttle(fn2, 1);
   };
 
   useEffect(() => {
