@@ -82,19 +82,13 @@ const WorksLanding = () => {
       setActiveCard(null);
     } else {
       worksArr().forEach((work, i) => {
-        console.log(rotation, degrees[i], work.degree);
-
-        if (rotation < 0 && work.deg === 0) setActiveCard(i);
-        if (rotation >= 0 && work.deg === rotation % 360) setActiveCard(i);
-        if (rotation < 0 && work.deg === 360 + (rotation % 360))
+        if (rotation < 0 && work.degree === 0) setActiveCard(i);
+        if (rotation >= 0 && work.degree === rotation % 360) setActiveCard(i);
+        if (rotation < 0 && work.degree === 360 + (rotation % 360))
           setActiveCard(i);
       });
     }
   }, [rotation]);
-
-  useEffect(() => {
-    console.log(activeCard);
-  }, [activeCard]);
 
   const renderCards = () => {
     const pos = (theta) => {
@@ -135,13 +129,16 @@ const WorksLanding = () => {
   };
 
   const render = () => {
+    console.log(worksArr()[activeCard]?.color);
     return (
       <div className="works__landing">
         <div
           className="works__landing__preview"
-          // style={{backgroundColor: conditionalColor()}}
+          style={{
+            backgroundColor: activeCard && worksArr()[activeCard].color,
+          }}
         >
-          aaang1
+          {activeCard ? worksArr()[activeCard].name : ""}
         </div>
         <div className="works__landing__selector">
           {/* {renderWorkCards()} */}
