@@ -32,7 +32,7 @@ const WorksLanding = () => {
       { ...projects[2], index: 14, theta: 5 * (Math.PI / 4) },
       { ...projects[1], index: 15, theta: 9 * (Math.PI / 8) },
     ];
-    for (let i; i < arr.length; i++) {
+    for (let i = 0; i < arr.length; i++) {
       arr[i].degree = 22.5 * i;
     }
     return arr;
@@ -81,13 +81,20 @@ const WorksLanding = () => {
     if (rotation % (rotationDegree * 2)) {
       setActiveCard(null);
     } else {
-      degrees.forEach((deg, i) => {
-        if (rotation < 0 && deg === 0) setActiveCard(i);
-        if (rotation >= 0 && deg === rotation % 360) setActiveCard(i);
-        if (rotation < 0 && deg === 360 + (rotation % 360)) setActiveCard(i);
+      worksArr().forEach((work, i) => {
+        console.log(rotation, degrees[i], work.degree);
+
+        if (rotation < 0 && work.deg === 0) setActiveCard(i);
+        if (rotation >= 0 && work.deg === rotation % 360) setActiveCard(i);
+        if (rotation < 0 && work.deg === 360 + (rotation % 360))
+          setActiveCard(i);
       });
     }
   }, [rotation]);
+
+  useEffect(() => {
+    console.log(activeCard);
+  }, [activeCard]);
 
   const renderCards = () => {
     const pos = (theta) => {
@@ -128,7 +135,6 @@ const WorksLanding = () => {
   };
 
   const render = () => {
-    console.log(worksArr());
     return (
       <div className="works__landing">
         <div
