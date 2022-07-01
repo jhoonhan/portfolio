@@ -13,24 +13,32 @@ const WorksLanding = () => {
 
   const refCardContainer = useRef(null);
 
-  const worksArr = [
-    projects[0],
-    projects[1],
-    projects[2],
-    projects[3],
-    projects[4],
-    projects[5],
-    projects[6],
-    projects[7],
-    projects[8],
-    projects[7],
-    projects[6],
-    projects[5],
-    projects[4],
-    projects[3],
-    projects[2],
-    projects[1],
-  ];
+  const worksArr = () => {
+    const arr = [
+      { ...projects[0], index: 0, theta: Math.PI },
+      { ...projects[1], index: 1, theta: 7 * (Math.PI / 8) },
+      { ...projects[2], index: 2, theta: 3 * (Math.PI / 4) },
+      { ...projects[3], index: 3, theta: 5 * (Math.PI / 8) },
+      { ...projects[4], index: 4, theta: Math.PI / 2 },
+      { ...projects[5], index: 5, theta: 3 * (Math.PI / 8) },
+      { ...projects[6], index: 6, theta: Math.PI / 4 },
+      { ...projects[7], index: 7, theta: 1 * (Math.PI / 8) },
+      { ...projects[8], index: 8, theta: 0 },
+      { ...projects[7], index: 9, theta: 15 * (Math.PI / 8) },
+      { ...projects[6], index: 10, theta: 7 * (Math.PI / 4) },
+      { ...projects[5], index: 11, theta: 13 * (Math.PI / 8) },
+      { ...projects[4], index: 12, theta: 3 * (Math.PI / 2) },
+      { ...projects[3], index: 13, theta: 11 * (Math.PI / 8) },
+      { ...projects[2], index: 14, theta: 5 * (Math.PI / 4) },
+      { ...projects[1], index: 15, theta: 9 * (Math.PI / 8) },
+    ];
+    for (let i; i < arr.length; i++) {
+      arr[i].degree = 22.5 * i;
+    }
+    return arr;
+  };
+  const degrees = worksArr().map((deg, i) => 22.5 * i);
+
   const radius = windowHeight / 1.5;
   const cardDimension = {
     width: windowHeight / 3.5,
@@ -40,25 +48,7 @@ const WorksLanding = () => {
     width: `${radius * 2 + cardDimension.width}px`,
     height: `${radius * 2 + cardDimension.height}px`,
   };
-  const degrees = worksArr.map((deg, i) => 22.5 * i);
-  const theta = [
-    Math.PI, // 180  9
-    7 * (Math.PI / 8), // 157.5 8
-    3 * (Math.PI / 4), // 135 7
-    5 * (Math.PI / 8), // 112.5 6
-    Math.PI / 2, // 90 5
-    3 * (Math.PI / 8), // 67.5 4
-    Math.PI / 4, // 45 3
-    1 * (Math.PI / 8), // 22.5 2
-    0, // 0 1
-    15 * (Math.PI / 8), // 337.5 16
-    7 * (Math.PI / 4), // 315 15
-    13 * (Math.PI / 8), // 292.5 14
-    3 * (Math.PI / 2), // 270 13
-    11 * (Math.PI / 8), // 247.5 12
-    5 * (Math.PI / 4), // 225 11
-    9 * (Math.PI / 8), // 202.5 10
-  ];
+
   const rotationDegree = 11.25;
 
   const resizeViewport = () => {
@@ -106,8 +96,8 @@ const WorksLanding = () => {
         y: Math.round(radius * Math.sin(theta)),
       };
     };
-    const cards = worksArr.map((work, i) => {
-      const { x, y } = pos(theta[i]);
+    const cards = worksArr().map((work, i) => {
+      const { x, y } = pos(work.theta);
       return (
         <div
           key={`card--${i}`}
@@ -138,6 +128,7 @@ const WorksLanding = () => {
   };
 
   const render = () => {
+    console.log(worksArr());
     return (
       <div className="works__landing">
         <div
