@@ -50,11 +50,11 @@ const WorksLanding = () => {
     setWindowHeight(window.innerHeight);
   };
   const changeRotation = (e) => {
-    console.log(e);
     const fn = () => {
       if (e.deltaY > 0) setRotation(rotation + rotationDegree);
       if (e.deltaY <= 0) setRotation(rotation - rotationDegree);
     };
+    // Throttling the touchpad movement
     if (!waitT) {
       fn();
       setWaitT(true);
