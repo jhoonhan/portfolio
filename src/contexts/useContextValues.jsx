@@ -36,6 +36,18 @@ const useContextValues = (touch) => {
     ],
     workSubPage: ["landing", "overview", "gallery"],
   };
+  const projectContextValue = [
+    { name: urlContextValue.workPage[0].split("-").join(" "), color: "white" },
+    { name: urlContextValue.workPage[1].split("-").join(" "), color: "blue" },
+    { name: urlContextValue.workPage[2].split("-").join(" "), color: "white" },
+    { name: urlContextValue.workPage[3].split("-").join(" "), color: "black" },
+    { name: urlContextValue.workPage[4].split("-").join(" "), color: "blue" },
+    { name: urlContextValue.workPage[5].split("-").join(" "), color: "green" },
+    { name: urlContextValue.workPage[6].split("-").join(" "), color: "orange" },
+    { name: urlContextValue.workPage[7].split("-").join(" "), color: "black" },
+    { name: urlContextValue.workPage[8].split("-").join(" "), color: "red" },
+  ];
+
   const pageContextValue = {
     curPage,
     setCurPage,
@@ -66,6 +78,7 @@ const useContextValues = (touch) => {
   const contextValues = {
     urls: { ...urlContextValue },
     page: { ...pageContextValue },
+    projects: [...projectContextValue],
     theme: { ...themeContextValue },
     mobile: {
       mobileShowNav,

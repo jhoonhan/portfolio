@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { PageContext } from "../../App";
 
 const WorksLanding = () => {
-  const { urls } = useContext(PageContext);
+  const { urls, projects } = useContext(PageContext);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [windowHeight, setWindowHeight] = useState(window.innerHeight);
   const [rotation, setRotation] = useState(0);
@@ -14,22 +14,22 @@ const WorksLanding = () => {
   const refCardContainer = useRef(null);
 
   const worksArr = [
-    urls.workPage[0],
-    urls.workPage[1],
-    urls.workPage[2],
-    urls.workPage[3],
-    urls.workPage[4],
-    urls.workPage[5],
-    urls.workPage[6],
-    urls.workPage[7],
-    urls.workPage[8],
-    urls.workPage[7],
-    urls.workPage[6],
-    urls.workPage[5],
-    urls.workPage[4],
-    urls.workPage[3],
-    urls.workPage[2],
-    urls.workPage[1],
+    projects[0],
+    projects[1],
+    projects[2],
+    projects[3],
+    projects[4],
+    projects[5],
+    projects[6],
+    projects[7],
+    projects[8],
+    projects[7],
+    projects[6],
+    projects[5],
+    projects[4],
+    projects[3],
+    projects[2],
+    projects[1],
   ];
   const radius = windowHeight / 1.5;
   const cardDimension = {
@@ -76,7 +76,7 @@ const WorksLanding = () => {
       setWaitT(true);
       setTimeout(() => {
         setWaitT(false);
-      }, 500);
+      }, 200);
     }
   };
 
@@ -121,7 +121,7 @@ const WorksLanding = () => {
             height: `${cardDimension.height}px`,
           }}
         >
-          <h2>{work.split("-").join(" ")}</h2>
+          <h2>{work.name.split("-").join(" ")}</h2>
         </div>
       );
     });
@@ -140,7 +140,12 @@ const WorksLanding = () => {
   const render = () => {
     return (
       <div className="works__landing">
-        <div className="works__landing__preview">aaang1</div>
+        <div
+          className="works__landing__preview"
+          // style={{backgroundColor: conditionalColor()}}
+        >
+          aaang1
+        </div>
         <div className="works__landing__selector">
           {/* {renderWorkCards()} */}
           {renderCards()}
