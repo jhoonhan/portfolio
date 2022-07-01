@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
-import throttle from "../helpers/throttle";
+import { AnimatePresence, motion } from "framer-motion";
 
 import { PageContext } from "../../App";
 
@@ -66,7 +66,6 @@ const WorksLanding = () => {
 
   useEffect(() => {
     window.addEventListener("resize", resizeViewport);
-
     return () => {
       window.removeEventListener("resize", resizeViewport);
     };
