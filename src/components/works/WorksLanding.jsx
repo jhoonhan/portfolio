@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 
 import { PageContext } from "../../App";
 
@@ -8,6 +9,7 @@ const WorksLanding = () => {
   const [windowHeight, setWindowHeight] = useState(window.innerHeight);
   const [rotation, setRotation] = useState(0);
   const [activeCard, setActiveCard] = useState(0);
+  const [waitT, setWaitT] = useState(false);
 
   const refCardContainer = useRef(null);
 
@@ -64,13 +66,22 @@ const WorksLanding = () => {
     setWindowHeight(window.innerHeight);
   };
   const changeRotation = (e) => {
-    if (e.deltaY > 0) setRotation(rotation + rotationDegree);
-    if (e.deltaY <= 0) setRotation(rotation - rotationDegree);
+    const fn = () => {
+      if (e.deltaY > 0) setRotation(rotation + rotationDegree);
+      if (e.deltaY <= 0) setRotation(rotation - rotationDegree);
+    };
+    // Throttling the touchpad movement
+    if (!waitT) {
+      fn();
+      setWaitT(true);
+      setTimeout(() => {
+        setWaitT(false);
+      }, 500);
+    }
   };
 
   useEffect(() => {
     window.addEventListener("resize", resizeViewport);
-
     return () => {
       window.removeEventListener("resize", resizeViewport);
     };
