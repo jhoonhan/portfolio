@@ -32,6 +32,7 @@ const useContextValues = (touch) => {
       "korean-life",
       "danji",
       "little-tokyo",
+      "unnamed",
     ],
     workSubPage: ["landing", "overview", "gallery"],
   };

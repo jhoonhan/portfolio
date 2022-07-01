@@ -11,7 +11,24 @@ const WorksLanding = () => {
 
   const refCardContainer = useRef(null);
 
-  const works = [1, 2, 3, 4, 5, 6, 7, 8, 9, 8, 7, 6, 5, 4, 3, 2];
+  const worksArr = [
+    urls.workPage[0],
+    urls.workPage[1],
+    urls.workPage[2],
+    urls.workPage[3],
+    urls.workPage[4],
+    urls.workPage[5],
+    urls.workPage[6],
+    urls.workPage[7],
+    urls.workPage[8],
+    urls.workPage[7],
+    urls.workPage[6],
+    urls.workPage[5],
+    urls.workPage[4],
+    urls.workPage[3],
+    urls.workPage[2],
+    urls.workPage[1],
+  ];
   const radius = windowHeight / 1.5;
   const cardDimension = {
     width: windowHeight / 3.5,
@@ -21,7 +38,7 @@ const WorksLanding = () => {
     width: `${radius * 2 + cardDimension.width}px`,
     height: `${radius * 2 + cardDimension.height}px`,
   };
-  const degrees = works.map((deg, i) => 22.5 * i);
+  const degrees = worksArr.map((deg, i) => 22.5 * i);
   const theta = [
     Math.PI, // 180  9
     7 * (Math.PI / 8), // 157.5 8
@@ -78,7 +95,7 @@ const WorksLanding = () => {
         y: Math.round(radius * Math.sin(theta)),
       };
     };
-    const cards = works.map((work, i) => {
+    const cards = worksArr.map((work, i) => {
       const { x, y } = pos(theta[i]);
       return (
         <div
@@ -93,7 +110,7 @@ const WorksLanding = () => {
             height: `${cardDimension.height}px`,
           }}
         >
-          <h2>{`work${i + 1}`}</h2>
+          <h2>{work.split("-").join(" ")}</h2>
         </div>
       );
     });
@@ -110,7 +127,6 @@ const WorksLanding = () => {
   };
 
   const render = () => {
-    console.log(urls.workPage);
     return (
       <div className="works__landing">
         <div className="works__landing__preview">aaang1</div>
