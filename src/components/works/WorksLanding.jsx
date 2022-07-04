@@ -1,7 +1,19 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
+import { Switch, Route, useLocation } from "react-router-dom";
+
 import { AnimatePresence, motion } from "framer-motion";
 
 import { PageContext } from "../../App";
+
+import SushiRepublic from "./projects/SushiRepublic";
+import Danji from "./projects/Danji";
+import SalvationArmy from "./projects/SalvationArmy";
+import HaansCleaner from "./projects/HaansCleaner";
+import ThisIsBullshit from "./projects/ThisIsBullshit";
+import KoreanLife from "./projects/KoreanLife";
+import LittleTokyo from "./projects/LittleTokyo";
+import JkAerostart from "./projects/JkAerostart";
+import NotFound from "../NotFound";
 
 const WorksLanding = () => {
   const { urls, projects } = useContext(PageContext);
@@ -12,6 +24,8 @@ const WorksLanding = () => {
   const [waitT, setWaitT] = useState(false);
 
   const refCardContainer = useRef(null);
+
+  const location = useLocation();
 
   const worksArr = () => {
     const arr = [
@@ -129,7 +143,6 @@ const WorksLanding = () => {
   };
 
   const render = () => {
-    console.log(worksArr()[activeCard]?.color);
     return (
       <div className="works__landing">
         <div
@@ -138,7 +151,7 @@ const WorksLanding = () => {
             backgroundColor: activeCard && worksArr()[activeCard].color,
           }}
         >
-          {activeCard ? worksArr()[activeCard].name : ""}
+          asd
         </div>
         <div className="works__landing__selector">
           {/* {renderWorkCards()} */}
