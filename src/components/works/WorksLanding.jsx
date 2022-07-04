@@ -25,8 +25,6 @@ const WorksLanding = () => {
 
   const refCardContainer = useRef(null);
 
-  const location = useLocation();
-
   const worksArr = () => {
     const arr = [
       { ...projects[0], index: 0, theta: Math.PI },

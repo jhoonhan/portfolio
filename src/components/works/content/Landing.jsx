@@ -23,9 +23,10 @@ const Landing = ({ slideInfo, data }) => {
   const fontSize = () => {
     let height;
     if (data?.name.join("").split("").length > 14) {
-      height = 90 / data?.name.join("").split("").length;
+      height = 70 / data?.name.join("").split("").length;
     } else {
-      height = 6.4;
+      // height = 6.4;
+      height = 5;
     }
     return height;
   };
